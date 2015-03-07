@@ -10,6 +10,7 @@
 
 @interface TestViewController (){
     int questionIndex;
+    int correctCount;
 }
 
 @end
@@ -24,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"modeID = %d, sectionID = %d",_modeId,_sectionId);
+    _audio = [[AVAudioPlayer alloc] init];
     _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     [self showNextWord];
     NSLog(@"testWordsDic = %@",_testWordsDic);
@@ -82,16 +84,48 @@
 - (IBAction)answerButtonPushed:(id)sender {
     UIButton *btn = sender;
     int tagNum = (int)btn.tag;
-    NSLog(@"answerButton %d is pushed",tagNum);
-    [self showNextWord];
+    if (tagNum == [_testWordsDic[@"answer"][questionIndex-1] intValue]){
+        [self playSound:@"sound_correct" playSoundFlag:YES];
+        correctCount++;
+    }
+    else [self playSound:@"sound_incorrect" playSoundFlag:YES];
+    if (questionIndex<NUMBER_OF_QUESTION) [self showNextWord];
+    else [self saveResult];
 }
 
+
 - (void)showNextWord {
-    questionIndex++;
     _englishLabel.text = _testWordsDic[@"english"][questionIndex];
     for (int i = 1; i<=4; i++) {
         UIButton *btn = (UIButton *)[self.view viewWithTag:i];
         [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_testWordsDic[@"choices"][questionIndex][i-1]] forState:UIControlStateNormal];
     }
+    questionIndex++;
 }
+
+- (void)saveResult
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSMutableArray *correctCountArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"correctCountArray"]];
+    [correctCountArray addObject:[NSNumber numberWithInt:correctCount]];
+    [[NSUserDefaults standardUserDefaults] setObject:correctCountArray forKey:@"correctCountArray"];
+    NSLog(@"correctCountArray = %@",correctCountArray);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)playSound:(NSString *)fileName
+   playSoundFlag:(BOOL)playSoundFlag
+{
+    NSLog(@"playSound \"%@\"", fileName);
+    NSString *soundPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3",fileName]];
+    NSURL *url = [NSURL fileURLWithPath:soundPath];
+    NSError *error;
+    _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+    if (error) {
+        NSLog(@"could not pronounce %@", fileName);
+    }
+    [_audio play];
+}
+
+
 @end

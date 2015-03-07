@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface TestViewController : UIViewController
 - (IBAction)backButtonPushed:(id)sender;
@@ -15,5 +17,6 @@
 @property int modeId;
 @property int sectionId;
 @property NSDictionary *testWordsDic;
+@property AVAudioPlayer *audio;
 
 @end

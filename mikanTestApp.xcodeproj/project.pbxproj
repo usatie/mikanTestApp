@@ -17,6 +17,9 @@
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
 		2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* TestViewController.m */; };
 		2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2161AAAEC15001E8522 /* sample_test.csv */; };
+		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
+		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
+		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,9 @@
 		2462CD2E1AAAB11400AF25A2 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		2462CD2F1AAAB11400AF25A2 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		2466F2161AAAEC15001E8522 /* sample_test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_test.csv; sourceTree = "<group>"; };
+		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
+		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
+		2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_incorrect.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,15 +95,13 @@
 		2462CD041AAAAC4200AF25A2 /* mikanTestApp */ = {
 			isa = PBXGroup;
 			children = (
+				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
+				2466F2221AAB023B001E8522 /* sound_finish.mp3 */,
+				2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */,
 				2462CD091AAAAC4200AF25A2 /* AppDelegate.h */,
 				2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */,
-				2462CD0C1AAAAC4200AF25A2 /* FirstViewController.h */,
-				2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */,
-				2462CD0F1AAAAC4200AF25A2 /* SecondViewController.h */,
-				2462CD101AAAAC4200AF25A2 /* SecondViewController.m */,
-				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
-				2462CD2F1AAAB11400AF25A2 /* TestViewController.m */,
-				2466F2161AAAEC15001E8522 /* sample_test.csv */,
+				2466F2191AAAFDCE001E8522 /* ViewControllers */,
+				2466F2181AAAFDC2001E8522 /* Resources */,
 				2462CD121AAAAC4200AF25A2 /* Main.storyboard */,
 				2462CD151AAAAC4200AF25A2 /* Images.xcassets */,
 				2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */,
@@ -130,6 +134,27 @@
 				2462CD231AAAAC4200AF25A2 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2466F2181AAAFDC2001E8522 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2466F2161AAAEC15001E8522 /* sample_test.csv */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2466F2191AAAFDCE001E8522 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				2462CD0C1AAAAC4200AF25A2 /* FirstViewController.h */,
+				2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */,
+				2462CD0F1AAAAC4200AF25A2 /* SecondViewController.h */,
+				2462CD101AAAAC4200AF25A2 /* SecondViewController.m */,
+				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
+				2462CD2F1AAAB11400AF25A2 /* TestViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,6 +237,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */,
+				2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */,
+				2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */,
 				2462CD141AAAAC4200AF25A2 /* Main.storyboard in Resources */,
 				2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */,
 				2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */,
