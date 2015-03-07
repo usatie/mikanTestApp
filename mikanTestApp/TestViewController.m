@@ -22,7 +22,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"modeID = %d, sectionID = %d",_modeId,_sectionId);
-    [self readCsvWithFileName:@"sample_test"];
+    _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +32,7 @@
 
 
 #pragma mark CSVHandling
-- (void)readCsvWithFileName:(NSString *)fileName
+- (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
 {
     NSString *csvFile = [[NSBundle mainBundle] pathForResource:fileName ofType:@"csv"];
     NSData *csvData = [NSData dataWithContentsOfFile:csvFile];
@@ -68,7 +68,7 @@
     }
     
     //Dictionary型にいれる
-    _testWordsDic = [[NSDictionary alloc] initWithObjects:@[wordIdArray,englishLabelArray,choicesArray,answersArray] forKeys:@[@"wordId",@"english",@"choices",@"answer"]];
+    return [[NSDictionary alloc] initWithObjects:@[wordIdArray,englishLabelArray,choicesArray,answersArray] forKeys:@[@"wordId",@"english",@"choices",@"answer"]];
 }
 
 #pragma mark ButtonAction
