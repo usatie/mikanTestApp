@@ -16,6 +16,7 @@
 		2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */; };
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
 		2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* TestViewController.m */; };
+		2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2161AAAEC15001E8522 /* sample_test.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mikanTestAppTests.m; sourceTree = "<group>"; };
 		2462CD2E1AAAB11400AF25A2 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		2462CD2F1AAAB11400AF25A2 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		2466F2161AAAEC15001E8522 /* sample_test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_test.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				2462CD101AAAAC4200AF25A2 /* SecondViewController.m */,
 				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
 				2462CD2F1AAAB11400AF25A2 /* TestViewController.m */,
+				2466F2161AAAEC15001E8522 /* sample_test.csv */,
 				2462CD121AAAAC4200AF25A2 /* Main.storyboard */,
 				2462CD151AAAAC4200AF25A2 /* Images.xcassets */,
 				2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */,
@@ -211,6 +214,7 @@
 			files = (
 				2462CD141AAAAC4200AF25A2 /* Main.storyboard in Resources */,
 				2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */,
+				2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */,
 				2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +428,7 @@
 				2462CD2A1AAAAC4200AF25A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2462CD2B1AAAAC4200AF25A2 /* Build configuration list for PBXNativeTarget "mikanTestAppTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +437,7 @@
 				2462CD2D1AAAAC4200AF25A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

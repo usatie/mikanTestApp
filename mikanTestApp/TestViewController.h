@@ -14,5 +14,6 @@
 - (IBAction)answerButtonPushed:(id)sender;
 @property int modeId;
 @property int sectionId;
+@property NSDictionary *testWordsDic;
 
 @end
