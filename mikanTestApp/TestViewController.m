@@ -8,7 +8,9 @@
 
 #import "TestViewController.h"
 
-@interface TestViewController ()
+@interface TestViewController (){
+    int questionIndex;
+}
 
 @end
 
@@ -23,6 +25,8 @@
     // Do any additional setup after loading the view.
     NSLog(@"modeID = %d, sectionID = %d",_modeId,_sectionId);
     _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
+    [self showNextWord];
+    NSLog(@"testWordsDic = %@",_testWordsDic);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,8 +63,8 @@
     //セクションの単語30個をランダムに並び替え
     for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
         int randWordId = arc4random()%(NUMBER_OF_QUESTION-i)+NUMBER_OF_QUESTION*_sectionId;
-        [englishLabelArray addObject:csvArray[randWordId][0]];
-        [wordIdArray addObject:csvArray[randWordId][1]];
+        [wordIdArray addObject:csvArray[randWordId][0]];
+        [englishLabelArray addObject:csvArray[randWordId][1]];
         [choicesArray addObject:[csvArray[randWordId] objectsAtIndexes:indexSet]];
         [answersArray addObject:csvArray[randWordId][6]];
         
@@ -79,5 +83,15 @@
     UIButton *btn = sender;
     int tagNum = (int)btn.tag;
     NSLog(@"answerButton %d is pushed",tagNum);
+    [self showNextWord];
+}
+
+- (void)showNextWord {
+    questionIndex++;
+    _englishLabel.text = _testWordsDic[@"english"][questionIndex];
+    for (int i = 1; i<=4; i++) {
+        UIButton *btn = (UIButton *)[self.view viewWithTag:i];
+        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_testWordsDic[@"choices"][questionIndex][i-1]] forState:UIControlStateNormal];
+    }
 }
 @end
