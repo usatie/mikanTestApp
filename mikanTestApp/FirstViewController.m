@@ -25,6 +25,12 @@
 }
 
 - (IBAction)startButtonPushed:(id)sender {
+    NSLog(@"mode selectedSegmentedIndex = %d", (int)_modeSegmentedControl.selectedSegmentIndex);
+    NSLog(@"section selectedSegmentedIndex = %d", (int)_sectionSegmentedControl.selectedSegmentIndex);
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setInteger:_modeSegmentedControl.selectedSegmentIndex forKey:@"testMode"];
+    [ud setInteger:_sectionSegmentedControl.selectedSegmentIndex forKey:@"testSection"];
+    [ud synchronize];
     [self performSegueWithIdentifier:@"segueToTest" sender:self];
 }
 @end

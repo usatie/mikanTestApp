@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-4s-bmk">
-                                <rect key="frame" x="180" y="116" width="240" height="29"/>
+                                <rect key="frame" x="160" y="116" width="280" height="29"/>
                                 <segments>
                                     <segment title="1"/>
                                     <segment title="2"/>
@@ -80,12 +80,14 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="modeSegmentedControl" destination="Xwc-AH-ZCW" id="90X-8r-ztB"/>
+                        <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                         <segue destination="RAR-jD-g9c" kind="show" identifier="segueToTest" id="xdp-6E-2Ik"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="-355"/>
+            <point key="canvasLocation" x="773" y="-355"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="ALa-fv-bS7">
@@ -104,22 +106,153 @@
                                 <state key="normal" title="&lt;back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="keyPath">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="U02-gN-I1a"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojW-Iu-gtP">
+                                <rect key="frame" x="170" y="260" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="DNY-HV-UxH"/>
+                                    <constraint firstAttribute="height" constant="50" id="Dof-1q-sUC"/>
+                                    <constraint firstAttribute="width" constant="260" id="eKn-x0-R5S"/>
+                                    <constraint firstAttribute="height" constant="60" id="lzN-IT-pXk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="　1.　選択肢①">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DNY-HV-UxH"/>
+                                        <exclude reference="lzN-IT-pXk"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-Kz-f58">
+                                <rect key="frame" x="170" y="330" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1IO-KN-N8q"/>
+                                    <constraint firstAttribute="width" constant="260" id="Def-Aw-D2d"/>
+                                    <constraint firstAttribute="height" constant="60" id="cGQ-BP-8CS"/>
+                                    <constraint firstAttribute="width" constant="220" id="k22-bw-D3Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="　2.　選択肢②">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cGQ-BP-8CS"/>
+                                        <exclude reference="k22-bw-D3Z"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mkh-St-5DH">
+                                <rect key="frame" x="170" y="400" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="NRK-xW-qPK"/>
+                                    <constraint firstAttribute="height" constant="60" id="QNz-wj-dNb"/>
+                                    <constraint firstAttribute="height" constant="50" id="SLW-kt-gH4"/>
+                                    <constraint firstAttribute="width" constant="260" id="kR4-OZ-8zy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="　3.　選択肢③">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NRK-xW-qPK"/>
+                                        <exclude reference="QNz-wj-dNb"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ga-88-3Gn">
+                                <rect key="frame" x="170" y="470" width="260" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="260" id="NOl-eL-zGf"/>
+                                    <constraint firstAttribute="width" constant="220" id="VMP-sc-elb"/>
+                                    <constraint firstAttribute="height" constant="60" id="rka-5c-dYB"/>
+                                    <constraint firstAttribute="height" constant="50" id="wsQ-KZ-OVW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <state key="normal" title="　4.　選択肢④">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VMP-sc-elb"/>
+                                        <exclude reference="rka-5c-dYB"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="English Words" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Qm-6A-KiR">
+                                <rect key="frame" x="146" y="120" width="300" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="0Yd-h9-al6"/>
+                                    <constraint firstAttribute="height" constant="48" id="qcI-6f-vXU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="8Qm-6A-KiR" secondAttribute="centerX" id="1Hm-Ai-VZf"/>
                             <constraint firstAttribute="centerX" secondItem="wX3-f3-X7N" secondAttribute="centerX" id="Dlw-2m-QF2"/>
+                            <constraint firstAttribute="centerX" secondItem="mkh-St-5DH" secondAttribute="centerX" id="EVG-ap-Php"/>
+                            <constraint firstItem="5ga-88-3Gn" firstAttribute="top" secondItem="mkh-St-5DH" secondAttribute="bottom" constant="20" id="K7y-It-mm7"/>
+                            <constraint firstAttribute="centerX" secondItem="5ga-88-3Gn" secondAttribute="centerX" id="KF2-7g-RrE"/>
+                            <constraint firstItem="ojW-Iu-gtP" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="240" id="McA-lw-H9u"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="24" id="NIE-zA-o3Z"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="24" id="bX4-QP-N4x"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="263" id="bgk-qI-ZIq"/>
+                            <constraint firstItem="mkh-St-5DH" firstAttribute="top" secondItem="IXg-Kz-f58" secondAttribute="bottom" constant="20" id="e7P-qO-5w3"/>
+                            <constraint firstAttribute="centerX" secondItem="ojW-Iu-gtP" secondAttribute="centerX" id="hLF-4u-YGu"/>
+                            <constraint firstAttribute="centerX" secondItem="IXg-Kz-f58" secondAttribute="centerX" id="kpr-yM-B6Y"/>
+                            <constraint firstItem="8Qm-6A-KiR" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="100" id="oWj-lE-voU"/>
+                            <constraint firstItem="IXg-Kz-f58" firstAttribute="top" secondItem="ojW-Iu-gtP" secondAttribute="bottom" constant="20" id="oxO-Yz-lmr"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -132,7 +265,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZk-6J-HiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="-355"/>
+            <point key="canvasLocation" x="1672" y="-382"/>
         </scene>
         <!--Result-->
         <scene sceneID="wg7-f3-ORb">

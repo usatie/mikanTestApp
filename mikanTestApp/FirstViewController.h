@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
 @interface FirstViewController : UIViewController
 - (IBAction)startButtonPushed:(id)sender;
-
+@property (strong, nonatomic) IBOutlet UISegmentedControl *modeSegmentedControl;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *sectionSegmentedControl;
 
 @end
 
