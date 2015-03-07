@@ -24,4 +24,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)startButtonPushed:(id)sender {
+    [self performSegueWithIdentifier:@"segueToTest" sender:self];
+}
 @end

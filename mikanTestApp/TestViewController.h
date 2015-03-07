@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  TestViewController.h
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/07.
@@ -8,9 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
-- (IBAction)startButtonPushed:(id)sender;
-
+@interface TestViewController : UIViewController
+- (IBAction)backButtonPushed:(id)sender;
 
 @end
-

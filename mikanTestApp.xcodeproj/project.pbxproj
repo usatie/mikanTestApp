@@ -15,6 +15,7 @@
 		2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD151AAAAC4200AF25A2 /* Images.xcassets */; };
 		2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */; };
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
+		2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* TestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		2462CD1E1AAAAC4200AF25A2 /* mikanTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mikanTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD231AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mikanTestAppTests.m; sourceTree = "<group>"; };
+		2462CD2E1AAAB11400AF25A2 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		2462CD2F1AAAB11400AF25A2 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +93,8 @@
 				2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* SecondViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* SecondViewController.m */,
+				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
+				2462CD2F1AAAB11400AF25A2 /* TestViewController.m */,
 				2462CD121AAAAC4200AF25A2 /* Main.storyboard */,
 				2462CD151AAAAC4200AF25A2 /* Images.xcassets */,
 				2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */,
@@ -228,6 +233,7 @@
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* FirstViewController.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
+				2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
