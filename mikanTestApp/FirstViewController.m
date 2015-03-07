@@ -7,13 +7,14 @@
 //
 
 #import "FirstViewController.h"
+#import "TestViewController.h"
 
 @interface FirstViewController ()
 
 @end
 
 @implementation FirstViewController
-
+#pragma mark Initialize
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -24,13 +25,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startButtonPushed:(id)sender {
-    NSLog(@"mode selectedSegmentedIndex = %d", (int)_modeSegmentedControl.selectedSegmentIndex);
-    NSLog(@"section selectedSegmentedIndex = %d", (int)_sectionSegmentedControl.selectedSegmentIndex);
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setInteger:_modeSegmentedControl.selectedSegmentIndex forKey:@"testMode"];
-    [ud setInteger:_sectionSegmentedControl.selectedSegmentIndex forKey:@"testSection"];
-    [ud synchronize];
-    [self performSegueWithIdentifier:@"segueToTest" sender:self];
+#pragma mark Navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ( [[segue identifier] isEqualToString:@"segueToTest"] ) {
+        TestViewController *testVC = [segue destinationViewController];
+        testVC.modeId = (int)_modeSegmentedControl.selectedSegmentIndex;
+        testVC.sectionId = (int)_sectionSegmentedControl.selectedSegmentIndex;
+    }
+
 }
+
 @end

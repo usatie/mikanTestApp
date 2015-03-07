@@ -10,5 +10,9 @@
 
 @interface TestViewController : UIViewController
 - (IBAction)backButtonPushed:(id)sender;
+@property (strong, nonatomic) IBOutlet UILabel *englishLabel;
+- (IBAction)answerButtonPushed:(id)sender;
+@property int modeId;
+@property int sectionId;
 
 @end
