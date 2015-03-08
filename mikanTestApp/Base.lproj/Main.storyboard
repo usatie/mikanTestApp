@@ -53,8 +53,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-AH-ZCW">
                                 <rect key="frame" x="221" y="60" width="159" height="29"/>
                                 <segments>
-                                    <segment title="アーカイブ"/>
                                     <segment title="テスト"/>
+                                    <segment title="アーカイブ"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">
@@ -328,13 +328,24 @@
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="Vu5-ae-3ah"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBD-vm-Jve">
+                                <rect key="frame" x="244" y="481" width="113" height="30"/>
+                                <state key="normal" title="Delete All Result">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPushed:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="P7k-ZK-YZf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
                             <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
                             <constraint firstAttribute="centerX" secondItem="Lmp-jn-nVN" secondAttribute="centerX" id="POG-Yv-x3R"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="bBD-vm-Jve" secondAttribute="bottom" constant="40" id="PfF-Gx-XH8"/>
                             <constraint firstItem="Lmp-jn-nVN" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="8" id="bbV-QI-vAq"/>
+                            <constraint firstAttribute="centerX" secondItem="bBD-vm-Jve" secondAttribute="centerX" id="oNO-iz-XZb"/>
                             <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
                             <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
                         </constraints>

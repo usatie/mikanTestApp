@@ -9,7 +9,7 @@
 #import "SecondViewController.h"
 
 @interface SecondViewController ()<UITableViewDelegate,UITableViewDataSource>{
-    NSArray *correctCountArray;
+    NSDictionary *countDic;
 }
 
 @end
@@ -21,6 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventValueChanged];
+    [self.resultsTableView addSubview:refreshControl];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,9 +33,8 @@
 
 #pragma mark TableView Initialization
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    correctCountArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"correctCountArray"];
-
-    NSInteger dataCount = correctCountArray.count;
+    countDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"countDictionary"];
+    NSInteger dataCount = [countDic[@"count"] count];
     return dataCount;
 }
 
@@ -49,7 +51,7 @@
     
     switch (indexPath.section) {
         case 0:
-            cell.textLabel.text = [NSString stringWithFormat:@"correctCount %d",[correctCountArray[indexPath.row] intValue]];
+            cell.textLabel.text = [NSString stringWithFormat:@"%@ %d    SCORE %d/30",countDic[@"countLabel"][indexPath.row],[countDic[@"section"][indexPath.row] intValue],[countDic[@"count"][indexPath.row] intValue]];
             break;
         case 1:
 //            cell.textLabel.text = self.dataSourceAndroid[indexPath.row];
@@ -63,5 +65,28 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     return @"Test Results";
+}
+- (IBAction)deleteButtonPushed:(id)sender {
+    UIAlertView *deletionAlertView = [[UIAlertView alloc] initWithTitle:@"全ての記録を削除しますか？" message:@"全てのデータが削除され、復元不可能です。削除しますか？" delegate:self cancelButtonTitle:@"キャンセル" otherButtonTitles:@"全て削除", nil];
+    [deletionAlertView show];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    switch (buttonIndex) {
+        case 0:
+            NSLog(@"DismissButton pushed");
+            //１番目のボタンが押されたときの処理を記述する
+            break;
+        case 1:
+            //２番目のボタンが押されたときの処理を記述する
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"countDictionary"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [self.resultsTableView reloadData];
+            break;
+    }
+}
+
+- (void)refresh:(UIRefreshControl *)refreshControl {
+    [self.resultsTableView reloadData];
+    [refreshControl endRefreshing];
 }
 @end
