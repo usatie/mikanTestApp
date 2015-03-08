@@ -30,7 +30,7 @@
     if ( [[segue identifier] isEqualToString:@"segueToTest"] ) {
         TestViewController *testVC = [segue destinationViewController];
         testVC.modeId = (int)_modeSegmentedControl.selectedSegmentIndex;
-        testVC.sectionId = (int)_sectionSegmentedControl.selectedSegmentIndex;
+        testVC.sectionId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
     }
 
 }

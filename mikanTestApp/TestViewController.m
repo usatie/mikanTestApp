@@ -20,7 +20,7 @@
 
 #define NUMBER_OF_QUESTION 30
 
-#pragma mark Initialization
+#pragma mark ViewController Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -77,7 +77,7 @@
     }
     for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
         int randNum = arc4random()%(NUMBER_OF_QUESTION-i);
-        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*_sectionId;
+        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*(_sectionId-1);
         [randWordIndexArray addObject:[NSNumber numberWithInt:randWordId]];
         [wordIndexArray removeObjectAtIndex:randNum];
     }
@@ -107,6 +107,7 @@
 }
 
 
+#pragma mark Word Related Method
 - (void)showNextWord {
     _englishLabel.text = _testWordsDic[@"english"][[self wordIndex]];
     for (int i = 1; i<=4; i++) {
@@ -118,10 +119,19 @@
 - (void)saveResult
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSMutableArray *correctCountArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"correctCountArray"]];
-    [correctCountArray addObject:[NSNumber numberWithInt:correctCount]];
-    [[NSUserDefaults standardUserDefaults] setObject:correctCountArray forKey:@"correctCountArray"];
-    NSLog(@"correctCountArray = %@",correctCountArray);
+    
+    NSMutableArray *countLabelArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"countLabel"]];
+    NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"section"]];
+    NSMutableArray *countArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"count"]];
+    
+    [countLabelArray addObject:@"TEST"];
+    [sectionArray addObject:[NSNumber numberWithInt:_sectionId]];
+    [countArray addObject:[NSNumber numberWithInt:correctCount]];
+    
+    NSDictionary *countDic = [NSDictionary dictionaryWithObjects:@[countLabelArray,sectionArray,countArray] forKeys:@[@"countLabel",@"section",@"count"]];
+    NSLog(@"countDic = %@",countDic);
+    
+    [[NSUserDefaults standardUserDefaults] setObject:countDic forKey:@"countDictionary"];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
