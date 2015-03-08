@@ -17,6 +17,7 @@
 @property int modeId;
 @property int sectionId;
 @property NSDictionary *testWordsDic;
+@property NSArray *randWordIndexArray;
 @property AVAudioPlayer *audio;
 
 @end

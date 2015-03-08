@@ -20,15 +20,15 @@
 
 #define NUMBER_OF_QUESTION 30
 
-#pragma mark Initialize
+#pragma mark Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     NSLog(@"modeID = %d, sectionID = %d",_modeId,_sectionId);
     _audio = [[AVAudioPlayer alloc] init];
     _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
+    _randWordIndexArray = [self getRandWordIndexArray];
     [self showNextWord];
-    NSLog(@"testWordsDic = %@",_testWordsDic);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +37,7 @@
 }
 
 
-#pragma mark CSVHandling
+#pragma mark Get Sth Method
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
 {
     NSString *csvFile = [[NSBundle mainBundle] pathForResource:fileName ofType:@"csv"];
@@ -47,34 +47,45 @@
     
     NSCharacterSet *chSet = [NSCharacterSet newlineCharacterSet];
     NSString *line;
-    NSMutableArray *csvArray = [[NSMutableArray alloc] init];
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
     NSMutableArray *choicesArray = [[NSMutableArray alloc] init];
     NSMutableArray *answersArray = [[NSMutableArray alloc] init];
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2,4)];
     
-    //csvから読み込み
+    //csvから読み込み、各Arrayに一旦収納
     while (![scanner isAtEnd]) {
         [scanner scanUpToCharactersFromSet:chSet intoString:&line];
         NSArray *array = [line componentsSeparatedByString:@","];
-        [csvArray addObject:array];
+        [wordIdArray addObject:array[0]];
+        [englishLabelArray addObject:array[1]];
+        [choicesArray addObject:[array objectsAtIndexes:indexSet]];
+        [answersArray addObject:array[6]];
+
         [scanner scanCharactersFromSet:chSet intoString:NULL];
     }
     
-    //セクションの単語30個をランダムに並び替え
-    for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
-        int randWordId = arc4random()%(NUMBER_OF_QUESTION-i)+NUMBER_OF_QUESTION*_sectionId;
-        [wordIdArray addObject:csvArray[randWordId][0]];
-        [englishLabelArray addObject:csvArray[randWordId][1]];
-        [choicesArray addObject:[csvArray[randWordId] objectsAtIndexes:indexSet]];
-        [answersArray addObject:csvArray[randWordId][6]];
-        
-        [csvArray removeObjectAtIndex:randWordId];
-    }
-    
-    //Dictionary型にいれる
     return [[NSDictionary alloc] initWithObjects:@[wordIdArray,englishLabelArray,choicesArray,answersArray] forKeys:@[@"wordId",@"english",@"choices",@"answer"]];
+}
+
+- (NSArray *)getRandWordIndexArray{
+    NSMutableArray *wordIndexArray = [[NSMutableArray alloc] init];
+    NSMutableArray *randWordIndexArray = [[NSMutableArray alloc] init];
+    
+    while (wordIndexArray.count < NUMBER_OF_QUESTION) {
+        [wordIndexArray addObject:[NSNumber numberWithInteger:wordIndexArray.count]];
+    }
+    for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
+        int randNum = arc4random()%(NUMBER_OF_QUESTION-i);
+        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*_sectionId;
+        [randWordIndexArray addObject:[NSNumber numberWithInt:randWordId]];
+        [wordIndexArray removeObjectAtIndex:randNum];
+    }
+    return randWordIndexArray;
+}
+
+- (int)wordIndex{
+    return [_randWordIndexArray[questionIndex] intValue];
 }
 
 #pragma mark ButtonAction
@@ -84,23 +95,24 @@
 - (IBAction)answerButtonPushed:(id)sender {
     UIButton *btn = sender;
     int tagNum = (int)btn.tag;
-    if (tagNum == [_testWordsDic[@"answer"][questionIndex-1] intValue]){
-        [self playSound:@"sound_correct" playSoundFlag:YES];
+    if (tagNum == [_testWordsDic[@"answer"][[self wordIndex]] intValue]){
+        [self playSound:@"sound_correct"];
         correctCount++;
+    } else {
+        [self playSound:@"sound_incorrect"];
     }
-    else [self playSound:@"sound_incorrect" playSoundFlag:YES];
+    questionIndex++;
     if (questionIndex<NUMBER_OF_QUESTION) [self showNextWord];
     else [self saveResult];
 }
 
 
 - (void)showNextWord {
-    _englishLabel.text = _testWordsDic[@"english"][questionIndex];
+    _englishLabel.text = _testWordsDic[@"english"][[self wordIndex]];
     for (int i = 1; i<=4; i++) {
         UIButton *btn = (UIButton *)[self.view viewWithTag:i];
-        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_testWordsDic[@"choices"][questionIndex][i-1]] forState:UIControlStateNormal];
+        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_testWordsDic[@"choices"][[self wordIndex]][i-1]] forState:UIControlStateNormal];
     }
-    questionIndex++;
 }
 
 - (void)saveResult
@@ -114,7 +126,6 @@
 }
 
 -(void)playSound:(NSString *)fileName
-   playSoundFlag:(BOOL)playSoundFlag
 {
     NSLog(@"playSound \"%@\"", fileName);
     NSString *soundPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3",fileName]];
