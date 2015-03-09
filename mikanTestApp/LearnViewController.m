@@ -34,6 +34,7 @@
     
     [self generateCardView];
     [self pronounceNextWord];
+    [self startTimer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,19 +57,37 @@
                                             userInfo:nil
                                              repeats:YES];
     timerCount = _timeLimit;
+    NSLog(@"timerCount = %d",timerCount);
     isTimerValid = YES;
 
 }
 
 - (void)stopTimer
 {
-    
+    NSLog(@"Timer stop");
+    if (isTimerValid) {
+        [timer invalidate];
+        NSLog(@"invalidate");
+    }
+    isTimerValid = NO;
 }
 
 - (void)timerAction
 {
+    timerCount--;
+    NSLog(@"TimerAction timerCount = %d",timerCount);
+    GGDraggableView *cardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
+    cardView.japaneseLabel.hidden = NO;
     
+    if (timerCount == 0) [self removeCardView:cardView];
 }
+
+- (void)removeCardView:(GGDraggableView *)cardView
+{
+    [self startTimer];
+    [self displayNextCardDelegate:YES sender:cardView];
+}
+
 #pragma mark Get Sth Method
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
 {
@@ -100,12 +119,14 @@
 
 #pragma mark ButtonAction
 - (IBAction)backButtonPushed:(id)sender {
+    [self stopTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)nextWordsButtonPushed:(id)sender {
     [self generateCardView];
     [self pronounceNextWord];
+    [self startTimer];
     self.nextWordsButton.hidden = YES;
 }
 
@@ -123,10 +144,12 @@
     
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardsBaseView.subviews.count == 0) {
+        [self stopTimer];
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;
     } else {
+        [self startTimer];
         [self pronounceNextWord];
     }
 }
