@@ -30,7 +30,6 @@
         
         [self loadImageAndStyle];
         [self initLabel];
-        _numberLabel.hidden = YES;
     }
     return self;
 }

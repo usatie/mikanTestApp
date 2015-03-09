@@ -28,7 +28,6 @@
     // Do any additional setup after loading the view.
     NSLog(@"learnCategoryID = %d",_learnCategoryId);
     _audio = [[AVAudioPlayer alloc] init];
-    [self playSound:@"sound_correct"];
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     NSLog(@"learnWordsDic = %@",_learnWordsDic);
     [self generateCardView];
@@ -75,7 +74,6 @@
 }
 
 - (IBAction)nextWordsButtonPushed:(id)sender {
-    learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
     [self generateCardView];
     self.nextWordsButton.hidden = YES;
 }
@@ -90,12 +88,15 @@
         [self.view sendSubviewToBack:sender];
     }
     if (self.view.subviews.count == 4) {
+        learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
+        [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;
     }
 }
 
 #pragma mark Word Related Method
-- (void)generateCardView{
+- (void)generateCardView
+{
     for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
         GGDraggableView *cardView;
         cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(15, 88, 290, 340)];

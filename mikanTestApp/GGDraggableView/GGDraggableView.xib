@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
@@ -40,10 +39,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="swipe_tutorial.png" id="9kR-ZU-KSq">
-                    <rect key="frame" x="-15" y="180" width="320" height="120"/>
-                    <autoresizingMask key="autoresizingMask"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -64,7 +59,6 @@
                 <outlet property="japaneseLabel" destination="pxx-X0-Jal" id="cuD-rC-KOP"/>
                 <outlet property="numberLabel" destination="IHd-u3-xzM" id="SW2-RX-NjO"/>
                 <outlet property="sectionLabel" destination="Hj2-UK-SWb" id="tYO-Xm-vmU"/>
-                <outlet property="swipeImageView" destination="9kR-ZU-KSq" id="ptd-LD-Uex"/>
             </connections>
             <point key="canvasLocation" x="606" y="100"/>
         </view>
@@ -101,9 +95,6 @@
             <point key="canvasLocation" x="-71" y="249"/>
         </label>
     </objects>
-    <resources>
-        <image name="swipe_tutorial.png" width="480" height="180"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
