@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @interface LearnMenuViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISegmentedControl *sectionSegmentedControl;
-@property (strong, nonatomic) IBOutlet UISegmentedControl *timeLimitSegmentedControl;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *frequencySegmentedControl;
 
 @end
 

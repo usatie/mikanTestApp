@@ -48,46 +48,68 @@
 {
     if (isTimerValid) {
         [timer invalidate];
-        NSLog(@"invalidate");
     }
-    NSLog(@"Timer Start");
-    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+    timer = [NSTimer scheduledTimerWithTimeInterval:(float)5.0/_frequency
                                               target:self
                                             selector:@selector(timerAction)
                                             userInfo:nil
-                                             repeats:YES];
-    timerCount = _timeLimit;
-    NSLog(@"timerCount = %d",timerCount);
+                                             repeats:NO];
     isTimerValid = YES;
 
 }
 
 - (void)stopTimer
 {
-    NSLog(@"Timer stop");
     if (isTimerValid) {
         [timer invalidate];
-        NSLog(@"invalidate");
     }
     isTimerValid = NO;
 }
 
 - (void)timerAction
 {
-    timerCount--;
-    NSLog(@"TimerAction timerCount = %d",timerCount);
+//    timerCount--;
+//    NSLog(@"TimerAction timerCount = %d",timerCount);
+    timerCount++;
     GGDraggableView *cardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     cardView.japaneseLabel.hidden = NO;
     
-    if (timerCount == 0) [self removeCardView:cardView];
+    if (timerCount > (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
+        [self removeCardView:cardView];
+    } else {
+        [self sendCardViewToBack:cardView];
+    }
 }
 
 - (void)removeCardView:(GGDraggableView *)cardView
 {
-    [self startTimer];
-    [self displayNextCardDelegate:YES sender:cardView];
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         cardView.center = CGPointMake(cardView.originalPoint.x + 250 , cardView.originalPoint.y + 100);
+                         cardView.transform = CGAffineTransformMakeRotation(0);}
+                     completion:^(BOOL finished){
+                         cardView.panGestureRecognizer.enabled = YES;
+                         [self startTimer];
+                         [self displayNextCardDelegate:YES sender:cardView];
+                     }
+     ];
+    
 }
 
+- (void)sendCardViewToBack:(GGDraggableView *)cardView
+{
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         cardView.center = CGPointMake(cardView.originalPoint.x - 250 , cardView.originalPoint.y + 100);
+                         cardView.transform = CGAffineTransformMakeRotation(0);}
+                     completion:^(BOOL finished){
+                         cardView.panGestureRecognizer.enabled = YES;
+                         [self startTimer];
+                         [self displayNextCardDelegate:NO sender:cardView];
+                         [cardView resetViewPositionAndTransformations];
+                     }
+     ];
+}
 #pragma mark Get Sth Method
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
 {
@@ -145,6 +167,7 @@
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardsBaseView.subviews.count == 0) {
         [self stopTimer];
+        [self playSound:@"sound_finish"];
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;

@@ -57,11 +57,11 @@
                                     <constraint firstAttribute="width" constant="300" id="ruu-NC-0Wu"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="1秒"/>
-                                    <segment title="2秒"/>
-                                    <segment title="3秒"/>
-                                    <segment title="4秒"/>
-                                    <segment title="5秒"/>
+                                    <segment title="1回"/>
+                                    <segment title="2回"/>
+                                    <segment title="3回"/>
+                                    <segment title="4回"/>
+                                    <segment title="5回"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -77,8 +77,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
+                        <outlet property="frequencySegmentedControl" destination="ko3-eB-HKO" id="9Ak-H6-iZC"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
-                        <outlet property="timeLimitSegmentedControl" destination="ko3-eB-HKO" id="bhH-UC-s8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>

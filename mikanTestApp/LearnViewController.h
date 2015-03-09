@@ -19,7 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIView *cardsBaseView;
 
 @property int learnCategoryId;
-@property int timeLimit;
+@property int frequency;
 
 @property NSDictionary *learnWordsDic;
 
