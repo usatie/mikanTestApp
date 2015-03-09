@@ -26,11 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"modeID = %d, learnCategoryID = %d",_modeId,_learnCategoryId);
+    NSLog(@"learnCategoryID = %d",_learnCategoryId);
     _audio = [[AVAudioPlayer alloc] init];
+    [self playSound:@"sound_correct"];
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     [self showNextWord];
-    [self playSound:@"sound_correct"];
+    NSLog(@"learnWordsDic = %@",_learnWordsDic);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -79,6 +80,7 @@
     _englishLabel.text = _learnWordsDic[@"english"][learnWordsIndex];
 }
 
+#pragma mark Sound Related Method
 -(void)playSound:(NSString *)fileName
 {
     NSLog(@"playSound \"%@\"", fileName);

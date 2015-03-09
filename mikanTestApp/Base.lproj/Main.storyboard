@@ -37,13 +37,6 @@
                                     <segment title="ALL"/>
                                 </segments>
                             </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xwc-AH-ZCW">
-                                <rect key="frame" x="221" y="60" width="159" height="29"/>
-                                <segments>
-                                    <segment title="テスト"/>
-                                    <segment title="アーカイブ"/>
-                                </segments>
-                            </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">
                                 <rect key="frame" x="220" y="384" width="160" height="60"/>
                                 <constraints>
@@ -61,9 +54,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Xwc-AH-ZCW" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="40" id="6Ug-ZG-vFN"/>
                             <constraint firstAttribute="centerX" secondItem="04k-qN-c6h" secondAttribute="centerX" id="C2x-o8-OY8"/>
-                            <constraint firstAttribute="centerX" secondItem="Xwc-AH-ZCW" secondAttribute="centerX" id="C3j-KD-W9R"/>
                             <constraint firstAttribute="centerX" secondItem="JHU-4s-bmk" secondAttribute="centerX" id="bso-3j-j2p"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="96" id="n7m-UU-N8F"/>
@@ -71,7 +62,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="modeSegmentedControl" destination="Xwc-AH-ZCW" id="90X-8r-ztB"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                     </connections>
                 </viewController>

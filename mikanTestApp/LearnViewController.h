@@ -14,7 +14,6 @@
 - (IBAction)backButtonPushed:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
 
-@property int modeId;
 @property int learnCategoryId;
 
 @property NSDictionary *learnWordsDic;

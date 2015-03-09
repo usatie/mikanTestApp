@@ -29,7 +29,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ( [[segue identifier] isEqualToString:@"segueToLearn"] ) {
         LearnViewController *learnVC = [segue destinationViewController];
-        learnVC.modeId = (int)_modeSegmentedControl.selectedSegmentIndex;
         learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
     }
 

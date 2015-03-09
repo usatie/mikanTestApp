@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @interface LearnMenuViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UISegmentedControl *modeSegmentedControl;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *sectionSegmentedControl;
 
 @end
