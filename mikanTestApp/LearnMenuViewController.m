@@ -27,10 +27,10 @@
 
 #pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ( [[segue identifier] isEqualToString:@"segueToTest"] ) {
-        LearnViewController *testVC = [segue destinationViewController];
-        testVC.modeId = (int)_modeSegmentedControl.selectedSegmentIndex;
-        testVC.sectionId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
+    if ( [[segue identifier] isEqualToString:@"segueToLearn"] ) {
+        LearnViewController *learnVC = [segue destinationViewController];
+        learnVC.modeId = (int)_modeSegmentedControl.selectedSegmentIndex;
+        learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
     }
 
 }

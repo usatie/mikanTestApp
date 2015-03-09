@@ -19,12 +19,14 @@
 #pragma mark Definition
 
 #define NUMBER_OF_QUESTION 30
+#define NUMBER_OF_WORDS_PER_LEAARNING 5
+#define NUMBER_OF_WORDS_PER_CATEGORY 100
 
 #pragma mark ViewController Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"modeID = %d, sectionID = %d",_modeId,_sectionId);
+    NSLog(@"modeID = %d, sectionID = %d",_modeId,_learnCategoryId);
     _audio = [[AVAudioPlayer alloc] init];
     _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     _randWordIndexArray = [self getRandWordIndexArray];
@@ -49,9 +51,11 @@
     NSString *line;
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *japaneseLabelArray = [[NSMutableArray alloc] init];
     NSMutableArray *choicesArray = [[NSMutableArray alloc] init];
     NSMutableArray *answersArray = [[NSMutableArray alloc] init];
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2,4)];
+    NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*100, 100)];
     
     //csvから読み込み、各Arrayに一旦収納
     while (![scanner isAtEnd]) {
@@ -59,13 +63,14 @@
         NSArray *array = [line componentsSeparatedByString:@","];
         [wordIdArray addObject:array[0]];
         [englishLabelArray addObject:array[1]];
+        [japaneseLabelArray addObject:array[2]];
         [choicesArray addObject:[array objectsAtIndexes:indexSet]];
         [answersArray addObject:array[6]];
 
         [scanner scanCharactersFromSet:chSet intoString:NULL];
     }
     
-    return [[NSDictionary alloc] initWithObjects:@[wordIdArray,englishLabelArray,choicesArray,answersArray] forKeys:@[@"wordId",@"english",@"choices",@"answer"]];
+    return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishLabelArray objectsAtIndexes:categoryIndexSet],[japaneseLabelArray objectsAtIndexes:categoryIndexSet],[choicesArray objectsAtIndexes:categoryIndexSet],[answersArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"japaneseLabelArray",@"choices",@"answer"]];
 }
 
 - (NSArray *)getRandWordIndexArray{
@@ -77,7 +82,7 @@
     }
     for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
         int randNum = arc4random()%(NUMBER_OF_QUESTION-i);
-        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*(_sectionId-1);
+        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*(_learnCategoryId-1);
         [randWordIndexArray addObject:[NSNumber numberWithInt:randWordId]];
         [wordIndexArray removeObjectAtIndex:randNum];
     }
@@ -125,7 +130,7 @@
     NSMutableArray *countArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"count"]];
     
     [countLabelArray addObject:@"TEST"];
-    [sectionArray addObject:[NSNumber numberWithInt:_sectionId]];
+    [sectionArray addObject:[NSNumber numberWithInt:_learnCategoryId]];
     [countArray addObject:[NSNumber numberWithInt:correctCount]];
     
     NSDictionary *countDic = [NSDictionary dictionaryWithObjects:@[countLabelArray,sectionArray,countArray] forKeys:@[@"countLabel",@"section",@"count"]];

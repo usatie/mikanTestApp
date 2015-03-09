@@ -15,7 +15,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
 - (IBAction)answerButtonPushed:(id)sender;
 @property int modeId;
-@property int sectionId;
+@property int learnCategoryId;
 @property NSDictionary *testWordsDic;
 @property NSArray *randWordIndexArray;
 @property AVAudioPlayer *audio;
