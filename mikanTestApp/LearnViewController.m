@@ -26,12 +26,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _audio = [[AVAudioPlayer alloc] init];
-    _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
+    _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"mikan"];
     
     [self generateCardView];
-    
-    //Remove comment out when sound files are loaded
-    //[self pronounceNextWord];
+    [self pronounceNextWord];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,21 +81,20 @@
 
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
-    [self playSound:@"sound_correct"];
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
     if (hasRememberd) {
         [sender removeFromSuperview];
     } else {
-        [self.view sendSubviewToBack:sender];
+        [self.cardsBaseView sendSubviewToBack:sender];
     }
-    if (self.view.subviews.count == 4) {
+    if (self.cardsBaseView.subviews.count == 0) {
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;
     } else {
-        //Remove comment out when sound files are loaded
-        //[self pronounceNextWord];
+        [self pronounceNextWord];
     }
+    NSLog(@"subview = %@",self.cardsBaseView.subviews);
 }
 
 #pragma mark Word Related Method
@@ -105,7 +102,7 @@
 {
     for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
         GGDraggableView *cardView;
-        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(15, 88, 290, 340)];
+        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = self;
@@ -115,14 +112,14 @@
             japaneseHiddenFlug:YES
                      wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
         cardView.sectionLabel.text = [NSString stringWithFormat:@"learnCategoryId %d",_learnCategoryId];
-        [self.view addSubview:cardView];
-        [self.view sendSubviewToBack:cardView];
+        [self.cardsBaseView addSubview:cardView];
+        [self.cardsBaseView sendSubviewToBack:cardView];
     }
 }
 
 #pragma mark Sound Related Method
 - (void)pronounceNextWord{
-    GGDraggableView *nextCardView = (GGDraggableView *)[self.view.subviews objectAtIndex:self.view.subviews.count-5];
+    GGDraggableView *nextCardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     [self playSound:nextCardView.englishLabel.text];
 }
 

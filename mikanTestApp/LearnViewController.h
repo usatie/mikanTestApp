@@ -16,6 +16,7 @@
 - (IBAction)nextWordsButtonPushed:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *nextWordsButton;
+@property (strong, nonatomic) IBOutlet UIView *cardsBaseView;
 
 @property int learnCategoryId;
 

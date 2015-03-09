@@ -103,31 +103,43 @@
                                     <action selector="nextWordsButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="Mqg-Bd-Djv"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCp-HP-1I6">
+                                <rect key="frame" x="155" y="108" width="290" height="340"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="290" id="2CA-V0-l33"/>
+                                    <constraint firstAttribute="height" constant="340" id="rg0-yw-XNz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="wX3-f3-X7N" secondAttribute="centerX" id="Dlw-2m-QF2"/>
                             <constraint firstItem="rqe-eX-beS" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="440" id="Ehp-4c-yKq"/>
+                            <constraint firstItem="tCp-HP-1I6" firstAttribute="leading" secondItem="wX3-f3-X7N" secondAttribute="trailing" constant="15" id="K36-zZ-MaP"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="24" id="NIE-zA-o3Z"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="24" id="bX4-QP-N4x"/>
                             <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="263" id="bgk-qI-ZIq"/>
                             <constraint firstAttribute="centerX" secondItem="rqe-eX-beS" secondAttribute="centerX" id="kuX-X9-GjE"/>
+                            <constraint firstAttribute="centerX" secondItem="tCp-HP-1I6" secondAttribute="centerX" id="siY-Rp-w2G"/>
+                            <constraint firstItem="tCp-HP-1I6" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="88" id="zsu-Ig-TW5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Dlw-2m-QF2"/>
                                 <exclude reference="bgk-qI-ZIq"/>
+                                <exclude reference="K36-zZ-MaP"/>
                             </mask>
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" id="N25-A4-B0p"/>
                     <connections>
+                        <outlet property="cardsBaseView" destination="tCp-HP-1I6" id="g39-Wi-UBZ"/>
                         <outlet property="nextWordsButton" destination="rqe-eX-beS" id="pmD-VV-cPR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZk-6J-HiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688" y="-382"/>
+            <point key="canvasLocation" x="1683" y="-382"/>
         </scene>
         <!--Result-->
         <scene sceneID="wg7-f3-ORb">
