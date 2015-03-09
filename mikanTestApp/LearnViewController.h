@@ -13,7 +13,9 @@
 
 @interface LearnViewController : UIViewController<GGDraggableViewDelegate>
 - (IBAction)backButtonPushed:(id)sender;
-@property (strong, nonatomic) IBOutlet UILabel *englishLabel;
+- (IBAction)nextWordsButtonPushed:(id)sender;
+
+@property (strong, nonatomic) IBOutlet UIButton *nextWordsButton;
 
 @property int learnCategoryId;
 

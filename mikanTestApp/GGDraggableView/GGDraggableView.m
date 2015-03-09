@@ -59,15 +59,12 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     _japaneseLabel.hidden = NO;
-    NSLog(@"pangestureRecognizer = %d",self.panGestureRecognizer.enabled);
-    
 }
 
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer
 {
     CGFloat xDistance = [gestureRecognizer translationInView:self].x;
     CGFloat yDistance = [gestureRecognizer translationInView:self].y;
-    NSLog(@"%f %f",self.originalPoint.x,self.originalPoint.y);
 
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
@@ -91,15 +88,15 @@
         case UIGestureRecognizerStateEnded:{
             if (xDistance > 60) {
                 [self hideView:xDistance yDis:yDistance];
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:)]) {
-                    [_delegate displayNextCardDelegate:YES];
+                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
+                    [_delegate displayNextCardDelegate:YES sender:self];
                 } else {NSLog(@"no responds to remember");}
 
             }
             else if (xDistance < -60){
                 [self hideView:xDistance yDis:yDistance];
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:)]) {
-                    [_delegate displayNextCardDelegate:NO];
+                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
+                    [_delegate displayNextCardDelegate:NO sender:self];
                 } else {NSLog(@"no responds to onemore");}
             }
             else [self resetViewPositionAndTransformations];

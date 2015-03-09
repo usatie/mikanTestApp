@@ -30,7 +30,6 @@
     _audio = [[AVAudioPlayer alloc] init];
     [self playSound:@"sound_correct"];
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
-    [self showNextWord];
     NSLog(@"learnWordsDic = %@",_learnWordsDic);
     [self generateCardView];
 }
@@ -75,26 +74,43 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)nextWordsButtonPushed:(id)sender {
+    learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
+    [self generateCardView];
+    self.nextWordsButton.hidden = YES;
+}
+
 
 #pragma mark GGDraggableView Delegate Method
-- (void)displayNextCardDelegate:(BOOL)hasRememberd{
-    NSLog(@"displayNextCardDelegate");
+- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
+    NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
+    if (hasRememberd) {
+        [sender removeFromSuperview];
+    } else {
+        [self.view sendSubviewToBack:sender];
+    }
+    if (self.view.subviews.count == 4) {
+        self.nextWordsButton.hidden = NO;
+    }
 }
 
 #pragma mark Word Related Method
-- (void)showNextWord {
-    _englishLabel.text = _learnWordsDic[@"english"][learnWordsIndex];
-}
-
 - (void)generateCardView{
-    for (int i=NUMBER_OF_WORDS_PER_LEAARNING; i>0; i--) {
+    for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
         GGDraggableView *cardView;
-        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
+        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(15, 88, 290, 340)];
         cardView.numberLabel.text = @"hello";
         cardView.panGestureRecognizer.enabled = YES;
-        cardView.tag = i;
+        cardView.tag = i+1;
         cardView.delegate = self;
+        [cardView setParameter:_learnWordsDic[@"english"][i]
+                      japanese:_learnWordsDic[@"japanese"][i]
+                        number:[NSString stringWithFormat:@"%@",_learnWordsDic[@"wordId"][i]]
+            japaneseHiddenFlug:YES
+                     wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
+        cardView.sectionLabel.text = [NSString stringWithFormat:@"learnCategoryId %d",_learnCategoryId];
         [self.view addSubview:cardView];
+        [self.view sendSubviewToBack:cardView];
     }
 }
 

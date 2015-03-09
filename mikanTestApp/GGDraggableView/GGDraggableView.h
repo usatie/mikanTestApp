@@ -40,6 +40,6 @@
 
 @protocol GGDraggableViewDelegate <NSObject>
 @optional
-- (void)displayNextCardDelegate:(BOOL)hasRememberd;
+- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender;
 @end
 
