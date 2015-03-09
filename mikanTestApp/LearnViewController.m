@@ -18,7 +18,6 @@
 @implementation LearnViewController
 #pragma mark Definition
 
-#define NUMBER_OF_QUESTION 30
 #define NUMBER_OF_WORDS_PER_LEAARNING 5
 #define NUMBER_OF_WORDS_PER_CATEGORY 100
 
@@ -31,6 +30,7 @@
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     NSLog(@"learnWordsDic = %@",_learnWordsDic);
     [self generateCardView];
+    [self pronounceNextWord];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,6 +75,7 @@
 
 - (IBAction)nextWordsButtonPushed:(id)sender {
     [self generateCardView];
+    [self pronounceNextWord];
     self.nextWordsButton.hidden = YES;
 }
 
@@ -91,6 +92,8 @@
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;
+    } else {
+        [self pronounceNextWord];
     }
 }
 
@@ -100,7 +103,6 @@
     for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
         GGDraggableView *cardView;
         cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(15, 88, 290, 340)];
-        cardView.numberLabel.text = @"hello";
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = self;
@@ -115,6 +117,11 @@
     }
 }
 
+- (void)pronounceNextWord{
+    GGDraggableView *nextCardView = (GGDraggableView *)[self.view.subviews objectAtIndex:self.view.subviews.count-5];
+    [self playSound:nextCardView.englishLabel.text];
+}
+
 #pragma mark Sound Related Method
 -(void)playSound:(NSString *)fileName
 {
@@ -123,11 +130,8 @@
     NSURL *url = [NSURL fileURLWithPath:soundPath];
     NSError *error;
     _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    if (error) {
-        NSLog(@"could not pronounce %@", fileName);
-    }
+    if (error) NSLog(@"could not pronounce %@", fileName);
     [_audio play];
 }
-
 
 @end
