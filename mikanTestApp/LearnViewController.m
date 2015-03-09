@@ -32,6 +32,7 @@
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     [self showNextWord];
     NSLog(@"learnWordsDic = %@",_learnWordsDic);
+    [self generateCardView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,9 +76,26 @@
 }
 
 
+#pragma mark GGDraggableView Delegate Method
+- (void)displayNextCardDelegate:(BOOL)hasRememberd{
+    NSLog(@"displayNextCardDelegate");
+}
+
 #pragma mark Word Related Method
 - (void)showNextWord {
     _englishLabel.text = _learnWordsDic[@"english"][learnWordsIndex];
+}
+
+- (void)generateCardView{
+    for (int i=NUMBER_OF_WORDS_PER_LEAARNING; i>0; i--) {
+        GGDraggableView *cardView;
+        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
+        cardView.numberLabel.text = @"hello";
+        cardView.panGestureRecognizer.enabled = YES;
+        cardView.tag = i;
+        cardView.delegate = self;
+        [self.view addSubview:cardView];
+    }
 }
 
 #pragma mark Sound Related Method

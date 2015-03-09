@@ -41,8 +41,5 @@
 @protocol GGDraggableViewDelegate <NSObject>
 @optional
 - (void)displayNextCardDelegate:(BOOL)hasRememberd;
-- (void)japaneseDisplayIfTouched;
-- (void)tutorial:(int)i;
-- (void)log:(NSString *)action iKnow:(NSString *)iKnow startPoint:(NSString *)startPoint endPoint:(NSString *)endPoint;
 @end
 
