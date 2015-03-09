@@ -9,7 +9,7 @@
 #import "LearnViewController.h"
 
 @interface LearnViewController (){
-    int questionIndex;
+    int learnWordsIndex;
     int correctCount;
 }
 
@@ -30,6 +30,7 @@
     _audio = [[AVAudioPlayer alloc] init];
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     [self showNextWord];
+    [self playSound:@"sound_correct"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +52,7 @@
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishArray = [[NSMutableArray alloc] init];
     NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
-    NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*100, 100)];
+    NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*NUMBER_OF_WORDS_PER_CATEGORY, NUMBER_OF_WORDS_PER_CATEGORY)];
     
     //csvから読み込み、各Arrayに一旦収納
     while (![scanner isAtEnd]) {
@@ -67,55 +68,15 @@
 
 }
 
-- (int)wordIndex{
-    return [_randWordIndexArray[questionIndex] intValue];
-}
-
 #pragma mark ButtonAction
 - (IBAction)backButtonPushed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-- (IBAction)answerButtonPushed:(id)sender {
-    UIButton *btn = sender;
-    int tagNum = (int)btn.tag;
-    if (tagNum == [_learnWordsDic[@"answer"][[self wordIndex]] intValue]){
-        [self playSound:@"sound_correct"];
-        correctCount++;
-    } else {
-        [self playSound:@"sound_incorrect"];
-    }
-    questionIndex++;
-    if (questionIndex<NUMBER_OF_QUESTION) [self showNextWord];
-    else [self saveResult];
 }
 
 
 #pragma mark Word Related Method
 - (void)showNextWord {
-    _englishLabel.text = _learnWordsDic[@"english"][[self wordIndex]];
-    for (int i = 1; i<=4; i++) {
-        UIButton *btn = (UIButton *)[self.view viewWithTag:i];
-        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_learnWordsDic[@"japanese"][[self wordIndex]]] forState:UIControlStateNormal];
-    }
-}
-
-- (void)saveResult
-{
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    
-    NSMutableArray *countLabelArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"countLabel"]];
-    NSMutableArray *sectionArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"section"]];
-    NSMutableArray *countArray = [[NSMutableArray alloc] initWithArray:[ud objectForKey:@"countDictionary"][@"count"]];
-    
-    [countLabelArray addObject:@"TEST"];
-    [sectionArray addObject:[NSNumber numberWithInt:_learnCategoryId]];
-    [countArray addObject:[NSNumber numberWithInt:correctCount]];
-    
-    NSDictionary *countDic = [NSDictionary dictionaryWithObjects:@[countLabelArray,sectionArray,countArray] forKeys:@[@"countLabel",@"section",@"count"]];
-    NSLog(@"countDic = %@",countDic);
-    
-    [[NSUserDefaults standardUserDefaults] setObject:countDic forKey:@"countDictionary"];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    _englishLabel.text = _learnWordsDic[@"english"][learnWordsIndex];
 }
 
 -(void)playSound:(NSString *)fileName
