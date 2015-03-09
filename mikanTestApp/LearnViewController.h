@@ -16,7 +16,7 @@
 - (IBAction)answerButtonPushed:(id)sender;
 @property int modeId;
 @property int learnCategoryId;
-@property NSDictionary *testWordsDic;
+@property NSDictionary *learnWordsDic;
 @property NSArray *randWordIndexArray;
 @property AVAudioPlayer *audio;
 

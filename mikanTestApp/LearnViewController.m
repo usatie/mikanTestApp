@@ -26,10 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"modeID = %d, sectionID = %d",_modeId,_learnCategoryId);
+    NSLog(@"modeID = %d, learnCategoryID = %d",_modeId,_learnCategoryId);
     _audio = [[AVAudioPlayer alloc] init];
-    _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
-    _randWordIndexArray = [self getRandWordIndexArray];
+    _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
     [self showNextWord];
 }
 
@@ -50,11 +49,8 @@
     NSCharacterSet *chSet = [NSCharacterSet newlineCharacterSet];
     NSString *line;
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
-    NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
-    NSMutableArray *japaneseLabelArray = [[NSMutableArray alloc] init];
-    NSMutableArray *choicesArray = [[NSMutableArray alloc] init];
-    NSMutableArray *answersArray = [[NSMutableArray alloc] init];
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2,4)];
+    NSMutableArray *englishArray = [[NSMutableArray alloc] init];
+    NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
     NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*100, 100)];
     
     //csvから読み込み、各Arrayに一旦収納
@@ -62,31 +58,13 @@
         [scanner scanUpToCharactersFromSet:chSet intoString:&line];
         NSArray *array = [line componentsSeparatedByString:@","];
         [wordIdArray addObject:array[0]];
-        [englishLabelArray addObject:array[1]];
-        [japaneseLabelArray addObject:array[2]];
-        [choicesArray addObject:[array objectsAtIndexes:indexSet]];
-        [answersArray addObject:array[6]];
-
+        [englishArray addObject:array[1]];
+        [japaneseArray addObject:array[2]];
         [scanner scanCharactersFromSet:chSet intoString:NULL];
     }
     
-    return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishLabelArray objectsAtIndexes:categoryIndexSet],[japaneseLabelArray objectsAtIndexes:categoryIndexSet],[choicesArray objectsAtIndexes:categoryIndexSet],[answersArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"japaneseLabelArray",@"choices",@"answer"]];
-}
+    return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishArray objectsAtIndexes:categoryIndexSet],[japaneseArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"japanese"]];
 
-- (NSArray *)getRandWordIndexArray{
-    NSMutableArray *wordIndexArray = [[NSMutableArray alloc] init];
-    NSMutableArray *randWordIndexArray = [[NSMutableArray alloc] init];
-    
-    while (wordIndexArray.count < NUMBER_OF_QUESTION) {
-        [wordIndexArray addObject:[NSNumber numberWithInteger:wordIndexArray.count]];
-    }
-    for (int i = 0; i<NUMBER_OF_QUESTION; i++) {
-        int randNum = arc4random()%(NUMBER_OF_QUESTION-i);
-        int randWordId = [wordIndexArray[randNum] intValue] + NUMBER_OF_QUESTION*(_learnCategoryId-1);
-        [randWordIndexArray addObject:[NSNumber numberWithInt:randWordId]];
-        [wordIndexArray removeObjectAtIndex:randNum];
-    }
-    return randWordIndexArray;
 }
 
 - (int)wordIndex{
@@ -100,7 +78,7 @@
 - (IBAction)answerButtonPushed:(id)sender {
     UIButton *btn = sender;
     int tagNum = (int)btn.tag;
-    if (tagNum == [_testWordsDic[@"answer"][[self wordIndex]] intValue]){
+    if (tagNum == [_learnWordsDic[@"answer"][[self wordIndex]] intValue]){
         [self playSound:@"sound_correct"];
         correctCount++;
     } else {
@@ -114,10 +92,10 @@
 
 #pragma mark Word Related Method
 - (void)showNextWord {
-    _englishLabel.text = _testWordsDic[@"english"][[self wordIndex]];
+    _englishLabel.text = _learnWordsDic[@"english"][[self wordIndex]];
     for (int i = 1; i<=4; i++) {
         UIButton *btn = (UIButton *)[self.view viewWithTag:i];
-        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_testWordsDic[@"choices"][[self wordIndex]][i-1]] forState:UIControlStateNormal];
+        [btn setTitle:[NSString stringWithFormat:@"　%d.　%@",i,_learnWordsDic[@"japanese"][[self wordIndex]]] forState:UIControlStateNormal];
     }
 }
 
