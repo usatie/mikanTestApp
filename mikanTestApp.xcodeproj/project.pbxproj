@@ -15,7 +15,7 @@
 		2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD151AAAAC4200AF25A2 /* Images.xcassets */; };
 		2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */; };
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
-		2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* TestViewController.m */; };
+		2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */; };
 		2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2161AAAEC15001E8522 /* sample_test.csv */; };
 		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
@@ -48,8 +48,8 @@
 		2462CD1E1AAAAC4200AF25A2 /* mikanTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mikanTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD231AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mikanTestAppTests.m; sourceTree = "<group>"; };
-		2462CD2E1AAAB11400AF25A2 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
-		2462CD2F1AAAB11400AF25A2 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		2462CD2E1AAAB11400AF25A2 /* LearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnViewController.h; sourceTree = "<group>"; };
+		2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnViewController.m; sourceTree = "<group>"; };
 		2466F2161AAAEC15001E8522 /* sample_test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_test.csv; sourceTree = "<group>"; };
 		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
@@ -149,10 +149,10 @@
 			children = (
 				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
+				2462CD2E1AAAB11400AF25A2 /* LearnViewController.h */,
+				2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
-				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
-				2462CD2F1AAAB11400AF25A2 /* TestViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
-				2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */,
+				2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

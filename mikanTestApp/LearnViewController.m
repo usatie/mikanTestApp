@@ -6,16 +6,16 @@
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "TestViewController.h"
+#import "LearnViewController.h"
 
-@interface TestViewController (){
+@interface LearnViewController (){
     int questionIndex;
     int correctCount;
 }
 
 @end
 
-@implementation TestViewController
+@implementation LearnViewController
 #pragma mark Definition
 
 #define NUMBER_OF_QUESTION 30

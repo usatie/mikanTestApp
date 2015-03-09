@@ -10,7 +10,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
-@interface TestViewController : UIViewController
+@interface LearnViewController : UIViewController
 - (IBAction)backButtonPushed:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
 - (IBAction)answerButtonPushed:(id)sender;

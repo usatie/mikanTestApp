@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="773" y="-355"/>
         </scene>
-        <!--Test View Controller-->
+        <!--Learn View Controller-->
         <scene sceneID="ALa-fv-bS7">
             <objects>
-                <viewController id="RAR-jD-g9c" customClass="TestViewController" sceneMemberID="viewController">
+                <viewController id="RAR-jD-g9c" customClass="LearnViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wab-Jq-egf"/>
                         <viewControllerLayoutGuide type="bottom" id="6Ct-WL-x8I"/>
