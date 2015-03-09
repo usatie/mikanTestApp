@@ -34,7 +34,6 @@
                                     <segment title="8"/>
                                     <segment title="9"/>
                                     <segment title="10"/>
-                                    <segment title="ALL"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">

@@ -141,8 +141,9 @@
 
 #pragma mark ButtonAction
 - (IBAction)backButtonPushed:(id)sender {
-    [self stopTimer];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [self stopTimer];
+    }];
 }
 
 - (IBAction)nextWordsButtonPushed:(id)sender {
