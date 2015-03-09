@@ -25,12 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"learnCategoryID = %d",_learnCategoryId);
     _audio = [[AVAudioPlayer alloc] init];
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
-    NSLog(@"learnWordsDic = %@",_learnWordsDic);
+    
     [self generateCardView];
-    [self pronounceNextWord];
+    
+    //Remove comment out when sound files are loaded
+    //[self pronounceNextWord];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +55,7 @@
     NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
     NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*NUMBER_OF_WORDS_PER_CATEGORY, NUMBER_OF_WORDS_PER_CATEGORY)];
     
-    //csvから読み込み、各Arrayに一旦収納
+    //csvから読み込み、各Arrayに一旦格納
     while (![scanner isAtEnd]) {
         [scanner scanUpToCharactersFromSet:chSet intoString:&line];
         NSArray *array = [line componentsSeparatedByString:@","];
@@ -63,7 +64,7 @@
         [japaneseArray addObject:array[2]];
         [scanner scanCharactersFromSet:chSet intoString:NULL];
     }
-    
+    //Dictionaryに各Arrayを格納。
     return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishArray objectsAtIndexes:categoryIndexSet],[japaneseArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"japanese"]];
 
 }
@@ -82,6 +83,7 @@
 
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
+    [self playSound:@"sound_correct"];
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
     if (hasRememberd) {
         [sender removeFromSuperview];
@@ -93,7 +95,8 @@
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         self.nextWordsButton.hidden = NO;
     } else {
-        [self pronounceNextWord];
+        //Remove comment out when sound files are loaded
+        //[self pronounceNextWord];
     }
 }
 
@@ -117,21 +120,25 @@
     }
 }
 
+#pragma mark Sound Related Method
 - (void)pronounceNextWord{
     GGDraggableView *nextCardView = (GGDraggableView *)[self.view.subviews objectAtIndex:self.view.subviews.count-5];
     [self playSound:nextCardView.englishLabel.text];
 }
 
-#pragma mark Sound Related Method
 -(void)playSound:(NSString *)fileName
 {
     NSLog(@"playSound \"%@\"", fileName);
-    NSString *soundPath = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.mp3",fileName]];
-    NSURL *url = [NSURL fileURLWithPath:soundPath];
-    NSError *error;
-    _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-    if (error) NSLog(@"could not pronounce %@", fileName);
-    [_audio play];
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
+    if (path) {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        if (error) NSLog(@"error. could not pronounce %@", fileName);
+        [_audio play];
+    } else {
+        NSLog(@"path is nil. Could not pronounce %@", fileName);
+    }
 }
 
 @end

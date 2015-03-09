@@ -117,9 +117,6 @@
 		2462CD041AAAAC4200AF25A2 /* mikanTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
-				2466F2221AAB023B001E8522 /* sound_finish.mp3 */,
-				2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */,
 				2412DC281AAD76F100AC4D30 /* GGDraggableView */,
 				2462CD091AAAAC4200AF25A2 /* AppDelegate.h */,
 				2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */,
@@ -162,6 +159,9 @@
 		2466F2181AAAFDC2001E8522 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
+				2466F2221AAB023B001E8522 /* sound_finish.mp3 */,
+				2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */,
 				2466F2161AAAEC15001E8522 /* sample_test.csv */,
 				2412DC341AAD92E900AC4D30 /* mikan.csv */,
 			);
