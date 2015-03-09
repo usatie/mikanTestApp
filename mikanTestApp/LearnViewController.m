@@ -146,10 +146,10 @@
 }
 
 - (IBAction)nextWordsButtonPushed:(id)sender {
-    [self generateCardView];
-    [self pronounceNextWord];
-    [self startTimer];
-    self.nextWordsButton.hidden = YES;
+//    [self generateCardView];
+//    [self pronounceNextWord];
+//    [self startTimer];
+//    self.nextWordsButton.hidden = YES;
 }
 
 
@@ -167,10 +167,18 @@
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardsBaseView.subviews.count == 0) {
         [self stopTimer];
-        [self playSound:@"sound_finish"];
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
-        self.nextWordsButton.hidden = NO;
+        //buttonで移行するんだったらこれ
+        //[self playSound:@"sound_finish"];
+        //self.nextWordsButton.hidden = NO;
+        timerCount = 0;
+        //button無しで移行するんだったらこれ
+        [self generateCardView];
+        [self pronounceNextWord];
+        [self startTimer];
+        self.nextWordsButton.hidden = YES;
+
     } else {
         [self startTimer];
         [self pronounceNextWord];
@@ -192,6 +200,7 @@
             japaneseHiddenFlug:YES
                      wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
         cardView.sectionLabel.text = [NSString stringWithFormat:@"learnCategoryId %d",_learnCategoryId];
+        cardView.japaneseLabel.hidden = NO;
         [self.cardsBaseView addSubview:cardView];
         [self.cardsBaseView sendSubviewToBack:cardView];
     }

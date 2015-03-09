@@ -4426,6 +4426,7 @@
 				INFOPLIST_FILE = mikanTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "947efc87-da91-4197-935e-86d4f987de89";
 			};
 			name = Debug;
 		};
@@ -4436,6 +4437,7 @@
 				INFOPLIST_FILE = mikanTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "947efc87-da91-4197-935e-86d4f987de89";
 			};
 			name = Release;
 		};
