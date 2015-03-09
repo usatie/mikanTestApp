@@ -6,14 +6,14 @@
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "LearnMenuViewController.h"
 #import "TestViewController.h"
 
-@interface FirstViewController ()
+@interface LearnMenuViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation LearnMenuViewController
 #pragma mark Initialize
 - (void)viewDidLoad {
     [super viewDidLoad];

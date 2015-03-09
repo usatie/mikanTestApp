@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2462CD081AAAAC4200AF25A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD071AAAAC4200AF25A2 /* main.m */; };
 		2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */; };
-		2462CD0E1AAAAC4200AF25A2 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */; };
+		2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */; };
 		2462CD111AAAAC4200AF25A2 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD101AAAAC4200AF25A2 /* SecondViewController.m */; };
 		2462CD141AAAAC4200AF25A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD121AAAAC4200AF25A2 /* Main.storyboard */; };
 		2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD151AAAAC4200AF25A2 /* Images.xcassets */; };
@@ -38,8 +38,8 @@
 		2462CD071AAAAC4200AF25A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2462CD091AAAAC4200AF25A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		2462CD0C1AAAAC4200AF25A2 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LearnMenuViewController.h; sourceTree = "<group>"; };
+		2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LearnMenuViewController.m; sourceTree = "<group>"; };
 		2462CD0F1AAAAC4200AF25A2 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		2462CD101AAAAC4200AF25A2 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		2462CD131AAAAC4200AF25A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 		2466F2191AAAFDCE001E8522 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				2462CD0C1AAAAC4200AF25A2 /* FirstViewController.h */,
-				2462CD0D1AAAAC4200AF25A2 /* FirstViewController.m */,
+				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
+				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* SecondViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* SecondViewController.m */,
 				2462CD2E1AAAB11400AF25A2 /* TestViewController.h */,
@@ -263,7 +263,7 @@
 			files = (
 				2462CD111AAAAC4200AF25A2 /* SecondViewController.m in Sources */,
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
-				2462CD0E1AAAAC4200AF25A2 /* FirstViewController.m in Sources */,
+				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
 				2462CD301AAAB11400AF25A2 /* TestViewController.m in Sources */,
 			);
