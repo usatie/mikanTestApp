@@ -82,11 +82,15 @@
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
+    
+    //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
         [sender removeFromSuperview];
     } else {
         [self.cardsBaseView sendSubviewToBack:sender];
     }
+    
+    //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardsBaseView.subviews.count == 0) {
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
@@ -94,7 +98,6 @@
     } else {
         [self pronounceNextWord];
     }
-    NSLog(@"subview = %@",self.cardsBaseView.subviews);
 }
 
 #pragma mark Word Related Method
