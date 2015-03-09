@@ -6,15 +6,15 @@
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "ResultsViewController.h"
 
-@interface SecondViewController ()<UITableViewDelegate,UITableViewDataSource>{
+@interface ResultsViewController ()<UITableViewDelegate,UITableViewDataSource>{
     NSDictionary *countDic;
 }
 
 @end
 
-@implementation SecondViewController
+@implementation ResultsViewController
 
 
 #pragma mark ViewController Initialization

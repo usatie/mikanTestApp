@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController <UIAlertViewDelegate>
+@interface ResultsViewController : UIViewController <UIAlertViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *resultsTableView;
 - (IBAction)deleteButtonPushed:(id)sender;
 
