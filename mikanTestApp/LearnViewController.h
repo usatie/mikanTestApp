@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "GGDraggableView.h"
 
-@interface LearnViewController : UIViewController
+@interface LearnViewController : UIViewController<GGDraggableViewDelegate>
 - (IBAction)backButtonPushed:(id)sender;
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
 

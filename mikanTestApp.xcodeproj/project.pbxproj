@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2412DC2E1AAD76F100AC4D30 /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */; };
+		2412DC2F1AAD76F100AC4D30 /* GGDraggableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */; };
+		2412DC301AAD76F100AC4D30 /* GGOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */; };
 		2462CD081AAAAC4200AF25A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD071AAAAC4200AF25A2 /* main.m */; };
 		2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */; };
 		2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */; };
@@ -33,6 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2412DC291AAD76F100AC4D30 /* GGDraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDraggableView.h; sourceTree = "<group>"; };
+		2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDraggableView.m; sourceTree = "<group>"; };
+		2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGDraggableView.xib; sourceTree = "<group>"; };
+		2412DC2C1AAD76F100AC4D30 /* GGOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGOverlayView.h; sourceTree = "<group>"; };
+		2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGOverlayView.m; sourceTree = "<group>"; };
 		2462CD021AAAAC4200AF25A2 /* mikanTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mikanTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD061AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD071AAAAC4200AF25A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,6 +82,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2412DC281AAD76F100AC4D30 /* GGDraggableView */ = {
+			isa = PBXGroup;
+			children = (
+				2412DC291AAD76F100AC4D30 /* GGDraggableView.h */,
+				2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */,
+				2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */,
+				2412DC2C1AAD76F100AC4D30 /* GGOverlayView.h */,
+				2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */,
+			);
+			path = GGDraggableView;
+			sourceTree = "<group>";
+		};
 		2462CCF91AAAAC4200AF25A2 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +118,7 @@
 				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
 				2466F2221AAB023B001E8522 /* sound_finish.mp3 */,
 				2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */,
+				2412DC281AAD76F100AC4D30 /* GGDraggableView */,
 				2462CD091AAAAC4200AF25A2 /* AppDelegate.h */,
 				2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */,
 				2466F2191AAAFDCE001E8522 /* ViewControllers */,
@@ -243,6 +264,7 @@
 				2462CD141AAAAC4200AF25A2 /* Main.storyboard in Resources */,
 				2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */,
 				2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */,
+				2412DC2F1AAD76F100AC4D30 /* GGDraggableView.xib in Resources */,
 				2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +287,8 @@
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
+				2412DC2E1AAD76F100AC4D30 /* GGDraggableView.m in Sources */,
+				2412DC301AAD76F100AC4D30 /* GGOverlayView.m in Sources */,
 				2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
