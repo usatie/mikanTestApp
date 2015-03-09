@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" apportionsSegmentWidthsByContent="YES" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="JHU-4s-bmk">
-                                <rect key="frame" x="160" y="116" width="280" height="29"/>
+                                <rect key="frame" x="150" y="116" width="300" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="Jyh-Jf-mDv"/>
-                                    <constraint firstAttribute="width" constant="280" id="xIo-42-fkJ"/>
+                                    <constraint firstAttribute="width" constant="300" id="xIo-42-fkJ"/>
                                 </constraints>
                                 <segments>
                                     <segment title="1"/>
@@ -51,23 +51,39 @@
                                     <segue destination="RAR-jD-g9c" kind="show" identifier="segueToLearn" id="1ry-bJ-NQ5"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ko3-eB-HKO">
+                                <rect key="frame" x="150" y="244" width="300" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="ruu-NC-0Wu"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="1秒"/>
+                                    <segment title="2秒"/>
+                                    <segment title="3秒"/>
+                                    <segment title="4秒"/>
+                                    <segment title="5秒"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ko3-eB-HKO" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="100" id="A8z-xF-PLa"/>
                             <constraint firstAttribute="centerX" secondItem="04k-qN-c6h" secondAttribute="centerX" id="C2x-o8-OY8"/>
                             <constraint firstAttribute="centerX" secondItem="JHU-4s-bmk" secondAttribute="centerX" id="bso-3j-j2p"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
+                            <constraint firstAttribute="centerX" secondItem="ko3-eB-HKO" secondAttribute="centerX" id="m4b-yA-f4t"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="96" id="n7m-UU-N8F"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
+                        <outlet property="timeLimitSegmentedControl" destination="ko3-eB-HKO" id="bhH-UC-s8n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="773" y="-355"/>
+            <point key="canvasLocation" x="861" y="-355"/>
         </scene>
         <!--Learn View Controller-->
         <scene sceneID="ALa-fv-bS7">

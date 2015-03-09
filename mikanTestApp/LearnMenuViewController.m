@@ -30,6 +30,7 @@
     if ( [[segue identifier] isEqualToString:@"segueToLearn"] ) {
         LearnViewController *learnVC = [segue destinationViewController];
         learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
+        learnVC.timeLimit = (int)_timeLimitSegmentedControl.selectedSegmentIndex+1;
     }
 
 }

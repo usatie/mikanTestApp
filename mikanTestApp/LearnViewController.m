@@ -11,6 +11,10 @@
 @interface LearnViewController (){
     int learnWordsIndex;
     int correctCount;
+    int timerCount;
+    
+    BOOL isTimerValid;
+    NSTimer *timer;
 }
 
 @end
@@ -38,6 +42,33 @@
 }
 
 
+#pragma mark Timer Method
+- (void)startTimer
+{
+    if (isTimerValid) {
+        [timer invalidate];
+        NSLog(@"invalidate");
+    }
+    NSLog(@"Timer Start");
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                              target:self
+                                            selector:@selector(timerAction)
+                                            userInfo:nil
+                                             repeats:YES];
+    timerCount = _timeLimit;
+    isTimerValid = YES;
+
+}
+
+- (void)stopTimer
+{
+    
+}
+
+- (void)timerAction
+{
+    
+}
 #pragma mark Get Sth Method
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
 {
