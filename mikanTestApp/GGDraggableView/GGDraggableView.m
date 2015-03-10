@@ -86,14 +86,14 @@
         }
         case UIGestureRecognizerStateEnded:{
             if (xDistance > 60) {
-                [self hideView:xDistance yDis:yDistance];
+                //Write delegate method when swipe to the right
                 if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
                     [_delegate displayNextCardDelegate:YES sender:self];
                 } else {NSLog(@"no responds to remember");}
 
             }
             else if (xDistance < -60){
-                [self hideView:xDistance yDis:yDistance];
+                //Write delegate method shen swipe to the left
                 if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
                     [_delegate displayNextCardDelegate:NO sender:self];
                 } else {NSLog(@"no responds to onemore");}
@@ -103,11 +103,6 @@
         }
         default:break;
     }
-}
-
-- (void)changeSubview
-{
-    [self addSubview:self.overlayView];
 }
 
 - (void)updateOverlay:(CGFloat)distance
@@ -138,21 +133,6 @@
         self.transform = CGAffineTransformMakeRotation(0);
         self.overlayView.alpha = 0;
     }];
-}
-
-- (void)hideView:(CGFloat)xDis yDis:(CGFloat)yDis
-{
-    [self resetViewPositionAndTransformations];
-}
-
-- (void)showView
-{
-    self.hidden = NO;
-}
-
-- (void)setNumber:(NSString*)number
-{
-    _numberLabel.text = number;
 }
 
 - (void)setParameter:(NSString*)english

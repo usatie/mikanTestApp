@@ -68,13 +68,10 @@
 
 - (void)timerAction
 {
-//    timerCount--;
-//    NSLog(@"TimerAction timerCount = %d",timerCount);
-    timerCount++;
     GGDraggableView *cardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     cardView.japaneseLabel.hidden = NO;
     
-    if (timerCount > (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
+    if (timerCount >= (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
         [self removeCardView:cardView];
     } else {
         [self sendCardViewToBack:cardView];
@@ -157,12 +154,15 @@
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
-    
+    timerCount++;
+
     //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
         [sender removeFromSuperview];
     } else {
+        [sender resetViewPositionAndTransformations];
         [self.cardsBaseView sendSubviewToBack:sender];
+        
     }
     
     //cardsBaseViewのsubviewsが０だったらfinish

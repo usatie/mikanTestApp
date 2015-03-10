@@ -23,7 +23,6 @@
 @property (nonatomic) IBOutlet UILabel *japaneseLabel;
 @property (nonatomic) IBOutlet UILabel *englishLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sectionLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *swipeImageView;
 
 
 - (void)setParameter:(NSString*)english
@@ -31,8 +30,6 @@
               number:(NSString*)number
   japaneseHiddenFlug:(BOOL)japaneseHiddenFlug
            wordIndex:(int)wordIndex;
-- (void)showView;
-- (void)setNumber:(NSString*)number;
 - (void)resetViewPositionAndTransformations;
 
 
