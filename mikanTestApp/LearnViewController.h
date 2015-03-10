@@ -9,9 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
-#import "GGDraggableView.h"
+#import "DraggableCardView.h"
 
-@interface LearnViewController : UIViewController<GGDraggableViewDelegate>
+@interface LearnViewController : UIViewController<DraggableCardViewDelegate>
 - (IBAction)backButtonPushed:(id)sender;
 - (IBAction)nextWordsButtonPushed:(id)sender;
 

@@ -1,22 +1,19 @@
 //
-//  GGDraggableView.m
-//  TinderLikeAnimations2
+//  DraggableCardView.m
+//  mikanTestApp
 //
-//  Created by Shun Usami on 2014/05/21.
-//  Copyright (c) 2014年 ShunUsami. All rights reserved.
+//  Created by Shun Usami on 2015/03/10.
+//  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "GGDraggableView.h"
-
-
-@interface GGDraggableView ()
-
+#import "DraggableCardView.h"
+@interface DraggableCardView ()
 @property (nonatomic) CGPoint centerPoint;
 @end
 
-@implementation GGDraggableView
 
 
+@implementation DraggableCardView
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -44,7 +41,7 @@
     self.panGestureRecognizer.delegate = self;
     
     
-    _overlayView = [[GGOverlayView alloc] initWithFrame:self.bounds];
+    _overlayView = [[DraggableCardOverlayView alloc] initWithFrame:self.bounds];
     _overlayView.alpha = 0;
     [self addSubview:_overlayView];
     _originalPoint = self.center;
@@ -64,7 +61,7 @@
 {
     CGFloat xDistance = [gestureRecognizer translationInView:self].x;
     CGFloat yDistance = [gestureRecognizer translationInView:self].y;
-
+    
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             self.originalPoint = self.center;
@@ -90,7 +87,7 @@
                 if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
                     [_delegate displayNextCardDelegate:YES sender:self];
                 } else {NSLog(@"no responds to remember");}
-
+                
             }
             else if (xDistance < -60){
                 //Write delegate method shen swipe to the left
@@ -108,10 +105,10 @@
 - (void)updateOverlay:(CGFloat)distance
 {
     if (distance > 0) {
-        self.overlayView.mode = GGOverlayViewModeRight;
+        self.overlayView.mode = CardOverlayViewModeRight;
     } else if (distance <= 0) {
         self.overlayView.mode =
-        GGOverlayViewModeLeft;
+        CardOverlayViewModeLeft;
     }
     CGFloat overlayStrength = MAX(fabsf(distance)/500, 0.2);
     self.overlayView.alpha = overlayStrength;
@@ -122,8 +119,8 @@
     } else {
         self.overlayView.backgroundColor = [UIColor whiteColor];
     }
-
-
+    
+    
 }
 
 - (void)resetViewPositionAndTransformations
@@ -158,4 +155,6 @@
 - (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldBeRequiredToFailByGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
     return YES;
 }
+
+
 @end

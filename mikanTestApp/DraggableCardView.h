@@ -1,21 +1,21 @@
 //
-//  GGDraggableView.h
-//  TinderLikeAnimations2
+//  DraggableCardView.h
+//  mikanTestApp
 //
-//  Created by Shun Usami on 2014/05/21.
-//  Copyright (c) 2014年 ShunUsami. All rights reserved.
+//  Created by Shun Usami on 2015/03/10.
+//  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "GGOverlayView.h"
+#import "DraggableCardOverlayView.h"
 
-@protocol GGDraggableViewDelegate;
+@protocol DraggableCardViewDelegate;
 
-@interface GGDraggableView : UIView<UIGestureRecognizerDelegate>
-@property (nonatomic, assign) id<GGDraggableViewDelegate> delegate;//delegate用
+@interface DraggableCardView : UIView<UIGestureRecognizerDelegate>
+@property (nonatomic, assign) id<DraggableCardViewDelegate> delegate;//delegate用
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic) CGPoint originalPoint;
-@property (nonatomic, strong) GGOverlayView *overlayView;
+@property (nonatomic, strong) DraggableCardOverlayView *overlayView;
 @property int i;
 @property int wordIndex;
 @property int viewIndex;
@@ -35,8 +35,7 @@
 
 @end
 
-@protocol GGDraggableViewDelegate <NSObject>
+@protocol DraggableCardViewDelegate <NSObject>
 @optional
-- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender;
+- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender;
 @end
-

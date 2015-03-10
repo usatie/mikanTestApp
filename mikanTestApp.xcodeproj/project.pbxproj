@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2412DC2E1AAD76F100AC4D30 /* GGDraggableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */; };
-		2412DC2F1AAD76F100AC4D30 /* GGDraggableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */; };
-		2412DC301AAD76F100AC4D30 /* GGOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */; };
 		2412DC351AAD92E900AC4D30 /* mikan.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2412DC341AAD92E900AC4D30 /* mikan.csv */; };
 		241FECAC1AAD99EF000290FB /* abbreviation.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 241FE8C41AAD99E8000290FB /* abbreviation.mp3 */; };
 		241FECAD1AAD99EF000290FB /* abide.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 241FE8C51AAD99E8000290FB /* abide.mp3 */; };
@@ -1024,6 +1021,9 @@
 		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
 		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
+		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
+		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
+		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1037,11 +1037,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2412DC291AAD76F100AC4D30 /* GGDraggableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDraggableView.h; sourceTree = "<group>"; };
-		2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDraggableView.m; sourceTree = "<group>"; };
-		2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGDraggableView.xib; sourceTree = "<group>"; };
-		2412DC2C1AAD76F100AC4D30 /* GGOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGOverlayView.h; sourceTree = "<group>"; };
-		2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGOverlayView.m; sourceTree = "<group>"; };
 		2412DC341AAD92E900AC4D30 /* mikan.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mikan.csv; sourceTree = "<group>"; };
 		241FE8C41AAD99E8000290FB /* abbreviation.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = abbreviation.mp3; sourceTree = "<group>"; };
 		241FE8C51AAD99E8000290FB /* abide.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = abide.mp3; sourceTree = "<group>"; };
@@ -2064,6 +2059,11 @@
 		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
 		2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_incorrect.mp3; sourceTree = "<group>"; };
+		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
+		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
+		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
+		24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardOverlayView.m; sourceTree = "<group>"; };
+		24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraggableCardView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2084,18 +2084,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2412DC281AAD76F100AC4D30 /* GGDraggableView */ = {
-			isa = PBXGroup;
-			children = (
-				2412DC291AAD76F100AC4D30 /* GGDraggableView.h */,
-				2412DC2A1AAD76F100AC4D30 /* GGDraggableView.m */,
-				2412DC2B1AAD76F100AC4D30 /* GGDraggableView.xib */,
-				2412DC2C1AAD76F100AC4D30 /* GGOverlayView.h */,
-				2412DC2D1AAD76F100AC4D30 /* GGOverlayView.m */,
-			);
-			path = GGDraggableView;
-			sourceTree = "<group>";
-		};
 		241FE8C31AAD99E8000290FB /* test */ = {
 			isa = PBXGroup;
 			children = (
@@ -3124,8 +3112,8 @@
 		2462CD041AAAAC4200AF25A2 /* mikanTestApp */ = {
 			isa = PBXGroup;
 			children = (
-				2412DC281AAD76F100AC4D30 /* GGDraggableView */,
 				2462CD091AAAAC4200AF25A2 /* AppDelegate.h */,
+				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 				2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */,
 				2466F2191AAAFDCE001E8522 /* ViewControllers */,
 				2466F2181AAAFDC2001E8522 /* Resources */,
@@ -3187,6 +3175,18 @@
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
+			isa = PBXGroup;
+			children = (
+				24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */,
+				24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */,
+				24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */,
+				24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */,
+				24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */,
+			);
+			name = DraggableCardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -3765,6 +3765,7 @@
 				241FEF201AAD99EF000290FB /* partial.mp3 in Resources */,
 				241FECD91AAD99EF000290FB /* ail.mp3 in Resources */,
 				2462CD141AAAAC4200AF25A2 /* Main.storyboard in Resources */,
+				24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */,
 				241FECF71AAD99EF000290FB /* approximately.mp3 in Resources */,
 				241FED451AAD99EF000290FB /* burglary.mp3 in Resources */,
 				241FEF9C1AAD99EF000290FB /* restore.mp3 in Resources */,
@@ -4113,7 +4114,6 @@
 				241FEF381AAD99EF000290FB /* pitiful.mp3 in Resources */,
 				241FECE21AAD99EF000290FB /* analogy.mp3 in Resources */,
 				241FF01C1AAD99EF000290FB /* swell.mp3 in Resources */,
-				2412DC2F1AAD76F100AC4D30 /* GGDraggableView.xib in Resources */,
 				241FED9E1AAD99EF000290FB /* counterfeit.mp3 in Resources */,
 				241FEF621AAD99EF000290FB /* propagate.mp3 in Resources */,
 				241FED1F1AAD99EF000290FB /* beat.mp3 in Resources */,
@@ -4299,8 +4299,8 @@
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
-				2412DC2E1AAD76F100AC4D30 /* GGDraggableView.m in Sources */,
-				2412DC301AAD76F100AC4D30 /* GGOverlayView.m in Sources */,
+				24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */,
+				24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */,
 				2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

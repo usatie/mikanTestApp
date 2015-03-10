@@ -68,7 +68,7 @@
 
 - (void)timerAction
 {
-    GGDraggableView *cardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
+    DraggableCardView *cardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     cardView.japaneseLabel.hidden = NO;
     
     if (swipeCount >= (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
@@ -78,7 +78,7 @@
     }
 }
 
-- (void)removeCardView:(GGDraggableView *)cardView
+- (void)removeCardView:(DraggableCardView *)cardView
 {
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -93,7 +93,7 @@
     
 }
 
-- (void)sendCardViewToBack:(GGDraggableView *)cardView
+- (void)sendCardViewToBack:(DraggableCardView *)cardView
 {
     [UIView animateWithDuration:0.2
                      animations:^{
@@ -152,7 +152,7 @@
 
 
 #pragma mark GGDraggableView Delegate Method
-- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
+- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
     swipeCount++;
 
@@ -190,8 +190,8 @@
 - (void)generateCardView
 {
     for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
-        GGDraggableView *cardView;
-        cardView = [[GGDraggableView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
+        DraggableCardView *cardView;
+        cardView = [[DraggableCardView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = self;
@@ -209,7 +209,7 @@
 
 #pragma mark Sound Related Method
 - (void)pronounceNextWord{
-    GGDraggableView *nextCardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
+    DraggableCardView *nextCardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     [self playSound:nextCardView.englishLabel.text];
 }
 
