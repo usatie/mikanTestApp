@@ -11,7 +11,7 @@
 @interface LearnViewController (){
     int learnWordsIndex;
     int correctCount;
-    int timerCount;
+    int swipeCount;
     
     BOOL isTimerValid;
     NSTimer *timer;
@@ -71,7 +71,7 @@
     GGDraggableView *cardView = (GGDraggableView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     cardView.japaneseLabel.hidden = NO;
     
-    if (timerCount >= (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
+    if (swipeCount >= (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
         [self removeCardView:cardView];
     } else {
         [self sendCardViewToBack:cardView];
@@ -154,7 +154,7 @@
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(GGDraggableView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
-    timerCount++;
+    swipeCount++;
 
     //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
@@ -173,7 +173,7 @@
         //buttonで移行するんだったらこれ
         //[self playSound:@"sound_finish"];
         //self.nextWordsButton.hidden = NO;
-        timerCount = 0;
+        swipeCount = 0;
         //button無しで移行するんだったらこれ
         [self generateCardView];
         [self pronounceNextWord];
