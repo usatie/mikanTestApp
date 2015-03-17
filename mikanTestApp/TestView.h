@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "answerButton.h"
 
 @interface TestView : UIView
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
-@property (strong, nonatomic) IBOutlet UIButton *answerButton1;
-@property (strong, nonatomic) IBOutlet UIButton *answerButton2;
-@property (strong, nonatomic) IBOutlet UIButton *answerButton3;
-@property (strong, nonatomic) IBOutlet UIButton *answerButton4;
+@property (strong, nonatomic) IBOutlet answerButton *answerButton1;
+@property (strong, nonatomic) IBOutlet answerButton *answerButton2;
+@property (strong, nonatomic) IBOutlet answerButton *answerButton3;
+@property (strong, nonatomic) IBOutlet answerButton *answerButton4;
 @end

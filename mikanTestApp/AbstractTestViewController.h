@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TestView.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+
 
 @interface AbstractTestViewController : UIViewController
 @property TestView *testView;
@@ -16,8 +19,12 @@
 @property NSDictionary *testResultsDic; //resultsArray, choiceArray, answerDurationArrayを要素に持つDictionary
 
 @property NSMutableArray *resultsArray;
-@property NSMutableArray *choiceArray;
+@property NSMutableArray *userChoicesArray;
 @property NSMutableArray *answerDurationArray;
 
 @property BOOL relearnFlag;
+
+
+//Temporary properties
+@property AVAudioPlayer *audio;
 @end
