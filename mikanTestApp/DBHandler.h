@@ -7,10 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMDatabase.h"
 
 @interface DBHandler : NSObject
 
 + (void)initDatabase;
+
+
++ (FMDatabase*) getDBWithName:(NSString*)dbName;
+
+
 + (void) insertTestResult:(NSNumber*)wordId
                    result:(BOOL)result
                userChoice:(int)userChoice

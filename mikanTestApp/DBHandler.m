@@ -10,6 +10,7 @@
 
 @implementation DBHandler
 
+#pragma mark INIT method
 + (void)initDatabase
 {
     DLog(@"initDatabase");
@@ -42,6 +43,16 @@
     }
 }
 
+#pragma mark GET methods
++ (FMDatabase*) getDBWithName:(NSString*)dbName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    NSString *dir   = [paths objectAtIndex:0];
+    FMDatabase *db= [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:dbName]];
+    return db;
+}
+
+
 #pragma mark INSERT and UPDATE methods
 + (void) insertTestResult:(NSNumber*)wordId
                    result:(BOOL)result
@@ -54,7 +65,7 @@
     NSString *sql=@"insert into log_test_result (test_type, word_id, test_result,created_at,user_choice,answer_duration,relearn_flag) values (?,?,?,?,?,?,?);";
     NSDate *now = [NSDate date];
     
-    FMDatabase *db = [self getDBWithName:DB_NAME_VER_2];
+    FMDatabase *db = [self getDBWithName:DB_NAME];
     
     [db open];
     [db executeUpdate:sql, [NSNumber numberWithInt:testType], wordId, [NSNumber numberWithBool:result],now,[NSNumber numberWithInt:userChoice],[NSNumber numberWithFloat:answeringTime],[NSNumber numberWithBool:relearnFlag]];
