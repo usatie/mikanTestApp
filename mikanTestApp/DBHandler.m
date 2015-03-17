@@ -40,6 +40,26 @@
     else{
         DLog(@"DB file OK");
     }
+}
+
+#pragma mark INSERT and UPDATE methods
++ (void) insertTestResult:(NSNumber*)wordId
+                   result:(BOOL)result
+               userChoice:(int)userChoice
+            answeringTime:(float)answeringTime
+                 testType:(int)testType
+              relearnFlag:(BOOL)relearnFlag
+{
     
+    NSString *sql=@"insert into log_test_result (test_type, word_id, test_result,created_at,user_choice,answer_duration,relearn_flag) values (?,?,?,?,?,?,?);";
+    NSDate *now = [NSDate date];
+    
+    FMDatabase *db = [self getDBWithName:DB_NAME_VER_2];
+    
+    [db open];
+    [db executeUpdate:sql, [NSNumber numberWithInt:testType], wordId, [NSNumber numberWithBool:result],now,[NSNumber numberWithInt:userChoice],[NSNumber numberWithFloat:answeringTime],[NSNumber numberWithBool:relearnFlag]];
+    sql = @"update word_record set latest_answer_duration = ?, test_count = test_count + 1, correct_count = correct_count + ?, updated_at = ? where id = ?;";
+    [db executeUpdate:sql, [NSNumber numberWithFloat:answeringTime], [NSNumber numberWithInt:result], now, wordId];
+    [db close];
 }
 @end

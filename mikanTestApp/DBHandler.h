@@ -11,4 +11,10 @@
 @interface DBHandler : NSObject
 
 + (void)initDatabase;
++ (void) insertTestResult:(NSNumber*)wordId
+                   result:(BOOL)result
+               userChoice:(int)userChoice
+            answeringTime:(float)answeringTime
+                 testType:(int)testType
+              relearnFlag:(BOOL)relearnFlag;
 @end
