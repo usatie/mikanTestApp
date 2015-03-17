@@ -1023,6 +1023,7 @@
 		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
 		24A657791AB71D5800FA810D /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657781AB71D5800FA810D /* DBHandler.m */; };
 		24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6577B1AB7C16400FA810D /* AppConsts.m */; };
+		24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */ = {isa = PBXBuildFile; fileRef = 24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
@@ -2066,6 +2067,7 @@
 		24A6577A1AB7C16400FA810D /* AppConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConsts.h; sourceTree = "<group>"; };
 		24A6577B1AB7C16400FA810D /* AppConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConsts.m; sourceTree = "<group>"; };
 		24A6577D1AB7C29F00FA810D /* mikanTestApp-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mikanTestApp-PrefixHeader.pch"; sourceTree = "<group>"; };
+		24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_ver_2.db; sourceTree = "<group>"; };
 		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
 		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
@@ -3166,6 +3168,7 @@
 		2466F2181AAAFDC2001E8522 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */,
 				241FE8C31AAD99E8000290FB /* test */,
 				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
 				2466F2221AAB023B001E8522 /* sound_finish.mp3 */,
@@ -3518,6 +3521,7 @@
 				241FECDB1AAD99EF000290FB /* allowance.mp3 in Resources */,
 				241FEE4B1AAD99EF000290FB /* friction.mp3 in Resources */,
 				241FEF1D1AAD99EF000290FB /* package.mp3 in Resources */,
+				24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */,
 				241FF0561AAD99EF000290FB /* ultimate.mp3 in Resources */,
 				241FEDE81AAD99EF000290FB /* diverse.mp3 in Resources */,
 				241FF0351AAD99EF000290FB /* thigh.mp3 in Resources */,
