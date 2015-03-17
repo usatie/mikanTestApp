@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AbstractTestViewController.h"
 
-@interface LearnTestViewController :AbstractTestViewController
+@interface LearnTestViewController :AbstractTestViewController<AbstractTestViewControllerDelegate>
 
 @end

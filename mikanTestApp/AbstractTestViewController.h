@@ -11,8 +11,10 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 
+@protocol AbstractTestViewControllerDelegate;
 
 @interface AbstractTestViewController : UIViewController
+@property id<AbstractTestViewControllerDelegate> delegate;
 @property TestView *testView;
 
 @property NSDictionary *testWordsDic; //wordIndex, english, choice1,choice2,choice3,choice4,answerIndex,wordIndexを要素に持つDictionary
@@ -27,4 +29,10 @@
 
 //Temporary properties
 @property AVAudioPlayer *audio;
+@end
+
+@protocol AbstractTestViewControllerDelegate <NSObject>
+
+@optional
+- (void)finishDelegateWithBlock:(void (^)())block;
 @end

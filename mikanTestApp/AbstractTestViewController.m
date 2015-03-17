@@ -122,8 +122,15 @@
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }
-    _testResultsDic = [NSDictionary dictionaryWithObjects:@[_resultsArray,_userChoicesArray] forKeys:@[@"result",@"userChoice"]];
-    DLog(@"finish!\nresult = %@",_testResultsDic);
+//    _testResultsDic = [NSDictionary dictionaryWithObjects:@[_resultsArray,_userChoicesArray] forKeys:@[@"result",@"userChoice"]];
+    DLog(@"finish!");
+    _answerDurationArray = _userChoicesArray;
+    [_delegate finishDelegateWithBlock:^{
+        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];        
+    }];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];        
+//    }];
 }
 
 

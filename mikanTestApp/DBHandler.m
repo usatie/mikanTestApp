@@ -81,7 +81,7 @@
                  testType:(int)testType
               relearnFlag:(BOOL)relearnFlag{
     NSString *sql=@"insert into log_test_result (test_type, word_id, test_result,created_at,user_choice,answer_duration,relearn_flag) values (?,?,?,?,?,?,?);";
-    NSString *sql2 = @"update word_record set latest_answer_duration = ?, test_count = test_count + 1, correct_count = correct_count + ?, updated_at = ? where id = ?;";
+    NSString *sql2 = @"update word_record set has_tested = 1, latest_test_result = ?, latest_answer_duration = ?, test_count = test_count + 1, correct_count = correct_count + ?, updated_at = ? where id = ?;";
     NSDate *now = [NSDate date];
     
     FMDatabase *db = [self getDBWithName:DB_NAME];
@@ -94,7 +94,7 @@
             isSucceeded  = NO;
             break;
         }
-        if (![db executeUpdate:sql2, answeringTimeArray[i], resultsArray[i], now, wordIdArray[i]]) {
+        if (![db executeUpdate:sql2, resultsArray[i], answeringTimeArray[i], resultsArray[i], now, wordIdArray[i]]) {
             isSucceeded = NO;
             break;
         }
