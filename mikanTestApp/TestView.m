@@ -41,15 +41,25 @@
     _answerButton4.enabled = NO;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
-
-- (void)didTimeOut{
+- (void)showWordWithIndex:(int)index
+{
+    //[1...4]をランダムに並び替える
+    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
+    for (int i = 0; i<4; i++) {
+        [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
+    }
+    //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
+    for (int i = 0; i<4; i++) {
+        int rand = [randArray[i] intValue];
+        answerButton *btn = (answerButton *)[self viewWithTag:i+1];
+        [btn setTitle:_testWordsDic[@"choicesArray"][index][rand-1] forState:UIControlStateNormal];
+        btn.choiceNumTag = rand;
+    }
     
+    //answerIndexを設定
+    self.answerButtonTag = [_testWordsDic[@"answerIndex"][index] intValue];
+    
+    //Englishを表示
+    self.englishLabel.text = _testWordsDic[@"english"][index];
 }
 @end

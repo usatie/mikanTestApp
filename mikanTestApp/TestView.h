@@ -16,6 +16,10 @@
 @property (strong, nonatomic) IBOutlet answerButton *answerButton3;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton4;
 
+@property int answerButtonTag;
+@property NSDictionary *testWordsDic; //wordIndex, english,
+
 - (void)enableAllButtons;
 - (void)disableAllButtons;
+- (void)showWordWithIndex:(int)index;
 @end

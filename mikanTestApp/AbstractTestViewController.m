@@ -14,7 +14,6 @@
     UserUtil *util;
     
     int testIndex;
-    int answerButtonTag;
     int choiceIndex;
     
     BOOL shouldPlaySound;
@@ -64,6 +63,7 @@
 #pragma mark initialization
 - (void)initTestView{
     self.testView = [[TestView alloc] initWithFrame:self.view.frame];
+    self.testView.testWordsDic = _testWordsDic;
     [self.view addSubview:self.testView];
     
     [self.testView.answerButton1 addTarget:self action:@selector(answerButtonPushed:) forControlEvents:UIControlEventTouchDown];
@@ -80,25 +80,26 @@
 #pragma mark show methods
 - (void)showAndPlayNextWord
 {
-    //[1...4]をランダムに並び替える
-    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
-    for (int i = 0; i<4; i++) {
-        [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
-    }
-    //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
-    for (int i = 0; i<4; i++) {
-        int rand = [randArray[i] intValue];
-        answerButton *btn = (answerButton *)[self.testView viewWithTag:i+1];
-        [btn setTitle:_testWordsDic[@"choicesArray"][testIndex][rand-1] forState:UIControlStateNormal];
-        btn.randomTag = rand;
-    }
+//    //[1...4]をランダムに並び替える
+//    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
+//    for (int i = 0; i<4; i++) {
+//        [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
+//    }
+//    //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
+//    for (int i = 0; i<4; i++) {
+//        int rand = [randArray[i] intValue];
+//        answerButton *btn = (answerButton *)[self.testView viewWithTag:i+1];
+//        [btn setTitle:_testWordsDic[@"choicesArray"][testIndex][rand-1] forState:UIControlStateNormal];
+//        btn.randomTag = rand;
+//    }
+//    
+//    //answerIndexを設定
+//    answerButtonTag = [_testWordsDic[@"answerIndex"][testIndex] intValue];
+//    
+//    //Englishを表示
+//    self.testView.englishLabel.text = _testWordsDic[@"english"][testIndex];
     
-    //answerIndexを設定
-    answerButtonTag = [_testWordsDic[@"answerIndex"][testIndex] intValue];
-    
-    //Englishを表示
-    self.testView.englishLabel.text = _testWordsDic[@"english"][testIndex];
-    
+    [self.testView showWordWithIndex:testIndex];
     //次の単語を発音
     [self playSound:_testWordsDic[@"english"][testIndex]];
     
@@ -110,9 +111,9 @@
 #pragma mark Button Action
 - (void)answerButtonPushed:(answerButton *)btn{
     [self.testView disableAllButtons];
-    choiceIndex = (int)btn.randomTag;
+    
     [_userChoicesArray addObject:[NSNumber numberWithInt:choiceIndex]];
-    if (choiceIndex == answerButtonTag) {
+    if (btn.choiceNumTag == self.testView.answerButtonTag) {
         [self playSound:@"sound_correct"];
         [_resultsArray addObject:@1];
     } else {

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface answerButton :UIButton
-@property int randomTag;
+@property int choiceNumTag;
 
 @end
