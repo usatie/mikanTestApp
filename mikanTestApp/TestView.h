@@ -1,5 +1,5 @@
 //
-//  TestViewController.h
+//  TestView.h
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/17.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TestViewController : UIViewController
+@interface TestView : UIView
 
 @end

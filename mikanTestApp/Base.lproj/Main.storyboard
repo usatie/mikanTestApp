@@ -63,6 +63,15 @@
                                     <segment title="5回"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq2-V6-aeN">
+                                <rect key="frame" x="277" y="28" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="PhG-tz-8UX" kind="show" id="Cg0-Cn-HRL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -72,6 +81,7 @@
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
                             <constraint firstAttribute="centerX" secondItem="ko3-eB-HKO" secondAttribute="centerX" id="m4b-yA-f4t"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="96" id="n7m-UU-N8F"/>
+                            <constraint firstAttribute="centerX" secondItem="Mq2-V6-aeN" secondAttribute="centerX" id="trT-CX-0AE"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
@@ -155,6 +165,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZk-6J-HiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1683" y="-382"/>
+        </scene>
+        <!--Learn Test View Controller-->
+        <scene sceneID="fgQ-SU-cPx">
+            <objects>
+                <viewController id="PhG-tz-8UX" customClass="LearnTestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l3i-z9-i3P"/>
+                        <viewControllerLayoutGuide type="bottom" id="UEZ-da-hn9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Rap-uy-Lg7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4kD-cI-oFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1683" y="-1054"/>
         </scene>
         <!--Result-->
         <scene sceneID="wg7-f3-ORb">

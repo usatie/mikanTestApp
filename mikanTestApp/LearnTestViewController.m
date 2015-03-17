@@ -1,22 +1,22 @@
 //
-//  TestViewController.m
+//  LearnTestViewController.m
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/17.
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "TestViewController.h"
+#import "LearnTestViewController.h"
 
-@interface TestViewController ()
+@interface LearnTestViewController ()
 
 @end
 
-@implementation TestViewController
+@implementation LearnTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {

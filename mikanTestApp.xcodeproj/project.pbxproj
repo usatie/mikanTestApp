@@ -1024,8 +1024,9 @@
 		24A657791AB71D5800FA810D /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657781AB71D5800FA810D /* DBHandler.m */; };
 		24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6577B1AB7C16400FA810D /* AppConsts.m */; };
 		24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */ = {isa = PBXBuildFile; fileRef = 24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */; };
-		24A657831AB7D30A00FA810D /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657811AB7D30A00FA810D /* TestViewController.m */; };
-		24A657841AB7D30A00FA810D /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657821AB7D30A00FA810D /* TestViewController.xib */; };
+		24A6578A1AB7D45400FA810D /* LearnTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657891AB7D45400FA810D /* LearnTestViewController.m */; };
+		24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6578E1AB7D9BA00FA810D /* TestView.m */; };
+		24A657911AB7D9CB00FA810D /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657901AB7D9CB00FA810D /* TestView.xib */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
@@ -2072,9 +2073,11 @@
 		24A6577B1AB7C16400FA810D /* AppConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConsts.m; sourceTree = "<group>"; };
 		24A6577D1AB7C29F00FA810D /* mikanTestApp-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mikanTestApp-PrefixHeader.pch"; sourceTree = "<group>"; };
 		24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_ver_2.db; sourceTree = "<group>"; };
-		24A657801AB7D30A00FA810D /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestViewController.h; path = "Custom Classes/TestViewController.h"; sourceTree = "<group>"; };
-		24A657811AB7D30A00FA810D /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestViewController.m; path = "Custom Classes/TestViewController.m"; sourceTree = "<group>"; };
-		24A657821AB7D30A00FA810D /* TestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestViewController.xib; path = "Custom Classes/TestViewController.xib"; sourceTree = "<group>"; };
+		24A657881AB7D45400FA810D /* LearnTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnTestViewController.h; sourceTree = "<group>"; };
+		24A657891AB7D45400FA810D /* LearnTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestViewController.m; sourceTree = "<group>"; };
+		24A6578D1AB7D9BA00FA810D /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
+		24A6578E1AB7D9BA00FA810D /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
+		24A657901AB7D9CB00FA810D /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
 		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
 		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
@@ -3196,6 +3199,8 @@
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
 				2462CD2E1AAAB11400AF25A2 /* LearnViewController.h */,
 				2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */,
+				24A657881AB7D45400FA810D /* LearnTestViewController.h */,
+				24A657891AB7D45400FA810D /* LearnTestViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
 			);
@@ -3205,8 +3210,8 @@
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				24A6578C1AB7D9A300FA810D /* TestView */,
 				24A657861AB7D32900FA810D /* DBHandler */,
-				24A657871AB7D33800FA810D /* TestViewController */,
 				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
 			name = CustomClasses;
@@ -3221,14 +3226,14 @@
 			name = DBHandler;
 			sourceTree = "<group>";
 		};
-		24A657871AB7D33800FA810D /* TestViewController */ = {
+		24A6578C1AB7D9A300FA810D /* TestView */ = {
 			isa = PBXGroup;
 			children = (
-				24A657801AB7D30A00FA810D /* TestViewController.h */,
-				24A657811AB7D30A00FA810D /* TestViewController.m */,
-				24A657821AB7D30A00FA810D /* TestViewController.xib */,
+				24A6578D1AB7D9BA00FA810D /* TestView.h */,
+				24A6578E1AB7D9BA00FA810D /* TestView.m */,
+				24A657901AB7D9CB00FA810D /* TestView.xib */,
 			);
-			name = TestViewController;
+			name = TestView;
 			sourceTree = "<group>";
 		};
 		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
@@ -3607,7 +3612,6 @@
 				241FEDAA1AAD99EF000290FB /* crop.mp3 in Resources */,
 				241FEED11AAD99EF000290FB /* limb.mp3 in Resources */,
 				241FECC61AAD99EF000290FB /* admiral.mp3 in Resources */,
-				24A657841AB7D30A00FA810D /* TestViewController.xib in Resources */,
 				241FEE1E1AAD99EF000290FB /* exhausted.mp3 in Resources */,
 				241FEE3D1AAD99EF000290FB /* flatter.mp3 in Resources */,
 				241FF0521AAD99EF000290FB /* tuition.mp3 in Resources */,
@@ -4006,6 +4010,7 @@
 				241FF0791AAD99EF000290FB /* vice.mp3 in Resources */,
 				241FECF51AAD99EF000290FB /* appropriate.mp3 in Resources */,
 				241FEFA51AAD99EF000290FB /* rite.mp3 in Resources */,
+				24A657911AB7D9CB00FA810D /* TestView.xib in Resources */,
 				241FED911AAD99EF000290FB /* contract.mp3 in Resources */,
 				241FEE2A1AAD99EF000290FB /* facilitate.mp3 in Resources */,
 				2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */,
@@ -4406,9 +4411,10 @@
 				2462CD111AAAAC4200AF25A2 /* ResultsViewController.m in Sources */,
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */,
+				24A6578A1AB7D45400FA810D /* LearnTestViewController.m in Sources */,
 				24A657791AB71D5800FA810D /* DBHandler.m in Sources */,
-				24A657831AB7D30A00FA810D /* TestViewController.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
+				24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
 				24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */,
 				24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */,
