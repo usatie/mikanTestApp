@@ -10,4 +10,5 @@
 
 @interface DBHandler : NSObject
 
++ (void)initDatabase;
 @end

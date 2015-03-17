@@ -10,15 +10,15 @@
 
 @implementation DBHandler
 
-+(void) initDatabaseVer2
++ (void)initDatabase
 {
-//    DLog(@"initDatabase");
+    DLog(@"initDatabase");
     
     // データベースファイルを格納するために文書フォルダーを取得
     NSArray  *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *dbPath = [documentsDirectory stringByAppendingPathComponent:DB_NAME];
-//    DLog(@"%@",dbPath);
+    DLog(@"%@",dbPath);
     BOOL checkDb;
     NSError *error;
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -26,17 +26,15 @@
     // データベースファイルを確認
     checkDb = [fileManager fileExistsAtPath:dbPath];
     if(!checkDb){
-//        DLog(@"no db file");
+        DLog(@"no db file");
         // ファイルが無い場合はコピー
         NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DB_NAME];
-//        DLog(@"%@",[[[NSBundle mainBundle]resourcePath] stringByAppendingPathComponent:DB_NAME]);
-//        DLog(@"%@",[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:DB_NAME_VER_2]);
-//        DLog(@"%@",defaultDBPath);
+        DLog(@"%@",defaultDBPath);
         checkDb = [fileManager copyItemAtPath:defaultDBPath toPath:dbPath error:&error];
         
         if(!checkDb){
             // error
-//            DLog(@"Copy error = %@", defaultDBPath);
+            DLog(@"Copy error = %@", defaultDBPath);
         }
     }
     else{
