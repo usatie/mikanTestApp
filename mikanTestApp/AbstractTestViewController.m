@@ -1,22 +1,26 @@
 //
-//  LearnTestViewController.m
-//  
+//  TestViewController.m
+//  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/17.
-//
+//  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "LearnTestViewController.h"
+#import "AbstractTestViewController.h"
 
-@interface LearnTestViewController ()
+
+@interface AbstractTestViewController (){
+}
 
 @end
 
-@implementation LearnTestViewController
+@implementation AbstractTestViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.testView = [[TestView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.testView];
 }
 
 - (void)didReceiveMemoryWarning {
