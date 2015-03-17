@@ -80,17 +80,17 @@
 #pragma mark show methods
 - (void)showAndPlayNextWord
 {
-    //[0...3]をランダムに並び替える
-    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@0,@1,@2,@3]];
+    //[1...4]をランダムに並び替える
+    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
     for (int i = 0; i<4; i++) {
         [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
-        DLog(@"randArray = %@",randArray);
+//        DLog(@"randArray = %@",randArray);
     }
     //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
     for (int i = 0; i<4; i++) {
         int rand = [randArray[i] intValue];
         answerButton *btn = (answerButton *)[self.testView viewWithTag:i+1];
-        [btn setTitle:_testWordsDic[@"choicesArray"][testIndex][rand] forState:UIControlStateNormal];
+        [btn setTitle:_testWordsDic[@"choicesArray"][testIndex][rand-1] forState:UIControlStateNormal];
         btn.randomTag = rand;
     }
     
@@ -123,7 +123,8 @@
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }
-    DLog(@"finish!");
+    _testResultsDic = [NSDictionary dictionaryWithObjects:@[_resultsArray,_userChoicesArray] forKeys:@[@"result",@"userChoice"]];
+    DLog(@"finish!\nresult = %@",_testResultsDic);
 }
 
 
