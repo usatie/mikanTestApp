@@ -37,12 +37,6 @@
 }
 */
 
-- (IBAction)answerButtonPushed:(id)sender {
-    UIButton *btn = (UIButton *)sender;
-    int tag = (int)btn.tag;
-    DLog(@"answerButtonPushed tag = %d",tag);
-}
-
 - (void)didTimeOut{
     
 }

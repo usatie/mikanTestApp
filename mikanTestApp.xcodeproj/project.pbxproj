@@ -1028,6 +1028,7 @@
 		24A657911AB7D9CB00FA810D /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657901AB7D9CB00FA810D /* TestView.xib */; };
 		24A657941AB7DA9900FA810D /* LearnTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657931AB7DA9900FA810D /* LearnTestViewController.m */; };
 		24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657961AB8285000FA810D /* AbstractTestViewController.m */; };
+		24A6579B1AB8322900FA810D /* UserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657991AB8322900FA810D /* UserUtil.m */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
@@ -2081,6 +2082,8 @@
 		24A657931AB7DA9900FA810D /* LearnTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestViewController.m; sourceTree = "<group>"; };
 		24A657951AB8285000FA810D /* AbstractTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTestViewController.h; sourceTree = "<group>"; };
 		24A657961AB8285000FA810D /* AbstractTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTestViewController.m; sourceTree = "<group>"; };
+		24A657991AB8322900FA810D /* UserUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtil.m; sourceTree = "<group>"; };
+		24A6579A1AB8322900FA810D /* UserUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUtil.h; sourceTree = "<group>"; };
 		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
 		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
@@ -3213,7 +3216,8 @@
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
-				24A6578C1AB7D9A300FA810D /* TestView */,
+				24A657981AB8321B00FA810D /* UserUtil */,
+				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				24A657861AB7D32900FA810D /* DBHandler */,
 				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
@@ -3229,7 +3233,7 @@
 			name = DBHandler;
 			sourceTree = "<group>";
 		};
-		24A6578C1AB7D9A300FA810D /* TestView */ = {
+		24A6578C1AB7D9A300FA810D /* AbstractTestViewController */ = {
 			isa = PBXGroup;
 			children = (
 				24A657951AB8285000FA810D /* AbstractTestViewController.h */,
@@ -3238,7 +3242,16 @@
 				24A6578E1AB7D9BA00FA810D /* TestView.m */,
 				24A657901AB7D9CB00FA810D /* TestView.xib */,
 			);
-			name = TestView;
+			name = AbstractTestViewController;
+			sourceTree = "<group>";
+		};
+		24A657981AB8321B00FA810D /* UserUtil */ = {
+			isa = PBXGroup;
+			children = (
+				24A6579A1AB8322900FA810D /* UserUtil.h */,
+				24A657991AB8322900FA810D /* UserUtil.m */,
+			);
+			name = UserUtil;
 			sourceTree = "<group>";
 		};
 		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
@@ -4419,6 +4432,7 @@
 				24A657941AB7DA9900FA810D /* LearnTestViewController.m in Sources */,
 				24A657791AB71D5800FA810D /* DBHandler.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
+				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,
 				24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */,
 				24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,

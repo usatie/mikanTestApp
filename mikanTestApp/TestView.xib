@@ -18,9 +18,6 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="answerButtonPushed:" destination="iN0-l3-epB" eventType="touchDown" id="BE3-GJ-cyr"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnq-4i-Sl2">
                     <rect key="frame" x="40" y="338" width="240" height="60"/>
@@ -29,9 +26,6 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="answerButtonPushed:" destination="iN0-l3-epB" eventType="touchDown" id="Url-bh-uMV"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-2O-k8M">
                     <rect key="frame" x="40" y="408" width="240" height="60"/>
@@ -40,9 +34,6 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="answerButtonPushed:" destination="iN0-l3-epB" eventType="touchDown" id="Dg3-XK-xgm"/>
-                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAW-VA-CBc">
                     <rect key="frame" x="40" y="478" width="240" height="60"/>
@@ -54,9 +45,6 @@
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="answerButtonPushed:" destination="iN0-l3-epB" eventType="touchDown" id="jWd-TR-9jM"/>
-                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2OL-X0-zMz">
                     <rect key="frame" x="30" y="76" width="260" height="100"/>
@@ -112,6 +100,7 @@
                 <outlet property="answerButton4" destination="CAW-VA-CBc" id="dVm-Dy-5pA"/>
                 <outlet property="englishLabel" destination="2OL-X0-zMz" id="dgs-mf-QT4"/>
             </connections>
+            <point key="canvasLocation" x="-66" y="367"/>
         </view>
     </objects>
 </document>
