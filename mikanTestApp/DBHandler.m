@@ -73,4 +73,37 @@
     [db executeUpdate:sql, [NSNumber numberWithFloat:answeringTime], [NSNumber numberWithInt:result], now, wordId];
     [db close];
 }
+
++ (void) insertTestResult:(NSArray*)wordIdArray
+              resultArray:(NSArray *)resultsArray
+          userChoiceArray:(NSArray *)userChoicesArray
+       answeringTimeArray:(NSArray *)answeringTimeArray
+                 testType:(int)testType
+              relearnFlag:(BOOL)relearnFlag{
+    NSString *sql=@"insert into log_test_result (test_type, word_id, test_result,created_at,user_choice,answer_duration,relearn_flag) values (?,?,?,?,?,?,?);";
+    NSString *sql2 = @"update word_record set latest_answer_duration = ?, test_count = test_count + 1, correct_count = correct_count + ?, updated_at = ? where id = ?;";
+    NSDate *now = [NSDate date];
+    
+    FMDatabase *db = [self getDBWithName:DB_NAME];
+    
+    [db open];
+    [db beginTransaction];
+    BOOL isSucceeded = YES;
+    for (int i = 0; i < wordIdArray.count; i++) {
+        if (![db executeUpdate:sql, [NSNumber numberWithInt:testType], wordIdArray[i], resultsArray[i],now,userChoicesArray[i],answeringTimeArray[i],[NSNumber numberWithBool:relearnFlag]]) {
+            isSucceeded  = NO;
+            break;
+        }
+        if (![db executeUpdate:sql2, answeringTimeArray[i], resultsArray[i], now, wordIdArray[i]]) {
+            isSucceeded = NO;
+            break;
+        }
+    }
+    if( isSucceeded ) [db commit];
+    else [db rollback];
+
+    [db close];
+
+    
+}
 @end

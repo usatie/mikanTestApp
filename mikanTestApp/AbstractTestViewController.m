@@ -84,7 +84,6 @@
     NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
     for (int i = 0; i<4; i++) {
         [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
-//        DLog(@"randArray = %@",randArray);
     }
     //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
     for (int i = 0; i<4; i++) {
