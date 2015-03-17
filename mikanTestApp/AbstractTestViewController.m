@@ -104,10 +104,12 @@
     
     //indexを次に進める
     testIndex++;
+    [self.testView enableAllButtons];
 }
 
 #pragma mark Button Action
 - (void)answerButtonPushed:(answerButton *)btn{
+    [self.testView disableAllButtons];
     choiceIndex = (int)btn.randomTag;
     [_userChoicesArray addObject:[NSNumber numberWithInt:choiceIndex]];
     if (choiceIndex == answerButtonTag) {
@@ -126,11 +128,8 @@
     DLog(@"finish!");
     _answerDurationArray = _userChoicesArray;
     [_delegate finishDelegateWithBlock:^{
-        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];        
+        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];
     }];
-//    [self dismissViewControllerAnimated:YES completion:^{
-//        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];        
-//    }];
 }
 
 

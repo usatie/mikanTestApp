@@ -15,4 +15,7 @@
 @property (strong, nonatomic) IBOutlet answerButton *answerButton2;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton3;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton4;
+
+- (void)enableAllButtons;
+- (void)disableAllButtons;
 @end

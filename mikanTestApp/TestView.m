@@ -28,6 +28,18 @@
     return self;
 }
 
+- (void)enableAllButtons{
+    _answerButton1.enabled = YES;
+    _answerButton2.enabled = YES;
+    _answerButton3.enabled = YES;
+    _answerButton4.enabled = YES;
+}
+- (void)disableAllButtons{
+    _answerButton1.enabled = NO;
+    _answerButton2.enabled = NO;
+    _answerButton3.enabled = NO;
+    _answerButton4.enabled = NO;
+}
 
 /*
 // Only override drawRect: if you perform custom drawing.
