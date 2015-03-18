@@ -1036,6 +1036,12 @@
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
+		24CE31681AB9601A0096C097 /* bad.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31641AB9601A0096C097 /* bad.png */; };
+		24CE31691AB9601A0096C097 /* excellent.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31651AB9601A0096C097 /* excellent.png */; };
+		24CE316A1AB9601A0096C097 /* good.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31661AB9601A0096C097 /* good.png */; };
+		24CE316B1AB9601A0096C097 /* great.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31671AB9601A0096C097 /* great.png */; };
+		24CE316E1AB9608A0096C097 /* checkOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316C1AB9608A0096C097 /* checkOff.png */; };
+		24CE316F1AB9608A0096C097 /* checkOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316D1AB9608A0096C097 /* checkOn.png */; };
 		BA872F4DC9C28DB4C31BA87D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E89B5863D4DDFC59AFE9F98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2100,6 +2106,12 @@
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
 		24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardOverlayView.m; sourceTree = "<group>"; };
 		24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DraggableCardView.xib; sourceTree = "<group>"; };
+		24CE31641AB9601A0096C097 /* bad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bad.png; sourceTree = "<group>"; };
+		24CE31651AB9601A0096C097 /* excellent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = excellent.png; sourceTree = "<group>"; };
+		24CE31661AB9601A0096C097 /* good.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = good.png; sourceTree = "<group>"; };
+		24CE31671AB9601A0096C097 /* great.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great.png; sourceTree = "<group>"; };
+		24CE316C1AB9608A0096C097 /* checkOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOff.png; sourceTree = "<group>"; };
+		24CE316D1AB9608A0096C097 /* checkOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOn.png; sourceTree = "<group>"; };
 		66DE6E9C6D08D3969CE42EA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A79AD71459D8F52B5177064A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3198,6 +3210,12 @@
 		2466F2181AAAFDC2001E8522 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				24CE316C1AB9608A0096C097 /* checkOff.png */,
+				24CE316D1AB9608A0096C097 /* checkOn.png */,
+				24CE31641AB9601A0096C097 /* bad.png */,
+				24CE31651AB9601A0096C097 /* excellent.png */,
+				24CE31661AB9601A0096C097 /* good.png */,
+				24CE31671AB9601A0096C097 /* great.png */,
 				24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */,
 				241FE8C31AAD99E8000290FB /* test */,
 				2466F2211AAB023B001E8522 /* sound_correct.mp3 */,
@@ -3443,6 +3461,7 @@
 				241FEECC1AAD99EF000290FB /* legislation.mp3 in Resources */,
 				241FEF751AAD99EF000290FB /* quantity.mp3 in Resources */,
 				241FEFDA1AAD99EF000290FB /* snore.mp3 in Resources */,
+				24CE31681AB9601A0096C097 /* bad.png in Resources */,
 				241FEF081AAD99EF000290FB /* obtain.mp3 in Resources */,
 				241FECB91AAD99EF000290FB /* accountant.mp3 in Resources */,
 				241FEFF71AAD99EF000290FB /* stern.mp3 in Resources */,
@@ -3717,6 +3736,7 @@
 				241FEE1C1AAD99EF000290FB /* exalt.mp3 in Resources */,
 				241FEEEF1AAD99EF000290FB /* monarchy.mp3 in Resources */,
 				241FECD11AAD99EF000290FB /* aftereffect.mp3 in Resources */,
+				24CE316B1AB9601A0096C097 /* great.png in Resources */,
 				241FEDC91AAD99EF000290FB /* deputy.mp3 in Resources */,
 				241FEE9A1AAD99EF000290FB /* indifferent.mp3 in Resources */,
 				241FEF1C1AAD99EF000290FB /* pack.mp3 in Resources */,
@@ -3832,6 +3852,7 @@
 				241FEDA51AAD99EF000290FB /* creed.mp3 in Resources */,
 				241FED551AAD99EF000290FB /* channel.mp3 in Resources */,
 				241FEDCD1AAD99EF000290FB /* desperate.mp3 in Resources */,
+				24CE31691AB9601A0096C097 /* excellent.png in Resources */,
 				241FF0601AAD99EF000290FB /* uphold.mp3 in Resources */,
 				241FEE121AAD99EF000290FB /* era.mp3 in Resources */,
 				241FEEE51AAD99EF000290FB /* melancholy.mp3 in Resources */,
@@ -4033,6 +4054,7 @@
 				241FECDE1AAD99EF000290FB /* amalgamate.mp3 in Resources */,
 				241FEE141AAD99EF000290FB /* erratic.mp3 in Resources */,
 				241FEF091AAD99EF000290FB /* occasionally.mp3 in Resources */,
+				24CE316F1AB9608A0096C097 /* checkOn.png in Resources */,
 				241FEF4E1AAD99EF000290FB /* predict.mp3 in Resources */,
 				241FF0031AAD99EF000290FB /* subject.mp3 in Resources */,
 				241FEDC11AAD99EF000290FB /* default.mp3 in Resources */,
@@ -4227,6 +4249,7 @@
 				241FEF121AAD99EF000290FB /* opponent.mp3 in Resources */,
 				241FEECB1AAD99EF000290FB /* leak.mp3 in Resources */,
 				241FEE361AAD99EF000290FB /* fervor.mp3 in Resources */,
+				24CE316E1AB9608A0096C097 /* checkOff.png in Resources */,
 				241FEF631AAD99EF000290FB /* property.mp3 in Resources */,
 				241FED371AAD99EF000290FB /* brave.mp3 in Resources */,
 				241FED901AAD99EF000290FB /* contingent.mp3 in Resources */,
@@ -4285,6 +4308,7 @@
 				241FECD81AAD99EF000290FB /* aide.mp3 in Resources */,
 				241FEEFF1AAD99EF000290FB /* nourishment.mp3 in Resources */,
 				241FEF0E1AAD99EF000290FB /* odor.mp3 in Resources */,
+				24CE316A1AB9601A0096C097 /* good.png in Resources */,
 				241FF03E1AAD99EF000290FB /* timid.mp3 in Resources */,
 				241FEDFE1AAD99EF000290FB /* embark.mp3 in Resources */,
 				241FEE941AAD99EF000290FB /* incompatible.mp3 in Resources */,

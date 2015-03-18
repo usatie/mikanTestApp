@@ -29,6 +29,11 @@
     [self.navigationItem setHidesBackButton:YES];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    DLog(@"%@",self.tableView);
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -45,7 +50,32 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.englishLabel.text = @"english";
+    cell.backgroundColor = [UIColor clearColor ];
+    cell.englishLabel.text = @"japanese";
+    cell.japaneseLabel.text = @"english";
+    
+    
+    cell.evaluationImageView.image = [UIImage imageNamed:@"bad.png"];
+    cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
+
+    if(YES) {
+        cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
+        cell.hasChecked = 1;
+    } else {
+        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
+        cell.hasChecked = 0;
+    }
+    cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
+    if(NO) {
+        [cell.archiveButton setImage:nil forState:UIControlStateDisabled];
+        cell.archiveButton.enabled = NO;
+    }
+    
+    UIColor *color = [UIColor blackColor];
+    UIColor *alphaColor = [color colorWithAlphaComponent:0.0];
+    cell.archiveButton.backgroundColor =alphaColor;
+
     return cell;
 }
 #pragma mark Button Actions
