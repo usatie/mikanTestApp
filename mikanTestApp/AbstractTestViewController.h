@@ -13,7 +13,7 @@
 
 @protocol AbstractTestViewControllerDelegate;
 
-@interface AbstractTestViewController : UIViewController
+@interface AbstractTestViewController : UIViewController<TestViewDelegate>
 @property id<AbstractTestViewControllerDelegate> delegate;
 @property TestView *testView;
 

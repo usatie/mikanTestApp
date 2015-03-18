@@ -14,9 +14,9 @@
     UserUtil *util;
     
     int testIndex;
-    int choiceIndex;
-    
     BOOL shouldPlaySound;
+    
+    NSDate *date;
 }
 
 @end
@@ -63,13 +63,9 @@
 #pragma mark initialization
 - (void)initTestView{
     self.testView = [[TestView alloc] initWithFrame:self.view.frame];
+    self.testView.delegate = self;
     self.testView.testWordsDic = _testWordsDic;
     [self.view addSubview:self.testView];
-    
-    [self.testView.answerButton1 addTarget:self action:@selector(answerButtonPushed:) forControlEvents:UIControlEventTouchDown];
-    [self.testView.answerButton2 addTarget:self action:@selector(answerButtonPushed:) forControlEvents:UIControlEventTouchDown];
-    [self.testView.answerButton3 addTarget:self action:@selector(answerButtonPushed:) forControlEvents:UIControlEventTouchDown];
-    [self.testView.answerButton4 addTarget:self action:@selector(answerButtonPushed:) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)loadUserDefaults
@@ -80,59 +76,44 @@
 #pragma mark show methods
 - (void)showAndPlayNextWord
 {
-//    //[1...4]をランダムに並び替える
-//    NSMutableArray *randArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4]];
-//    for (int i = 0; i<4; i++) {
-//        [randArray exchangeObjectAtIndex:arc4random()%4 withObjectAtIndex:arc4random()%4];
-//    }
-//    //Button にrandomに選択肢を表示。正解の選択肢のタグを保存。
-//    for (int i = 0; i<4; i++) {
-//        int rand = [randArray[i] intValue];
-//        answerButton *btn = (answerButton *)[self.testView viewWithTag:i+1];
-//        [btn setTitle:_testWordsDic[@"choicesArray"][testIndex][rand-1] forState:UIControlStateNormal];
-//        btn.randomTag = rand;
-//    }
-//    
-//    //answerIndexを設定
-//    answerButtonTag = [_testWordsDic[@"answerIndex"][testIndex] intValue];
-//    
-//    //Englishを表示
-//    self.testView.englishLabel.text = _testWordsDic[@"english"][testIndex];
-    
+    //次の単語を表示
     [self.testView showWordWithIndex:testIndex];
     //次の単語を発音
     [self playSound:_testWordsDic[@"english"][testIndex]];
-    
     //indexを次に進める
     testIndex++;
+    //ボタンをenable
     [self.testView enableAllButtons];
+    //dateをリセット
+    date = [NSDate date];
 }
 
 #pragma mark Button Action
-- (void)answerButtonPushed:(answerButton *)btn{
+- (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice{
+    //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
+    //
+    [_userChoicesArray addObject:[NSNumber numberWithInt:choice]];
+    [_resultsArray addObject:[NSNumber numberWithBool:result]];
+    [_answerDurationArray addObject:[NSNumber numberWithDouble:-[date timeIntervalSinceNow]]];
     
-    [_userChoicesArray addObject:[NSNumber numberWithInt:choiceIndex]];
-    if (btn.choiceNumTag == self.testView.answerButtonTag) {
+    if (result) {
         [self playSound:@"sound_correct"];
-        [_resultsArray addObject:@1];
     } else {
         [self playSound:@"sound_incorrect"];
-        [_resultsArray addObject:@0];
     }
     
     if (testIndex < 10){
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }
-//    _testResultsDic = [NSDictionary dictionaryWithObjects:@[_resultsArray,_userChoicesArray] forKeys:@[@"result",@"userChoice"]];
     DLog(@"finish!");
-    _answerDurationArray = _userChoicesArray;
-    [_delegate finishDelegateWithBlock:^{
-        [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];
-    }];
+    if ([_delegate respondsToSelector:@selector(finishDelegateWithBlock:)]) {
+        [_delegate finishDelegateWithBlock:^{
+            [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];
+        }];
+    }
 }
-
 
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName

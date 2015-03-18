@@ -62,4 +62,11 @@
     //Englishを表示
     self.englishLabel.text = _testWordsDic[@"english"][index];
 }
+- (IBAction)answerButtonPushed:(id)sender {
+    answerButton *btn = (answerButton *)sender;
+    BOOL result = _answerButtonTag==btn.choiceNumTag ? 1:0;
+    if ([_delegate respondsToSelector:@selector(answerButtonPushedDelegate:choice:)]) {
+        [_delegate answerButtonPushedDelegate:result choice:btn.choiceNumTag];
+    }
+}
 @end
