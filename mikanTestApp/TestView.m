@@ -52,19 +52,34 @@
     for (int i = 0; i<4; i++) {
         int rand = [randArray[i] intValue];
         answerButton *btn = (answerButton *)[self viewWithTag:i+1];
+        btn.backgroundColor = [UIColor whiteColor];
         [btn setTitle:_testWordsDic[@"choicesArray"][index][rand-1] forState:UIControlStateNormal];
         btn.choiceNumTag = rand;
+        
+        //正解の選択肢のtagを保存
+        if (rand == [_testWordsDic[@"answerIndex"][index] intValue]) {
+            _answerButtonTag = i+1;
+        }
     }
-    
-    //answerIndexを設定
-    self.answerButtonTag = [_testWordsDic[@"answerIndex"][index] intValue];
     
     //Englishを表示
     self.englishLabel.text = _testWordsDic[@"english"][index];
 }
 - (IBAction)answerButtonPushed:(id)sender {
     answerButton *btn = (answerButton *)sender;
-    BOOL result = _answerButtonTag==btn.choiceNumTag ? 1:0;
+    
+    //正解不正解の判断
+    BOOL result = btn.tag==_answerButtonTag ? 1:0;
+    
+    //正解不正解に応じてボタンの色を変える
+    if (result) {
+        btn.backgroundColor = [UIColor greenColor];
+    } else {
+        answerButton *answerBtn = (answerButton *)[self viewWithTag:_answerButtonTag];
+        answerBtn.backgroundColor = [UIColor orangeColor];
+    }
+    
+    //ボタンが押されたときのdelegateメソッドを呼び出し
     if ([_delegate respondsToSelector:@selector(answerButtonPushedDelegate:choice:)]) {
         [_delegate answerButtonPushedDelegate:result choice:btn.choiceNumTag];
     }

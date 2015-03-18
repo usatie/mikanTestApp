@@ -40,18 +40,8 @@
 
     [self initTestView];
     [self showAndPlayNextWord];
-    
-    //prepare
-//    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",@"sound_correct"] ofType:nil];
-//    if (path) {
-//        NSURL *url = [NSURL fileURLWithPath:path];
-//        NSError *error;
-//        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-//        if (error) NSLog(@"error. could not pronounce the first file");
-//        [_audio prepareToPlay];
-//    } else {
-//        //        NSLog(@"path is nil. Could not pronounce %@", fileName);
-//    }
+    //これやると速くなるはずなんだけどなあ・・・
+    [_audio prepareToPlay];
 }
 
 - (void)didReceiveMemoryWarning {
