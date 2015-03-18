@@ -15,7 +15,6 @@
     UIScrollView *scrollView;
     NSDictionary *testedWordsDic;
     NSDictionary *hasRememberedDic;
-    NSArray *resultImageNameArray;
     
     WordTableView *tableView;
 }
@@ -29,7 +28,6 @@
     // Do any additional setup after loading the view.
     testedWordsDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"testWordsDic"];
     hasRememberedDic = [DBHandler getHasRememberedDicWithWordIdArray:testedWordsDic[@"wordId"]];
-    resultImageNameArray = @[@"bad.png",@"good.png",@"great.png",@"excellent.png"];
     NSMutableDictionary *wordsDic = [[NSMutableDictionary alloc] initWithDictionary:testedWordsDic];
     [wordsDic addEntriesFromDictionary:hasRememberedDic];
     tableView = [[WordTableView alloc] initWithFrame:CGRectMake(0, 20+self.navigationController.navigationBar.frame.size.height, 320, 550) wordsDic:wordsDic];

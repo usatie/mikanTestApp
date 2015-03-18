@@ -11,6 +11,7 @@
 
 @implementation WordTableView{
     NSDictionary *wordsDic;
+    NSArray *resultImageNameArray;
 }
 
 //- (void)initWithFrame:(CGSize)frame{
@@ -31,6 +32,7 @@
         self.delegate = self;
         self.dataSource = self;
         self.rowHeight = 55;
+        resultImageNameArray = @[@"bad.png",@"good.png",@"great.png",@"excellent.png"];
 
         UINib *cellNib = [UINib nibWithNibName:@"CustomTableViewCell" bundle:nil];
         [self registerNib:cellNib forCellReuseIdentifier:@"Cell"];
@@ -46,8 +48,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
         int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
-    //    int testResultIndex = [hasRememberedDic[@"testResult"][indexPath.row] intValue];
-    //    BOOL hasRemembered = [hasRememberedDic[@"hasRemembered"][indexPath.row] boolValue];
+        int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
+        BOOL hasRemembered = [wordsDic[@"hasRemembered"][indexPath.row] boolValue];
 
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -55,24 +57,24 @@
     cell.englishLabel.text = wordsDic[@"english"][indexPath.row];
     cell.japaneseLabel.text = wordsDic[@"choicesArray"][indexPath.row][answerIndex-1];
 
-//    cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
-//    cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
+    cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-//    if(hasRemembered) {
+    if(hasRemembered) {
         cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
         cell.hasChecked = YES;
-//    } else {
-//        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
-//        cell.hasChecked = NO;
-//    }
+    } else {
+        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
+        cell.hasChecked = NO;
+    }
     cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-//    if(testResultIndex < 1) {
-//        //        [cell.archiveButton setImage:nil forState:UIControlStateDisabled];
-//        cell.archiveImageView.image = nil;
-//        cell.hasChecked = NO;
-//        cell.archiveButton.enabled = NO;
-//    }
+    if(testResultIndex < 1) {
+        //        [cell.archiveButton setImage:nil forState:UIControlStateDisabled];
+        cell.archiveImageView.image = nil;
+        cell.hasChecked = NO;
+        cell.archiveButton.enabled = NO;
+    }
     
     UIColor *color = [UIColor blackColor];
     UIColor *alphaColor = [color colorWithAlphaComponent:0.0];

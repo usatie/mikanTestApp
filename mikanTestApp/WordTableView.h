@@ -10,6 +10,4 @@
 
 @interface WordTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 - (id)initWithFrame:(CGRect)frame wordsDic:(NSDictionary *)wordsDictionary;
-@property NSDictionary *hasRememberedDic;
-
 @end
