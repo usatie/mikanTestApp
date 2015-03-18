@@ -1,5 +1,5 @@
 //
-//  TestViewController.m
+//  AbstractTestViewController.m
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/17.
@@ -98,10 +98,8 @@
         return;
     }
     DLog(@"finish!");
-    if ([_delegate respondsToSelector:@selector(finishDelegateWithBlock:)]) {
-        [_delegate finishDelegateWithBlock:^{
-            [DBHandler insertTestResult:_testWordsDic[@"wordId"] resultArray:_resultsArray userChoiceArray:_userChoicesArray answeringTimeArray:_answerDurationArray testType:0 relearnFlag:0];
-        }];
+    if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
+        [_delegate finishDelegate];
     }
 }
 

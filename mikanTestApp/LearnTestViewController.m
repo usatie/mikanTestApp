@@ -35,7 +35,9 @@
 }
 */
 
-- (void)finishDelegateWithBlock:(void (^)())block{
-    [self dismissViewControllerAnimated:YES completion:block];
+- (void)finishDelegate{
+    [self dismissViewControllerAnimated:YES completion:^{
+        [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
+    }];
 }
 @end

@@ -1,5 +1,5 @@
 //
-//  TestViewController.h
+//  AbstractTestViewController.h
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/17.
@@ -32,7 +32,6 @@
 @end
 
 @protocol AbstractTestViewControllerDelegate <NSObject>
-
-@optional
-- (void)finishDelegateWithBlock:(void (^)())block;
+@required
+- (void)finishDelegate;
 @end
