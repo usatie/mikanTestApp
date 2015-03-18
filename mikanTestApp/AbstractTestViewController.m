@@ -82,7 +82,7 @@
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice{
     //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
-    //
+    //DBHandlerに入れるためのもの
     [_userChoicesArray addObject:[NSNumber numberWithInt:choice]];
     [_resultsArray addObject:[NSNumber numberWithBool:result]];
     [_answerDurationArray addObject:[NSNumber numberWithDouble:-[date timeIntervalSinceNow]]];
@@ -115,7 +115,6 @@
     NSString *line;
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishArray = [[NSMutableArray alloc] init];
-//    NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
     NSMutableArray *choicesArrayArray = [[NSMutableArray alloc] init];
     NSMutableArray *answerIndexArray = [[NSMutableArray alloc] init];
     NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 10)];
@@ -128,7 +127,6 @@
         NSArray *choiceArray = [NSArray arrayWithArray:[array objectsAtIndexes:choicesIndexSet]];
         [wordIdArray addObject:array[0]];
         [englishArray addObject:array[1]];
-//        [japaneseArray addObject:array[2]];
         [choicesArrayArray addObject:choiceArray];
         [answerIndexArray addObject:[NSNumber numberWithInt:[array[6] intValue]]];
         

@@ -196,10 +196,46 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="aF3-d0-gwG"/>
+                    <connections>
+                        <segue destination="DTg-nT-HZ1" kind="push" identifier="segueToResult" id="xcA-BA-Qpg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kD-cI-oFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="-1054"/>
+            <point key="canvasLocation" x="1791" y="-1054"/>
+        </scene>
+        <!--Learn Test Result View Controller-->
+        <scene sceneID="DIe-c5-ahj">
+            <objects>
+                <viewController id="DTg-nT-HZ1" customClass="LearnTestResultViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XUr-6P-4LE"/>
+                        <viewControllerLayoutGuide type="bottom" id="MgH-JA-Wpc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fwO-3x-jrr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IHN-U3-HxI">
+                                <rect key="frame" x="277" y="81" width="34" height="30"/>
+                                <state key="normal" title="back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButtonPushed:" destination="DTg-nT-HZ1" eventType="touchUpInside" id="iHI-NB-hF2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="IHN-U3-HxI" secondAttribute="centerX" id="ZcC-Xv-KGD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="p8P-Yo-MOP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdC-Ms-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2461" y="-1054"/>
         </scene>
         <!--Result-->
         <scene sceneID="wg7-f3-ORb">

@@ -1030,6 +1030,7 @@
 		24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657961AB8285000FA810D /* AbstractTestViewController.m */; };
 		24A6579B1AB8322900FA810D /* UserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657991AB8322900FA810D /* UserUtil.m */; };
 		24A6579E1AB871B800FA810D /* answerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6579D1AB871B800FA810D /* answerButton.m */; };
+		24A657A41AB916A500FA810D /* LearnTestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A31AB916A500FA810D /* LearnTestResultViewController.m */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
@@ -2087,6 +2088,8 @@
 		24A6579A1AB8322900FA810D /* UserUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUtil.h; sourceTree = "<group>"; };
 		24A6579C1AB871B800FA810D /* answerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answerButton.h; sourceTree = "<group>"; };
 		24A6579D1AB871B800FA810D /* answerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = answerButton.m; sourceTree = "<group>"; };
+		24A657A21AB916A500FA810D /* LearnTestResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnTestResultViewController.h; sourceTree = "<group>"; };
+		24A657A31AB916A500FA810D /* LearnTestResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestResultViewController.m; sourceTree = "<group>"; };
 		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
 		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
@@ -3210,6 +3213,8 @@
 				2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */,
 				24A657921AB7DA9900FA810D /* LearnTestViewController.h */,
 				24A657931AB7DA9900FA810D /* LearnTestViewController.m */,
+				24A657A21AB916A500FA810D /* LearnTestResultViewController.h */,
+				24A657A31AB916A500FA810D /* LearnTestResultViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
 			);
@@ -4436,6 +4441,7 @@
 				24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */,
 				24A6579E1AB871B800FA810D /* answerButton.m in Sources */,
 				24A657941AB7DA9900FA810D /* LearnTestViewController.m in Sources */,
+				24A657A41AB916A500FA810D /* LearnTestResultViewController.m in Sources */,
 				24A657791AB71D5800FA810D /* DBHandler.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,
