@@ -33,15 +33,18 @@
     _resultsArray = [[NSMutableArray alloc] init];
     _userChoicesArray = [[NSMutableArray alloc] init];
     _answerDurationArray = [[NSMutableArray alloc] init];
-    _testWordsDic = [self getTestWordsDictionaryWithFileName:@"sample_test"];
-    DLog(@"testWordsDic = %@",_testWordsDic);
     
-
-
+    _testWordsDic = [self getTestWords];
+    DLog(@"test = %@",_testWordsDic);
     [self initTestView];
     [self showAndPlayNextWord];
     //これやると速くなるはずなんだけどなあ・・・
     [_audio prepareToPlay];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +59,14 @@
     self.testView.delegate = self;
     self.testView.testWordsDic = _testWordsDic;
     [self.view addSubview:self.testView];
+}
+
+- (NSDictionary *)getTestWords
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    return @{};
 }
 
 - (void)loadUserDefaults
@@ -100,41 +111,9 @@
     DLog(@"finish!");
     if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
         [_delegate finishDelegate];
+    } else {
+        DLog(@"no responds to finishDelegate");
     }
-}
-
-#pragma mark Temporary methods
-- (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
-{
-    NSString *csvFile = [[NSBundle mainBundle] pathForResource:fileName ofType:@"csv"];
-    NSData *csvData = [NSData dataWithContentsOfFile:csvFile];
-    NSString *csv = [[NSString alloc] initWithData:csvData encoding:NSUTF8StringEncoding];
-    NSScanner *scanner = [NSScanner scannerWithString:csv];
-    
-    NSCharacterSet *chSet = [NSCharacterSet newlineCharacterSet];
-    NSString *line;
-    NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
-    NSMutableArray *englishArray = [[NSMutableArray alloc] init];
-    NSMutableArray *choicesArrayArray = [[NSMutableArray alloc] init];
-    NSMutableArray *answerIndexArray = [[NSMutableArray alloc] init];
-    NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, 10)];
-    NSIndexSet *choicesIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(2, 4)];
-    
-    //csvから読み込み、各Arrayに一旦格納
-    while (![scanner isAtEnd]) {
-        [scanner scanUpToCharactersFromSet:chSet intoString:&line];
-        NSArray *array = [line componentsSeparatedByString:@","];
-        NSArray *choiceArray = [NSArray arrayWithArray:[array objectsAtIndexes:choicesIndexSet]];
-        [wordIdArray addObject:array[0]];
-        [englishArray addObject:array[1]];
-        [choicesArrayArray addObject:choiceArray];
-        [answerIndexArray addObject:[NSNumber numberWithInt:[array[6] intValue]]];
-        
-        [scanner scanCharactersFromSet:chSet intoString:NULL];
-    }
-    //Dictionaryに各Arrayを格納。
-    return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishArray objectsAtIndexes:categoryIndexSet],[choicesArrayArray objectsAtIndexes:categoryIndexSet],[answerIndexArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"choicesArray",@"answerIndex"]];
-    
 }
 
 -(void)playSound:(NSString *)fileName

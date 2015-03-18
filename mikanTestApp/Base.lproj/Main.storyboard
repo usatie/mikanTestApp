@@ -204,7 +204,7 @@
             </objects>
             <point key="canvasLocation" x="1791" y="-1054"/>
         </scene>
-        <!--Learn Test Result View Controller-->
+        <!--テスト結果-->
         <scene sceneID="DIe-c5-ahj">
             <objects>
                 <viewController id="DTg-nT-HZ1" customClass="LearnTestResultViewController" sceneMemberID="viewController">
@@ -231,7 +231,7 @@
                             <constraint firstAttribute="centerX" secondItem="IHN-U3-HxI" secondAttribute="centerX" id="ZcC-Xv-KGD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="p8P-Yo-MOP"/>
+                    <navigationItem key="navigationItem" title="テスト結果" id="p8P-Yo-MOP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdC-Ms-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

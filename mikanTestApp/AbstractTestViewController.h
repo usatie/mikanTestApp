@@ -26,9 +26,11 @@
 
 @property BOOL relearnFlag;
 
-
+- (NSDictionary *)getTestWords;
 //Temporary properties
 @property AVAudioPlayer *audio;
+
+
 @end
 
 @protocol AbstractTestViewControllerDelegate <NSObject>
