@@ -1031,6 +1031,8 @@
 		24A6579B1AB8322900FA810D /* UserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657991AB8322900FA810D /* UserUtil.m */; };
 		24A6579E1AB871B800FA810D /* answerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6579D1AB871B800FA810D /* answerButton.m */; };
 		24A657A41AB916A500FA810D /* LearnTestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A31AB916A500FA810D /* LearnTestResultViewController.m */; };
+		24A657A91AB9477300FA810D /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657A61AB9477300FA810D /* CustomTableViewCell.xib */; };
+		24A657AA1AB9477300FA810D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A71AB9477300FA810D /* CustomTableViewCell.m */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
 		24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA321AAEE1F700921BB3 /* DraggableCardOverlayView.m */; };
 		24B2EA351AAEE21B00921BB3 /* DraggableCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B2EA341AAEE21B00921BB3 /* DraggableCardView.xib */; };
@@ -2090,6 +2092,9 @@
 		24A6579D1AB871B800FA810D /* answerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = answerButton.m; sourceTree = "<group>"; };
 		24A657A21AB916A500FA810D /* LearnTestResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnTestResultViewController.h; sourceTree = "<group>"; };
 		24A657A31AB916A500FA810D /* LearnTestResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestResultViewController.m; sourceTree = "<group>"; };
+		24A657A61AB9477300FA810D /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		24A657A71AB9477300FA810D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		24A657A81AB9477300FA810D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
 		24B2EA2E1AAEE13C00921BB3 /* DraggableCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardView.h; sourceTree = "<group>"; };
 		24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DraggableCardView.m; sourceTree = "<group>"; };
 		24B2EA311AAEE1F700921BB3 /* DraggableCardOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DraggableCardOverlayView.h; sourceTree = "<group>"; };
@@ -3224,6 +3229,7 @@
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				24A657A51AB9476400FA810D /* CustomCell */,
 				24A657981AB8321B00FA810D /* UserUtil */,
 				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				24A657861AB7D32900FA810D /* DBHandler */,
@@ -3262,6 +3268,16 @@
 				24A657991AB8322900FA810D /* UserUtil.m */,
 			);
 			name = UserUtil;
+			sourceTree = "<group>";
+		};
+		24A657A51AB9476400FA810D /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				24A657A61AB9477300FA810D /* CustomTableViewCell.xib */,
+				24A657A71AB9477300FA810D /* CustomTableViewCell.m */,
+				24A657A81AB9477300FA810D /* CustomTableViewCell.h */,
+			);
+			name = CustomCell;
 			sourceTree = "<group>";
 		};
 		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
@@ -3693,6 +3709,7 @@
 				241FEFCF1AAD99EF000290FB /* shed.mp3 in Resources */,
 				241FEF2A1AAD99EF000290FB /* penetrate.mp3 in Resources */,
 				241FEF551AAD99EF000290FB /* previous.mp3 in Resources */,
+				24A657A91AB9477300FA810D /* CustomTableViewCell.xib in Resources */,
 				241FEF371AAD99EF000290FB /* pious.mp3 in Resources */,
 				241FEEB01AAD99EF000290FB /* insignificant.mp3 in Resources */,
 				241FEDA11AAD99EF000290FB /* cracked.mp3 in Resources */,
@@ -4450,6 +4467,7 @@
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
 				24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */,
 				24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */,
+				24A657AA1AB9477300FA810D /* CustomTableViewCell.m in Sources */,
 				2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -30,4 +30,5 @@
                  testType:(int)testType
               relearnFlag:(BOOL)relearnFlag;
 
++(NSDictionary *)getHasRememberedDic:(NSString *)category;
 @end
