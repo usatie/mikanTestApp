@@ -225,25 +225,10 @@
                                     <action selector="backButtonPushed:" destination="DTg-nT-HZ1" eventType="touchUpInside" id="iHI-NB-hF2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SN1-2t-hPJ">
-                                <rect key="frame" x="140" y="25" width="320" height="550"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="550" id="5w7-UP-zTA"/>
-                                    <constraint firstAttribute="width" constant="320" id="uGp-Bi-gl3"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="DTg-nT-HZ1" id="paB-U6-9u1"/>
-                                    <outlet property="delegate" destination="DTg-nT-HZ1" id="c6o-mn-MQy"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="テスト結果" id="p8P-Yo-MOP"/>
-                    <connections>
-                        <outlet property="tableView" destination="SN1-2t-hPJ" id="T94-HZ-5KW"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdC-Ms-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

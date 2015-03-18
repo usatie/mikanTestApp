@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "UserUtil.h"
 
-@interface LearnTestResultViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface LearnTestResultViewController : UIViewController//<UITableViewDataSource,UITableViewDelegate>
 
 //- (IBAction)next:(id)sender;
 //- (IBAction)test:(id)sender;
@@ -52,7 +52,7 @@
 
 
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+//@property (strong, nonatomic) IBOutlet UITableView *tableView;
 - (IBAction)backButtonPushed:(id)sender;
 
 @end
