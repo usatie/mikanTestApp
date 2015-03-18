@@ -11,6 +11,7 @@
 #import "DBHandler.h"
 
 @interface LearnTestResultViewController (){
+    UIScrollView *scrollView;
     NSDictionary *testedWordsDic;
     NSDictionary *hasRememberedDic;
     NSArray *resultImageNameArray;
