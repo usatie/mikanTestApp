@@ -19,6 +19,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UINib *nib = [UINib nibWithNibName:@"CustomTableViewCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:@"Cell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -32,6 +34,21 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+
+#pragma mark TableView delegate methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *CellIdentifier = @"Cell";
+    CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    cell.englishLabel.text = @"english";
+    return cell;
+}
+#pragma mark Button Actions
 - (IBAction)backButtonPushed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 //    [self.navigationController popToRootViewControllerAnimated:NO];
