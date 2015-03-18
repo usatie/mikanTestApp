@@ -143,6 +143,64 @@
     return hasRememberedDic;
 }
 
++(NSDictionary *)getHasRememberedDicWithWordIdArray:(NSArray *)wordIdArray
+{
+    NSMutableDictionary *hasRememberedDic = [[NSMutableDictionary alloc] init];
+//    NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
+    NSMutableArray *japaneseLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *testResultArray = [[NSMutableArray alloc] init];
+    NSMutableArray *hasRememberedArray = [[NSMutableArray alloc] init];
+    NSMutableArray *hasTestedArray = [[NSMutableArray alloc] init];
+    
+    FMDatabase *db = [self getDBWithName:DB_NAME];
+//    NSDictionary *categoryIdDic = [self getCategoryIdDic];
+    NSString *sql = @"select w.id, w.japanese_label, w.english_label, r.latest_answer_duration, r.latest_test_result, r.has_tested, r.has_remembered from word as w left join word_record as r where w.id = r.word_id and w.id = ?";
+    
+    [db open];
+    FMResultSet *result;
+    
+    for (int i = 0; i <wordIdArray.count; i++) {
+        result = [db executeQuery:sql, wordIdArray[i]];
+        
+        while ([result next]) {
+            //        [wordIdArray addObject:[result objectForColumnName:@"id"]];
+            [japaneseLabelArray addObject:[result objectForColumnName:@"japanese_label"]];
+            [englishLabelArray addObject:[result objectForColumnName:@"english_label"]];
+            [testResultArray addObject:[self getEvaluationWithTime:[result objectForColumnName:@"latest_answer_duration"] hasCorrected:[result objectForColumnName:@"latest_test_result"] hasTested:[result objectForColumnName:@"has_tested"]]];
+            [hasRememberedArray addObject:[result objectForColumnName:@"has_remembered"]];
+            [hasTestedArray addObject:[result objectForColumnName:@"has_tested"]];
+        }
+
+    }
+    
+    [hasRememberedDic setObject:wordIdArray forKey:@"wordId"];
+    [hasRememberedDic setObject:englishLabelArray forKey:@"englishLabel"];
+    [hasRememberedDic setObject:japaneseLabelArray forKey:@"japaneseLabel"];
+    [hasRememberedDic setObject:testResultArray forKey:@"testResult"];
+    [hasRememberedDic setObject:hasRememberedArray forKey:@"hasRemembered"];
+    [hasRememberedDic setObject:hasTestedArray forKey:@"hasTested"];
+    [db close];
+    
+    return hasRememberedDic;
+}
+
++(void)setHasRememberedWithArray:(NSArray *)wordsIdArray
+              hasRememberedArray:(NSArray *)hasRememberedArray
+{
+    FMDatabase *db = [self getDBWithName:DB_NAME];
+    [db open];
+    
+    NSString* sql=@"update word_record set has_remembered = ? where word_id = ?;";
+    
+    for (int i=0; i<[wordsIdArray count]; i++) {
+        [db executeUpdate:sql, hasRememberedArray[i],wordsIdArray[i]];
+    }
+    
+    [db close];
+    
+    DLog(@"update hasRelearned");
+}
 
 
 //mtp

@@ -225,8 +225,8 @@
                                     <action selector="backButtonPushed:" destination="DTg-nT-HZ1" eventType="touchUpInside" id="iHI-NB-hF2"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SN1-2t-hPJ">
-                                <rect key="frame" x="140" y="361" width="320" height="550"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SN1-2t-hPJ">
+                                <rect key="frame" x="140" y="119" width="320" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="550" id="5w7-UP-zTA"/>
@@ -240,7 +240,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="SN1-2t-hPJ" firstAttribute="top" secondItem="IHN-U3-HxI" secondAttribute="bottom" constant="250" id="CNl-DL-2Ql"/>
+                            <constraint firstItem="SN1-2t-hPJ" firstAttribute="top" secondItem="IHN-U3-HxI" secondAttribute="bottom" id="CNl-DL-2Ql"/>
                             <constraint firstAttribute="centerX" secondItem="SN1-2t-hPJ" secondAttribute="centerX" id="FiK-4c-gxB"/>
                             <constraint firstItem="IHN-U3-HxI" firstAttribute="top" secondItem="XUr-6P-4LE" secondAttribute="bottom" constant="20" id="GvO-nf-Ce8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="SN1-2t-hPJ" secondAttribute="trailing" id="Wgx-Vh-Dhq"/>

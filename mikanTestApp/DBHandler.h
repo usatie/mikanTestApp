@@ -31,4 +31,8 @@
               relearnFlag:(BOOL)relearnFlag;
 
 +(NSDictionary *)getHasRememberedDic:(NSString *)category;
++(NSDictionary *)getHasRememberedDicWithWordIdArray:(NSArray *)wordIdArray;
+
++(void)setHasRememberedWithArray:(NSArray *)wordsIdArray
+              hasRememberedArray:(NSArray *)hasRememberedArray;
 @end
