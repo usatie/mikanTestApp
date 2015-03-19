@@ -1022,16 +1022,17 @@
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
 		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
 		249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C991AB9B385007E2D14 /* WordTableView.m */; };
+		249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */; };
 		24A657791AB71D5800FA810D /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657781AB71D5800FA810D /* DBHandler.m */; };
 		24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6577B1AB7C16400FA810D /* AppConsts.m */; };
 		24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */ = {isa = PBXBuildFile; fileRef = 24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */; };
 		24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6578E1AB7D9BA00FA810D /* TestView.m */; };
 		24A657911AB7D9CB00FA810D /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657901AB7D9CB00FA810D /* TestView.xib */; };
-		24A657941AB7DA9900FA810D /* LearnTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657931AB7DA9900FA810D /* LearnTestViewController.m */; };
+		24A657941AB7DA9900FA810D /* RelearnTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657931AB7DA9900FA810D /* RelearnTestViewController.m */; };
 		24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657961AB8285000FA810D /* AbstractTestViewController.m */; };
 		24A6579B1AB8322900FA810D /* UserUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657991AB8322900FA810D /* UserUtil.m */; };
 		24A6579E1AB871B800FA810D /* answerButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6579D1AB871B800FA810D /* answerButton.m */; };
-		24A657A41AB916A500FA810D /* LearnTestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A31AB916A500FA810D /* LearnTestResultViewController.m */; };
+		24A657A41AB916A500FA810D /* RelearnTestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A31AB916A500FA810D /* RelearnTestResultViewController.m */; };
 		24A657A91AB9477300FA810D /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657A61AB9477300FA810D /* CustomTableViewCell.xib */; };
 		24A657AA1AB9477300FA810D /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657A71AB9477300FA810D /* CustomTableViewCell.m */; };
 		24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24B2EA2F1AAEE13C00921BB3 /* DraggableCardView.m */; };
@@ -2082,6 +2083,8 @@
 		2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_incorrect.mp3; sourceTree = "<group>"; };
 		249A1C981AB9B385007E2D14 /* WordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTableView.h; sourceTree = "<group>"; };
 		249A1C991AB9B385007E2D14 /* WordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTableView.m; sourceTree = "<group>"; };
+		249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
 		24A657771AB71D5800FA810D /* DBHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBHandler.h; sourceTree = "<group>"; };
 		24A657781AB71D5800FA810D /* DBHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBHandler.m; sourceTree = "<group>"; };
 		24A6577A1AB7C16400FA810D /* AppConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConsts.h; sourceTree = "<group>"; };
@@ -2091,16 +2094,16 @@
 		24A6578D1AB7D9BA00FA810D /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
 		24A6578E1AB7D9BA00FA810D /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		24A657901AB7D9CB00FA810D /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
-		24A657921AB7DA9900FA810D /* LearnTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnTestViewController.h; sourceTree = "<group>"; };
-		24A657931AB7DA9900FA810D /* LearnTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestViewController.m; sourceTree = "<group>"; };
+		24A657921AB7DA9900FA810D /* RelearnTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelearnTestViewController.h; sourceTree = "<group>"; };
+		24A657931AB7DA9900FA810D /* RelearnTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelearnTestViewController.m; sourceTree = "<group>"; };
 		24A657951AB8285000FA810D /* AbstractTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTestViewController.h; sourceTree = "<group>"; };
 		24A657961AB8285000FA810D /* AbstractTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractTestViewController.m; sourceTree = "<group>"; };
 		24A657991AB8322900FA810D /* UserUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserUtil.m; sourceTree = "<group>"; };
 		24A6579A1AB8322900FA810D /* UserUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserUtil.h; sourceTree = "<group>"; };
 		24A6579C1AB871B800FA810D /* answerButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = answerButton.h; sourceTree = "<group>"; };
 		24A6579D1AB871B800FA810D /* answerButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = answerButton.m; sourceTree = "<group>"; };
-		24A657A21AB916A500FA810D /* LearnTestResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnTestResultViewController.h; sourceTree = "<group>"; };
-		24A657A31AB916A500FA810D /* LearnTestResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnTestResultViewController.m; sourceTree = "<group>"; };
+		24A657A21AB916A500FA810D /* RelearnTestResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RelearnTestResultViewController.h; sourceTree = "<group>"; };
+		24A657A31AB916A500FA810D /* RelearnTestResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RelearnTestResultViewController.m; sourceTree = "<group>"; };
 		24A657A61AB9477300FA810D /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		24A657A71AB9477300FA810D /* CustomTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
 		24A657A81AB9477300FA810D /* CustomTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
@@ -3233,14 +3236,13 @@
 		2466F2191AAAFDCE001E8522 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
 				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
 				2462CD2E1AAAB11400AF25A2 /* LearnViewController.h */,
 				2462CD2F1AAAB11400AF25A2 /* LearnViewController.m */,
-				24A657921AB7DA9900FA810D /* LearnTestViewController.h */,
-				24A657931AB7DA9900FA810D /* LearnTestViewController.m */,
-				24A657A21AB916A500FA810D /* LearnTestResultViewController.h */,
-				24A657A31AB916A500FA810D /* LearnTestResultViewController.m */,
+				249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */,
+				249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
 			);
@@ -3254,6 +3256,17 @@
 				249A1C991AB9B385007E2D14 /* WordTableView.m */,
 			);
 			name = WordTableView;
+			sourceTree = "<group>";
+		};
+		249A1C9E1ABAEE5A007E2D14 /* Relearn */ = {
+			isa = PBXGroup;
+			children = (
+				24A657921AB7DA9900FA810D /* RelearnTestViewController.h */,
+				24A657931AB7DA9900FA810D /* RelearnTestViewController.m */,
+				24A657A21AB916A500FA810D /* RelearnTestResultViewController.h */,
+				24A657A31AB916A500FA810D /* RelearnTestResultViewController.m */,
+			);
+			name = Relearn;
 			sourceTree = "<group>";
 		};
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
@@ -4494,8 +4507,9 @@
 				2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */,
 				24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */,
 				24A6579E1AB871B800FA810D /* answerButton.m in Sources */,
-				24A657941AB7DA9900FA810D /* LearnTestViewController.m in Sources */,
-				24A657A41AB916A500FA810D /* LearnTestResultViewController.m in Sources */,
+				24A657941AB7DA9900FA810D /* RelearnTestViewController.m in Sources */,
+				24A657A41AB916A500FA810D /* RelearnTestResultViewController.m in Sources */,
+				249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */,
 				24A657791AB71D5800FA810D /* DBHandler.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,

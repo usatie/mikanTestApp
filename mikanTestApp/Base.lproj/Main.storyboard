@@ -106,7 +106,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wX3-f3-X7N">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wX3-f3-X7N">
                                 <rect key="frame" x="40" y="44" width="43" height="30"/>
                                 <state key="normal" title="&lt;back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -115,7 +115,7 @@
                                     <action selector="backButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="U02-gN-I1a"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqe-eX-beS">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqe-eX-beS">
                                 <rect key="frame" x="240" y="460" width="120" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2J9-R3-9zw"/>
@@ -128,7 +128,7 @@
                                     <action selector="nextWordsButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="Mqg-Bd-Djv"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCp-HP-1I6">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCp-HP-1I6">
                                 <rect key="frame" x="155" y="108" width="290" height="340"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="290" id="2CA-V0-l33"/>
@@ -199,10 +199,10 @@
             </objects>
             <point key="canvasLocation" x="867" y="-1445"/>
         </scene>
-        <!--Learn Test View Controller-->
+        <!--Relearn Test View Controller-->
         <scene sceneID="fgQ-SU-cPx">
             <objects>
-                <viewController id="PhG-tz-8UX" customClass="LearnTestViewController" sceneMemberID="viewController">
+                <viewController id="PhG-tz-8UX" customClass="RelearnTestViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="l3i-z9-i3P"/>
                         <viewControllerLayoutGuide type="bottom" id="UEZ-da-hn9"/>
@@ -224,7 +224,7 @@
         <!--テスト結果-->
         <scene sceneID="DIe-c5-ahj">
             <objects>
-                <viewController id="DTg-nT-HZ1" customClass="LearnTestResultViewController" sceneMemberID="viewController">
+                <viewController id="DTg-nT-HZ1" customClass="RelearnTestResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="XUr-6P-4LE"/>
                         <viewControllerLayoutGuide type="bottom" id="MgH-JA-Wpc"/>
@@ -349,7 +349,7 @@
         <!--テスト結果-->
         <scene sceneID="r66-w1-moH">
             <objects>
-                <viewController storyboardIdentifier="TestResultViewController" id="RB7-UI-3ec" customClass="LearnTestResultViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestResultViewController" id="RB7-UI-3ec" customClass="RelearnTestResultViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ufu-75-xTI"/>
                         <viewControllerLayoutGuide type="bottom" id="DxH-Oh-Aeh"/>

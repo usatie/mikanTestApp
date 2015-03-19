@@ -1,5 +1,5 @@
 //
-//  LearnTestResultViewController.h
+//  RelearnTestResultViewController.h
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/18.
@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "UserUtil.h"
 
-@interface LearnTestResultViewController : UIViewController//<UITableViewDataSource,UITableViewDelegate>
+@interface RelearnTestResultViewController : UIViewController//<UITableViewDataSource,UITableViewDelegate>
 
 @end

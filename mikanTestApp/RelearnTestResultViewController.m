@@ -1,17 +1,17 @@
 //
-//  LearnTestResultViewController.m
+//  RelearnTestResultViewController.m
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/18.
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "LearnTestResultViewController.h"
+#import "RelearnTestResultViewController.h"
 #import "WordTableView.h"
 #import "CustomTableViewCell.h"
 #import "DBHandler.h"
 
-@interface LearnTestResultViewController (){
+@interface RelearnTestResultViewController (){
     NSMutableDictionary *wordsDic;
 
     UIScrollView *scrollView;
@@ -20,7 +20,7 @@
 
 @end
 
-@implementation LearnTestResultViewController
+@implementation RelearnTestResultViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
