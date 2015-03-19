@@ -36,6 +36,14 @@
     
     _testWordsDic = [self getTestWords];
     DLog(@"test = %@",_testWordsDic);
+    if ([_testWordsDic[@"wordId"] count]==0) {
+        if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
+            [_delegate finishDelegate];
+        } else {
+            DLog(@"no responds to finishDelegate");
+        }
+        return;
+    }
     [self initTestView];
     [self showAndPlayNextWord];
     //これやると速くなるはずなんだけどなあ・・・
@@ -104,7 +112,7 @@
         [self playSound:@"sound_incorrect"];
     }
     
-    if (testIndex < 10){
+    if (testIndex < [_testWordsDic[@"wordId"] count]){
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }

@@ -14,9 +14,9 @@
 
 @implementation LearnTestViewController
 - (void)viewDidLoad {
+    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,7 +36,8 @@
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    return [self getTestWordsDictionaryWithFileName:@"sample_test"];
+    DLog(@"unremembered = %@",[DBHandler getUnrememberedRelearnWords:@"TOEIC" limit:10]);
+    return [DBHandler getUnrememberedRelearnWords:@"TOEIC" limit:10];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
 }
 
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName

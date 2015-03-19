@@ -35,4 +35,7 @@
 
 +(void)setHasRememberedWithArray:(NSArray *)wordsIdArray
               hasRememberedArray:(NSArray *)hasRememberedArray;
+
++ (NSDictionary *) getUnrememberedRelearnWords:(NSString*)category
+                                         limit:(int)limit;
 @end

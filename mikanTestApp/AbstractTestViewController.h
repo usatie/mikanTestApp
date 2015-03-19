@@ -17,7 +17,7 @@
 @property id<AbstractTestViewControllerDelegate> delegate;
 @property TestView *testView;
 
-@property NSDictionary *testWordsDic; //wordIndex, english, choice1,choice2,choice3,choice4,answerIndex,wordIndexを要素に持つDictionary
+@property NSDictionary *testWordsDic; //wordIndex, english, choicesArray,answerIndex,wordIndexを要素に持つDictionary
 @property NSDictionary *testResultsDic; //resultsArray, choiceArray, answerDurationArrayを要素に持つDictionary
 
 @property NSMutableArray *resultsArray;

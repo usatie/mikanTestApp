@@ -12,8 +12,7 @@
 #import "DBHandler.h"
 
 @interface LearnTestResultViewController (){
-    NSDictionary *testedWordsDic;
-    NSDictionary *hasRememberedDic;
+    NSMutableDictionary *wordsDic;
 
     UIScrollView *scrollView;
     WordTableView *tableView;
@@ -26,10 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    testedWordsDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"testWordsDic"];
-    hasRememberedDic = [DBHandler getHasRememberedDicWithWordIdArray:testedWordsDic[@"wordId"]];
-    NSMutableDictionary *wordsDic = [[NSMutableDictionary alloc] initWithDictionary:testedWordsDic];
-    [wordsDic addEntriesFromDictionary:hasRememberedDic];
+    NSDictionary *testedWordsDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"testWordsDic"];
+    wordsDic = [[NSMutableDictionary alloc] initWithDictionary:testedWordsDic];
+    [wordsDic addEntriesFromDictionary:[DBHandler getHasRememberedDicWithWordIdArray:testedWordsDic[@"wordId"]]];
     
     //init scroll view
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
@@ -72,7 +70,7 @@
             CustomTableViewCell *cell = (CustomTableViewCell *)[tableView cellForRowAtIndexPath:indexpath];
             [hasrememberedArray addObject:[NSNumber numberWithBool:cell.hasChecked]];
         }
-        [DBHandler setHasRememberedWithArray:testedWordsDic[@"wordId"] hasRememberedArray:hasrememberedArray];
+        [DBHandler setHasRememberedWithArray:wordsDic[@"wordId"] hasRememberedArray:hasrememberedArray];
     }];
 }
 

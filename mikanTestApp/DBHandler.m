@@ -202,6 +202,60 @@
     DLog(@"update hasRelearned");
 }
 
++ (NSDictionary *) getUnrememberedRelearnWords:(NSString*)category
+                                         limit:(int)limit
+{
+    NSMutableDictionary *relearnWordsDic = [[NSMutableDictionary alloc] init];
+    NSMutableArray *wordIndexArray = [[NSMutableArray alloc] init];
+    NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *japaneseLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *choicesArray = [[NSMutableArray alloc] init];
+//    NSMutableArray *choice1Array = [[NSMutableArray alloc] init];
+//    NSMutableArray *choice2Array = [[NSMutableArray alloc] init];
+//    NSMutableArray *choice3Array = [[NSMutableArray alloc] init];
+//    NSMutableArray *choice4Array = [[NSMutableArray alloc] init];
+    NSMutableArray *answerIndexArray = [[NSMutableArray alloc] init];
+    NSMutableArray *rankIdArray = [[NSMutableArray alloc] init];
+    NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
+    
+    NSDictionary *categoryIdDic = [self getCategoryIdDic];
+    FMDatabase* db = [self getDBWithName:DB_NAME];
+    NSString* sql;
+    [db open];
+    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 order by random() limit ?";
+    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithInt:limit]];
+    while ([wordResult next]) {
+        NSArray *arr = @[[wordResult stringForColumn:@"choice1"],[wordResult stringForColumn:@"choice2"],[wordResult stringForColumn:@"choice3"],[wordResult stringForColumn:@"choice4"]];
+        
+        [wordIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"word_index"]]];//0
+        [englishLabelArray addObject:[wordResult stringForColumn:@"english_label"]];//1
+        [japaneseLabelArray addObject:[wordResult stringForColumn:@"japanese_label"]];//2
+//        [choice1Array addObject:[wordResult stringForColumn:@"choice1"]];//3
+//        [choice2Array addObject:[wordResult stringForColumn:@"choice2"]];//4
+//        [choice3Array addObject:[wordResult stringForColumn:@"choice3"]];//5
+//        [choice4Array addObject:[wordResult stringForColumn:@"choice4"]];//6
+        [choicesArray addObject:arr];
+        [answerIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"answer_index"]]];//7
+        [rankIdArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"rank_id"]]];//8
+        [wordIdArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"id"]]];//9
+    }
+    
+    [relearnWordsDic setObject:wordIndexArray forKey:@"wordIndex"];
+    [relearnWordsDic setObject:englishLabelArray forKey:@"english"];
+    [relearnWordsDic setObject:japaneseLabelArray forKey:@"japanese"];
+//    [relearnWordsDic setObject:choice1Array forKey:@"choice1"];
+//    [relearnWordsDic setObject:choice2Array forKey:@"choice2"];
+//    [relearnWordsDic setObject:choice3Array forKey:@"choice3"];
+//    [relearnWordsDic setObject:choice4Array forKey:@"choice4"];
+    [relearnWordsDic setObject:choicesArray forKey:@"choicesArray"];
+    [relearnWordsDic setObject:answerIndexArray forKey:@"answerIndex"];
+    [relearnWordsDic setObject:rankIdArray forKey:@"rankId"];
+    [relearnWordsDic setObject:wordIdArray forKey:@"wordId"];
+    [db close];
+    
+    return relearnWordsDic;
+}
+
 
 //mtp
 + (NSMutableDictionary*) getCategoryIdDic
