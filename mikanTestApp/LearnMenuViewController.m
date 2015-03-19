@@ -23,9 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSDictionary *dic = [DBHandler getRelearnWords:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] limit:10 remembered:YES hasTested:YES];
-    [_relearnButton setTitle:[NSString stringWithFormat:@"復習テスト（%lu）",[dic[@"wordId"] count]] forState:UIControlStateNormal];
-    DLog(@"count = %@",[DBHandler getRelearnWordsCount:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex]]);
+    [self refreshButtonTitles];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,9 +46,14 @@
 
 }
 
+- (void)refreshButtonTitles{
+    NSArray *arr = [DBHandler getRelearnWordsCount:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex]];
+    [_relearnButton setTitle:[NSString stringWithFormat:@"復習テスト（%@）",arr[0]] forState:UIControlStateNormal];
+    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未習（%@）",arr[1]] forSegmentAtIndex:0];
+    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未アーカイブ（%@）",arr[2]] forSegmentAtIndex:1];
+}
 
 - (IBAction)learnCategoryChanged:(id)sender {
-    NSDictionary *dic = [DBHandler getRelearnWords:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] limit:10 remembered:YES hasTested:YES];
-    [_relearnButton setTitle:[NSString stringWithFormat:@"復習テスト（%lu）",[dic[@"wordId"] count]] forState:UIControlStateNormal];
+    [self refreshButtonTitles];
 }
 @end
