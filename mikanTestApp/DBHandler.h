@@ -42,4 +42,5 @@
                              limit:(int)limit
                         remembered:(BOOL)remembered
                          hasTested:(BOOL)hasTested;
++ (NSArray *) getRelearnWordsCount:(NSString*)category;
 @end

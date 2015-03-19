@@ -25,6 +25,7 @@
     [super viewWillAppear:animated];
     NSDictionary *dic = [DBHandler getRelearnWords:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] limit:10 remembered:YES hasTested:YES];
     [_relearnButton setTitle:[NSString stringWithFormat:@"復習テスト（%lu）",[dic[@"wordId"] count]] forState:UIControlStateNormal];
+    DLog(@"count = %@",[DBHandler getRelearnWordsCount:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex]]);
 }
 
 - (void)didReceiveMemoryWarning {

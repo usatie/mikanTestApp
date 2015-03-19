@@ -259,6 +259,34 @@
     return relearnWordsDic;
 }
 
++ (NSArray *) getRelearnWordsCount:(NSString*)category
+{
+    NSMutableArray *countArray = [[NSMutableArray alloc] init];
+    
+    NSDictionary *categoryIdDic = [self getCategoryIdDic];
+    FMDatabase* db = [self getDBWithName:DB_NAME];
+    NSString* sql;
+    [db open];
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 0 and r.has_remembered = 0";
+    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    while ([wordResult next]) {
+        [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
+    }
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0";
+    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    while ([wordResult next]) {
+        [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
+    }
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 1";
+    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    while ([wordResult next]) {
+        [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
+    }
+    
+    [db close];
+    
+    return countArray;
+}
 
 //mtp
 + (NSMutableDictionary*) getCategoryIdDic
