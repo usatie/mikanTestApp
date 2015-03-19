@@ -125,6 +125,11 @@
     }
 }
 
+- (void)cancelButtonPushedDelegate{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark sound
 -(void)playSound:(NSString *)fileName
 {
 //    NSLog(@"playSound \"%@\"", fileName);

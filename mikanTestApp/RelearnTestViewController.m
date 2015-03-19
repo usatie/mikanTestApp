@@ -41,7 +41,7 @@
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    return [DBHandler getRelearnWords:@"TOEIC" limit:10 remembered:YES];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
+    return [DBHandler getRelearnWords:@"Part1" limit:10 remembered:YES hasTested:YES];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
 }
 
 //- (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName

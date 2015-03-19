@@ -10,5 +10,5 @@
 #import "AbstractTestViewController.h"
 
 @interface TestViewController : AbstractTestViewController<AbstractTestViewControllerDelegate>
-
+@property NSDictionary *tmpDic;
 @end

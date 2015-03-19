@@ -84,4 +84,10 @@
         [_delegate answerButtonPushedDelegate:result choice:btn.choiceNumTag];
     }
 }
+
+- (IBAction)cancelButton:(id)sender {
+    if ([_delegate respondsToSelector:@selector(cancelButtonPushedDelegate)]) {
+        [_delegate cancelButtonPushedDelegate];
+    }
+}
 @end

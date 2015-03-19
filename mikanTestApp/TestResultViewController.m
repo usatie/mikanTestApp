@@ -44,9 +44,9 @@
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
     [self.navigationItem setHidesBackButton:YES];
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"おわり" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPushed:)];
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"おわり" style:UIBarButtonItemStylePlain target:self action:@selector(backButtonPushed:)];
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"つぎへ" style:UIBarButtonItemStylePlain target:self action:@selector(nextButtonPushed:)];
-    self.navigationItem.leftBarButtonItem = leftButton;
+//    self.navigationItem.leftBarButtonItem = leftButton;
     self.navigationItem.rightBarButtonItem = rightButton;
 }
 
@@ -63,7 +63,20 @@
 
 #pragma mark TableView delegate methods
 #pragma mark Button Actions
-- (IBAction)backButtonPushed:(id)sender {
+//- (IBAction)backButtonPushed:(id)sender {
+//    [self dismissViewControllerAnimated:YES completion:^{
+//        NSMutableArray *hasrememberedArray = [[NSMutableArray alloc] init];
+//        for (int i = 0; i<10; i++) {
+//            NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
+//            CustomTableViewCell *cell = (CustomTableViewCell *)[tableView cellForRowAtIndexPath:indexpath];
+//            [hasrememberedArray addObject:[NSNumber numberWithBool:cell.hasChecked]];
+//        }
+//        [DBHandler setHasRememberedWithArray:wordsDic[@"wordId"] hasRememberedArray:hasrememberedArray];
+//    }];
+//}
+
+- (IBAction)nextButtonPushed:(id)sender {
+    DLog(@"next");
     [self dismissViewControllerAnimated:YES completion:^{
         NSMutableArray *hasrememberedArray = [[NSMutableArray alloc] init];
         for (int i = 0; i<10; i++) {
@@ -73,10 +86,7 @@
         }
         [DBHandler setHasRememberedWithArray:wordsDic[@"wordId"] hasRememberedArray:hasrememberedArray];
     }];
-}
 
-- (IBAction)nextButtonPushed:(id)sender {
-    DLog(@"next");
     //    [self dismissViewControllerAnimated:YES completion:^{
     //        NSMutableArray *hasrememberedArray = [[NSMutableArray alloc] init];
     //        for (int i = 0; i<10; i++) {

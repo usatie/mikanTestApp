@@ -37,13 +37,13 @@
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">
-                                <rect key="frame" x="220" y="384" width="160" height="60"/>
+                                <rect key="frame" x="180" y="384" width="240" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8lJ-sN-hqb"/>
-                                    <constraint firstAttribute="width" constant="160" id="f8s-NP-Z6P"/>
+                                    <constraint firstAttribute="width" constant="240" id="f8s-NP-Z6P"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <state key="normal" title="スタート">
+                                <state key="normal" title="学習スタート">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -56,16 +56,13 @@
                                     <constraint firstAttribute="width" constant="300" id="ruu-NC-0Wu"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="1回"/>
-                                    <segment title="2回"/>
-                                    <segment title="3回"/>
-                                    <segment title="4回"/>
-                                    <segment title="5回"/>
+                                    <segment title="未習単語"/>
+                                    <segment title="未アーカイブ"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq2-V6-aeN">
-                                <rect key="frame" x="277" y="28" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="263" y="28" width="75" height="30"/>
+                                <state key="normal" title="復習テスト">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>

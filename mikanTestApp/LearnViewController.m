@@ -7,12 +7,12 @@
 //
 
 #import "LearnViewController.h"
-
+#import "TestViewController.h"
 @interface LearnViewController (){
     int learnWordsIndex;
-    int correctCount;
-    int swipeCount;
+    int cardCount;
     
+    BOOL shouldLearnAgain;
     BOOL isTimerValid;
     NSTimer *timer;
 }
@@ -22,7 +22,7 @@
 @implementation LearnViewController
 #pragma mark Definition
 
-#define NUMBER_OF_WORDS_PER_LEAARNING 5
+#define NUMBER_OF_WORDS_PER_LEARNING 5
 #define NUMBER_OF_WORDS_PER_CATEGORY 100
 
 #pragma mark ViewController Initialization
@@ -30,13 +30,29 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _audio = [[AVAudioPlayer alloc] init];
-    _learnCategoryId = 1;
-    _frequency = 5;
-    _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"mikan"];
-    
+    _learnWordsDic = [DBHandler getRelearnWords:@"Part1" limit:10 remembered:NO hasTested:NO];
+    DLog(@"learnWordsDic = %@",_learnWordsDic);
+    if([_learnWordsDic[@"wordId"] count] > NUMBER_OF_WORDS_PER_LEARNING){
+        cardCount = NUMBER_OF_WORDS_PER_LEARNING;
+        shouldLearnAgain = YES;
+    } else {
+        cardCount = (int)[_learnWordsDic[@"wordId"] count];
+    }
     [self generateCardView];
     [self pronounceNextWord];
     [self startTimer];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"learnToTest"]) {
+        TestViewController *vc = segue.destinationViewController;
+        vc.tmpDic = _learnWordsDic;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,7 +67,7 @@
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:(float)5.0/_frequency
+    timer = [NSTimer scheduledTimerWithTimeInterval:(float)3
                                               target:self
                                             selector:@selector(timerAction)
                                             userInfo:nil
@@ -72,12 +88,7 @@
 {
     DraggableCardView *cardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     cardView.japaneseLabel.hidden = NO;
-    
-    if (swipeCount >= (_frequency-1)*NUMBER_OF_WORDS_PER_LEAARNING) {
-        [self removeCardView:cardView];
-    } else {
-        [self sendCardViewToBack:cardView];
-    }
+    [self sendCardViewToBack:cardView];
 }
 
 - (void)removeCardView:(DraggableCardView *)cardView
@@ -109,35 +120,6 @@
                      }
      ];
 }
-#pragma mark Get Sth Method
-- (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
-{
-    NSString *csvFile = [[NSBundle mainBundle] pathForResource:fileName ofType:@"csv"];
-    NSData *csvData = [NSData dataWithContentsOfFile:csvFile];
-    NSString *csv = [[NSString alloc] initWithData:csvData encoding:NSUTF8StringEncoding];
-    NSScanner *scanner = [NSScanner scannerWithString:csv];
-    
-    NSCharacterSet *chSet = [NSCharacterSet newlineCharacterSet];
-    NSString *line;
-    NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
-    NSMutableArray *englishArray = [[NSMutableArray alloc] init];
-    NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
-    DLog(@"learnID = %d",_learnCategoryId);
-    NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*NUMBER_OF_WORDS_PER_CATEGORY, NUMBER_OF_WORDS_PER_CATEGORY)];
-    DLog(@"%@",categoryIndexSet);
-    //csvから読み込み、各Arrayに一旦格納
-    while (![scanner isAtEnd]) {
-        [scanner scanUpToCharactersFromSet:chSet intoString:&line];
-        NSArray *array = [line componentsSeparatedByString:@","];
-        [wordIdArray addObject:array[0]];
-        [englishArray addObject:array[1]];
-        [japaneseArray addObject:array[2]];
-        [scanner scanCharactersFromSet:chSet intoString:NULL];
-    }
-    //Dictionaryに各Arrayを格納。
-    return [[NSDictionary alloc] initWithObjects:@[[wordIdArray objectsAtIndexes:categoryIndexSet],[englishArray objectsAtIndexes:categoryIndexSet],[japaneseArray objectsAtIndexes:categoryIndexSet]] forKeys:@[@"wordId",@"english",@"japanese"]];
-
-}
 
 #pragma mark ButtonAction
 - (IBAction)backButtonPushed:(id)sender {
@@ -157,13 +139,14 @@
 }
 
 
+
 #pragma mark GGDraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
-    swipeCount++;
 
     //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
+        learnWordsIndex++;
         [sender removeFromSuperview];
     } else {
         [sender resetViewPositionAndTransformations];
@@ -174,17 +157,20 @@
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardsBaseView.subviews.count == 0) {
         [self stopTimer];
-        learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
+        //button無しで移行するんだったらこれ
+        if(shouldLearnAgain){
+            shouldLearnAgain = NO;
+            cardCount = (int)[_learnWordsDic[@"wordId"] count];
+            [self generateCardView];
+            [self pronounceNextWord];
+            [self startTimer];
+            self.nextWordsButton.hidden = YES;
+            return;
+        }
         //buttonで移行するんだったらこれ
         [self playSound:@"sound_finish"];
         self.nextWordsButton.hidden = NO;
-        swipeCount = 0;
-        //button無しで移行するんだったらこれ
-//        [self generateCardView];
-//        [self pronounceNextWord];
-//        [self startTimer];
-//        self.nextWordsButton.hidden = YES;
 
     } else {
         [self startTimer];
@@ -195,7 +181,8 @@
 #pragma mark Word Related Method
 - (void)generateCardView
 {
-    for (int i=learnWordsIndex; i < learnWordsIndex+NUMBER_OF_WORDS_PER_LEAARNING; i++) {
+    DLog(@"generate learnwordsIndex = %d, cardCount = %d",learnWordsIndex,cardCount);
+    for (int i=learnWordsIndex; i < cardCount; i++) {
         DraggableCardView *cardView;
         cardView = [[DraggableCardView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
         cardView.panGestureRecognizer.enabled = YES;
@@ -206,7 +193,7 @@
                         number:[NSString stringWithFormat:@"%@",_learnWordsDic[@"wordId"][i]]
             japaneseHiddenFlug:YES
                      wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
-        cardView.sectionLabel.text = [NSString stringWithFormat:@"learnCategoryId %d",_learnCategoryId];
+        cardView.sectionLabel.text = @"検証テスト";
         cardView.japaneseLabel.hidden = NO;
         [self.cardsBaseView addSubview:cardView];
         [self.cardsBaseView sendSubviewToBack:cardView];
@@ -215,13 +202,14 @@
 
 #pragma mark Sound Related Method
 - (void)pronounceNextWord{
+    DLog(@"pronounce");
     DraggableCardView *nextCardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
     [self playSound:nextCardView.englishLabel.text];
 }
 
 -(void)playSound:(NSString *)fileName
 {
-    NSLog(@"playSound \"%@\"", fileName);
+//    NSLog(@"playSound \"%@\"", fileName);
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
     if (path) {
         NSURL *url = [NSURL fileURLWithPath:path];
@@ -230,7 +218,7 @@
         if (error) NSLog(@"error. could not pronounce %@", fileName);
         [_audio play];
     } else {
-        NSLog(@"path is nil. Could not pronounce %@", fileName);
+//        NSLog(@"path is nil. Could not pronounce %@", fileName);
     }
 }
 

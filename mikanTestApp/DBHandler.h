@@ -40,5 +40,6 @@
 //                                         limit:(int)limit;
 + (NSDictionary *) getRelearnWords:(NSString*)category
                              limit:(int)limit
-                        remembered:(BOOL)remembered;
+                        remembered:(BOOL)remembered
+                         hasTested:(BOOL)hasTested;
 @end

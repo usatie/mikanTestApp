@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet answerButton *answerButton3;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton4;
 - (IBAction)answerButtonPushed:(id)sender;
+- (IBAction)cancelButton:(id)sender;
 
 @property int answerButtonTag;
 @property NSDictionary *testWordsDic; //wordIndex, english,
@@ -30,7 +31,7 @@
 
 @protocol TestViewDelegate <NSObject>
 
-@optional
+@required
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice;
-
+- (void)cancelButtonPushedDelegate;
 @end

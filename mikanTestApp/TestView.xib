@@ -68,6 +68,17 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0O-14-dS7">
+                    <rect key="frame" x="268" y="8" width="44" height="44"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="54"/>
+                    <state key="normal" title="×">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="5HO-iO-rq7"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.99896246190000004" green="0.95258563760000003" blue="0.86407023670000005" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration">
@@ -112,7 +123,7 @@
                 <outlet property="answerButton4" destination="CAW-VA-CBc" id="dVm-Dy-5pA"/>
                 <outlet property="englishLabel" destination="2OL-X0-zMz" id="dgs-mf-QT4"/>
             </connections>
-            <point key="canvasLocation" x="-66" y="367"/>
+            <point key="canvasLocation" x="-72" y="367"/>
         </view>
     </objects>
 </document>
