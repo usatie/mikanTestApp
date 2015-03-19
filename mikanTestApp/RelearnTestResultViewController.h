@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserUtil.h"
 
 @interface RelearnTestResultViewController : UIViewController//<UITableViewDataSource,UITableViewDelegate>
 

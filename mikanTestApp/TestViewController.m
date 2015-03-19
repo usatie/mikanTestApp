@@ -15,6 +15,7 @@
 @implementation TestViewController
 
 - (void)viewDidLoad {
+    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -24,14 +25,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark Test Delegate Methods
+- (void)finishDelegate{
+    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
+    [[NSUserDefaults standardUserDefaults] setObject:self.testWordsDic forKey:@"testWordsDic"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self performSegueWithIdentifier:@"testToResult" sender:self];
 }
-*/
+
+- (void)testCancelDelegate {
+    DLog(@"test was cancelled");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark Temporary methods
+- (NSDictionary *)getTestWords
+{
+    return [DBHandler getRelearnWords:@"TOEIC" limit:10 remembered:NO];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
+}
 
 @end
