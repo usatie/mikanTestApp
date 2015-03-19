@@ -83,7 +83,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="frequencySegmentedControl" destination="ko3-eB-HKO" id="9Ak-H6-iZC"/>
+                        <outlet property="learnModeSegmentedControl" destination="ko3-eB-HKO" id="XlG-LN-B2C"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                     </connections>
                 </viewController>

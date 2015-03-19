@@ -33,7 +33,7 @@
 //        learnVC.frequency = (int)_frequencySegmentedControl.selectedSegmentIndex+1;
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setInteger:_sectionSegmentedControl.selectedSegmentIndex+1 forKey:@"learnCategoryId"];
-        [ud setInteger:_frequencySegmentedControl.selectedSegmentIndex+1 forKey:@"frequency"];
+        [ud setInteger:_learnModeSegmentedControl.selectedSegmentIndex+1 forKey:@"frequency"];
     }
 
 }
