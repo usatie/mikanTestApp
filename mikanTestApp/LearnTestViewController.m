@@ -33,6 +33,11 @@
     [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 
+- (void)testCancelDelegate {
+    DLog(@"test was cancelled");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {

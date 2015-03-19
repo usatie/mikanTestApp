@@ -35,12 +35,13 @@
     _answerDurationArray = [[NSMutableArray alloc] init];
     
     _testWordsDic = [self getTestWords];
-    DLog(@"test = %@",_testWordsDic);
+    
+    //Testすべき単語が無かったらすぐに終了
     if ([_testWordsDic[@"wordId"] count]==0) {
-        if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
-            [_delegate finishDelegate];
+        if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
+            [_delegate testCancelDelegate];
         } else {
-            DLog(@"no responds to finishDelegate");
+            DLog(@"no responds to testCancel");
         }
         return;
     }

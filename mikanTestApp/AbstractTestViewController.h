@@ -36,4 +36,5 @@
 @protocol AbstractTestViewControllerDelegate <NSObject>
 @required
 - (void)finishDelegate;
+- (void)testCancelDelegate;
 @end
