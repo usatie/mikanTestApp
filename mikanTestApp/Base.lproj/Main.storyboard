@@ -24,17 +24,14 @@
                                     <constraint firstAttribute="width" constant="300" id="xIo-42-fkJ"/>
                                 </constraints>
                                 <segments>
-                                    <segment title="1"/>
-                                    <segment title="2"/>
-                                    <segment title="3"/>
-                                    <segment title="4"/>
-                                    <segment title="5"/>
-                                    <segment title="6"/>
-                                    <segment title="7"/>
-                                    <segment title="8"/>
-                                    <segment title="9"/>
-                                    <segment title="10"/>
+                                    <segment title="Part1"/>
+                                    <segment title="Part2"/>
+                                    <segment title="Part3"/>
+                                    <segment title="Part4"/>
                                 </segments>
+                                <connections>
+                                    <action selector="learnCategoryChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="DtZ-dg-UdF"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">
                                 <rect key="frame" x="180" y="384" width="240" height="60"/>
@@ -84,6 +81,7 @@
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="learnModeSegmentedControl" destination="ko3-eB-HKO" id="XlG-LN-B2C"/>
+                        <outlet property="relearnButton" destination="Mq2-V6-aeN" id="2Ah-bR-ROg"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                     </connections>
                 </viewController>

@@ -10,6 +10,8 @@
 @interface LearnMenuViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISegmentedControl *sectionSegmentedControl;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *learnModeSegmentedControl;
+@property (strong, nonatomic) IBOutlet UIButton *relearnButton;
+- (IBAction)learnCategoryChanged:(id)sender;
 
 @end
 

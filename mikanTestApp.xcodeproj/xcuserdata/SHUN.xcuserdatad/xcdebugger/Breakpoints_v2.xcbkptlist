@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mikanTestApp/LearnMenuViewController.h"
-            timestampString = "447564662.010325"
+            timestampString = "448480752.383232"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
             landmarkName = "@interface LearnMenuViewController"
             landmarkType = "2">
          </BreakpointContent>

@@ -29,12 +29,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *category = [ud objectForKey:@"category"];
     _audio = [[AVAudioPlayer alloc] init];
-    _learnWordsDic = [DBHandler getRelearnWords:@"Part1" limit:10 remembered:NO hasTested:NO];
-    DLog(@"learnWordsDic = %@",_learnWordsDic);
+    BOOL learnMode = [ud boolForKey:@"learnMode"];
+    _learnWordsDic = [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
+    DLog(@"arr %@, learnMode %d learnWordsDic = %@",category,learnMode,_learnWordsDic);
     if([_learnWordsDic[@"wordId"] count] > NUMBER_OF_WORDS_PER_LEARNING){
         cardCount = NUMBER_OF_WORDS_PER_LEARNING;
         shouldLearnAgain = YES;
+    } else if ([_learnWordsDic[@"wordId"] count] == 0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
     } else {
         cardCount = (int)[_learnWordsDic[@"wordId"] count];
     }

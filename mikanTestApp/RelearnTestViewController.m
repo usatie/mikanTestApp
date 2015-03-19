@@ -41,7 +41,8 @@
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    return [DBHandler getRelearnWords:@"Part1" limit:10 remembered:YES hasTested:YES];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
+    NSString *category = [[NSUserDefaults standardUserDefaults] objectForKey:@"category"];
+    return [DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
 }
 
 //- (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName
