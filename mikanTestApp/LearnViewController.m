@@ -30,6 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _audio = [[AVAudioPlayer alloc] init];
+    _learnCategoryId = 1;
+    _frequency = 5;
     _learnWordsDic = [self getTestWordsDictionaryWithFileName:@"mikan"];
     
     [self generateCardView];
@@ -120,8 +122,9 @@
     NSMutableArray *wordIdArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishArray = [[NSMutableArray alloc] init];
     NSMutableArray *japaneseArray = [[NSMutableArray alloc] init];
+    DLog(@"learnID = %d",_learnCategoryId);
     NSIndexSet *categoryIndexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange((_learnCategoryId-1)*NUMBER_OF_WORDS_PER_CATEGORY, NUMBER_OF_WORDS_PER_CATEGORY)];
-    
+    DLog(@"%@",categoryIndexSet);
     //csvから読み込み、各Arrayに一旦格納
     while (![scanner isAtEnd]) {
         [scanner scanUpToCharactersFromSet:chSet intoString:&line];
@@ -148,6 +151,9 @@
 //    [self pronounceNextWord];
 //    [self startTimer];
 //    self.nextWordsButton.hidden = YES;
+    
+    //Testにsegueするならこれ
+    [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
 
@@ -171,14 +177,14 @@
         learnWordsIndex += NUMBER_OF_WORDS_PER_LEAARNING;
         [self.nextWordsButton setTitle:[NSString stringWithFormat:@"残り%d単語",NUMBER_OF_WORDS_PER_CATEGORY-learnWordsIndex] forState:UIControlStateNormal];
         //buttonで移行するんだったらこれ
-        //[self playSound:@"sound_finish"];
-        //self.nextWordsButton.hidden = NO;
+        [self playSound:@"sound_finish"];
+        self.nextWordsButton.hidden = NO;
         swipeCount = 0;
         //button無しで移行するんだったらこれ
-        [self generateCardView];
-        [self pronounceNextWord];
-        [self startTimer];
-        self.nextWordsButton.hidden = YES;
+//        [self generateCardView];
+//        [self pronounceNextWord];
+//        [self startTimer];
+//        self.nextWordsButton.hidden = YES;
 
     } else {
         [self startTimer];

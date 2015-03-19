@@ -41,8 +41,7 @@
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    DLog(@"unremembered = %@",[DBHandler getUnrememberedRelearnWords:@"TOEIC" limit:10]);
-    return [DBHandler getUnrememberedRelearnWords:@"TOEIC" limit:10];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
+    return [DBHandler getRelearnWords:@"TOEIC" limit:10 remembered:YES];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
 }
 
 - (NSDictionary *)getTestWordsDictionaryWithFileName:(NSString *)fileName

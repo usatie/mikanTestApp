@@ -36,6 +36,9 @@
 +(void)setHasRememberedWithArray:(NSArray *)wordsIdArray
               hasRememberedArray:(NSArray *)hasRememberedArray;
 
-+ (NSDictionary *) getUnrememberedRelearnWords:(NSString*)category
-                                         limit:(int)limit;
+//+ (NSDictionary *) getUnrememberedRelearnWords:(NSString*)category
+//                                         limit:(int)limit;
++ (NSDictionary *) getRelearnWords:(NSString*)category
+                             limit:(int)limit
+                        remembered:(BOOL)remembered;
 @end

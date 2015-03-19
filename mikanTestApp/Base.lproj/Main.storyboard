@@ -47,7 +47,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="RAR-jD-g9c" kind="show" identifier="segueToLearn" id="1ry-bJ-NQ5"/>
+                                    <segue destination="ieM-Qc-ABz" kind="show" id="bXO-Sf-q5Y"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ko3-eB-HKO">
@@ -160,11 +160,28 @@
                     <connections>
                         <outlet property="cardsBaseView" destination="tCp-HP-1I6" id="g39-Wi-UBZ"/>
                         <outlet property="nextWordsButton" destination="rqe-eX-beS" id="pmD-VV-cPR"/>
+                        <segue destination="6j2-Yk-qpb" kind="push" identifier="learnToTest" id="WcF-U5-4TO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZk-6J-HiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1683" y="-382"/>
+            <point key="canvasLocation" x="2747" y="-355"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="erc-gX-OPZ">
+            <objects>
+                <navigationController id="ieM-Qc-ABz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nu8-7n-cnz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RAR-jD-g9c" kind="relationship" relationship="rootViewController" id="r7L-pt-Lpl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Soj-B6-LBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1844" y="-355"/>
         </scene>
         <!--TestNavigationController-->
         <scene sceneID="Znb-kk-C3p">
@@ -222,6 +239,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdC-Ms-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2741" y="-1054"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="n4v-s5-UuI">
+            <objects>
+                <viewController id="6j2-Yk-qpb" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W6J-eG-2Ev"/>
+                        <viewControllerLayoutGuide type="bottom" id="bsP-DF-Fdm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ir6-QZ-N2X">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NW2-Pq-0nB"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SCU-UO-aSs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3644" y="-355"/>
         </scene>
         <!--Result-->
         <scene sceneID="wg7-f3-ORb">

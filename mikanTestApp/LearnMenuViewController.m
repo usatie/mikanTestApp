@@ -28,9 +28,12 @@
 #pragma mark Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ( [[segue identifier] isEqualToString:@"segueToLearn"] ) {
-        LearnViewController *learnVC = [segue destinationViewController];
-        learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
-        learnVC.frequency = (int)_frequencySegmentedControl.selectedSegmentIndex+1;
+//        LearnViewController *learnVC = [segue destinationViewController];
+//        learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
+//        learnVC.frequency = (int)_frequencySegmentedControl.selectedSegmentIndex+1;
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        [ud setInteger:_sectionSegmentedControl.selectedSegmentIndex+1 forKey:@"learnCategoryId"];
+        [ud setInteger:_frequencySegmentedControl.selectedSegmentIndex+1 forKey:@"frequency"];
     }
 
 }
