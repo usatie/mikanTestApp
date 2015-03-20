@@ -77,6 +77,15 @@
                                     <segue destination="ieM-Qc-ABz" kind="show" id="qqU-E3-6iO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bS-Wi-Ipx">
+                                <rect key="frame" x="0.0" y="285" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Tr0-ei-nJp" kind="show" id="xkt-df-cEA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -115,6 +124,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="861" y="-355"/>
+        </scene>
+        <!--Abstract Learn View Controller-->
+        <scene sceneID="PnW-gd-H2N">
+            <objects>
+                <viewController id="Tr0-ei-nJp" customClass="AbstractLearnViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iLC-56-C0x"/>
+                        <viewControllerLayoutGuide type="bottom" id="GzA-7A-oTF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7tL-bI-GSz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iRI-39-OGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1485" y="313"/>
         </scene>
         <!--Learn View Controller-->
         <scene sceneID="ALa-fv-bS7">

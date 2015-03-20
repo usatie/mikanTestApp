@@ -23,4 +23,9 @@
     return self;
 }
 
+- (IBAction)cancelButtonPushed:(id)sender {
+    if ([_delegate respondsToSelector:@selector(cancelButtonPushedDelegate)]) {
+        [_delegate cancelButtonPushedDelegate];
+    }
+}
 @end

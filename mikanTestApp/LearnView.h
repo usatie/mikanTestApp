@@ -12,10 +12,16 @@
 
 @interface LearnView : UIView
 @property id <LearnViewDelegate> delegate;
+
+- (IBAction)cancelButtonPushed:(id)sender;
+
+
+
 @end
 
 @protocol LearnViewDelegate <NSObject>
-
 @optional
 
+@required
+- (void)cancelButtonPushedDelegate;
 @end
