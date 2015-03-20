@@ -8,16 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "LearnView.h"
-#import "DraggableCardView.h"
 #import <AVFoundation/AVFoundation.h>
 
 @protocol AbstractLearnViewControllerDelegate;
 
-@interface AbstractLearnViewController : UIViewController<LearnViewDelegate,DraggableCardViewDelegate>
+@interface AbstractLearnViewController : UIViewController<LearnViewDelegate>
 @property id<AbstractLearnViewControllerDelegate> delegate;
 @property LearnView *learnView;
-
-
 @end
 
 

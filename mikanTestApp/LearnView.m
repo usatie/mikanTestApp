@@ -19,7 +19,6 @@
         NSArray *array = [nib instantiateWithOwner:self options:nil];
         self = [array objectAtIndex:0];
         self.frame = frame;
-        [self generateCardView:0 cardCount:5];
     }
     return self;
 }
@@ -33,17 +32,11 @@
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = self;
-        [cardView setParameter:@"english"
-                      japanese:@"japanese"
-                        number:@"2"
+        [cardView setParameter:self.wordsDic[@"english"][i]
+                      japanese:self.wordsDic[@"japanese"][i]
+                        number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
             japaneseHiddenFlug:YES
-                     wordIndex:1];
-        
-        //        [cardView setParameter:_learnWordsDic[@"english"][i]
-        //                      japanese:_learnWordsDic[@"japanese"][i]
-        //                        number:[NSString stringWithFormat:@"%@",_learnWordsDic[@"wordId"][i]]
-        //            japaneseHiddenFlug:YES
-        //                     wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
+                     wordIndex:[self.wordsDic[@"wordId"][i] intValue]];
         cardView.sectionLabel.text = @"検証テスト";
         cardView.japaneseLabel.hidden = NO;
         [self.cardBaseView addSubview:cardView];
@@ -79,4 +72,44 @@
         [_delegate cancelButtonPushedDelegate];
     }
 }
+
+- (IBAction)knownButtonPushed:(id)sender {
+    DraggableCardView *cardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
+    [self removeCardView:cardView];
+}
+
+- (IBAction)unknownButtonPushed:(id)sender {
+    DraggableCardView *cardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
+    [self sendCardViewToBack:cardView];
+}
+
+- (void)removeCardView:(DraggableCardView *)cardView
+{
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         cardView.center = CGPointMake(cardView.originalPoint.x + 250 , cardView.originalPoint.y + 100);
+                         cardView.transform = CGAffineTransformMakeRotation(0);}
+                     completion:^(BOOL finished){
+                         cardView.panGestureRecognizer.enabled = YES;
+                         [self displayNextCardDelegate:YES sender:cardView];
+                     }
+     ];
+    
+}
+
+- (void)sendCardViewToBack:(DraggableCardView *)cardView
+{
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         cardView.center = CGPointMake(cardView.originalPoint.x - 250 , cardView.originalPoint.y + 100);
+                         cardView.transform = CGAffineTransformMakeRotation(0);}
+                     completion:^(BOOL finished){
+                         [self.cardBaseView sendSubviewToBack:cardView];
+                         cardView.panGestureRecognizer.enabled = YES;
+                         [self displayNextCardDelegate:NO sender:cardView];
+                         [cardView resetViewPositionAndTransformations];
+                     }
+     ];
+}
+
 @end

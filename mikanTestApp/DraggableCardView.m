@@ -123,15 +123,6 @@
     
 }
 
-- (void)resetViewPositionAndTransformations
-{
-    [UIView animateWithDuration:0.2 animations:^{
-        self.center = self.originalPoint;
-        self.transform = CGAffineTransformMakeRotation(0);
-        self.overlayView.alpha = 0;
-    }];
-}
-
 - (void)setParameter:(NSString*)english
             japanese:(NSString*)japanese
               number:(NSString*)number
@@ -143,6 +134,15 @@
     _numberLabel.text = number;
     _japaneseLabel.hidden = japaneseHiddenFlug;
     _wordIndex = wordIndex;
+}
+
+- (void)resetViewPositionAndTransformations
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.center = self.originalPoint;
+        self.transform = CGAffineTransformMakeRotation(0);
+        self.overlayView.alpha = 0;
+    }];
 }
 
 - (void)dealloc
