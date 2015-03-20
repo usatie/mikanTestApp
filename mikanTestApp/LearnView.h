@@ -31,4 +31,6 @@
 
 @required
 - (void)cancelButtonPushedDelegate;
+- (void)didSubviewsRemoved;
+- (void)willPlayNextWord;
 @end

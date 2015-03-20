@@ -53,4 +53,32 @@
 - (void)cancelButtonPushedDelegate{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)didSubviewsRemoved {
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    
+    //(stop timer)
+    
+    //sound "finish"
+    
+    
+    
+    //1. generate next card
+        //start timer
+        //sound "next"
+    
+    
+    //2. segue to test
+    
+//    [self.learnView generateCardView:5 cardCount:10];
+}
+
+- (void)willPlayNextWord {
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    //start timer
+    
+    //sound "next"
+}
 @end

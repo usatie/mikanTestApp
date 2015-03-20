@@ -52,15 +52,21 @@
     if (hasRememberd) {
         [sender removeFromSuperview];
     } else {
-        [sender resetViewPositionAndTransformations];
         [self.cardBaseView sendSubviewToBack:sender];
+        [sender resetViewPositionAndTransformations];
     }
     
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardBaseView.subviews.count == 0) {
         //play "finish!"
+        if ([_delegate respondsToSelector:@selector(didSubviewsRemoved)]) {
+            [_delegate didSubviewsRemoved];
+        }
     } else {
         //play "next words"
+        if ([_delegate respondsToSelector:@selector(willPlayNextWord)]) {
+            [_delegate willPlayNextWord];
+        }
     }
 }
 
@@ -83,6 +89,8 @@
     [self sendCardViewToBack:cardView];
 }
 
+
+#pragma mark Card Animation
 - (void)removeCardView:(DraggableCardView *)cardView
 {
     [UIView animateWithDuration:0.2
@@ -104,10 +112,8 @@
                          cardView.center = CGPointMake(cardView.originalPoint.x - 250 , cardView.originalPoint.y + 100);
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
-                         [self.cardBaseView sendSubviewToBack:cardView];
                          cardView.panGestureRecognizer.enabled = YES;
                          [self displayNextCardDelegate:NO sender:cardView];
-                         [cardView resetViewPositionAndTransformations];
                      }
      ];
 }
