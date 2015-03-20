@@ -34,53 +34,80 @@
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04k-qN-c6h">
-                                <rect key="frame" x="180" y="384" width="240" height="60"/>
+                                <rect key="frame" x="180" y="423" width="240" height="60"/>
+                                <color key="backgroundColor" red="0.99215686319999996" green="0.80784314869999996" blue="0.3843137324" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="8lJ-sN-hqb"/>
                                     <constraint firstAttribute="width" constant="240" id="f8s-NP-Z6P"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
-                                <state key="normal" title="学習スタート">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="未学習単語()">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="ieM-Qc-ABz" kind="show" id="bXO-Sf-q5Y"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ko3-eB-HKO">
-                                <rect key="frame" x="150" y="244" width="300" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="ruu-NC-0Wu"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="未習単語"/>
-                                    <segment title="未アーカイブ"/>
-                                </segments>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq2-V6-aeN">
-                                <rect key="frame" x="263" y="28" width="75" height="30"/>
-                                <state key="normal" title="復習テスト">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq2-V6-aeN">
+                                <rect key="frame" x="180" y="244" width="240" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="復習テスト()">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="eLo-lV-dvZ" kind="show" id="gcF-mN-Vs4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNo-pA-Uec">
+                                <rect key="frame" x="180" y="333" width="240" height="60"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="h7Y-A0-cGE"/>
+                                    <constraint firstAttribute="height" constant="60" id="p8J-i0-N5d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <state key="normal" title="学習中()">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ieM-Qc-ABz" kind="show" id="qqU-E3-6iO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ko3-eB-HKO" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="100" id="A8z-xF-PLa"/>
+                            <constraint firstItem="aNo-pA-Uec" firstAttribute="top" secondItem="04k-qN-c6h" secondAttribute="bottom" constant="20" id="13z-qg-Z0n"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="aNo-pA-Uec" secondAttribute="bottom" constant="30" id="7gF-N9-GJW"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="width" secondItem="aNo-pA-Uec" secondAttribute="width" id="BAE-0B-oaN"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="width" secondItem="Mq2-V6-aeN" secondAttribute="width" id="BQs-Z3-EVS"/>
                             <constraint firstAttribute="centerX" secondItem="04k-qN-c6h" secondAttribute="centerX" id="C2x-o8-OY8"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="height" secondItem="aNo-pA-Uec" secondAttribute="height" id="Kzx-6y-rZ1"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="height" secondItem="Mq2-V6-aeN" secondAttribute="height" id="L2M-Cs-npw"/>
+                            <constraint firstAttribute="centerX" secondItem="aNo-pA-Uec" secondAttribute="centerX" id="S06-NU-XTG"/>
                             <constraint firstAttribute="centerX" secondItem="JHU-4s-bmk" secondAttribute="centerX" id="bso-3j-j2p"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
-                            <constraint firstAttribute="centerX" secondItem="ko3-eB-HKO" secondAttribute="centerX" id="m4b-yA-f4t"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="96" id="n7m-UU-N8F"/>
+                            <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="20" id="pWC-Yz-IQa"/>
                             <constraint firstAttribute="centerX" secondItem="Mq2-V6-aeN" secondAttribute="centerX" id="trT-CX-0AE"/>
+                            <constraint firstItem="aNo-pA-Uec" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="29" id="w0c-Dl-ovW"/>
+                            <constraint firstItem="Mq2-V6-aeN" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="100" id="wTR-bt-t3s"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="13z-qg-Z0n"/>
+                                <exclude reference="e7z-B6-1Ce"/>
+                                <exclude reference="pWC-Yz-IQa"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="learnModeSegmentedControl" destination="ko3-eB-HKO" id="XlG-LN-B2C"/>
+                        <outlet property="learnButton" destination="aNo-pA-Uec" id="Ln9-1R-I4o"/>
+                        <outlet property="learnNewWordsButton" destination="04k-qN-c6h" id="ieG-3x-EEZ"/>
                         <outlet property="relearnButton" destination="Mq2-V6-aeN" id="2Ah-bR-ROg"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                     </connections>
@@ -368,4 +395,7 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bXO-Sf-q5Y"/>
+    </inferredMetricsTieBreakers>
 </document>

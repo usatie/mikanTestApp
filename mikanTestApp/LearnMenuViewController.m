@@ -35,22 +35,19 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] forKey:@"category"];
-    [ud setBool:_learnModeSegmentedControl.selectedSegmentIndex forKey:@"learnMode"];
-    [ud synchronize];
-
-    if ( [[segue identifier] isEqualToString:@"segueToLearn"] ) {
-//        LearnViewController *learnVC = [segue destinationViewController];
-//        learnVC.learnCategoryId = (int)_sectionSegmentedControl.selectedSegmentIndex+1;
-//        learnVC.frequency = (int)_frequencySegmentedControl.selectedSegmentIndex+1;
+    if (sender == _learnNewWordsButton) {
+        [ud setBool:NO forKey:@"learnMode"];
+    } else if (sender == _learnButton){
+        [ud setBool:YES forKey:@"learnMode"];
     }
-
+    [ud synchronize];
 }
 
 - (void)refreshButtonTitles{
     NSArray *arr = [DBHandler getRelearnWordsCount:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex]];
     [_relearnButton setTitle:[NSString stringWithFormat:@"復習（%@）",arr[0]] forState:UIControlStateNormal];
-    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未学習（%@）",arr[1]] forSegmentAtIndex:0];
-    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"学習中（%@）",arr[2]] forSegmentAtIndex:1];
+    [_learnNewWordsButton setTitle:[NSString stringWithFormat:@"未学習（%@）",arr[1]] forState:UIControlStateNormal];
+    [_learnButton setTitle:[NSString stringWithFormat:@"学習中（%@）",arr[2]] forState:UIControlStateNormal];
 }
 
 - (IBAction)learnCategoryChanged:(id)sender {
