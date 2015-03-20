@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="Clb-OE-Zfw">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DhN-bK-6W8">
+                    <rect key="frame" x="40" y="44" width="43" height="30"/>
+                    <state key="normal" title="&lt;back">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frd-2K-vD8">
+                    <rect key="frame" x="240" y="460" width="120" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="Ayu-Oe-eu1"/>
+                        <constraint firstAttribute="height" constant="60" id="wmp-sS-2Zq"/>
+                    </constraints>
+                    <state key="normal" title="残り100単語">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-WQ-Q8C">
+                    <rect key="frame" x="155" y="108" width="290" height="340"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="290" id="Lnb-2P-gMg"/>
+                        <constraint firstAttribute="height" constant="340" id="eYG-Qk-lTq"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="tbE-WQ-Q8C" secondAttribute="centerX" id="Cbc-U0-Qfu"/>
+                <constraint firstItem="DhN-bK-6W8" firstAttribute="leading" secondItem="Clb-OE-Zfw" secondAttribute="leadingMargin" constant="263" id="Jif-al-fXs"/>
+                <constraint firstItem="DhN-bK-6W8" firstAttribute="leading" secondItem="Clb-OE-Zfw" secondAttribute="leadingMargin" constant="24" id="MoJ-Rz-JSb"/>
+                <constraint firstAttribute="centerX" secondItem="frd-2K-vD8" secondAttribute="centerX" id="afe-2F-2lX"/>
+                <constraint firstAttribute="centerX" secondItem="DhN-bK-6W8" secondAttribute="centerX" id="jt0-3y-hAv"/>
+                <constraint firstItem="tbE-WQ-Q8C" firstAttribute="leading" secondItem="DhN-bK-6W8" secondAttribute="trailing" constant="15" id="n8V-wU-sjp"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="jt0-3y-hAv"/>
+                    <exclude reference="Jif-al-fXs"/>
+                    <exclude reference="n8V-wU-sjp"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

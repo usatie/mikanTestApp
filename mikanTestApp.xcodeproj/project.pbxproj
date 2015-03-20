@@ -1022,6 +1022,9 @@
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
 		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
 		247119E01ABB32F900F39BE3 /* mikan_test.db in Resources */ = {isa = PBXBuildFile; fileRef = 247119DF1ABB32F900F39BE3 /* mikan_test.db */; };
+		247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */; };
+		247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E61ABBF3EB00F39BE3 /* LearnView.m */; };
+		247119E91ABBF3FA00F39BE3 /* LearnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247119E81ABBF3FA00F39BE3 /* LearnView.xib */; };
 		249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C991AB9B385007E2D14 /* WordTableView.m */; };
 		249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */; };
 		249A1CA21ABAEEB5007E2D14 /* TestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1CA11ABAEEB5007E2D14 /* TestResultViewController.m */; };
@@ -2084,6 +2087,11 @@
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
 		2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_incorrect.mp3; sourceTree = "<group>"; };
 		247119DF1ABB32F900F39BE3 /* mikan_test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_test.db; sourceTree = "<group>"; };
+		247119E21ABBF3CB00F39BE3 /* AbstractLearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLearnViewController.h; sourceTree = "<group>"; };
+		247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLearnViewController.m; sourceTree = "<group>"; };
+		247119E51ABBF3EB00F39BE3 /* LearnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnView.h; sourceTree = "<group>"; };
+		247119E61ABBF3EB00F39BE3 /* LearnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnView.m; sourceTree = "<group>"; };
+		247119E81ABBF3FA00F39BE3 /* LearnView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LearnView.xib; sourceTree = "<group>"; };
 		249A1C981AB9B385007E2D14 /* WordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTableView.h; sourceTree = "<group>"; };
 		249A1C991AB9B385007E2D14 /* WordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTableView.m; sourceTree = "<group>"; };
 		249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -3266,6 +3274,18 @@
 			name = soundEffect;
 			sourceTree = "<group>";
 		};
+		247119E11ABBF3AD00F39BE3 /* AbstractLearnViewController */ = {
+			isa = PBXGroup;
+			children = (
+				247119E21ABBF3CB00F39BE3 /* AbstractLearnViewController.h */,
+				247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */,
+				247119E51ABBF3EB00F39BE3 /* LearnView.h */,
+				247119E61ABBF3EB00F39BE3 /* LearnView.m */,
+				247119E81ABBF3FA00F39BE3 /* LearnView.xib */,
+			);
+			name = AbstractLearnViewController;
+			sourceTree = "<group>";
+		};
 		249A1C971AB9B363007E2D14 /* WordTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -3304,6 +3324,7 @@
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				247119E11ABBF3AD00F39BE3 /* AbstractLearnViewController */,
 				249A1C971AB9B363007E2D14 /* WordTableView */,
 				24A657A51AB9476400FA810D /* CustomCell */,
 				24A657981AB8321B00FA810D /* UserUtil */,
@@ -4462,6 +4483,7 @@
 				241FEEEE1AAD99EF000290FB /* momentum.mp3 in Resources */,
 				241FEF051AAD99EF000290FB /* obscure.mp3 in Resources */,
 				241FECB61AAD99EF000290FB /* accomplish.mp3 in Resources */,
+				247119E91ABBF3FA00F39BE3 /* LearnView.xib in Resources */,
 				241FEF6C1AAD99EF000290FB /* proverb.mp3 in Resources */,
 				241FECE91AAD99EF000290FB /* anomaly.mp3 in Resources */,
 				241FEED71AAD99EF000290FB /* locomotive.mp3 in Resources */,
@@ -4553,6 +4575,8 @@
 				24B2EA331AAEE1F700921BB3 /* DraggableCardOverlayView.m in Sources */,
 				24B2EA301AAEE13C00921BB3 /* DraggableCardView.m in Sources */,
 				24A657AA1AB9477300FA810D /* CustomTableViewCell.m in Sources */,
+				247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */,
+				247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */,
 				249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */,
 				2462CD301AAAB11400AF25A2 /* LearnViewController.m in Sources */,
 			);
