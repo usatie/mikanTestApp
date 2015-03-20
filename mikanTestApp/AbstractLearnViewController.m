@@ -30,17 +30,12 @@
 - (void)initLearnView{
     self.learnView = [[LearnView alloc] initWithFrame:self.view.frame];
     self.learnView.delegate = self;
-    //本当はsubClassから天下りでwordsDicを貰ってくる。
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSString *category = [ud objectForKey:@"category"];
-    BOOL learnMode = [ud boolForKey:@"learnMode"];
-    self.learnView.wordsDic = [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
-    //
+    self.learnView.wordsDic = [self getWordsDic];
     [self.learnView generateCardView:0 cardCount:5];
     [self.view addSubview:self.learnView];
 }
 
-- (NSDictionary *)getTestWords
+- (NSDictionary *)getWordsDic
 {
     // 継承したクラスで実装する
     [NSException raise:NSInternalInconsistencyException
