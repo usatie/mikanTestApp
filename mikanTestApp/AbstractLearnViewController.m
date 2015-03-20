@@ -33,6 +33,8 @@
     [self.view addSubview:self.learnView];
 }
 
+
+
 #pragma mark delegate
 - (void)cancelButtonPushedDelegate{
     [self dismissViewControllerAnimated:YES completion:nil];

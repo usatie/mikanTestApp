@@ -36,6 +36,6 @@
 @end
 
 @protocol DraggableCardViewDelegate <NSObject>
-@optional
+@required
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender;
 @end

@@ -146,7 +146,7 @@
 
 
 
-#pragma mark GGDraggableView Delegate Method
+#pragma mark DraggableView Delegate Method
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
 

@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DraggableCardView.h"
+
 
 @protocol LearnViewDelegate;
 
-@interface LearnView : UIView
+@interface LearnView : UIView<DraggableCardViewDelegate>
 @property id <LearnViewDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UIView *cardBaseView;
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
 
 - (IBAction)cancelButtonPushed:(id)sender;
 
