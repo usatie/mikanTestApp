@@ -3324,11 +3324,11 @@
 		24A657851AB7D31700FA810D /* CustomClasses */ = {
 			isa = PBXGroup;
 			children = (
+				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				247119E11ABBF3AD00F39BE3 /* AbstractLearnViewController */,
 				249A1C971AB9B363007E2D14 /* WordTableView */,
 				24A657A51AB9476400FA810D /* CustomCell */,
 				24A657981AB8321B00FA810D /* UserUtil */,
-				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				24A657861AB7D32900FA810D /* DBHandler */,
 				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);

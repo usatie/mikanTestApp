@@ -7,12 +7,9 @@
 //
 
 #import "AbstractTestViewController.h"
-#import "UserUtil.h"
 #import "answerButton.h"
 
 @interface AbstractTestViewController (){
-    UserUtil *util;
-    
     int testIndex;
     BOOL shouldPlaySound;
     
@@ -29,7 +26,6 @@
     /* 
      ToDo : GAITrackedViewController
      */
-    util = [[UserUtil alloc] init];
     _resultsArray = [[NSMutableArray alloc] init];
     _userChoicesArray = [[NSMutableArray alloc] init];
     _answerDurationArray = [[NSMutableArray alloc] init];

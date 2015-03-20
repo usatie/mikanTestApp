@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol LearnViewDelegate;
+
 @interface LearnView : UIView
+@property id <LearnViewDelegate> delegate;
+@end
+
+@protocol LearnViewDelegate <NSObject>
+
+@optional
 
 @end

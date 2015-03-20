@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LearnView.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface AbstractLearnViewController : UIViewController
+@protocol AbstractLearnViewControllerDelegate;
 
+@interface AbstractLearnViewController : UIViewController<LearnViewDelegate>
+@property id<AbstractLearnViewControllerDelegate> delegate;
+@property LearnView *learnView;
+
+
+@end
+
+
+
+@protocol AbstractLearnViewControllerDelegate <NSObject>
+@optional
 @end
