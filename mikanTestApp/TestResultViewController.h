@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TestResultViewController : UIViewController
-
+@property NSDictionary *testedWordsDic;
 @end

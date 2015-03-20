@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RelearnTestResultViewController : UIViewController//<UITableViewDataSource,UITableViewDelegate>
-
+@interface RelearnTestResultViewController : UIViewController
+@property NSDictionary *testedWordsDic;
 @end

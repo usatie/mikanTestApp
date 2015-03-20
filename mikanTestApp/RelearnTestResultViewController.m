@@ -28,9 +28,9 @@ typedef void(^completion)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSDictionary *testedWordsDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"testWordsDic"];
-    wordsDic = [[NSMutableDictionary alloc] initWithDictionary:testedWordsDic];
-    [wordsDic addEntriesFromDictionary:[DBHandler getHasRememberedDicWithWordIdArray:testedWordsDic[@"wordId"]]];
+//    NSDictionary *testedWordsDic = [[NSUserDefaults standardUserDefaults] objectForKey:@"testWordsDic"];
+    wordsDic = [[NSMutableDictionary alloc] initWithDictionary:_testedWordsDic];
+    [wordsDic addEntriesFromDictionary:[DBHandler getHasRememberedDicWithWordIdArray:_testedWordsDic[@"wordId"]]];
     
     //init scroll view
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];

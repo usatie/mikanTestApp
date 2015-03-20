@@ -7,6 +7,7 @@
 //
 
 #import "TestViewController.h"
+#import "TestResultViewController.h"
 
 @interface TestViewController ()
 
@@ -28,8 +29,6 @@
 #pragma mark Test Delegate Methods
 - (void)finishDelegate{
     [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
-    [[NSUserDefaults standardUserDefaults] setObject:self.testWordsDic forKey:@"testWordsDic"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
     [self performSegueWithIdentifier:@"testToResult" sender:self];
 }
@@ -39,10 +38,19 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark Segue
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    //TestResultViewController にtestWordsDicを引き渡し
+    if ([segue.identifier isEqualToString:@"testToResult"]) {
+        TestResultViewController *vc = segue.destinationViewController;
+        vc.testedWordsDic = self.testWordsDic;
+    }
+}
+
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    return _tmpDic;//[DBHandler getRelearnWords:@"TOEIC" limit:10 remembered:NO hasTested:NO];//[self getTestWordsDictionaryWithFileName:@"sample_test"];
+    return _tmpDic;
 }
 
 @end
