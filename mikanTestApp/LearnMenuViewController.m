@@ -48,9 +48,9 @@
 
 - (void)refreshButtonTitles{
     NSArray *arr = [DBHandler getRelearnWordsCount:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex]];
-    [_relearnButton setTitle:[NSString stringWithFormat:@"復習テスト（%@）",arr[0]] forState:UIControlStateNormal];
-    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未習（%@）",arr[1]] forSegmentAtIndex:0];
-    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未アーカイブ（%@）",arr[2]] forSegmentAtIndex:1];
+    [_relearnButton setTitle:[NSString stringWithFormat:@"復習（%@）",arr[0]] forState:UIControlStateNormal];
+    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"未学習（%@）",arr[1]] forSegmentAtIndex:0];
+    [_learnModeSegmentedControl setTitle:[NSString stringWithFormat:@"学習中（%@）",arr[2]] forSegmentAtIndex:1];
 }
 
 - (IBAction)learnCategoryChanged:(id)sender {

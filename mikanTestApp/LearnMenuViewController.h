@@ -12,6 +12,6 @@
 @property (strong, nonatomic) IBOutlet UISegmentedControl *learnModeSegmentedControl;
 @property (strong, nonatomic) IBOutlet UIButton *relearnButton;
 - (IBAction)learnCategoryChanged:(id)sender;
-
+- (void)refreshButtonTitles;
 @end
 
