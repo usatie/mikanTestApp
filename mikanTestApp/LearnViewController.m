@@ -209,8 +209,10 @@
 #pragma mark Sound Related Method
 - (void)pronounceNextWord{
     DLog(@"pronounce");
-    DraggableCardView *nextCardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
-    [self playSound:nextCardView.englishLabel.text];
+    if (self.cardsBaseView.subviews.count!=0) {
+        DraggableCardView *nextCardView = (DraggableCardView *)[self.cardsBaseView.subviews objectAtIndex:self.cardsBaseView.subviews.count-1];
+        [self playSound:nextCardView.englishLabel.text];
+    }
 }
 
 -(void)playSound:(NSString *)fileName

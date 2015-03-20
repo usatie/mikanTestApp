@@ -64,8 +64,10 @@
     }
     
     //cardsBaseViewのsubviewsが０だったらfinish
-    if (self.cardBaseView.subviews.count == 0) {        
+    if (self.cardBaseView.subviews.count == 0) {
+        //play "finish!"
     } else {
+        //play "next words"
     }
 }
 
