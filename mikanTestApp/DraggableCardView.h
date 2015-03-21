@@ -37,4 +37,6 @@
 @protocol DraggableCardViewDelegate <NSObject>
 @required
 - (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender;
+@optional
+- (void)cardViewTouchedDelegate:(DraggableCardView *)cardView;
 @end

@@ -55,6 +55,9 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     _japaneseLabel.hidden = NO;
+    if ([_delegate respondsToSelector:@selector(cardViewTouchedDelegate:)]) {
+        [_delegate cardViewTouchedDelegate:self];
+    }
 }
 
 - (void)dragged:(UIPanGestureRecognizer *)gestureRecognizer
