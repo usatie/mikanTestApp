@@ -17,12 +17,16 @@
 @property NSDictionary *wordsDic;
 
 - (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount;
+- (void)removeCardView:(DraggableCardView *)cardView;
+- (void)sendCardViewToBack:(DraggableCardView *)cardView;
 
 @property (strong, nonatomic) IBOutlet UIView *cardBaseView;
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
 - (IBAction)cancelButtonPushed:(id)sender;
 - (IBAction)knownButtonPushed:(id)sender;
 - (IBAction)unknownButtonPushed:(id)sender;
+
+
 
 @end
 

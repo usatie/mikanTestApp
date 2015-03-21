@@ -31,10 +31,10 @@
     // Do any additional setup after loading the view.
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *category = [ud objectForKey:@"category"];
-    _audio = [[AVAudioPlayer alloc] init];
     BOOL learnMode = [ud boolForKey:@"learnMode"];
     _learnWordsDic = [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
     DLog(@"arr %@, learnMode %d learnWordsDic = %@",category,learnMode,_learnWordsDic);
+    _audio = [[AVAudioPlayer alloc] init];
     if([_learnWordsDic[@"wordId"] count] > NUMBER_OF_WORDS_PER_LEARNING){
         cardCount = NUMBER_OF_WORDS_PER_LEARNING;
         shouldLearnAgain = YES;
@@ -79,7 +79,6 @@
                                             userInfo:nil
                                              repeats:NO];
     isTimerValid = YES;
-
 }
 
 - (void)stopTimer

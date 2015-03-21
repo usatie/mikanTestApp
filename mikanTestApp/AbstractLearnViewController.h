@@ -15,6 +15,9 @@
 @interface AbstractLearnViewController : UIViewController<LearnViewDelegate>
 @property id<AbstractLearnViewControllerDelegate> delegate;
 @property LearnView *learnView;
+@property int numberOfWords;
+
+- (void)initLearnView;
 @end
 
 

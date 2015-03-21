@@ -17,7 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initLearnView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,7 +30,10 @@
     self.learnView = [[LearnView alloc] initWithFrame:self.view.frame];
     self.learnView.delegate = self;
     self.learnView.wordsDic = [self getWordsDic];
-    [self.learnView generateCardView:0 cardCount:5];
+    DLog(@"%@",self.learnView.wordsDic);
+    _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
+    DLog(@"number = %d",_numberOfWords);
+    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
     [self.view addSubview:self.learnView];
 }
 

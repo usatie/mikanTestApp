@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Test-->
@@ -46,7 +45,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ieM-Qc-ABz" kind="show" id="bXO-Sf-q5Y"/>
+                                    <segue destination="O6K-TJ-wr4" kind="show" id="kI3-Vk-K7z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mq2-V6-aeN">
@@ -74,16 +73,7 @@
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ieM-Qc-ABz" kind="show" id="qqU-E3-6iO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5bS-Wi-Ipx">
-                                <rect key="frame" x="0.0" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Tr0-ei-nJp" kind="show" id="xkt-df-cEA"/>
+                                    <segue destination="O6K-TJ-wr4" kind="show" id="SWX-XO-F1I"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -125,6 +115,22 @@
             </objects>
             <point key="canvasLocation" x="861" y="-355"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="j26-mL-VKy">
+            <objects>
+                <navigationController id="O6K-TJ-wr4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2T3-vX-eIi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Tr0-ei-nJp" kind="relationship" relationship="rootViewController" id="6D2-lF-8Is"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hw8-OT-T6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1800" y="-355"/>
+        </scene>
         <!--Sample Learn View Controller-->
         <scene sceneID="PnW-gd-H2N">
             <objects>
@@ -138,99 +144,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="f0o-7c-gqt"/>
+                    <connections>
+                        <segue destination="6j2-Yk-qpb" kind="push" identifier="learnToTest" id="js2-Jk-AYJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iRI-39-OGM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1485" y="313"/>
-        </scene>
-        <!--Learn View Controller-->
-        <scene sceneID="ALa-fv-bS7">
-            <objects>
-                <viewController id="RAR-jD-g9c" customClass="LearnViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="wab-Jq-egf"/>
-                        <viewControllerLayoutGuide type="bottom" id="6Ct-WL-x8I"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8yw-Ma-MMT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wX3-f3-X7N">
-                                <rect key="frame" x="40" y="44" width="43" height="30"/>
-                                <state key="normal" title="&lt;back">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="U02-gN-I1a"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqe-eX-beS">
-                                <rect key="frame" x="240" y="460" width="120" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="2J9-R3-9zw"/>
-                                    <constraint firstAttribute="width" constant="120" id="dPe-zR-4Re"/>
-                                </constraints>
-                                <state key="normal" title="残り100単語">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextWordsButtonPushed:" destination="RAR-jD-g9c" eventType="touchUpInside" id="Mqg-Bd-Djv"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tCp-HP-1I6">
-                                <rect key="frame" x="155" y="108" width="290" height="340"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="290" id="2CA-V0-l33"/>
-                                    <constraint firstAttribute="height" constant="340" id="rg0-yw-XNz"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="wX3-f3-X7N" secondAttribute="centerX" id="Dlw-2m-QF2"/>
-                            <constraint firstItem="tCp-HP-1I6" firstAttribute="leading" secondItem="wX3-f3-X7N" secondAttribute="trailing" constant="15" id="K36-zZ-MaP"/>
-                            <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="24" id="NIE-zA-o3Z"/>
-                            <constraint firstItem="wX3-f3-X7N" firstAttribute="leading" secondItem="8yw-Ma-MMT" secondAttribute="leadingMargin" constant="263" id="bgk-qI-ZIq"/>
-                            <constraint firstItem="rqe-eX-beS" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="440" id="jzy-vz-wGd"/>
-                            <constraint firstAttribute="centerX" secondItem="rqe-eX-beS" secondAttribute="centerX" id="kuX-X9-GjE"/>
-                            <constraint firstItem="wX3-f3-X7N" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="24" id="s1X-v1-zf0"/>
-                            <constraint firstAttribute="centerX" secondItem="tCp-HP-1I6" secondAttribute="centerX" id="siY-Rp-w2G"/>
-                            <constraint firstItem="tCp-HP-1I6" firstAttribute="top" secondItem="wab-Jq-egf" secondAttribute="bottom" constant="88" id="ywS-qx-4tF"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Dlw-2m-QF2"/>
-                                <exclude reference="bgk-qI-ZIq"/>
-                                <exclude reference="K36-zZ-MaP"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" id="N25-A4-B0p"/>
-                    <connections>
-                        <outlet property="cardsBaseView" destination="tCp-HP-1I6" id="g39-Wi-UBZ"/>
-                        <outlet property="nextWordsButton" destination="rqe-eX-beS" id="pmD-VV-cPR"/>
-                        <segue destination="6j2-Yk-qpb" kind="push" identifier="learnToTest" id="WcF-U5-4TO"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZk-6J-HiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2747" y="-355"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="erc-gX-OPZ">
-            <objects>
-                <navigationController id="ieM-Qc-ABz" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Nu8-7n-cnz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="RAR-jD-g9c" kind="relationship" relationship="rootViewController" id="r7L-pt-Lpl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Soj-B6-LBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1844" y="-355"/>
+            <point key="canvasLocation" x="2741" y="-355"/>
         </scene>
         <!--TestNavigationController-->
         <scene sceneID="Znb-kk-C3p">
@@ -423,6 +344,6 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bXO-Sf-q5Y"/>
+        <segue reference="kI3-Vk-K7z"/>
     </inferredMetricsTieBreakers>
 </document>
