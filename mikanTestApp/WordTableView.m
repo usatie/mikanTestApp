@@ -49,7 +49,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
         int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
         int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
-        BOOL hasRemembered = [wordsDic[@"hasRemembered"][indexPath.row] boolValue];
+//        BOOL hasRemembered = [wordsDic[@"hasRemembered"][indexPath.row] boolValue];
 
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -60,21 +60,25 @@
     cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
     cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if(hasRemembered) {
-        cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
-        cell.hasChecked = YES;
-    } else {
-        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
-        cell.hasChecked = NO;
-    }
-    cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    if(hasRemembered) {
+//        cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
+//        cell.hasChecked = YES;
+//    } else {
+//        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
+//        cell.hasChecked = NO;
+//    }
+//    cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     if(testResultIndex < 1) {
         //        [cell.archiveButton setImage:nil forState:UIControlStateDisabled];
         cell.archiveImageView.image = nil;
         cell.hasChecked = NO;
         cell.archiveButton.enabled = NO;
+    } else {
+        cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
+        cell.hasChecked = YES;
     }
+    cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
     
     UIColor *color = [UIColor blackColor];
     UIColor *alphaColor = [color colorWithAlphaComponent:0.0];
