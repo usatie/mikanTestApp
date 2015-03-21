@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "DraggableCardView.h"
 
-@interface LearnViewController : UIViewController<DraggableCardViewDelegate>
+@interface LearnViewController_deprecated : UIViewController<DraggableCardViewDelegate>
 - (IBAction)backButtonPushed:(id)sender;
 - (IBAction)nextWordsButtonPushed:(id)sender;
 

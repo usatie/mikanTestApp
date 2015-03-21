@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "LearnViewController.h"
+#import "LearnViewController_deprecated.h"
 #import "TestViewController.h"
-@interface LearnViewController (){
+@interface LearnViewController_deprecated (){
     int learnWordsIndex;
     int cardCount;
     
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation LearnViewController
+@implementation LearnViewController_deprecated
 #pragma mark Definition
 
 #define NUMBER_OF_WORDS_PER_LEARNING 5

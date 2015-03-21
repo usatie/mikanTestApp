@@ -167,7 +167,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRG-gT-RN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="-1445"/>
+            <point key="canvasLocation" x="1800" y="-1078"/>
         </scene>
         <!--Relearn Test View Controller-->
         <scene sceneID="fgQ-SU-cPx">
@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4kD-cI-oFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1800" y="-1054"/>
+            <point key="canvasLocation" x="3606" y="-1070"/>
         </scene>
         <!--テスト結果-->
         <scene sceneID="DIe-c5-ahj">
@@ -208,7 +208,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdC-Ms-tXt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741" y="-1054"/>
+            <point key="canvasLocation" x="4452" y="-1070"/>
         </scene>
         <!--Test View Controller-->
         <scene sceneID="n4v-s5-UuI">
