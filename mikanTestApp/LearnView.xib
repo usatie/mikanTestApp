@@ -61,7 +61,9 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
                 <outlet property="cardBaseView" destination="tbE-WQ-Q8C" id="2Ql-pS-aQX"/>
+                <outlet property="knownButton" destination="iVu-Nn-Lie" id="Zgi-nj-aRj"/>
                 <outlet property="nextButton" destination="q6q-Jz-dgd" id="RFx-8y-4cp"/>
+                <outlet property="unknownButton" destination="z6a-Fs-0KU" id="a6r-3f-dKo"/>
             </connections>
         </view>
     </objects>

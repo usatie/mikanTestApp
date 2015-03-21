@@ -93,6 +93,7 @@
 #pragma mark Card Animation
 - (void)removeCardView:(DraggableCardView *)cardView
 {
+    [self disableButtons];
     [UIView animateWithDuration:0.2
                      animations:^{
                          cardView.center = CGPointMake(cardView.originalPoint.x + 250 , cardView.originalPoint.y + 100);
@@ -100,6 +101,7 @@
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
                          [self displayNextCardDelegate:YES sender:cardView];
+                         [self enableButtons];
                      }
      ];
     
@@ -107,6 +109,7 @@
 
 - (void)sendCardViewToBack:(DraggableCardView *)cardView
 {
+    [self disableButtons];
     [UIView animateWithDuration:0.2
                      animations:^{
                          cardView.center = CGPointMake(cardView.originalPoint.x - 250 , cardView.originalPoint.y + 100);
@@ -114,8 +117,19 @@
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
                          [self displayNextCardDelegate:NO sender:cardView];
+                         [self enableButtons];
                      }
      ];
+}
+
+#pragma mark card availability
+- (void)enableButtons{
+    _knownButton.enabled = YES;
+    _unknownButton.enabled = YES;
+}
+- (void)disableButtons{
+    _knownButton.enabled = NO;
+    _unknownButton.enabled = NO;
 }
 
 @end

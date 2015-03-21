@@ -22,6 +22,10 @@
 
 @property (strong, nonatomic) IBOutlet UIView *cardBaseView;
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
+@property (strong, nonatomic) IBOutlet UIButton *knownButton;
+@property (strong, nonatomic) IBOutlet UIButton *unknownButton;
+
+
 - (IBAction)cancelButtonPushed:(id)sender;
 - (IBAction)knownButtonPushed:(id)sender;
 - (IBAction)unknownButtonPushed:(id)sender;
