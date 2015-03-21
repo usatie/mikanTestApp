@@ -63,7 +63,7 @@ typedef void(^completion)(BOOL);
 
 #pragma mark TableView delegate methods
 #pragma mark Button Actions
-- (IBAction)nextButtonPushed:(id)sender {
+- (void)nextButtonPushed:(id)sender {
     //①アーカイブ情報を保存完了 ⇒ ②dismiss ⇒ ③buttonの数字をrefresh
     [self saveRememberedArray:^(BOOL ifSucceed){
         if (ifSucceed) {
