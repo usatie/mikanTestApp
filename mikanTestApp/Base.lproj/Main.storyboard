@@ -131,10 +131,10 @@
             </objects>
             <point key="canvasLocation" x="1800" y="-355"/>
         </scene>
-        <!--Sample Learn View Controller-->
+        <!--Learn View Controller-->
         <scene sceneID="PnW-gd-H2N">
             <objects>
-                <viewController id="Tr0-ei-nJp" customClass="SampleLearnViewController" sceneMemberID="viewController">
+                <viewController id="Tr0-ei-nJp" customClass="LearnViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="iLC-56-C0x"/>
                         <viewControllerLayoutGuide type="bottom" id="GzA-7A-oTF"/>

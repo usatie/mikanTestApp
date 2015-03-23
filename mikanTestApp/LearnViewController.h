@@ -1,5 +1,5 @@
 //
-//  SampleLearnViewController.h
+//  LearnViewController.h
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/20.
@@ -9,6 +9,6 @@
 #import "AbstractLearnViewController.h"
 #import <AVFoundation/AVFoundation.h>
 
-@interface SampleLearnViewController : AbstractLearnViewController<AbstractLearnViewControllerDelegate>
+@interface LearnViewController : AbstractLearnViewController<AbstractLearnViewControllerDelegate>
 @property AVAudioPlayer *audio;
 @end

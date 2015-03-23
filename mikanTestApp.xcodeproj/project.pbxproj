@@ -1024,7 +1024,7 @@
 		247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */; };
 		247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E61ABBF3EB00F39BE3 /* LearnView.m */; };
 		247119E91ABBF3FA00F39BE3 /* LearnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247119E81ABBF3FA00F39BE3 /* LearnView.xib */; };
-		247119EC1ABC226600F39BE3 /* SampleLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119EB1ABC226600F39BE3 /* SampleLearnViewController.m */; };
+		247119EC1ABC226600F39BE3 /* LearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119EB1ABC226600F39BE3 /* LearnViewController.m */; };
 		24711A2A1ABFEE4B00F39BE3 /* mikan_exam.db in Resources */ = {isa = PBXBuildFile; fileRef = 24711A291ABFEE4B00F39BE3 /* mikan_exam.db */; };
 		249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C991AB9B385007E2D14 /* WordTableView.m */; };
 		249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */; };
@@ -2091,8 +2091,8 @@
 		247119E51ABBF3EB00F39BE3 /* LearnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnView.h; sourceTree = "<group>"; };
 		247119E61ABBF3EB00F39BE3 /* LearnView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnView.m; sourceTree = "<group>"; };
 		247119E81ABBF3FA00F39BE3 /* LearnView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LearnView.xib; sourceTree = "<group>"; };
-		247119EA1ABC226600F39BE3 /* SampleLearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleLearnViewController.h; sourceTree = "<group>"; };
-		247119EB1ABC226600F39BE3 /* SampleLearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleLearnViewController.m; sourceTree = "<group>"; };
+		247119EA1ABC226600F39BE3 /* LearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnViewController.h; sourceTree = "<group>"; };
+		247119EB1ABC226600F39BE3 /* LearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnViewController.m; sourceTree = "<group>"; };
 		24711A291ABFEE4B00F39BE3 /* mikan_exam.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_exam.db; sourceTree = "<group>"; };
 		249A1C981AB9B385007E2D14 /* WordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTableView.h; sourceTree = "<group>"; };
 		249A1C991AB9B385007E2D14 /* WordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTableView.m; sourceTree = "<group>"; };
@@ -3313,8 +3313,8 @@
 			children = (
 				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
-				247119EA1ABC226600F39BE3 /* SampleLearnViewController.h */,
-				247119EB1ABC226600F39BE3 /* SampleLearnViewController.m */,
+				247119EA1ABC226600F39BE3 /* LearnViewController.h */,
+				247119EB1ABC226600F39BE3 /* LearnViewController.m */,
 				249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */,
 				249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */,
 				249A1CA01ABAEEB5007E2D14 /* TestResultViewController.h */,
@@ -4568,7 +4568,7 @@
 				249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */,
 				249A1CA21ABAEEB5007E2D14 /* TestResultViewController.m in Sources */,
 				24A657791AB71D5800FA810D /* DBHandler.m in Sources */,
-				247119EC1ABC226600F39BE3 /* SampleLearnViewController.m in Sources */,
+				247119EC1ABC226600F39BE3 /* LearnViewController.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,
 				24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */,

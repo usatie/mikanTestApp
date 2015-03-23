@@ -1,16 +1,16 @@
 //
-//  SampleLearnViewController.m
+//  LearnViewController.m
 //  mikanTestApp
 //
 //  Created by Shun Usami on 2015/03/20.
 //  Copyright (c) 2015年 ShunUsami. All rights reserved.
 //
 
-#import "SampleLearnViewController.h"
+#import "LearnViewController.h"
 #import "DraggableCardView.h"
 #import "TestViewController.h"
 
-@interface SampleLearnViewController (){
+@interface LearnViewController (){
     BOOL shouldLearnAgain;
     BOOL isTimerValid;
     NSTimer *timer;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation SampleLearnViewController
+@implementation LearnViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
