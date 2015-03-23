@@ -41,9 +41,10 @@
         cardView.japaneseLabel.hidden = NO;
         [self.cardBaseView addSubview:cardView];
         [self.cardBaseView sendSubviewToBack:cardView];
+        
+        //set top card
+        _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
     }
-    //set top card
-    _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
 }
 
 #pragma mark CardView delegate
