@@ -9,6 +9,6 @@
 #import "AppConsts.h"
 
 @implementation AppConsts
-NSString * const DB_NAME = @"mikan_test.db";
+NSString * const DB_NAME = @"mikan_exam.db";
 
 @end

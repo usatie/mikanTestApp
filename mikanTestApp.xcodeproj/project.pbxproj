@@ -1021,17 +1021,16 @@
 		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
 		2466F2261AAB023B001E8522 /* sound_incorrect.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */; };
-		247119E01ABB32F900F39BE3 /* mikan_test.db in Resources */ = {isa = PBXBuildFile; fileRef = 247119DF1ABB32F900F39BE3 /* mikan_test.db */; };
 		247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */; };
 		247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119E61ABBF3EB00F39BE3 /* LearnView.m */; };
 		247119E91ABBF3FA00F39BE3 /* LearnView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247119E81ABBF3FA00F39BE3 /* LearnView.xib */; };
 		247119EC1ABC226600F39BE3 /* SampleLearnViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 247119EB1ABC226600F39BE3 /* SampleLearnViewController.m */; };
+		24711A2A1ABFEE4B00F39BE3 /* mikan_exam.db in Resources */ = {isa = PBXBuildFile; fileRef = 24711A291ABFEE4B00F39BE3 /* mikan_exam.db */; };
 		249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C991AB9B385007E2D14 /* WordTableView.m */; };
 		249A1C9D1ABAEDF8007E2D14 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1C9C1ABAEDF8007E2D14 /* TestViewController.m */; };
 		249A1CA21ABAEEB5007E2D14 /* TestResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 249A1CA11ABAEEB5007E2D14 /* TestResultViewController.m */; };
 		24A657791AB71D5800FA810D /* DBHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657781AB71D5800FA810D /* DBHandler.m */; };
 		24A6577C1AB7C16400FA810D /* AppConsts.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6577B1AB7C16400FA810D /* AppConsts.m */; };
-		24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */ = {isa = PBXBuildFile; fileRef = 24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */; };
 		24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A6578E1AB7D9BA00FA810D /* TestView.m */; };
 		24A657911AB7D9CB00FA810D /* TestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24A657901AB7D9CB00FA810D /* TestView.xib */; };
 		24A657941AB7DA9900FA810D /* RelearnTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 24A657931AB7DA9900FA810D /* RelearnTestViewController.m */; };
@@ -2087,7 +2086,6 @@
 		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
 		2466F2231AAB023B001E8522 /* sound_incorrect.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_incorrect.mp3; sourceTree = "<group>"; };
-		247119DF1ABB32F900F39BE3 /* mikan_test.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_test.db; sourceTree = "<group>"; };
 		247119E21ABBF3CB00F39BE3 /* AbstractLearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLearnViewController.h; sourceTree = "<group>"; };
 		247119E31ABBF3CB00F39BE3 /* AbstractLearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLearnViewController.m; sourceTree = "<group>"; };
 		247119E51ABBF3EB00F39BE3 /* LearnView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnView.h; sourceTree = "<group>"; };
@@ -2095,6 +2093,7 @@
 		247119E81ABBF3FA00F39BE3 /* LearnView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LearnView.xib; sourceTree = "<group>"; };
 		247119EA1ABC226600F39BE3 /* SampleLearnViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SampleLearnViewController.h; sourceTree = "<group>"; };
 		247119EB1ABC226600F39BE3 /* SampleLearnViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SampleLearnViewController.m; sourceTree = "<group>"; };
+		24711A291ABFEE4B00F39BE3 /* mikan_exam.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_exam.db; sourceTree = "<group>"; };
 		249A1C981AB9B385007E2D14 /* WordTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTableView.h; sourceTree = "<group>"; };
 		249A1C991AB9B385007E2D14 /* WordTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTableView.m; sourceTree = "<group>"; };
 		249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
@@ -2106,7 +2105,6 @@
 		24A6577A1AB7C16400FA810D /* AppConsts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppConsts.h; sourceTree = "<group>"; };
 		24A6577B1AB7C16400FA810D /* AppConsts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppConsts.m; sourceTree = "<group>"; };
 		24A6577D1AB7C29F00FA810D /* mikanTestApp-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mikanTestApp-PrefixHeader.pch"; sourceTree = "<group>"; };
-		24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_ver_2.db; sourceTree = "<group>"; };
 		24A6578D1AB7D9BA00FA810D /* TestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestView.h; sourceTree = "<group>"; };
 		24A6578E1AB7D9BA00FA810D /* TestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestView.m; sourceTree = "<group>"; };
 		24A657901AB7D9CB00FA810D /* TestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestView.xib; sourceTree = "<group>"; };
@@ -3235,10 +3233,9 @@
 				247119DE1ABB241700F39BE3 /* soundEffect */,
 				241FE8C31AAD99E8000290FB /* test */,
 				247119DC1ABB23E700F39BE3 /* images */,
-				24A6577E1AB7C4D900FA810D /* mikan_ver_2.db */,
-				247119DF1ABB32F900F39BE3 /* mikan_test.db */,
 				2466F2161AAAEC15001E8522 /* sample_test.csv */,
 				2412DC341AAD92E900AC4D30 /* mikan.csv */,
+				24711A291ABFEE4B00F39BE3 /* mikan_exam.db */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -3694,7 +3691,6 @@
 				241FED4E1AAD99EF000290FB /* cell.mp3 in Resources */,
 				241FEF7E1AAD99EF000290FB /* rake.mp3 in Resources */,
 				241FF0751AAD99EF000290FB /* verify.mp3 in Resources */,
-				247119E01ABB32F900F39BE3 /* mikan_test.db in Resources */,
 				241FEE721AAD99EF000290FB /* harvest.mp3 in Resources */,
 				241FED181AAD99EF000290FB /* aviation.mp3 in Resources */,
 				241FED831AAD99EF000290FB /* concrete.mp3 in Resources */,
@@ -3732,7 +3728,6 @@
 				241FECDB1AAD99EF000290FB /* allowance.mp3 in Resources */,
 				241FEE4B1AAD99EF000290FB /* friction.mp3 in Resources */,
 				241FEF1D1AAD99EF000290FB /* package.mp3 in Resources */,
-				24A6577F1AB7C4D900FA810D /* mikan_ver_2.db in Resources */,
 				241FF0561AAD99EF000290FB /* ultimate.mp3 in Resources */,
 				241FEDE81AAD99EF000290FB /* diverse.mp3 in Resources */,
 				241FF0351AAD99EF000290FB /* thigh.mp3 in Resources */,
@@ -4339,6 +4334,7 @@
 				241FED371AAD99EF000290FB /* brave.mp3 in Resources */,
 				241FED901AAD99EF000290FB /* contingent.mp3 in Resources */,
 				241FF0551AAD99EF000290FB /* typical.mp3 in Resources */,
+				24711A2A1ABFEE4B00F39BE3 /* mikan_exam.db in Resources */,
 				241FEE301AAD99EF000290FB /* fascinate.mp3 in Resources */,
 				241FECD21AAD99EF000290FB /* agenda.mp3 in Resources */,
 				241FEE2F1AAD99EF000290FB /* farmyard.mp3 in Resources */,
