@@ -34,7 +34,7 @@ typedef void(^completion)(BOOL);
     
     //init scroll view
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    scrollView.contentSize = CGSizeMake(320, 550);
+    scrollView.contentSize = CGSizeMake(320, 55*[wordsDic[@"wordId"] count]);
     [self.view addSubview:scrollView];
     
     //init table view
