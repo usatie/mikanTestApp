@@ -48,7 +48,12 @@
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
-    NSString *category = [[NSUserDefaults standardUserDefaults] objectForKey:@"category"];
-    return [DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *category = [ud objectForKey:@"category"];
+    if ([ud boolForKey:@"totalRelearnMode"]) {
+        return [DBHandler getRelearnWords:category limit:250 remembered:YES hasTested:YES];
+    } else{
+        return [DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
+    }
 }
 @end

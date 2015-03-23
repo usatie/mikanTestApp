@@ -9,11 +9,13 @@
 #import <UIKit/UIKit.h>
 @interface LearnMenuViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UISegmentedControl *sectionSegmentedControl;
+@property (strong, nonatomic) IBOutlet UIButton *totalRelearnButton;
 @property (strong, nonatomic) IBOutlet UIButton *relearnButton;
 @property (strong, nonatomic) IBOutlet UIButton *learnNewWordsButton;
 @property (strong, nonatomic) IBOutlet UIButton *learnButton;
 
 
 - (IBAction)learnCategoryChanged:(id)sender;
+
 - (void)refreshButtonTitles;
 @end
