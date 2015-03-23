@@ -79,7 +79,7 @@ typedef void(^completion)(BOOL);
 - (void)saveRememberedArray:(completion)compblock
 {
     NSMutableArray *hasrememberedArray = [[NSMutableArray alloc] init];
-    for (int i = 0; i<10; i++) {
+    for (int i = 0; i<[wordsDic[@"wordId"] count]; i++) {
         NSIndexPath *indexpath = [NSIndexPath indexPathForRow:i inSection:0];
         CustomTableViewCell *cell = (CustomTableViewCell *)[tableView cellForRowAtIndexPath:indexpath];
         [hasrememberedArray addObject:[NSNumber numberWithBool:cell.hasChecked]];

@@ -39,6 +39,10 @@
         [ud setBool:NO forKey:@"learnMode"];
     } else if (sender == _learnButton){
         [ud setBool:YES forKey:@"learnMode"];
+    } else if (sender == _totalRelearnButton){
+        [ud setBool:YES forKey:@"totalRelearnMode"];
+    } else if (sender == _relearnButton) {
+        [ud setBool:NO forKey:@"totalRelearnMode"];
     }
     [ud synchronize];
 }
