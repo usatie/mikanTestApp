@@ -79,8 +79,8 @@
 - (void)willPlayNextWord {
     DLog(@"next card");
     //sound "next"
-    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
-    [self playSound:cardView.englishLabel.text];
+//    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
+    [self playSound:self.learnView.topCardView.englishLabel.text];
 
     //start timer
     [self startTimer];
@@ -113,8 +113,8 @@
 - (void)timerAction
 {
     DLog(@"timerAction");
-    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
-    [self.learnView sendCardViewToBack:cardView];
+//    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
+    [self.learnView sendCardViewToBack:self.learnView.topCardView];
 }
 
 #pragma mark sound

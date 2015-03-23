@@ -15,6 +15,8 @@
 @interface LearnView : UIView<DraggableCardViewDelegate>
 @property id <LearnViewDelegate> delegate;
 @property NSDictionary *wordsDic;
+@property DraggableCardView *topCardView;
+
 
 - (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount;
 - (void)removeCardView:(DraggableCardView *)cardView;

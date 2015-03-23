@@ -59,8 +59,6 @@
     
     //sound "finish"
     
-    
-    
     //1. generate next card
         //start timer
         //sound "next"

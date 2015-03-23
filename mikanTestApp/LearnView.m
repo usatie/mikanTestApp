@@ -42,6 +42,8 @@
         [self.cardBaseView addSubview:cardView];
         [self.cardBaseView sendSubviewToBack:cardView];
     }
+    //set top card
+    _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
 }
 
 #pragma mark CardView delegate
@@ -63,6 +65,9 @@
             [_delegate didSubviewsRemoved];
         }
     } else {
+        //set top card
+        _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
+        
         //play "next words"
         if ([_delegate respondsToSelector:@selector(willPlayNextWord)]) {
             [_delegate willPlayNextWord];
@@ -80,13 +85,11 @@
 }
 
 - (IBAction)knownButtonPushed:(id)sender {
-    DraggableCardView *cardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
-    [self removeCardView:cardView];
+    [self removeCardView:_topCardView];
 }
 
 - (IBAction)unknownButtonPushed:(id)sender {
-    DraggableCardView *cardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
-    [self sendCardViewToBack:cardView];
+    [self sendCardViewToBack:_topCardView];
 }
 
 
@@ -94,6 +97,7 @@
 - (void)removeCardView:(DraggableCardView *)cardView
 {
     [self disableButtons];
+    cardView.panGestureRecognizer.enabled = NO;
     [UIView animateWithDuration:0.2
                      animations:^{
                          cardView.center = CGPointMake(cardView.originalPoint.x + 250 , cardView.originalPoint.y + 100);
@@ -110,6 +114,7 @@
 - (void)sendCardViewToBack:(DraggableCardView *)cardView
 {
     [self disableButtons];
+    cardView.panGestureRecognizer.enabled = NO;
     [UIView animateWithDuration:0.2
                      animations:^{
                          cardView.center = CGPointMake(cardView.originalPoint.x - 250 , cardView.originalPoint.y + 100);
