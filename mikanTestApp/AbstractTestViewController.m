@@ -34,11 +34,6 @@
     
     //Testすべき単語が無かったらすぐに終了
     if ([_testWordsDic[@"wordId"] count]==0) {
-//        if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
-//            [_delegate testCancelDelegate];
-//        } else {
-//            DLog(@"no responds to testCancel");
-//        }
         [self cancelButtonPushed];
         return;
     }
@@ -98,6 +93,8 @@
 
 #pragma mark Button Action
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice{
+    //Timerをstop
+    [self stopTimer];
     //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
     //DBHandlerに入れるためのもの
@@ -117,21 +114,10 @@
     }
     DLog(@"finish!");
     [self finishTest];
-//    if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
-////        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-//        [_delegate finishDelegate];
-//    } else {
-//        DLog(@"no responds to finishDelegate");
-//    }
 }
 
 - (void)cancelButtonPushedDelegate{
     [self cancelButtonPushed];
-//    if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
-////        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-//        [_delegate testCancelDelegate];
-//    }
-//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark override method
@@ -166,6 +152,9 @@
 }
 
 - (void)startTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)stopTimer {
     DLog(@"if you want to add timer, please override this method");
 }
 
