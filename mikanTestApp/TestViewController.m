@@ -17,7 +17,7 @@
 @end
 
 @implementation TestViewController
-
+#pragma mark ViewController Initialization
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,7 +28,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Test Delegate Methods
+#pragma mark Test Override methods
 - (void)finishTest {
     [self.audio stop];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
@@ -47,7 +47,7 @@
     }];
 }
 
-#pragma mark Timer
+#pragma mark Timer (override)
 - (void)startTimer
 {
     if (isTimerValid) {

@@ -157,5 +157,8 @@
 - (void)stopTimer {
     DLog(@"if you want to add timer, please override this method");
 }
+- (void)timerAction {
+    DLog(@"if you want to add timer, please override this method");
+}
 
 @end
