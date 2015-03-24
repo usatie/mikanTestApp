@@ -120,7 +120,7 @@
     [self cancelButtonPushed];
 }
 
-#pragma mark override method
+#pragma mark Override method
 - (void)finishTest
 {
     // 継承したクラスで実装する
@@ -133,6 +133,17 @@
     // 継承したクラスで実装する
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+#pragma mark Timer Override(optional)
+- (void)startTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)stopTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)timerAction {
+    DLog(@"if you want to add timer, please override this method");
 }
 
 #pragma mark sound
@@ -150,15 +161,4 @@
 //        NSLog(@"path is nil. Could not pronounce %@", fileName);
     }
 }
-
-- (void)startTimer {
-    DLog(@"if you want to add timer, please override this method");
-}
-- (void)stopTimer {
-    DLog(@"if you want to add timer, please override this method");
-}
-- (void)timerAction {
-    DLog(@"if you want to add timer, please override this method");
-}
-
 @end
