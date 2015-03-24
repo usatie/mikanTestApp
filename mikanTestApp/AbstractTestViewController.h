@@ -10,10 +10,7 @@
 #import "TestView.h"
 #import <AVFoundation/AVFoundation.h>
 
-@protocol AbstractTestViewControllerDelegate;
-
 @interface AbstractTestViewController : UIViewController<TestViewDelegate>
-@property id<AbstractTestViewControllerDelegate> delegate;
 @property TestView *testView;
 
 @property NSDictionary *testWordsDic; //wordIndex, english, choicesArray,answerIndex,wordIndexを要素に持つDictionary
@@ -26,16 +23,12 @@
 @property BOOL relearnFlag;
 
 - (NSDictionary *)getTestWords;
+- (void)finishTest;
+- (void)cancelButtonPushed;
+- (void)showAndPlayNextWord;
+- (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice;
 //Temporary properties
 @property AVAudioPlayer *audio;
 
 
-@end
-
-
-
-@protocol AbstractTestViewControllerDelegate <NSObject>
-@required
-- (void)finishDelegate;
-- (void)testCancelDelegate;
 @end

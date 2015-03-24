@@ -9,13 +9,15 @@
 #import "RelearnTestViewController.h"
 #import "RelearnTestResultViewController.h"
 
-@interface RelearnTestViewController ()
+@interface RelearnTestViewController () {
+    NSTimer *timer;
+    BOOL isTimerValid;
+}
 
 @end
 
 @implementation RelearnTestViewController
 - (void)viewDidLoad {
-    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -25,16 +27,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Test Delegate Methods
-- (void)finishDelegate{
-    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
-    [self performSegueWithIdentifier:@"segueToResult" sender:self];
+#pragma mark Test Override Methods 
+- (void)finishTest {
+    [self.audio stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
+    
+    [self performSegueWithIdentifier:@"testToResult" sender:self];
 }
 
-- (void)testCancelDelegate {
+- (void)cancelButtonPushed {
     DLog(@"test was cancelled");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.audio stop];
+    [self dismissViewControllerAnimated:YES completion:^{
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+        [self stopTimer];
+    }];
 }
+
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -44,6 +55,32 @@
         vc.testedWordsDic = self.testWordsDic;
     }
 }
+
+#pragma mark Timer
+- (void)startTimer
+{
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    isTimerValid = YES;
+}
+
+- (void)stopTimer
+{
+    DLog(@"stopTimer");
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    isTimerValid = NO;
+}
+
+- (void)timerAction
+{
+    DLog(@"timerAction");
+    [self answerButtonPushedDelegate:NO choice:5];
+}
+
 
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords

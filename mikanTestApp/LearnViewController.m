@@ -53,7 +53,7 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSString *category = [ud objectForKey:@"category"];
     BOOL learnMode = [ud boolForKey:@"learnMode"];
-    return [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];//[DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
+    return [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
 }
 
 - (void)didSubviewsRemoved {
@@ -79,7 +79,6 @@
 - (void)willPlayNextWord {
     DLog(@"next card");
     //sound "next"
-//    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
     [self playSound:self.learnView.topCardView.englishLabel.text];
 
     //start timer
@@ -113,7 +112,6 @@
 - (void)timerAction
 {
     DLog(@"timerAction");
-//    DraggableCardView *cardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
     [self.learnView sendCardViewToBack:self.learnView.topCardView];
 }
 

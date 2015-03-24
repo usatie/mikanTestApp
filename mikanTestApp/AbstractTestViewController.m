@@ -34,11 +34,12 @@
     
     //Testすべき単語が無かったらすぐに終了
     if ([_testWordsDic[@"wordId"] count]==0) {
-        if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
-            [_delegate testCancelDelegate];
-        } else {
-            DLog(@"no responds to testCancel");
-        }
+//        if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
+//            [_delegate testCancelDelegate];
+//        } else {
+//            DLog(@"no responds to testCancel");
+//        }
+        [self cancelButtonPushed];
         return;
     }
     [self initTestView];
@@ -92,6 +93,7 @@
     [self.testView enableAllButtons];
     //dateをリセット
     date = [NSDate date];
+    [self startTimer];
 }
 
 #pragma mark Button Action
@@ -114,15 +116,37 @@
         return;
     }
     DLog(@"finish!");
-    if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
-        [_delegate finishDelegate];
-    } else {
-        DLog(@"no responds to finishDelegate");
-    }
+    [self finishTest];
+//    if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
+////        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+//        [_delegate finishDelegate];
+//    } else {
+//        DLog(@"no responds to finishDelegate");
+//    }
 }
 
 - (void)cancelButtonPushedDelegate{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self cancelButtonPushed];
+//    if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
+////        [NSObject cancelPreviousPerformRequestsWithTarget:self];
+//        [_delegate testCancelDelegate];
+//    }
+//    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark override method
+- (void)finishTest
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+- (void)cancelButtonPushed
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
 #pragma mark sound
@@ -140,4 +164,9 @@
 //        NSLog(@"path is nil. Could not pronounce %@", fileName);
     }
 }
+
+- (void)startTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+
 @end
