@@ -13,6 +13,7 @@
 
 @interface TestView : UIView
 @property id <TestViewDelegate> delegate;
+@property (strong, nonatomic) IBOutlet UILabel *numberLabel;
 @property (strong, nonatomic) IBOutlet UILabel *englishLabel;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton1;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton2;

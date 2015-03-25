@@ -75,7 +75,7 @@
     shouldPlaySound = YES;
 }
 
-#pragma mark show methods
+#pragma mark show next word methods
 - (void)showAndPlayNextWord
 {
     //次の単語を表示
@@ -146,7 +146,7 @@
     DLog(@"if you want to add timer, please override this method");
 }
 
-#pragma mark sound
+#pragma mark sound (Deprecate)
 -(void)playSound:(NSString *)fileName
 {
 //    NSLog(@"playSound \"%@\"", fileName);
