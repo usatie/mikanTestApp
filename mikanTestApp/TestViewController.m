@@ -41,10 +41,9 @@
 - (void)cancelButtonPushed {
     DLog(@"test was cancelled");
     [self.audio stop];
-    [self dismissViewControllerAnimated:YES completion:^{
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        [self stopTimer];
-    }];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark Timer (override)
