@@ -30,7 +30,6 @@
             japanese:(NSString*)japanese
               number:(NSString*)number
   japaneseHiddenFlug:(BOOL)japaneseHiddenFlug;
-
 - (void)resetViewPositionAndTransformations;
 @end
 

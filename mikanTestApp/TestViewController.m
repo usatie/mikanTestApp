@@ -63,7 +63,6 @@
 
 - (void)stopTimer
 {
-    DLog(@"stopTimer");
     if (isTimerValid) {
         [timer invalidate];
     }

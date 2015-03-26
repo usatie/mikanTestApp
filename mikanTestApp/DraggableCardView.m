@@ -11,8 +11,6 @@
 @property (nonatomic) CGPoint centerPoint;
 @end
 
-
-
 @implementation DraggableCardView
 - (id)initWithFrame:(CGRect)frame
 {

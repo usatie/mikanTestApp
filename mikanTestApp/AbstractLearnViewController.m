@@ -49,6 +49,9 @@
 }
 #pragma mark delegate method (Abstract)
 - (void)cancelButtonPushedDelegate{
+    DLog(@"cancelButtonPushedDelegate");
+    [self stopTimer];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -56,8 +59,8 @@
 #pragma mark delegate method
 - (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
 {
+    [self stopTimer];
     cardView.swipeDuration += -[_date timeIntervalSinceNow];
-    
     //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
         _leftCountArray[cardView.tag-1] = [NSNumber numberWithInt:cardView.leftCount];
@@ -78,18 +81,19 @@
         self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
         [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords) delegate:self];
         [self playSound:self.learnView.topCardView.englishLabel.text];
-        [self startTimer];
+        [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
     }
     //cardViewが0枚で、shouldLearnAgainだったらfinish
     else if (cardViews.count==0 && !self.shouldLearnAgain) {
         [self playSound:@"sound_finish"];
+        [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self finishLearn];
     }
     //cardViewが残ってたら次の単語を発音
     else {
         self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
         [self playSound:self.learnView.topCardView.englishLabel.text];
-        [self startTimer];
+        [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
     }
 }
 
