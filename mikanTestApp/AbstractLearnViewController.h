@@ -20,7 +20,7 @@
 @property NSMutableArray *leftCountArray;
 @property NSMutableArray *swipeDurationArray;
 
-@property AVAudioPlayer *audio;
+@property UserUtil *util;
 @property NSDate *date;
 
 @property int numberOfWords;

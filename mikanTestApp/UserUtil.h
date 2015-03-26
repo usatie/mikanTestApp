@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "fmdb/FMDatabase.h"
 #import <AVFoundation/AVFoundation.h>
+#import "fmdb/FMDatabase.h"
 
 @interface UserUtil : NSObject
 
 #pragma mark Audio
-@property (strong, nonatomic) AVAudioPlayer* soundPlayer;
+@property AVAudioPlayer *audio;
 - (void) playSound:(NSString *)fileName playSoundFlag:(BOOL)playSoundFlag;
 
 #pragma mark Small Settings

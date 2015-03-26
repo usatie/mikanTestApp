@@ -7,8 +7,7 @@
 //
 
 #import "AbstractLearnViewController.h"
-#import <AVFoundation/AVFoundation.h>
 
 @interface LearnViewController : AbstractLearnViewController<AbstractLearnViewControllerDelegate>
-//@property AVAudioPlayer *audio;
+@property UserUtil *util;
 @end

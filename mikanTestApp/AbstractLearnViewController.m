@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _util = [[UserUtil alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,24 +76,24 @@
     //cardViewが0枚で、shouldLearnAgainだったらもう一度Learn
     NSArray *cardViews = self.learnView.cardBaseView.subviews;
     if (cardViews.count==0 && self.shouldLearnAgain) {
-        [self playSound:@"sound_finish"];
+        [_util playSound:@"sound_finish" playSoundFlag:YES];
         learnedWordsCount += 5;
         int remainingWordsCount = self.numberOfWords-learnedWordsCount;
         self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
         [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords) delegate:self];
-        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
         [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
     }
     //cardViewが0枚で、shouldLearnAgainだったらfinish
     else if (cardViews.count==0 && !self.shouldLearnAgain) {
-        [self playSound:@"sound_finish"];
+        [_util playSound:@"sound_finish" playSoundFlag:YES];
         [NSObject cancelPreviousPerformRequestsWithTarget:self];
         [self finishLearn];
     }
     //cardViewが残ってたら次の単語を発音
     else {
         self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
-        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
         [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
     }
 }
@@ -121,19 +122,5 @@
 }
 - (void)timerAction {
     DLog(@"if you want to add timer, please override this method");
-}
-
-#pragma mark sound (will be Deprecated)
--(void)playSound:(NSString *)fileName
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
-    if (path) {
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        if (error) NSLog(@"error. could not pronounce %@", fileName);
-        [_audio play];
-    } else {
-    }
 }
 @end
