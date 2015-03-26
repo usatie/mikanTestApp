@@ -14,7 +14,6 @@
     BOOL shouldPlaySound;
     
     NSDate *date;
-    UIAlertView *cancelAlertView;
 }
 
 @end
@@ -39,6 +38,7 @@
         return;
     }
     [self initTestView];
+    [self initAlertView];
     [self showAndPlayNextWord];
     //これやると速くなるはずなんだけどなあ・・・
     [_audio prepareToPlay];
@@ -64,7 +64,7 @@
 }
 
 - (void)initAlertView{
-    cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"はい", nil];
+    _cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"はい", nil];
 }
 
 - (NSDictionary *)getTestWords
@@ -134,12 +134,12 @@
     [self stopTimer];
     
     //show AlertView
-    [cancelAlertView show];
+    [_cancelAlertView show];
 }
 
 #pragma mark AlertView
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (alertView == cancelAlertView) {
+    if (alertView == _cancelAlertView) {
         switch (buttonIndex) {
             case 0:
                 [self cancelButtonPushed];

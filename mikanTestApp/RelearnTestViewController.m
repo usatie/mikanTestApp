@@ -30,6 +30,10 @@
 }
 
 #pragma mark Test Override Methods 
+- (void)initAlertView{
+    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"ここまでの結果を表示" otherButtonTitles:@"はい", nil];
+}
+
 - (void)finishTest {
     [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
     [self performSegueWithIdentifier:@"segueToResult" sender:self];

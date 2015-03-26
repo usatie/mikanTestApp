@@ -12,6 +12,7 @@
 
 @interface AbstractTestViewController : UIViewController<TestViewDelegate>
 @property TestView *testView;
+@property UIAlertView *cancelAlertView;
 
 @property NSDictionary *testWordsDic; //wordIndex, english, choicesArray,answerIndex,wordIndexを要素に持つDictionary
 @property NSDictionary *testResultsDic; //resultsArray, choiceArray, answerDurationArrayを要素に持つDictionary
