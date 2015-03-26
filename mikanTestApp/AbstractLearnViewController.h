@@ -16,8 +16,11 @@
 @property id<AbstractLearnViewControllerDelegate> delegate;
 @property LearnView *learnView;
 @property int numberOfWords;
+@property AVAudioPlayer *audio;
+@property BOOL shouldLearnAgain;
 
 - (void)initLearnView;
+- (void)finishLearn;
 @end
 
 

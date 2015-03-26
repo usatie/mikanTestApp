@@ -196,8 +196,7 @@
         [cardView setParameter:_learnWordsDic[@"english"][i]
                       japanese:_learnWordsDic[@"japanese"][i]
                         number:[NSString stringWithFormat:@"%@",_learnWordsDic[@"wordId"][i]]
-            japaneseHiddenFlug:YES
-                     wordIndex:[_learnWordsDic[@"wordId"][i] intValue]];
+            japaneseHiddenFlug:YES];
         cardView.sectionLabel.text = @"検証テスト";
         cardView.japaneseLabel.hidden = NO;
         [self.cardsBaseView addSubview:cardView];

@@ -52,21 +52,19 @@
 }
 
 - (void)didAllSubviewsRemoved {
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    [self playSound:@"sound_finish"];
     
-    //(stop timer)
-    
-    //sound "finish"
-    
-    //1. generate next card
+    if (self.shouldLearnAgain) {
+        //さらにカードを生成する場合はこちら
+        //1. generate next card
         //start timer
-        //sound "next"
-    
-    
-    //2. segue to test
-    
-//    [self.learnView generateCardView:5 cardCount:10];
+        self.shouldLearnAgain = NO;
+        [self.learnView generateCardView:5 cardCount:self.numberOfWords];
+        [self willPlayNextWord];
+    } else {
+        //Learn終了時はこちら
+        [self finishLearn];
+    }
 }
 
 - (void)willPlayNextWord {
@@ -75,5 +73,28 @@
     //start timer
     
     //sound "next"
+}
+
+#pragma mark override methods (required)
+- (void)finishLearn
+{
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+//    [self stopTimer];
+//    [self performSegueWithIdentifier:@"learnToTest" sender:self];
+}
+
+#pragma mark sound (will be Deprecated)
+-(void)playSound:(NSString *)fileName
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
+    if (path) {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        if (error) NSLog(@"error. could not pronounce %@", fileName);
+        [_audio play];
+    } else {
+    }
 }
 @end

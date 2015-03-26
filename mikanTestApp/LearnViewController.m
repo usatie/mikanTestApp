@@ -11,7 +11,7 @@
 #import "TestViewController.h"
 
 @interface LearnViewController (){
-    BOOL shouldLearnAgain;
+//    BOOL shouldLearnAgain;
     BOOL isTimerValid;
     NSTimer *timer;
 }
@@ -27,7 +27,7 @@
     [self willPlayNextWord];
     [self startTimer];
     if (self.numberOfWords > 5) {
-        shouldLearnAgain = YES;
+        self.shouldLearnAgain = YES;
     }
 }
 
@@ -56,24 +56,10 @@
     return [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
 }
 
-- (void)didAllSubviewsRemoved {
-    
-    //(stop timer)
-    [self playSound:@"sound_finish"];
-    
-    if (shouldLearnAgain) {
-        //1. generate next card
-        //start timer
-        shouldLearnAgain = NO;
-        [self.learnView generateCardView:5 cardCount:self.numberOfWords];
-        [self willPlayNextWord];
-    } else {
-        //2. segue to test
-        [self stopTimer];
-        [self performSegueWithIdentifier:@"learnToTest" sender:self];
-        DLog(@"segue to test");
-    }
-    
+- (void)finishLearn
+{
+    [self stopTimer];
+    [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
 - (void)willPlayNextWord {
@@ -115,16 +101,16 @@
     [self.learnView sendCardViewToBack:self.learnView.topCardView];
 }
 
-#pragma mark sound
+#pragma mark sound (will be Deprecated)
 -(void)playSound:(NSString *)fileName
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
     if (path) {
         NSURL *url = [NSURL fileURLWithPath:path];
         NSError *error;
-        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        self.audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
         if (error) NSLog(@"error. could not pronounce %@", fileName);
-        [_audio play];
+        [self.audio play];
     } else {
     }
 }
