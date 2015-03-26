@@ -9,6 +9,8 @@
 #import "AbstractLearnViewController.h"
 
 @interface AbstractLearnViewController () {
+    NSData *date;
+    
     int learnedWordsCount;
 }
 
@@ -60,6 +62,23 @@
     }
 }
 
+#pragma mark custom method
+- (void)didAllSubviewsRemoved {
+    [self playSound:@"sound_finish"];
+    
+    if (self.shouldLearnAgain) {//残りが5枚以下の時は次が最後
+        learnedWordsCount += 5;
+        if (self.numberOfWords-learnedWordsCount <= 5) {
+            self.shouldLearnAgain = NO;
+        }
+        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
+    } else {//Learn終了時
+        [self finishLearn];
+    }
+}
+
 #pragma mark override methods (required)
 - (NSDictionary *)getWordsDic
 {
@@ -83,23 +102,6 @@
 }
 - (void)timerAction {
     DLog(@"if you want to add timer, please override this method");
-}
-
-#pragma mark custom method
-- (void)didAllSubviewsRemoved {
-    [self playSound:@"sound_finish"];
-    
-    if (self.shouldLearnAgain) {//残りが5枚以下の時は次が最後
-        learnedWordsCount += 5;
-        if (self.numberOfWords-learnedWordsCount <= 5) {
-            self.shouldLearnAgain = NO;
-        }
-        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
-        [self playSound:self.learnView.topCardView.englishLabel.text];
-        [self startTimer];
-    } else {//Learn終了時
-        [self finishLearn];
-    }
 }
 
 #pragma mark sound (will be Deprecated)
