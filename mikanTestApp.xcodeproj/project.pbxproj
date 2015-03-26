@@ -1016,7 +1016,6 @@
 		2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD151AAAAC4200AF25A2 /* Images.xcassets */; };
 		2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */; };
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
-		2462CD301AAAB11400AF25A2 /* LearnViewController_deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */; };
 		2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2161AAAEC15001E8522 /* sample_test.csv */; };
 		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
@@ -2081,8 +2080,6 @@
 		2462CD1E1AAAAC4200AF25A2 /* mikanTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mikanTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD231AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mikanTestAppTests.m; sourceTree = "<group>"; };
-		2462CD2E1AAAB11400AF25A2 /* LearnViewController_deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnViewController_deprecated.h; sourceTree = "<group>"; };
-		2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnViewController_deprecated.m; sourceTree = "<group>"; };
 		2466F2161AAAEC15001E8522 /* sample_test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_test.csv; sourceTree = "<group>"; };
 		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
@@ -3250,12 +3247,10 @@
 			children = (
 				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
-				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
-				249A1C9F1ABAEE96007E2D14 /* Learn */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
-				2462CD2E1AAAB11400AF25A2 /* LearnViewController_deprecated.h */,
-				2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */,
+				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
+				249A1C9F1ABAEE96007E2D14 /* Learn */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -4586,7 +4581,6 @@
 				247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */,
 				247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */,
 				249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */,
-				2462CD301AAAB11400AF25A2 /* LearnViewController_deprecated.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
