@@ -7,7 +7,9 @@
 //
 
 #import "DraggableCardView.h"
-@interface DraggableCardView ()
+@interface DraggableCardView (){
+    int adjuster;
+}
 @property (nonatomic) CGPoint centerPoint;
 @end
 
@@ -66,11 +68,12 @@
     switch (gestureRecognizer.state) {
         case UIGestureRecognizerStateBegan:{
             self.originalPoint = self.center;
+            adjuster = [gestureRecognizer locationOfTouch:0 inView:self].y>self.frame.size.height/2? 1:-1;
             break;
         }
         case UIGestureRecognizerStateChanged:{
             CGFloat rotationStrength = MIN(xDistance/320, 1);
-            CGFloat rotationAngle = (CGFloat) (-2*M_PI/16 * rotationStrength);
+            CGFloat rotationAngle = (CGFloat) (-2*M_PI/32 * rotationStrength * adjuster);
             CGFloat scaleStrength = 1 - fabsf(rotationStrength)/4;
             CGFloat scale = MAX(scaleStrength, 0.93);
             CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngle);
