@@ -52,17 +52,30 @@
                         <action selector="unknownButtonPushed:" destination="Clb-OE-Zfw" eventType="touchUpInside" id="ff4-Vi-fKT"/>
                     </connections>
                 </button>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8UA-bI-zyO">
+                    <rect key="frame" x="60" y="33" width="200" height="2"/>
+                </progressView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
+                <constraint firstItem="8UA-bI-zyO" firstAttribute="leading" secondItem="Clb-OE-Zfw" secondAttribute="leading" constant="60" id="3nw-D0-Mgh"/>
+                <constraint firstItem="8UA-bI-zyO" firstAttribute="top" secondItem="tbE-WQ-Q8C" secondAttribute="bottom" constant="30" id="6DV-o9-CFp"/>
                 <constraint firstAttribute="centerX" secondItem="tbE-WQ-Q8C" secondAttribute="centerX" id="Cbc-U0-Qfu"/>
                 <constraint firstItem="tbE-WQ-Q8C" firstAttribute="top" secondItem="Clb-OE-Zfw" secondAttribute="top" constant="75" id="Hba-bb-r0A"/>
+                <constraint firstItem="8UA-bI-zyO" firstAttribute="top" secondItem="Clb-OE-Zfw" secondAttribute="top" constant="33" id="ab0-1Z-bfS"/>
+                <constraint firstAttribute="trailing" secondItem="8UA-bI-zyO" secondAttribute="trailing" constant="60" id="wVd-ya-epB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="6DV-o9-CFp"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="cardBaseView" destination="tbE-WQ-Q8C" id="2Ql-pS-aQX"/>
                 <outlet property="knownButton" destination="iVu-Nn-Lie" id="Zgi-nj-aRj"/>
                 <outlet property="nextButton" destination="q6q-Jz-dgd" id="RFx-8y-4cp"/>
+                <outlet property="progressBar" destination="8UA-bI-zyO" id="4tv-mY-AnQ"/>
                 <outlet property="unknownButton" destination="z6a-Fs-0KU" id="a6r-3f-dKo"/>
             </connections>
         </view>

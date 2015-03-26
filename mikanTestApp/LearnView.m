@@ -7,7 +7,7 @@
 //
 
 #import "LearnView.h"
-
+#import "AbstractLearnViewController.h"
 @implementation LearnView
 
 - (id)initWithFrame:(CGRect)frame
@@ -24,14 +24,14 @@
 }
 
 #pragma mark Card View method
-- (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount
+- (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount delegate:(AbstractLearnViewController *)learnVC
 {
     for (int i=learnWordsIndex; i < cardCount; i++) {
         DraggableCardView *cardView;
         cardView = [[DraggableCardView alloc]initWithFrame:CGRectMake(0, 0, 290, 340)];
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
-        cardView.delegate = self;
+        cardView.delegate = learnVC;
         [cardView setParameter:self.wordsDic[@"english"][i]
                       japanese:self.wordsDic[@"japanese"][i]
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
@@ -45,16 +45,6 @@
         _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
     }
 }
-
-#pragma mark CardView delegate
-- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
-{
-    if ([_delegate respondsToSelector:@selector(cardViewSwiped:cardView:)]) {
-        [_delegate cardViewSwiped:hasRememberd cardView:cardView];
-    }
-}
-
-
 
 #pragma mark Button Actions
 - (IBAction)cancelButtonPushed:(id)sender {
@@ -83,7 +73,9 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self cardViewSwipedDelegate:YES cardView:cardView];
+                         if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:cardView:)]) {
+                             [_delegate cardViewSwipedDelegate:YES cardView:cardView];
+                         }
                          [self enableButtons];
                      }
      ];
@@ -100,7 +92,9 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self cardViewSwipedDelegate:NO cardView:cardView];
+                         if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:cardView:)]) {
+                             [_delegate cardViewSwipedDelegate:NO cardView:cardView];
+                         }
                          [self enableButtons];
                      }
      ];

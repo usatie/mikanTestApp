@@ -8,17 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "DraggableCardView.h"
-
+@class AbstractLearnViewController;
 
 @protocol LearnViewDelegate;
 
-@interface LearnView : UIView<DraggableCardViewDelegate>
+@interface LearnView : UIView
 @property id <LearnViewDelegate> delegate;
 @property NSDictionary *wordsDic;
 @property DraggableCardView *topCardView;
 
 
-- (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount;
+- (void)generateCardView :(int)learnWordsIndex cardCount:(int)cardCount delegate:(AbstractLearnViewController *)learnVC;
 - (void)removeCardView:(DraggableCardView *)cardView;
 - (void)sendCardViewToBack:(DraggableCardView *)cardView;
 
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *nextButton;
 @property (strong, nonatomic) IBOutlet UIButton *knownButton;
 @property (strong, nonatomic) IBOutlet UIButton *unknownButton;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
 
 
 - (IBAction)cancelButtonPushed:(id)sender;
@@ -41,7 +42,5 @@
 
 @required
 - (void)cancelButtonPushedDelegate;
-- (void)cardViewSwiped:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView;
-//- (void)didAllSubviewsRemoved;
-//- (void)willPlayNextWord;
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView;
 @end

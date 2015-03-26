@@ -13,6 +13,7 @@
 @interface LearnViewController (){
     BOOL isTimerValid;
     NSTimer *timer;
+    int progress;
 }
 
 @end
@@ -81,9 +82,11 @@
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    progress = 0;
+    self.learnView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
     isTimerValid = YES;
-    self.date = [NSDate date];
+    self.date = [NSDate date];    
 }
 
 - (void)stopTimer
@@ -96,8 +99,14 @@
 
 - (void)timerAction
 {
-    DLog(@"timerAction");
-    [self.learnView sendCardViewToBack:self.learnView.topCardView];
+    progress ++;
+    if (progress > PROGRESS_LIMIT) {
+        [self stopTimer];
+        [self.learnView sendCardViewToBack:self.learnView.topCardView];
+    } else {
+        [self.learnView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
+    }
+
 }
 
 #pragma mark sound (will be Deprecated)

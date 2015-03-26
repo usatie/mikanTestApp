@@ -35,7 +35,7 @@
     [self.view addSubview:self.learnView];
 
     _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
-    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
+    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords) delegate:self];
 }
 
 - (void)initArrays
@@ -54,11 +54,9 @@
 
 
 #pragma mark delegate method
-- (void)cardViewSwiped:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
 {
-    NSLog(@"displayNextCardDelegate tag = %d",(int)cardView.tag);
     cardView.swipeDuration += -[_date timeIntervalSinceNow];
-    DLog(@"swipeDuration = %f",cardView.swipeDuration);
     
     //知ってたらremove, 知らなかったらsendSubviewToBack
     if (hasRememberd) {
@@ -78,7 +76,7 @@
         learnedWordsCount += 5;
         int remainingWordsCount = self.numberOfWords-learnedWordsCount;
         self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
-        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
+        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords) delegate:self];
         [self playSound:self.learnView.topCardView.englishLabel.text];
         [self startTimer];
     }
