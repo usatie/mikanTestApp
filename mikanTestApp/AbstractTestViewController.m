@@ -10,9 +10,6 @@
 #import "answerButton.h"
 
 @interface AbstractTestViewController (){
-//    int testIndex;
-    BOOL shouldPlaySound;
-    
     NSDate *date;
 }
 
@@ -75,11 +72,6 @@
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
     return @{};
-}
-
-- (void)loadUserDefaults
-{
-    shouldPlaySound = YES;
 }
 
 #pragma mark show next word methods
