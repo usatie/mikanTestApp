@@ -56,7 +56,7 @@
     return [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
 }
 
-- (void)didSubviewsRemoved {
+- (void)didAllSubviewsRemoved {
     
     //(stop timer)
     [self playSound:@"sound_finish"];

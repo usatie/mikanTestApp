@@ -51,7 +51,7 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)didSubviewsRemoved {
+- (void)didAllSubviewsRemoved {
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
     

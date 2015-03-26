@@ -61,8 +61,8 @@
     //cardsBaseViewのsubviewsが０だったらfinish
     if (self.cardBaseView.subviews.count == 0) {
         //play "finish!"
-        if ([_delegate respondsToSelector:@selector(didSubviewsRemoved)]) {
-            [_delegate didSubviewsRemoved];
+        if ([_delegate respondsToSelector:@selector(didAllSubviewsRemoved)]) {
+            [_delegate didAllSubviewsRemoved];
         }
     } else {
         //set top card
