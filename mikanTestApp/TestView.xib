@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -85,24 +86,34 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3zE-69-7pr">
+                    <rect key="frame" x="20" y="249" width="280" height="2"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="2" id="h0P-hk-lTB"/>
+                    </constraints>
+                </progressView>
             </subviews>
             <color key="backgroundColor" red="0.99896246190000004" green="0.95258563760000003" blue="0.86407023670000005" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration">
                 <bool key="isElement" value="YES"/>
             </accessibility>
             <constraints>
+                <constraint firstItem="3zE-69-7pr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="20" id="0Zp-wc-9NV"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="height" secondItem="6hJ-2O-k8M" secondAttribute="height" id="4aO-gk-ucP"/>
                 <constraint firstAttribute="bottom" secondItem="CAW-VA-CBc" secondAttribute="bottom" constant="30" id="6P5-Nw-j5p"/>
+                <constraint firstItem="3zE-69-7pr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="6vS-L9-zoK"/>
                 <constraint firstItem="CAW-VA-CBc" firstAttribute="top" secondItem="6hJ-2O-k8M" secondAttribute="bottom" constant="10" id="7eJ-Qr-Fji"/>
                 <constraint firstItem="6hJ-2O-k8M" firstAttribute="top" secondItem="tnq-4i-Sl2" secondAttribute="bottom" constant="10" id="8iv-F6-vA1"/>
                 <constraint firstAttribute="centerX" secondItem="CAW-VA-CBc" secondAttribute="centerX" id="9C4-MK-iUP"/>
                 <constraint firstItem="LGm-lh-WzK" firstAttribute="top" secondItem="2OL-X0-zMz" secondAttribute="bottom" constant="40" id="CIv-Ma-AKQ"/>
                 <constraint firstAttribute="centerX" secondItem="2OL-X0-zMz" secondAttribute="centerX" id="FTm-xi-COg"/>
+                <constraint firstItem="LGm-lh-WzK" firstAttribute="top" secondItem="3zE-69-7pr" secondAttribute="bottom" constant="10" id="Sc9-nm-Bsy"/>
                 <constraint firstAttribute="trailing" secondItem="CAW-VA-CBc" secondAttribute="trailing" constant="240" id="UR1-GR-P09"/>
                 <constraint firstAttribute="trailing" secondItem="CAW-VA-CBc" secondAttribute="trailing" constant="20" id="VRP-s7-2Z1"/>
                 <constraint firstItem="CAW-VA-CBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="bx7-0A-AE9"/>
                 <constraint firstAttribute="centerX" secondItem="tnq-4i-Sl2" secondAttribute="centerX" id="ehN-vc-cIx"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="width" secondItem="CAW-VA-CBc" secondAttribute="width" id="eqK-Co-Xsj"/>
+                <constraint firstAttribute="trailingMargin" secondItem="3zE-69-7pr" secondAttribute="trailing" constant="20" id="fR0-oO-in1"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="top" secondItem="LGm-lh-WzK" secondAttribute="bottom" constant="10" id="gde-xV-Gii"/>
                 <constraint firstItem="CAW-VA-CBc" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="hM1-7y-6ED"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="width" secondItem="LGm-lh-WzK" secondAttribute="width" id="i4U-SS-3eM"/>
@@ -110,12 +121,15 @@
                 <constraint firstItem="2OL-X0-zMz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="76" id="nqk-bL-6HQ"/>
                 <constraint firstAttribute="centerX" secondItem="LGm-lh-WzK" secondAttribute="centerX" id="oZ2-wr-L6b"/>
                 <constraint firstAttribute="centerX" secondItem="6hJ-2O-k8M" secondAttribute="centerX" id="ocs-Hl-ZBF"/>
+                <constraint firstAttribute="trailing" secondItem="3zE-69-7pr" secondAttribute="trailing" constant="20" id="rmb-FQ-Hjb"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="height" secondItem="CAW-VA-CBc" secondAttribute="height" id="wCV-69-wU4"/>
                 <constraint firstItem="tnq-4i-Sl2" firstAttribute="height" secondItem="LGm-lh-WzK" secondAttribute="height" id="wyB-5r-egR"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="0Zp-wc-9NV"/>
+                    <exclude reference="fR0-oO-in1"/>
                     <exclude reference="CIv-Ma-AKQ"/>
                     <exclude reference="UR1-GR-P09"/>
                     <exclude reference="VRP-s7-2Z1"/>
@@ -129,8 +143,9 @@
                 <outlet property="answerButton4" destination="CAW-VA-CBc" id="dVm-Dy-5pA"/>
                 <outlet property="englishLabel" destination="2OL-X0-zMz" id="dgs-mf-QT4"/>
                 <outlet property="numberLabel" destination="HLJ-Q7-WMx" id="sVT-Qr-HxH"/>
+                <outlet property="progressBar" destination="3zE-69-7pr" id="pfP-lt-Bb8"/>
             </connections>
-            <point key="canvasLocation" x="-80" y="367"/>
+            <point key="canvasLocation" x="-170" y="367"/>
         </view>
     </objects>
 </document>

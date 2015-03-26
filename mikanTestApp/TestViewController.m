@@ -12,6 +12,8 @@
 @interface TestViewController (){
     NSTimer *timer;
     BOOL isTimerValid;
+    int progress;
+    
 }
 
 @end
@@ -45,14 +47,42 @@
     [self.cancelAlertView show];
 }
 
+//#pragma mark Timer (override)
+//- (void)startTimer
+//{
+//    if (isTimerValid) {
+//        [timer invalidate];
+//    }
+//    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+//    isTimerValid = YES;
+//}
+//
+//- (void)stopTimer
+//{
+//    DLog(@"stopTimer");
+//    if (isTimerValid) {
+//        [timer invalidate];
+//    }
+//    isTimerValid = NO;
+//}
+//
+//- (void)timerAction
+//{
+//    DLog(@"timerAction");
+//    [self answerButtonPushedDelegate:NO choice:5];
+//}
 #pragma mark Timer (override)
 - (void)startTimer
 {
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    progress = 0;
+    self.testView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    
     isTimerValid = YES;
+    
 }
 
 - (void)stopTimer
@@ -66,9 +96,14 @@
 
 - (void)timerAction
 {
-    DLog(@"timerAction");
-    [self answerButtonPushedDelegate:NO choice:5];
+    progress ++;
+    if (progress > 3000) {
+        [self answerButtonPushedDelegate:NO choice:5];
+    } else {
+        [self.testView.progressBar setProgress:1.0-progress/3000.0];
+    }
 }
+
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -19,6 +19,8 @@
 @property (strong, nonatomic) IBOutlet answerButton *answerButton2;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton3;
 @property (strong, nonatomic) IBOutlet answerButton *answerButton4;
+@property (strong, nonatomic) IBOutlet UIProgressView *progressBar;
+
 - (IBAction)answerButtonPushed:(id)sender;
 - (IBAction)cancelButton:(id)sender;
 

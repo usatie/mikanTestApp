@@ -12,8 +12,7 @@
 @interface RelearnTestViewController () {
     NSTimer *timer;
     BOOL isTimerValid;
-    
-//    UIAlertView *cancelAlertView;
+    int progress;
 }
 
 @end
@@ -63,8 +62,12 @@
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    progress = 0;
+    self.testView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    
     isTimerValid = YES;
+    
 }
 
 - (void)stopTimer
@@ -78,8 +81,12 @@
 
 - (void)timerAction
 {
-    DLog(@"timerAction");
-    [self answerButtonPushedDelegate:NO choice:5];
+    progress ++;
+    if (progress > 3000) {
+        [self answerButtonPushedDelegate:NO choice:5];
+    } else {
+        [self.testView.progressBar setProgress:1.0-progress/3000.0];
+    }
 }
 
 #pragma mark Temporary methods
