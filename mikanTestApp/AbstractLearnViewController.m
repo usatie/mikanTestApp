@@ -51,6 +51,7 @@
         //さらにカードを生成する場合はこちら
         learnedWordsCount += 5;
         if (self.numberOfWords-learnedWordsCount <= 5) {
+            //残りカード枚数が5枚以下のときは次の学習で終わり
             self.shouldLearnAgain = NO;
         }
         [self.learnView generateCardView:learnedWordsCount cardCount:MIN(self.numberOfWords, learnedWordsCount+5)];
@@ -72,7 +73,6 @@
 #pragma mark override methods (required)
 - (NSDictionary *)getWordsDic
 {
-    // 継承したクラスで実装する
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
     return @{};
