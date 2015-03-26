@@ -43,16 +43,6 @@
     }
 }
 
-#pragma mark GET methods
-+ (FMDatabase*) getDBWithName:(NSString*)dbName
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
-    NSString *dir   = [paths objectAtIndex:0];
-    FMDatabase *db= [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:dbName]];
-    return db;
-}
-
-
 #pragma mark INSERT and UPDATE methods
 + (void) insertTestResult:(NSNumber*)wordId
                    result:(BOOL)result
@@ -105,6 +95,55 @@
     else [db rollback];
 
     [db close];
+}
+
++ (void) insertLearnResultWithArray:(NSArray *)wordIdArray
+                      durationArray:(NSArray *)durationArray
+                     leftCountArray:(NSArray *)leftCountArray
+                          learnType:(int)learnType
+                        relearnFlag:(BOOL)relearnFlag
+{
+    FMDatabase *db = [self getDBWithName:DB_NAME];
+    NSString *sql = @"insert into log_learn_result (word_id, learn_type, relearn_flag, left_count, duration, created_at) values (?,?,?,?,?,?);";
+    NSString *sql_learn = @"update word_record set learn_count = learn_count + 1, left_count = ?, updated_at = ? where word_id = ?;";
+    NSString *sql_relearn = @"update word_record set relearn_count = relearn_count + 1, left_count = ?, updated_at = ? where word_id = ?;";
+    [db open];
+    [db beginTransaction];
+    NSDate *now = [NSDate date];
+    BOOL isSucceeded = YES;
+    for (int i=0; i<[wordIdArray count]; i++) {
+        // insert log_learn_result
+        if (![db executeUpdate:sql, wordIdArray[i], [NSNumber numberWithInt:learnType],[NSNumber numberWithBool:relearnFlag], leftCountArray[i], durationArray[i], now]){
+            isSucceeded = NO;
+            break;
+        }
+        
+        // update count of word_record
+        if (relearnFlag){
+            if (![db executeUpdate:sql_relearn,leftCountArray[i],now,wordIdArray[i]]){
+                isSucceeded = NO;
+                break;
+            }
+        }else{
+            if (![db executeUpdate:sql_learn,leftCountArray[i],now,wordIdArray[i]]){
+                isSucceeded = NO;
+                break;
+            }
+        }
+    }
+    if( isSucceeded ) [db commit];
+    else [db rollback];
+    [db close];
+}
+
+
+#pragma mark GET methods
++ (FMDatabase*) getDBWithName:(NSString*)dbName
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains( NSDocumentDirectory, NSUserDomainMask, YES );
+    NSString *dir   = [paths objectAtIndex:0];
+    FMDatabase *db= [FMDatabase databaseWithPath:[dir stringByAppendingPathComponent:dbName]];
+    return db;
 }
 
 +(NSDictionary *)getHasRememberedDic:(NSString *)category
