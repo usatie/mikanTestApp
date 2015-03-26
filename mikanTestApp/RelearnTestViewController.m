@@ -30,7 +30,7 @@
 
 #pragma mark Test Override Methods 
 - (void)initAlertView{
-    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"ここまでの結果を表示" otherButtonTitles:@"はい", nil];
+    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"終了して結果を表示" otherButtonTitles:@"つづける", nil];
 }
 
 - (void)finishTest {
