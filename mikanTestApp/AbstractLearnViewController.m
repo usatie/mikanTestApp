@@ -56,8 +56,6 @@
     
     if (self.shouldLearnAgain) {
         //さらにカードを生成する場合はこちら
-        //1. generate next card
-        //start timer
         self.shouldLearnAgain = NO;
         [self.learnView generateCardView:5 cardCount:self.numberOfWords];
         [self willPlayNextWord];
