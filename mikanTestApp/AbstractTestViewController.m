@@ -63,6 +63,10 @@
     [self.view addSubview:self.testView];
 }
 
+- (void)initAlertView{
+    cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"はい", nil];
+}
+
 - (NSDictionary *)getTestWords
 {
     // 継承したクラスで実装する
@@ -129,8 +133,7 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self stopTimer];
     
-    //AlertView
-    cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断してここまでの結果を見る" otherButtonTitles:@"はい", nil];
+    //show AlertView
     [cancelAlertView show];
 }
 
