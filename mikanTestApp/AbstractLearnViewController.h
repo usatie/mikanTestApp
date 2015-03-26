@@ -15,12 +15,20 @@
 @interface AbstractLearnViewController : UIViewController<LearnViewDelegate>
 @property id<AbstractLearnViewControllerDelegate> delegate;
 @property LearnView *learnView;
-@property int numberOfWords;
+
+@property NSMutableArray *leftCountArray;
+@property NSMutableArray *swipeDurationArray;
+
 @property AVAudioPlayer *audio;
+@property NSDate *date;
+
+@property int numberOfWords;
 @property BOOL shouldLearnAgain;
 
 
+#pragma mark initialization methods(required in child class)
 - (void)initLearnView;
+- (void)initArrays;
 #pragma mark override methods (required)
 - (NSDictionary *)getWordsDic;
 - (void)finishLearn;

@@ -23,6 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initLearnView];
+    [self initArrays];
     [self playSound:self.learnView.topCardView.englishLabel.text];
     [self startTimer];
     if (self.numberOfWords > 5) {
@@ -58,6 +59,7 @@
 - (void)finishLearn
 {
     [self stopTimer];
+    DLog(@"swipeDuration = %@, leftCount = %@",self.swipeDurationArray, self.leftCountArray);
     [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
@@ -75,6 +77,7 @@
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
     isTimerValid = YES;
+    self.date = [NSDate date];
 }
 
 - (void)stopTimer

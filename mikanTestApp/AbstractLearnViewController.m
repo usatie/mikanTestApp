@@ -9,8 +9,6 @@
 #import "AbstractLearnViewController.h"
 
 @interface AbstractLearnViewController () {
-    NSData *date;
-    
     int learnedWordsCount;
 }
 
@@ -29,7 +27,7 @@
 }
 
 
-#pragma mark initialization
+#pragma mark initialization (required in child class)
 - (void)initLearnView{
     self.learnView = [[LearnView alloc] initWithFrame:self.view.frame];
     self.learnView.delegate = self;
@@ -40,42 +38,60 @@
     [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
 }
 
+- (void)initArrays
+{
+    _leftCountArray = [[NSMutableArray alloc] init];
+    _swipeDurationArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < _numberOfWords; i++) {
+        [_leftCountArray addObject:@0];
+        [_swipeDurationArray addObject:@0];
+    }
+}
 #pragma mark delegate method (Abstract)
 - (void)cancelButtonPushedDelegate{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)cardViewSwiped
-{
-    //cardsBaseViewのsubviewsが０だったらfinish
-    if (self.learnView.cardBaseView.subviews.count == 0) {
-        //play "finish!"
-        [self didAllSubviewsRemoved];
-    } else {
-        //set top card
-        NSArray *cardViews = self.learnView.cardBaseView.subviews;
-        self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
-        
-        //play "next words"
-        [self playSound:self.learnView.topCardView.englishLabel.text];
-        [self startTimer];
-    }
-}
 
-#pragma mark custom method
-- (void)didAllSubviewsRemoved {
-    [self playSound:@"sound_finish"];
+#pragma mark delegate method
+- (void)cardViewSwiped:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
+{
+    NSLog(@"displayNextCardDelegate tag = %d",(int)cardView.tag);
+    cardView.swipeDuration += -[_date timeIntervalSinceNow];
+    DLog(@"swipeDuration = %f",cardView.swipeDuration);
     
-    if (self.shouldLearnAgain) {//残りが5枚以下の時は次が最後
+    //知ってたらremove, 知らなかったらsendSubviewToBack
+    if (hasRememberd) {
+        _leftCountArray[cardView.tag-1] = [NSNumber numberWithInt:cardView.leftCount];
+        _swipeDurationArray[cardView.tag-1] = [NSNumber numberWithFloat:cardView.swipeDuration];
+        [cardView removeFromSuperview];
+    } else {
+        cardView.leftCount++;
+        [self.learnView.cardBaseView sendSubviewToBack:cardView];
+        [cardView resetViewPositionAndTransformations];
+    }
+    
+    //cardViewが0枚で、shouldLearnAgainだったらもう一度Learn
+    NSArray *cardViews = self.learnView.cardBaseView.subviews;
+    if (cardViews.count==0 && self.shouldLearnAgain) {
+        [self playSound:@"sound_finish"];
         learnedWordsCount += 5;
-        if (self.numberOfWords-learnedWordsCount <= 5) {
-            self.shouldLearnAgain = NO;
-        }
+        int remainingWordsCount = self.numberOfWords-learnedWordsCount;
+        self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
         [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
         [self playSound:self.learnView.topCardView.englishLabel.text];
         [self startTimer];
-    } else {//Learn終了時
+    }
+    //cardViewが0枚で、shouldLearnAgainだったらfinish
+    else if (cardViews.count==0 && !self.shouldLearnAgain) {
+        [self playSound:@"sound_finish"];
         [self finishLearn];
+    }
+    //cardViewが残ってたら次の単語を発音
+    else {
+        self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
     }
 }
 
@@ -95,6 +111,7 @@
 
 #pragma mark Override method (optional)
 - (void)startTimer {
+    _date = [NSDate date];
     DLog(@"if you want to add timer, please override this method");
 }
 - (void)stopTimer {

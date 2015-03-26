@@ -22,6 +22,9 @@
 @property (nonatomic) IBOutlet UILabel *englishLabel;
 @property (strong, nonatomic) IBOutlet UILabel *sectionLabel;
 
+@property int leftCount;
+@property float swipeDuration;
+
 
 - (void)setParameter:(NSString*)english
             japanese:(NSString*)japanese
@@ -33,7 +36,7 @@
 
 @protocol DraggableCardViewDelegate <NSObject>
 @required
-- (void)cardViewSwipedDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender;
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView;
 @optional
 - (void)cardViewTouchedDelegate:(DraggableCardView *)cardView;
 @end

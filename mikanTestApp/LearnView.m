@@ -47,19 +47,10 @@
 }
 
 #pragma mark CardView delegate
-- (void)cardViewSwipedDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
-    NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
-    
-    //知ってたらremove, 知らなかったらsendSubviewToBack
-    if (hasRememberd) {
-        [sender removeFromSuperview];
-    } else {
-        [self.cardBaseView sendSubviewToBack:sender];
-        [sender resetViewPositionAndTransformations];
-    }
-    
-    if ([_delegate respondsToSelector:@selector(cardViewSwiped)]) {
-        [_delegate cardViewSwiped];
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
+{
+    if ([_delegate respondsToSelector:@selector(cardViewSwiped:cardView:)]) {
+        [_delegate cardViewSwiped:hasRememberd cardView:cardView];
     }
 }
 
@@ -92,7 +83,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self cardViewSwipedDelegate:YES sender:cardView];
+                         [self cardViewSwipedDelegate:YES cardView:cardView];
                          [self enableButtons];
                      }
      ];
@@ -109,7 +100,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self cardViewSwipedDelegate:NO sender:cardView];
+                         [self cardViewSwipedDelegate:NO cardView:cardView];
                          [self enableButtons];
                      }
      ];
