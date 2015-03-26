@@ -8,6 +8,7 @@
 
 #import "WordTableView.h"
 #import "CustomTableViewCell.h"
+#import "NSArray+IndexHelper.h"
 
 @implementation WordTableView{
     NSDictionary *wordsDic;
@@ -29,6 +30,7 @@
 //        self = [array objectAtIndex:0];
         self.frame = frame;
         wordsDic = wordsDictionary;
+        DLog(@"wordsDictionary = %@",wordsDictionary);
         self.delegate = self;
         self.dataSource = self;
         self.rowHeight = 55;
@@ -49,6 +51,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
     int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
+    BOOL didSwipeLeft = [[wordsDic[@"leftCount"] safeObjectAtIndex:indexPath.row] intValue]>0 ? YES:NO;
 
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -59,7 +62,7 @@
     cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
     cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if(testResultIndex < 1) {
+    if(testResultIndex < 1 || didSwipeLeft) {
         cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
         cell.hasChecked = NO;
     } else {

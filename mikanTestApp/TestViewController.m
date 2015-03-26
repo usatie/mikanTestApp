@@ -47,30 +47,6 @@
     [self.cancelAlertView show];
 }
 
-//#pragma mark Timer (override)
-//- (void)startTimer
-//{
-//    if (isTimerValid) {
-//        [timer invalidate];
-//    }
-//    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
-//    isTimerValid = YES;
-//}
-//
-//- (void)stopTimer
-//{
-//    DLog(@"stopTimer");
-//    if (isTimerValid) {
-//        [timer invalidate];
-//    }
-//    isTimerValid = NO;
-//}
-//
-//- (void)timerAction
-//{
-//    DLog(@"timerAction");
-//    [self answerButtonPushedDelegate:NO choice:5];
-//}
 #pragma mark Timer (override)
 - (void)startTimer
 {

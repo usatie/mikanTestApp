@@ -50,8 +50,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //TestResultViewController にtestWordsDicを引き渡し
     if ([segue.identifier isEqualToString:@"segueToResult"]) {
-        RelearnTestResultViewController *vc = segue.destinationViewController;
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+        RelearnTestResultViewController *vc = segue.destinationViewController;
         vc.testedWordsDic = [self getSmallDictionary:self.testWordsDic indexSet:indexSet];
     }
 }

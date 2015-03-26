@@ -1049,6 +1049,7 @@
 		24CE316B1AB9601A0096C097 /* great.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31671AB9601A0096C097 /* great.png */; };
 		24CE316E1AB9608A0096C097 /* checkOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316C1AB9608A0096C097 /* checkOff.png */; };
 		24CE316F1AB9608A0096C097 /* checkOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316D1AB9608A0096C097 /* checkOn.png */; };
+		24FB57BB1AC428A200894B66 /* NSArray+IndexHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */; };
 		BA872F4DC9C28DB4C31BA87D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E89B5863D4DDFC59AFE9F98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2132,6 +2133,8 @@
 		24CE31671AB9601A0096C097 /* great.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great.png; sourceTree = "<group>"; };
 		24CE316C1AB9608A0096C097 /* checkOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOff.png; sourceTree = "<group>"; };
 		24CE316D1AB9608A0096C097 /* checkOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOn.png; sourceTree = "<group>"; };
+		24FB57B91AC428A200894B66 /* NSArray+IndexHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IndexHelper.h"; sourceTree = "<group>"; };
+		24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IndexHelper.m"; sourceTree = "<group>"; };
 		66DE6E9C6D08D3969CE42EA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A79AD71459D8F52B5177064A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3203,6 +3206,8 @@
 		2462CD051AAAAC4200AF25A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24FB57B91AC428A200894B66 /* NSArray+IndexHelper.h */,
+				24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */,
 				2462CD061AAAAC4200AF25A2 /* Info.plist */,
 				24A6577D1AB7C29F00FA810D /* mikanTestApp-PrefixHeader.pch */,
 				2462CD071AAAAC4200AF25A2 /* main.m */,
@@ -4571,6 +4576,7 @@
 				247119EC1ABC226600F39BE3 /* LearnViewController.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,
+				24FB57BB1AC428A200894B66 /* NSArray+IndexHelper.m in Sources */,
 				24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */,
 				24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,

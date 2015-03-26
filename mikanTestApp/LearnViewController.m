@@ -43,8 +43,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"learnToTest"]) {
+        NSMutableDictionary *resultsDic = [[NSMutableDictionary alloc] initWithDictionary:self.learnView.wordsDic];
+        [resultsDic setObject:self.leftCountArray forKey:@"leftCount"];
+        [resultsDic setObject:self.swipeDurationArray forKey:@"swipeDuration"];
+        DLog(@"wordsDic = %@",resultsDic);
+        
         TestViewController *vc = segue.destinationViewController;
-        vc.tmpDic = self.learnView.wordsDic;
+        vc.tmpDic = resultsDic;
     }
 }
 
