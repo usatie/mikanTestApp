@@ -3295,6 +3295,7 @@
 			children = (
 				249A1C981AB9B385007E2D14 /* WordTableView.h */,
 				249A1C991AB9B385007E2D14 /* WordTableView.m */,
+				24A657A51AB9476400FA810D /* CustomTableViewCell */,
 			);
 			name = WordTableView;
 			sourceTree = "<group>";
@@ -3329,7 +3330,6 @@
 				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				247119E11ABBF3AD00F39BE3 /* AbstractLearnViewController */,
 				249A1C971AB9B363007E2D14 /* WordTableView */,
-				24A657A51AB9476400FA810D /* CustomCell */,
 				24A657981AB8321B00FA810D /* UserUtil */,
 				24A657861AB7D32900FA810D /* DBHandler */,
 				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
@@ -3369,14 +3369,14 @@
 			name = UserUtil;
 			sourceTree = "<group>";
 		};
-		24A657A51AB9476400FA810D /* CustomCell */ = {
+		24A657A51AB9476400FA810D /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				24A657A61AB9477300FA810D /* CustomTableViewCell.xib */,
 				24A657A71AB9477300FA810D /* CustomTableViewCell.m */,
 				24A657A81AB9477300FA810D /* CustomTableViewCell.h */,
 			);
-			name = CustomCell;
+			name = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
