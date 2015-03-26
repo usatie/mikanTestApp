@@ -11,7 +11,7 @@
 @implementation AppConsts
 NSString * const DB_NAME = @"mikan_exam.db";
 int const PROGRESS_LIMIT = 3000;
-int const WORD_ID_LIMIT = 250;
+int const WORD_ID_LIMIT = 150;
 
 int const LEARN_TYPE_READ = 1;
 int const LEARN_TYPE_LISTEN = 2;
