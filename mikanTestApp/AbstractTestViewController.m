@@ -26,6 +26,8 @@
     /* 
      ToDo : GAITrackedViewController
      */
+    _util = [[UserUtil alloc] init];
+    
     _resultsArray = [[NSMutableArray alloc] init];
     _userChoicesArray = [[NSMutableArray alloc] init];
     _answerDurationArray = [[NSMutableArray alloc] init];
@@ -41,7 +43,7 @@
     [self initAlertView];
     [self showAndPlayNextWord];
     //これやると速くなるはずなんだけどなあ・・・
-    [_audio prepareToPlay];
+    [_util.audio prepareToPlay];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -86,7 +88,7 @@
     //次の単語を表示
     [self.testView showWordWithIndex:_testIndex];
     //次の単語を発音
-    [self playSound:_testWordsDic[@"english"][_testIndex]];
+    [_util playSound:_testWordsDic[@"english"][_testIndex] playSoundFlag:YES];
     //indexを次に進める
     _testIndex++;
     //ボタンをenable
@@ -108,9 +110,9 @@
     [_answerDurationArray addObject:[NSNumber numberWithDouble:-[date timeIntervalSinceNow]]];
     
     if (result) {
-        [self playSound:@"sound_correct"];
+        [_util playSound:@"sound_correct" playSoundFlag:YES];
     } else {
-        [self playSound:@"sound_incorrect"];
+        [_util playSound:@"sound_incorrect" playSoundFlag:YES];
     }
     
     if (_testIndex < [_testWordsDic[@"wordId"] count]){
@@ -118,8 +120,7 @@
         return;
     }
     DLog(@"finish!");
-    //timer, AVAudioPlayerをストップ
-    [self.audio stop];
+    [_util.audio stop];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self stopTimer];
     
@@ -129,7 +130,7 @@
 
 - (void)cancelButtonPushedDelegate{
     //timer, AVAudioPlayerをストップ
-    [self.audio stop];
+    [_util.audio stop];
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self stopTimer];
     
@@ -157,7 +158,7 @@
 }
 
 
-#pragma mark Override method
+#pragma mark Override method (requireed)
 - (void)finishTest
 {
     // 継承したクラスで実装する
@@ -187,20 +188,5 @@
 {
     DLog(@"if you don't want to dismissViewController, please override this method");
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-#pragma mark sound (Deprecate)
--(void)playSound:(NSString *)fileName
-{
-//    NSLog(@"playSound \"%@\"", fileName);
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
-    if (path) {
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        if (error) NSLog(@"error. could not pronounce %@", fileName);
-        [_audio play];
-    } else {
-//        NSLog(@"path is nil. Could not pronounce %@", fileName);
-    }
 }
 @end

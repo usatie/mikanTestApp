@@ -25,7 +25,7 @@
     // Do any additional setup after loading the view.
     [self initLearnView];
     [self initArrays];
-    [self playSound:self.learnView.topCardView.englishLabel.text];
+    [self.util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
     [self startTimer];
     if (self.numberOfWords > 5) {
         self.shouldLearnAgain = YES;
@@ -101,19 +101,4 @@
     }
 
 }
-
-#pragma mark sound (will be Deprecated)
--(void)playSound:(NSString *)fileName
-{
-    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
-    if (path) {
-        NSURL *url = [NSURL fileURLWithPath:path];
-        NSError *error;
-        self.audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
-        if (error) NSLog(@"error. could not pronounce %@", fileName);
-        [self.audio play];
-    } else {
-    }
-}
-
 @end

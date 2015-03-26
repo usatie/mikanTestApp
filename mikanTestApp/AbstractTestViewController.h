@@ -21,22 +21,23 @@
 @property NSMutableArray *userChoicesArray;
 @property NSMutableArray *answerDurationArray;
 
+@property UserUtil *util;
+
 @property BOOL relearnFlag;
 @property int testIndex;
 
-- (NSDictionary *)getTestWords;
-- (void)finishTest;
+#pragma mark Button Actions
 - (void)cancelButtonPushed;
 - (void)showAndPlayNextWord;
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice;
+
+#pragma mark override methods (required)
+- (NSDictionary *)getTestWords;
+- (void)finishTest;
 
 #pragma mark override methods (optional)
 - (void)startTimer;
 - (void)stopTimer;
 - (void)timerAction;
 - (void)cancelButtonPushedBeforeAnswering;
-//Temporary properties
-@property AVAudioPlayer *audio;
-
-
 @end
