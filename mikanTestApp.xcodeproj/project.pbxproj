@@ -3243,6 +3243,8 @@
 		2466F2191AAAFDCE001E8522 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
+				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
 				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
 				249A1C9F1ABAEE96007E2D14 /* Learn */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
@@ -3311,8 +3313,6 @@
 		249A1C9F1ABAEE96007E2D14 /* Learn */ = {
 			isa = PBXGroup;
 			children = (
-				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
-				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
 				247119EA1ABC226600F39BE3 /* LearnViewController.h */,
 				247119EB1ABC226600F39BE3 /* LearnViewController.m */,
 				249A1C9B1ABAEDF8007E2D14 /* TestViewController.h */,

@@ -10,7 +10,7 @@
 #import "answerButton.h"
 
 @interface AbstractTestViewController (){
-    int testIndex;
+//    int testIndex;
     BOOL shouldPlaySound;
     
     NSDate *date;
@@ -34,14 +34,11 @@
     
     //Testすべき単語が無かったらすぐに終了
     if ([_testWordsDic[@"wordId"] count]==0) {
-        if ([_delegate respondsToSelector:@selector(testCancelDelegate)]) {
-            [_delegate testCancelDelegate];
-        } else {
-            DLog(@"no responds to testCancel");
-        }
+        [self cancelButtonPushed];
         return;
     }
     [self initTestView];
+    [self initAlertView];
     [self showAndPlayNextWord];
     //これやると速くなるはずなんだけどなあ・・・
     [_audio prepareToPlay];
@@ -66,6 +63,10 @@
     [self.view addSubview:self.testView];
 }
 
+- (void)initAlertView{
+    _cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"はい", nil];
+}
+
 - (NSDictionary *)getTestWords
 {
     // 継承したクラスで実装する
@@ -79,23 +80,26 @@
     shouldPlaySound = YES;
 }
 
-#pragma mark show methods
+#pragma mark show next word methods
 - (void)showAndPlayNextWord
 {
     //次の単語を表示
-    [self.testView showWordWithIndex:testIndex];
+    [self.testView showWordWithIndex:_testIndex];
     //次の単語を発音
-    [self playSound:_testWordsDic[@"english"][testIndex]];
+    [self playSound:_testWordsDic[@"english"][_testIndex]];
     //indexを次に進める
-    testIndex++;
+    _testIndex++;
     //ボタンをenable
     [self.testView enableAllButtons];
     //dateをリセット
     date = [NSDate date];
+    [self startTimer];
 }
 
 #pragma mark Button Action
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice{
+    //Timerをstop
+    [self stopTimer];
     //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
     //DBHandlerに入れるためのもの
@@ -109,23 +113,73 @@
         [self playSound:@"sound_incorrect"];
     }
     
-    if (testIndex < [_testWordsDic[@"wordId"] count]){
+    if (_testIndex < [_testWordsDic[@"wordId"] count]){
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }
     DLog(@"finish!");
-    if ([_delegate respondsToSelector:@selector(finishDelegate)]) {
-        [_delegate finishDelegate];
-    } else {
-        DLog(@"no responds to finishDelegate");
-    }
+    //timer, AVAudioPlayerをストップ
+    [self.audio stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    
+    //子クラスで定義されるfinishTest
+    [self finishTest];
 }
 
 - (void)cancelButtonPushedDelegate{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    //timer, AVAudioPlayerをストップ
+    [self.audio stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    
+    //show AlertView
+    [_cancelAlertView show];
 }
 
-#pragma mark sound
+#pragma mark AlertView
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView == _cancelAlertView) {
+        switch (buttonIndex) {
+            case 0:
+                [self cancelButtonPushed];
+                break;
+            default:
+                _testIndex--;
+                [self showAndPlayNextWord];
+                break;
+        }
+    }
+}
+
+
+#pragma mark Override method
+- (void)finishTest
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+- (void)cancelButtonPushed
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+}
+
+#pragma mark Timer Override(optional)
+- (void)startTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)stopTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)timerAction {
+    DLog(@"if you want to add timer, please override this method");
+}
+
+#pragma mark sound (Deprecate)
 -(void)playSound:(NSString *)fileName
 {
 //    NSLog(@"playSound \"%@\"", fileName);

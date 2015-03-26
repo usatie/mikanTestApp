@@ -30,6 +30,7 @@ typedef void(^completion)(BOOL);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //testedWordsDicはTestViewControllerのprepareForSegueで貰ってくる。
     wordsDic = [[NSMutableDictionary alloc] initWithDictionary:_testedWordsDic];
     [wordsDic addEntriesFromDictionary:[DBHandler getHasRememberedDicWithWordIdArray:_testedWordsDic[@"wordId"]]];
     

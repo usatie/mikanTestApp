@@ -79,6 +79,12 @@
                         <action selector="cancelButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="5HO-iO-rq7"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 / 10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLJ-Q7-WMx">
+                    <rect key="frame" x="20" y="24" width="120" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.99896246190000004" green="0.95258563760000003" blue="0.86407023670000005" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration">
@@ -122,8 +128,9 @@
                 <outlet property="answerButton3" destination="6hJ-2O-k8M" id="J17-pw-NO6"/>
                 <outlet property="answerButton4" destination="CAW-VA-CBc" id="dVm-Dy-5pA"/>
                 <outlet property="englishLabel" destination="2OL-X0-zMz" id="dgs-mf-QT4"/>
+                <outlet property="numberLabel" destination="HLJ-Q7-WMx" id="sVT-Qr-HxH"/>
             </connections>
-            <point key="canvasLocation" x="-72" y="367"/>
+            <point key="canvasLocation" x="-80" y="367"/>
         </view>
     </objects>
 </document>

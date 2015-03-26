@@ -9,13 +9,17 @@
 #import "RelearnTestViewController.h"
 #import "RelearnTestResultViewController.h"
 
-@interface RelearnTestViewController ()
+@interface RelearnTestViewController () {
+    NSTimer *timer;
+    BOOL isTimerValid;
+    
+//    UIAlertView *cancelAlertView;
+}
 
 @end
 
 @implementation RelearnTestViewController
 - (void)viewDidLoad {
-    self.delegate = self;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
@@ -25,24 +29,57 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark Test Delegate Methods
-- (void)finishDelegate{
-    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
+#pragma mark Test Override Methods 
+- (void)initAlertView{
+    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"ここまでの結果を表示" otherButtonTitles:@"はい", nil];
+}
+
+- (void)finishTest {
+    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
     [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 
-- (void)testCancelDelegate {
+- (void)cancelButtonPushed {
     DLog(@"test was cancelled");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+    [DBHandler insertTestResult:[self.testWordsDic[@"wordId"] objectsAtIndexes:indexSet] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
+    [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
+
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //TestResultViewController にtestWordsDicを引き渡し
     if ([segue.identifier isEqualToString:@"segueToResult"]) {
         RelearnTestResultViewController *vc = segue.destinationViewController;
-        vc.testedWordsDic = self.testWordsDic;
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+        vc.testedWordsDic = [self getSmallDictionary:self.testWordsDic indexSet:indexSet];
     }
+}
+
+#pragma mark Timer
+- (void)startTimer
+{
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    isTimerValid = YES;
+}
+
+- (void)stopTimer
+{
+    DLog(@"stopTimer");
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    isTimerValid = NO;
+}
+
+- (void)timerAction
+{
+    DLog(@"timerAction");
+    [self answerButtonPushedDelegate:NO choice:5];
 }
 
 #pragma mark Temporary methods
@@ -55,5 +92,16 @@
     } else{
         return [DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
     }
+}
+
+- (NSDictionary *)getSmallDictionary:(NSDictionary *)dic indexSet:(NSIndexSet *)indexSet
+{
+    NSMutableDictionary *smallDic = [[NSMutableDictionary alloc] init];
+    
+    for (id key in dic) {
+        [smallDic setObject:[[dic objectForKey:key] objectsAtIndexes:indexSet] forKey:key];
+    }
+    
+    return smallDic;
 }
 @end

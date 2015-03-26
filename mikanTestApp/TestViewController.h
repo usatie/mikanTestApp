@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AbstractTestViewController.h"
 
-@interface TestViewController : AbstractTestViewController<AbstractTestViewControllerDelegate>
+@interface TestViewController : AbstractTestViewController
 @property NSDictionary *tmpDic;
 @end
