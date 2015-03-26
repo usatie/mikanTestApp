@@ -16,9 +16,7 @@
 @property (nonatomic, strong) UIPanGestureRecognizer *panGestureRecognizer;
 @property (nonatomic) CGPoint originalPoint;
 @property (nonatomic, strong) DraggableCardOverlayView *overlayView;
-@property int i;
-@property int wordIndex;
-@property int viewIndex;
+
 @property (nonatomic) IBOutlet UILabel *numberLabel;
 @property (nonatomic) IBOutlet UILabel *japaneseLabel;
 @property (nonatomic) IBOutlet UILabel *englishLabel;
@@ -28,8 +26,7 @@
 - (void)setParameter:(NSString*)english
             japanese:(NSString*)japanese
               number:(NSString*)number
-  japaneseHiddenFlug:(BOOL)japaneseHiddenFlug
-           wordIndex:(int)wordIndex;
+  japaneseHiddenFlug:(BOOL)japaneseHiddenFlug;
 
 - (void)resetViewPositionAndTransformations;
 @end

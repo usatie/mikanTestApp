@@ -3286,6 +3286,7 @@
 				247119E51ABBF3EB00F39BE3 /* LearnView.h */,
 				247119E61ABBF3EB00F39BE3 /* LearnView.m */,
 				247119E81ABBF3FA00F39BE3 /* LearnView.xib */,
+				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
 			name = AbstractLearnViewController;
 			sourceTree = "<group>";
@@ -3332,7 +3333,6 @@
 				249A1C971AB9B363007E2D14 /* WordTableView */,
 				24A657981AB8321B00FA810D /* UserUtil */,
 				24A657861AB7D32900FA810D /* DBHandler */,
-				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
 			name = CustomClasses;
 			sourceTree = "<group>";

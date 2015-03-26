@@ -130,13 +130,11 @@
             japanese:(NSString*)japanese
               number:(NSString*)number
   japaneseHiddenFlug:(BOOL)japaneseHiddenFlug
-           wordIndex:(int)wordIndex
 {
     _englishLabel.text = english;
     _japaneseLabel.text = japanese;
     _numberLabel.text = number;
     _japaneseLabel.hidden = japaneseHiddenFlug;
-    _wordIndex = wordIndex;
 }
 
 - (void)resetViewPositionAndTransformations

@@ -35,8 +35,7 @@
         [cardView setParameter:self.wordsDic[@"english"][i]
                       japanese:self.wordsDic[@"japanese"][i]
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
-            japaneseHiddenFlug:YES
-                     wordIndex:[self.wordsDic[@"wordId"][i] intValue]];
+            japaneseHiddenFlug:YES];
         cardView.sectionLabel.text = @"検証テスト";
         cardView.japaneseLabel.hidden = NO;
         [self.cardBaseView addSubview:cardView];
