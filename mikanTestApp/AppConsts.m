@@ -10,5 +10,6 @@
 
 @implementation AppConsts
 NSString * const DB_NAME = @"mikan_exam.db";
+int const PROGRESS_LIMIT = 3000;
 
 @end

@@ -47,9 +47,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-        int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
-        int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
-//        BOOL hasRemembered = [wordsDic[@"hasRemembered"][indexPath.row] boolValue];
+    int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
+    int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
 
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -60,20 +59,9 @@
     cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
     cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-//    if(hasRemembered) {
-//        cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
-//        cell.hasChecked = YES;
-//    } else {
-//        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
-//        cell.hasChecked = NO;
-//    }
-//    cell.archiveImageView.contentMode = UIViewContentModeScaleAspectFit;
-    
     if(testResultIndex < 1) {
-        //        [cell.archiveButton setImage:nil forState:UIControlStateDisabled];
-        cell.archiveImageView.image = nil;
+        cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
         cell.hasChecked = NO;
-        cell.archiveButton.enabled = NO;
     } else {
         cell.archiveImageView.image = [UIImage imageNamed:@"checkOn.png"];
         cell.hasChecked = YES;

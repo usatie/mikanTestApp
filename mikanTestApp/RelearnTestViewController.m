@@ -82,10 +82,10 @@
 - (void)timerAction
 {
     progress ++;
-    if (progress > 3000) {
+    if (progress > PROGRESS_LIMIT) {
         [self answerButtonPushedDelegate:NO choice:5];
     } else {
-        [self.testView.progressBar setProgress:1.0-progress/3000.0];
+        [self.testView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
     }
 }
 

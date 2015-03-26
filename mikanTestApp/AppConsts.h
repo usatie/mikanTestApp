@@ -10,5 +10,5 @@
 
 @interface AppConsts : NSObject
 extern NSString * const DB_NAME;
-
+extern int const PROGRESS_LIMIT;
 @end
