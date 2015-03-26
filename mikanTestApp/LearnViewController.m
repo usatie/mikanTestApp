@@ -11,7 +11,6 @@
 #import "TestViewController.h"
 
 @interface LearnViewController (){
-    BOOL shouldLearnAgain;
     BOOL isTimerValid;
     NSTimer *timer;
 }
@@ -24,10 +23,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initLearnView];
-    [self willPlayNextWord];
+    [self initArrays];
+    [self playSound:self.learnView.topCardView.englishLabel.text];
     [self startTimer];
     if (self.numberOfWords > 5) {
-        shouldLearnAgain = YES;
+        self.shouldLearnAgain = YES;
     }
 }
 
@@ -43,8 +43,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"learnToTest"]) {
+        NSMutableDictionary *resultsDic = [[NSMutableDictionary alloc] initWithDictionary:self.learnView.wordsDic];
+        [resultsDic setObject:self.leftCountArray forKey:@"leftCount"];
+        [resultsDic setObject:self.swipeDurationArray forKey:@"swipeDuration"];
+        DLog(@"wordsDic = %@",resultsDic);
+        
         TestViewController *vc = segue.destinationViewController;
-        vc.tmpDic = self.learnView.wordsDic;
+        vc.tmpDic = resultsDic;
     }
 }
 
@@ -56,33 +61,12 @@
     return [DBHandler getRelearnWords:category limit:10 remembered:NO hasTested:learnMode];
 }
 
-- (void)didSubviewsRemoved {
-    
-    //(stop timer)
-    [self playSound:@"sound_finish"];
-    
-    if (shouldLearnAgain) {
-        //1. generate next card
-        //start timer
-        shouldLearnAgain = NO;
-        [self.learnView generateCardView:5 cardCount:self.numberOfWords];
-        [self willPlayNextWord];
-    } else {
-        //2. segue to test
-        [self stopTimer];
-        [self performSegueWithIdentifier:@"learnToTest" sender:self];
-        DLog(@"segue to test");
-    }
-    
-}
-
-- (void)willPlayNextWord {
-    DLog(@"next card");
-    //sound "next"
-    [self playSound:self.learnView.topCardView.englishLabel.text];
-
-    //start timer
-    [self startTimer];
+- (void)finishLearn
+{
+    [self stopTimer];
+    DLog(@"swipeDuration = %@, leftCount = %@",self.swipeDurationArray, self.leftCountArray);
+    [DBHandler insertLearnResultWithArray:self.learnView.wordsDic[@"wordId"] durationArray:self.swipeDurationArray leftCountArray:self.leftCountArray learnType:LEARN_TYPE_READ relearnFlag:NO];
+    [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
 - (void)cancelButtonPushedDelegate{
@@ -99,6 +83,7 @@
     }
     timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
     isTimerValid = YES;
+    self.date = [NSDate date];
 }
 
 - (void)stopTimer
@@ -115,16 +100,16 @@
     [self.learnView sendCardViewToBack:self.learnView.topCardView];
 }
 
-#pragma mark sound
+#pragma mark sound (will be Deprecated)
 -(void)playSound:(NSString *)fileName
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
     if (path) {
         NSURL *url = [NSURL fileURLWithPath:path];
         NSError *error;
-        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        self.audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
         if (error) NSLog(@"error. could not pronounce %@", fileName);
-        [_audio play];
+        [self.audio play];
     } else {
     }
 }

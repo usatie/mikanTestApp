@@ -7,7 +7,6 @@
 //
 
 #import "LearnMenuViewController.h"
-#import "LearnViewController_deprecated.h"
 #import "DBHandler.h"
 
 @interface LearnMenuViewController ()

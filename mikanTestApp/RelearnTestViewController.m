@@ -12,8 +12,7 @@
 @interface RelearnTestViewController () {
     NSTimer *timer;
     BOOL isTimerValid;
-    
-//    UIAlertView *cancelAlertView;
+    int progress;
 }
 
 @end
@@ -31,7 +30,7 @@
 
 #pragma mark Test Override Methods 
 - (void)initAlertView{
-    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"ここまでの結果を表示" otherButtonTitles:@"はい", nil];
+    self.cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"終了して結果を表示" otherButtonTitles:@"つづける", nil];
 }
 
 - (void)finishTest {
@@ -51,8 +50,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //TestResultViewController にtestWordsDicを引き渡し
     if ([segue.identifier isEqualToString:@"segueToResult"]) {
-        RelearnTestResultViewController *vc = segue.destinationViewController;
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+        RelearnTestResultViewController *vc = segue.destinationViewController;
         vc.testedWordsDic = [self getSmallDictionary:self.testWordsDic indexSet:indexSet];
     }
 }
@@ -63,8 +62,12 @@
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    progress = 0;
+    self.testView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    
     isTimerValid = YES;
+    
 }
 
 - (void)stopTimer
@@ -78,8 +81,12 @@
 
 - (void)timerAction
 {
-    DLog(@"timerAction");
-    [self answerButtonPushedDelegate:NO choice:5];
+    progress ++;
+    if (progress > PROGRESS_LIMIT) {
+        [self answerButtonPushedDelegate:NO choice:5];
+    } else {
+        [self.testView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
+    }
 }
 
 #pragma mark Temporary methods

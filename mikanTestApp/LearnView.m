@@ -35,8 +35,7 @@
         [cardView setParameter:self.wordsDic[@"english"][i]
                       japanese:self.wordsDic[@"japanese"][i]
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
-            japaneseHiddenFlug:YES
-                     wordIndex:[self.wordsDic[@"wordId"][i] intValue]];
+            japaneseHiddenFlug:YES];
         cardView.sectionLabel.text = @"検証テスト";
         cardView.japaneseLabel.hidden = NO;
         [self.cardBaseView addSubview:cardView];
@@ -48,31 +47,10 @@
 }
 
 #pragma mark CardView delegate
-- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
-    NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
-    
-    //知ってたらremove, 知らなかったらsendSubviewToBack
-    if (hasRememberd) {
-        [sender removeFromSuperview];
-    } else {
-        [self.cardBaseView sendSubviewToBack:sender];
-        [sender resetViewPositionAndTransformations];
-    }
-    
-    //cardsBaseViewのsubviewsが０だったらfinish
-    if (self.cardBaseView.subviews.count == 0) {
-        //play "finish!"
-        if ([_delegate respondsToSelector:@selector(didSubviewsRemoved)]) {
-            [_delegate didSubviewsRemoved];
-        }
-    } else {
-        //set top card
-        _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
-        
-        //play "next words"
-        if ([_delegate respondsToSelector:@selector(willPlayNextWord)]) {
-            [_delegate willPlayNextWord];
-        }
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
+{
+    if ([_delegate respondsToSelector:@selector(cardViewSwiped:cardView:)]) {
+        [_delegate cardViewSwiped:hasRememberd cardView:cardView];
     }
 }
 
@@ -105,7 +83,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self displayNextCardDelegate:YES sender:cardView];
+                         [self cardViewSwipedDelegate:YES cardView:cardView];
                          [self enableButtons];
                      }
      ];
@@ -122,7 +100,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self displayNextCardDelegate:NO sender:cardView];
+                         [self cardViewSwipedDelegate:NO cardView:cardView];
                          [self enableButtons];
                      }
      ];

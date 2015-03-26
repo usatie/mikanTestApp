@@ -87,15 +87,15 @@
         case UIGestureRecognizerStateEnded:{
             if (xDistance > 60) {
                 //Write delegate method when swipe to the right
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
-                    [_delegate displayNextCardDelegate:YES sender:self];
+                if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:cardView:)]) {
+                    [_delegate cardViewSwipedDelegate:YES cardView:self];
                 } else {NSLog(@"no responds to remember");}
                 
             }
             else if (xDistance < -60){
                 //Write delegate method shen swipe to the left
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
-                    [_delegate displayNextCardDelegate:NO sender:self];
+                if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:cardView:)]) {
+                    [_delegate cardViewSwipedDelegate:NO cardView:self];
                 } else {NSLog(@"no responds to onemore");}
             }
             else [self resetViewPositionAndTransformations];
@@ -130,13 +130,11 @@
             japanese:(NSString*)japanese
               number:(NSString*)number
   japaneseHiddenFlug:(BOOL)japaneseHiddenFlug
-           wordIndex:(int)wordIndex
 {
     _englishLabel.text = english;
     _japaneseLabel.text = japanese;
     _numberLabel.text = number;
     _japaneseLabel.hidden = japaneseHiddenFlug;
-    _wordIndex = wordIndex;
 }
 
 - (void)resetViewPositionAndTransformations

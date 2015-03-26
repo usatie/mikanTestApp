@@ -12,6 +12,8 @@
 @interface TestViewController (){
     NSTimer *timer;
     BOOL isTimerValid;
+    int progress;
+    
 }
 
 @end
@@ -40,14 +42,23 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)cancelButtonPushedBeforeAnswering
+{
+    [self.cancelAlertView show];
+}
+
 #pragma mark Timer (override)
 - (void)startTimer
 {
     if (isTimerValid) {
         [timer invalidate];
     }
-    timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(timerAction) userInfo:nil repeats:NO];
+    progress = 0;
+    self.testView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    
     isTimerValid = YES;
+    
 }
 
 - (void)stopTimer
@@ -61,9 +72,14 @@
 
 - (void)timerAction
 {
-    DLog(@"timerAction");
-    [self answerButtonPushedDelegate:NO choice:5];
+    progress ++;
+    if (progress > PROGRESS_LIMIT) {
+        [self answerButtonPushedDelegate:NO choice:5];
+    } else {
+        [self.testView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
+    }
 }
+
 
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

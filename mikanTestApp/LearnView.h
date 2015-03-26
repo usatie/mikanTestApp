@@ -41,6 +41,7 @@
 
 @required
 - (void)cancelButtonPushedDelegate;
-- (void)didSubviewsRemoved;
-- (void)willPlayNextWord;
+- (void)cardViewSwiped:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView;
+//- (void)didAllSubviewsRemoved;
+//- (void)willPlayNextWord;
 @end

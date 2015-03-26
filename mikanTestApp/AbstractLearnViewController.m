@@ -8,7 +8,9 @@
 
 #import "AbstractLearnViewController.h"
 
-@interface AbstractLearnViewController ()
+@interface AbstractLearnViewController () {
+    int learnedWordsCount;
+}
 
 @end
 
@@ -25,55 +27,111 @@
 }
 
 
-#pragma mark initialization
+#pragma mark initialization (required in child class)
 - (void)initLearnView{
     self.learnView = [[LearnView alloc] initWithFrame:self.view.frame];
     self.learnView.delegate = self;
     self.learnView.wordsDic = [self getWordsDic];
-    DLog(@"%@",self.learnView.wordsDic);
-    _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
-    DLog(@"number = %d",_numberOfWords);
-    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
     [self.view addSubview:self.learnView];
+
+    _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
+    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
 }
 
+- (void)initArrays
+{
+    _leftCountArray = [[NSMutableArray alloc] init];
+    _swipeDurationArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i < _numberOfWords; i++) {
+        [_leftCountArray addObject:@0];
+        [_swipeDurationArray addObject:@0];
+    }
+}
+#pragma mark delegate method (Abstract)
+- (void)cancelButtonPushedDelegate{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark delegate method
+- (void)cardViewSwiped:(BOOL)hasRememberd cardView:(DraggableCardView *)cardView
+{
+    NSLog(@"displayNextCardDelegate tag = %d",(int)cardView.tag);
+    cardView.swipeDuration += -[_date timeIntervalSinceNow];
+    DLog(@"swipeDuration = %f",cardView.swipeDuration);
+    
+    //知ってたらremove, 知らなかったらsendSubviewToBack
+    if (hasRememberd) {
+        _leftCountArray[cardView.tag-1] = [NSNumber numberWithInt:cardView.leftCount];
+        _swipeDurationArray[cardView.tag-1] = [NSNumber numberWithFloat:cardView.swipeDuration];
+        [cardView removeFromSuperview];
+    } else {
+        cardView.leftCount++;
+        [self.learnView.cardBaseView sendSubviewToBack:cardView];
+        [cardView resetViewPositionAndTransformations];
+    }
+    
+    //cardViewが0枚で、shouldLearnAgainだったらもう一度Learn
+    NSArray *cardViews = self.learnView.cardBaseView.subviews;
+    if (cardViews.count==0 && self.shouldLearnAgain) {
+        [self playSound:@"sound_finish"];
+        learnedWordsCount += 5;
+        int remainingWordsCount = self.numberOfWords-learnedWordsCount;
+        self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
+        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
+    }
+    //cardViewが0枚で、shouldLearnAgainだったらfinish
+    else if (cardViews.count==0 && !self.shouldLearnAgain) {
+        [self playSound:@"sound_finish"];
+        [self finishLearn];
+    }
+    //cardViewが残ってたら次の単語を発音
+    else {
+        self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
+    }
+}
+
+#pragma mark override methods (required)
 - (NSDictionary *)getWordsDic
 {
-    // 継承したクラスで実装する
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
     return @{};
 }
 
-
-#pragma mark delegate
-- (void)cancelButtonPushedDelegate{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)didSubviewsRemoved {
+- (void)finishLearn
+{
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
-    
-    //(stop timer)
-    
-    //sound "finish"
-    
-    //1. generate next card
-        //start timer
-        //sound "next"
-    
-    
-    //2. segue to test
-    
-//    [self.learnView generateCardView:5 cardCount:10];
 }
 
-- (void)willPlayNextWord {
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
-    //start timer
-    
-    //sound "next"
+#pragma mark Override method (optional)
+- (void)startTimer {
+    _date = [NSDate date];
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)stopTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)timerAction {
+    DLog(@"if you want to add timer, please override this method");
+}
+
+#pragma mark sound (will be Deprecated)
+-(void)playSound:(NSString *)fileName
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"%@.mp3",fileName] ofType:nil];
+    if (path) {
+        NSURL *url = [NSURL fileURLWithPath:path];
+        NSError *error;
+        _audio = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:&error];
+        if (error) NSLog(@"error. could not pronounce %@", fileName);
+        [_audio play];
+    } else {
+    }
 }
 @end

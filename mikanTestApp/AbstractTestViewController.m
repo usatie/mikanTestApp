@@ -64,7 +64,7 @@
 }
 
 - (void)initAlertView{
-    _cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"はい", nil];
+    _cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断する" otherButtonTitles:@"つづける", nil];
 }
 
 - (NSDictionary *)getTestWords
@@ -133,8 +133,12 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self stopTimer];
     
-    //show AlertView
-    [_cancelAlertView show];
+    if (_resultsArray.count == 0) {
+        [self cancelButtonPushedBeforeAnswering];
+    } else {
+        //show AlertView
+        [_cancelAlertView show];
+    }
 }
 
 #pragma mark AlertView
@@ -168,7 +172,7 @@
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
-#pragma mark Timer Override(optional)
+#pragma mark Override method (optional)
 - (void)startTimer {
     DLog(@"if you want to add timer, please override this method");
 }
@@ -179,6 +183,11 @@
     DLog(@"if you want to add timer, please override this method");
 }
 
+- (void)cancelButtonPushedBeforeAnswering
+{
+    DLog(@"if you don't want to dismissViewController, please override this method");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark sound (Deprecate)
 -(void)playSound:(NSString *)fileName
 {

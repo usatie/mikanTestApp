@@ -1016,7 +1016,6 @@
 		2462CD161AAAAC4200AF25A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD151AAAAC4200AF25A2 /* Images.xcassets */; };
 		2462CD191AAAAC4200AF25A2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2462CD171AAAAC4200AF25A2 /* LaunchScreen.xib */; };
 		2462CD251AAAAC4200AF25A2 /* mikanTestAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */; };
-		2462CD301AAAB11400AF25A2 /* LearnViewController_deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */; };
 		2466F2171AAAEC15001E8522 /* sample_test.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2161AAAEC15001E8522 /* sample_test.csv */; };
 		2466F2241AAB023B001E8522 /* sound_correct.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2211AAB023B001E8522 /* sound_correct.mp3 */; };
 		2466F2251AAB023B001E8522 /* sound_finish.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2466F2221AAB023B001E8522 /* sound_finish.mp3 */; };
@@ -1049,6 +1048,7 @@
 		24CE316B1AB9601A0096C097 /* great.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE31671AB9601A0096C097 /* great.png */; };
 		24CE316E1AB9608A0096C097 /* checkOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316C1AB9608A0096C097 /* checkOff.png */; };
 		24CE316F1AB9608A0096C097 /* checkOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 24CE316D1AB9608A0096C097 /* checkOn.png */; };
+		24FB57BB1AC428A200894B66 /* NSArray+IndexHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */; };
 		BA872F4DC9C28DB4C31BA87D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E89B5863D4DDFC59AFE9F98 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -2080,8 +2080,6 @@
 		2462CD1E1AAAAC4200AF25A2 /* mikanTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mikanTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD231AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD241AAAAC4200AF25A2 /* mikanTestAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = mikanTestAppTests.m; sourceTree = "<group>"; };
-		2462CD2E1AAAB11400AF25A2 /* LearnViewController_deprecated.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LearnViewController_deprecated.h; sourceTree = "<group>"; };
-		2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LearnViewController_deprecated.m; sourceTree = "<group>"; };
 		2466F2161AAAEC15001E8522 /* sample_test.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample_test.csv; sourceTree = "<group>"; };
 		2466F2211AAB023B001E8522 /* sound_correct.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_correct.mp3; sourceTree = "<group>"; };
 		2466F2221AAB023B001E8522 /* sound_finish.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sound_finish.mp3; sourceTree = "<group>"; };
@@ -2132,6 +2130,8 @@
 		24CE31671AB9601A0096C097 /* great.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = great.png; sourceTree = "<group>"; };
 		24CE316C1AB9608A0096C097 /* checkOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOff.png; sourceTree = "<group>"; };
 		24CE316D1AB9608A0096C097 /* checkOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkOn.png; sourceTree = "<group>"; };
+		24FB57B91AC428A200894B66 /* NSArray+IndexHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+IndexHelper.h"; sourceTree = "<group>"; };
+		24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+IndexHelper.m"; sourceTree = "<group>"; };
 		66DE6E9C6D08D3969CE42EA0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A79AD71459D8F52B5177064A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3203,6 +3203,8 @@
 		2462CD051AAAAC4200AF25A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				24FB57B91AC428A200894B66 /* NSArray+IndexHelper.h */,
+				24FB57BA1AC428A200894B66 /* NSArray+IndexHelper.m */,
 				2462CD061AAAAC4200AF25A2 /* Info.plist */,
 				24A6577D1AB7C29F00FA810D /* mikanTestApp-PrefixHeader.pch */,
 				2462CD071AAAAC4200AF25A2 /* main.m */,
@@ -3245,12 +3247,10 @@
 			children = (
 				2462CD0C1AAAAC4200AF25A2 /* LearnMenuViewController.h */,
 				2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */,
-				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
-				249A1C9F1ABAEE96007E2D14 /* Learn */,
 				2462CD0F1AAAAC4200AF25A2 /* ResultsViewController.h */,
 				2462CD101AAAAC4200AF25A2 /* ResultsViewController.m */,
-				2462CD2E1AAAB11400AF25A2 /* LearnViewController_deprecated.h */,
-				2462CD2F1AAAB11400AF25A2 /* LearnViewController_deprecated.m */,
+				249A1C9E1ABAEE5A007E2D14 /* Relearn */,
+				249A1C9F1ABAEE96007E2D14 /* Learn */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -3286,6 +3286,7 @@
 				247119E51ABBF3EB00F39BE3 /* LearnView.h */,
 				247119E61ABBF3EB00F39BE3 /* LearnView.m */,
 				247119E81ABBF3FA00F39BE3 /* LearnView.xib */,
+				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
 			name = AbstractLearnViewController;
 			sourceTree = "<group>";
@@ -3295,6 +3296,7 @@
 			children = (
 				249A1C981AB9B385007E2D14 /* WordTableView.h */,
 				249A1C991AB9B385007E2D14 /* WordTableView.m */,
+				24A657A51AB9476400FA810D /* CustomTableViewCell */,
 			);
 			name = WordTableView;
 			sourceTree = "<group>";
@@ -3329,10 +3331,8 @@
 				24A6578C1AB7D9A300FA810D /* AbstractTestViewController */,
 				247119E11ABBF3AD00F39BE3 /* AbstractLearnViewController */,
 				249A1C971AB9B363007E2D14 /* WordTableView */,
-				24A657A51AB9476400FA810D /* CustomCell */,
 				24A657981AB8321B00FA810D /* UserUtil */,
 				24A657861AB7D32900FA810D /* DBHandler */,
-				24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */,
 			);
 			name = CustomClasses;
 			sourceTree = "<group>";
@@ -3369,14 +3369,14 @@
 			name = UserUtil;
 			sourceTree = "<group>";
 		};
-		24A657A51AB9476400FA810D /* CustomCell */ = {
+		24A657A51AB9476400FA810D /* CustomTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				24A657A61AB9477300FA810D /* CustomTableViewCell.xib */,
 				24A657A71AB9477300FA810D /* CustomTableViewCell.m */,
 				24A657A81AB9477300FA810D /* CustomTableViewCell.h */,
 			);
-			name = CustomCell;
+			name = CustomTableViewCell;
 			sourceTree = "<group>";
 		};
 		24B2EA2D1AAEE0F500921BB3 /* DraggableCardView */ = {
@@ -4571,6 +4571,7 @@
 				247119EC1ABC226600F39BE3 /* LearnViewController.m in Sources */,
 				2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */,
 				24A6579B1AB8322900FA810D /* UserUtil.m in Sources */,
+				24FB57BB1AC428A200894B66 /* NSArray+IndexHelper.m in Sources */,
 				24A657971AB8285000FA810D /* AbstractTestViewController.m in Sources */,
 				24A6578F1AB7D9BA00FA810D /* TestView.m in Sources */,
 				2462CD081AAAAC4200AF25A2 /* main.m in Sources */,
@@ -4580,7 +4581,6 @@
 				247119E71ABBF3EB00F39BE3 /* LearnView.m in Sources */,
 				247119E41ABBF3CB00F39BE3 /* AbstractLearnViewController.m in Sources */,
 				249A1C9A1AB9B385007E2D14 /* WordTableView.m in Sources */,
-				2462CD301AAAB11400AF25A2 /* LearnViewController_deprecated.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

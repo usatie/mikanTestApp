@@ -10,5 +10,5 @@
 #import <AVFoundation/AVFoundation.h>
 
 @interface LearnViewController : AbstractLearnViewController<AbstractLearnViewControllerDelegate>
-@property AVAudioPlayer *audio;
+//@property AVAudioPlayer *audio;
 @end
