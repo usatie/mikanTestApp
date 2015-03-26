@@ -158,11 +158,11 @@
     
     FMDatabase *db = [self getDBWithName:DB_NAME];
     NSDictionary *categoryIdDic = [self getCategoryIdDic];
-    NSString *sql = @"select w.id, w.japanese_label, w.english_label, r.latest_answer_duration, r.latest_test_result, r.has_tested, r.has_remembered from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and w.word_index < 151";
+    NSString *sql = @"select w.id, w.japanese_label, w.english_label, r.latest_answer_duration, r.latest_test_result, r.has_tested, r.has_remembered from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and w.word_index <= ?";
     
     [db open];
     FMResultSet *result;
-    result = [db executeQuery:sql, [categoryIdDic objectForKey:category]];
+    result = [db executeQuery:sql, [categoryIdDic objectForKey:category],[NSNumber numberWithInt:WORD_ID_LIMIT]];
     
     while ([result next]) {
         [wordIdArray addObject:[result objectForColumnName:@"id"]];
@@ -196,13 +196,13 @@
     
     FMDatabase *db = [self getDBWithName:DB_NAME];
 //    NSDictionary *categoryIdDic = [self getCategoryIdDic];
-    NSString *sql = @"select w.id, w.japanese_label, w.english_label, r.latest_answer_duration, r.latest_test_result, r.has_tested, r.has_remembered from word as w left join word_record as r where w.id = r.word_id and w.id = ? and w.word_index < 151";
+    NSString *sql = @"select w.id, w.japanese_label, w.english_label, r.latest_answer_duration, r.latest_test_result, r.has_tested, r.has_remembered from word as w left join word_record as r where w.id = r.word_id and w.id = ? and w.word_index <= ?";
     
     [db open];
     FMResultSet *result;
     
     for (int i = 0; i <wordIdArray.count; i++) {
-        result = [db executeQuery:sql, wordIdArray[i]];
+        result = [db executeQuery:sql, wordIdArray[i],[NSNumber numberWithInt:WORD_ID_LIMIT]];
         
         while ([result next]) {
             //        [wordIdArray addObject:[result objectForColumnName:@"id"]];
@@ -266,8 +266,8 @@
     NSString* sql;
     [db open];
 //    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 order by random() limit ?";
-    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index < 151 order by random() limit ?";
-    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithBool:hasTested],[NSNumber numberWithBool:remembered],[NSNumber numberWithInt:limit]];
+    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index <= ? order by random() limit ?";
+    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithBool:hasTested],[NSNumber numberWithBool:remembered],[NSNumber numberWithInt:WORD_ID_LIMIT],[NSNumber numberWithInt:limit]];
     while ([wordResult next]) {
         NSArray *arr = @[[wordResult stringForColumn:@"choice1"],[wordResult stringForColumn:@"choice2"],[wordResult stringForColumn:@"choice3"],[wordResult stringForColumn:@"choice4"]];
         
@@ -308,18 +308,18 @@
     FMDatabase* db = [self getDBWithName:DB_NAME];
     NSString* sql;
     [db open];
-    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 1 and w.word_index < 151";
-    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 1 and w.word_index <= ?";
+    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithInt:WORD_ID_LIMIT]];
     while ([wordResult next]) {
         [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
     }
-    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 0 and r.has_remembered = 0 and w.word_index < 151";
-    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 0 and r.has_remembered = 0 and w.word_index <= ?";
+    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithInt:WORD_ID_LIMIT]];
     while ([wordResult next]) {
         [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
     }
-    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 and w.word_index < 151";
-    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category]];
+    sql = @"select count(w.id) from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 and w.word_index <= ?";
+    wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithInt:WORD_ID_LIMIT]];
     while ([wordResult next]) {
         [countArray addObject:[NSNumber numberWithInt:[wordResult intForColumnIndex:0]]];
     }
