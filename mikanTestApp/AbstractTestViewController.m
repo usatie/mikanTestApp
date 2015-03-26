@@ -133,8 +133,12 @@
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self stopTimer];
     
-    //show AlertView
-    [_cancelAlertView show];
+    if (_resultsArray.count == 0) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } else {
+        //show AlertView
+        [_cancelAlertView show];
+    }
 }
 
 #pragma mark AlertView
