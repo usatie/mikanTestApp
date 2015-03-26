@@ -29,6 +29,11 @@
 - (void)cancelButtonPushed;
 - (void)showAndPlayNextWord;
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice;
+
+#pragma mark override methods (optional)
+- (void)startTimer;
+- (void)stopTimer;
+- (void)timerAction;
 - (void)cancelButtonPushedBeforeAnswering;
 //Temporary properties
 @property AVAudioPlayer *audio;

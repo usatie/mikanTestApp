@@ -19,8 +19,15 @@
 @property AVAudioPlayer *audio;
 @property BOOL shouldLearnAgain;
 
+
 - (void)initLearnView;
+#pragma mark override methods (required)
+- (NSDictionary *)getWordsDic;
 - (void)finishLearn;
+#pragma mark override methods (optional)
+- (void)startTimer;
+- (void)stopTimer;
+- (void)timerAction;
 @end
 
 

@@ -8,7 +8,9 @@
 
 #import "AbstractLearnViewController.h"
 
-@interface AbstractLearnViewController ()
+@interface AbstractLearnViewController () {
+    int learnedWordsCount;
+}
 
 @end
 
@@ -37,15 +39,6 @@
     [self.view addSubview:self.learnView];
 }
 
-- (NSDictionary *)getWordsDic
-{
-    // 継承したクラスで実装する
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
-    return @{};
-}
-
-
 #pragma mark delegate
 - (void)cancelButtonPushedDelegate{
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -56,8 +49,11 @@
     
     if (self.shouldLearnAgain) {
         //さらにカードを生成する場合はこちら
-        self.shouldLearnAgain = NO;
-        [self.learnView generateCardView:5 cardCount:self.numberOfWords];
+        learnedWordsCount += 5;
+        if (self.numberOfWords-learnedWordsCount <= 5) {
+            self.shouldLearnAgain = NO;
+        }
+        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(self.numberOfWords, learnedWordsCount+5)];
         [self willPlayNextWord];
     } else {
         //Learn終了時はこちら
@@ -66,20 +62,37 @@
 }
 
 - (void)willPlayNextWord {
-    [NSException raise:NSInternalInconsistencyException
-                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
-    //start timer
-    
+    DLog(@"next card");
     //sound "next"
+    [self playSound:self.learnView.topCardView.englishLabel.text];
+    //start timer
+    [self startTimer];
 }
 
 #pragma mark override methods (required)
+- (NSDictionary *)getWordsDic
+{
+    // 継承したクラスで実装する
+    [NSException raise:NSInternalInconsistencyException
+                format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
+    return @{};
+}
+
 - (void)finishLearn
 {
     [NSException raise:NSInternalInconsistencyException
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
-//    [self stopTimer];
-//    [self performSegueWithIdentifier:@"learnToTest" sender:self];
+}
+
+#pragma mark Override method (optional)
+- (void)startTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)stopTimer {
+    DLog(@"if you want to add timer, please override this method");
+}
+- (void)timerAction {
+    DLog(@"if you want to add timer, please override this method");
 }
 
 #pragma mark sound (will be Deprecated)

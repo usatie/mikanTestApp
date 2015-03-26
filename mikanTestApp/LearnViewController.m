@@ -62,15 +62,6 @@
     [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
-- (void)willPlayNextWord {
-    DLog(@"next card");
-    //sound "next"
-    [self playSound:self.learnView.topCardView.englishLabel.text];
-
-    //start timer
-    [self startTimer];
-}
-
 - (void)cancelButtonPushedDelegate{
     [self stopTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
