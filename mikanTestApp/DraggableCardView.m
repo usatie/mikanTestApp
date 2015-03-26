@@ -87,15 +87,15 @@
         case UIGestureRecognizerStateEnded:{
             if (xDistance > 60) {
                 //Write delegate method when swipe to the right
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
-                    [_delegate displayNextCardDelegate:YES sender:self];
+                if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:sender:)]) {
+                    [_delegate cardViewSwipedDelegate:YES sender:self];
                 } else {NSLog(@"no responds to remember");}
                 
             }
             else if (xDistance < -60){
                 //Write delegate method shen swipe to the left
-                if ([_delegate respondsToSelector:@selector(displayNextCardDelegate:sender:)]) {
-                    [_delegate displayNextCardDelegate:NO sender:self];
+                if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:sender:)]) {
+                    [_delegate cardViewSwipedDelegate:NO sender:self];
                 } else {NSLog(@"no responds to onemore");}
             }
             else [self resetViewPositionAndTransformations];

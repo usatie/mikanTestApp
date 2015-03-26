@@ -105,7 +105,7 @@
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
                          [self startTimer];
-                         [self displayNextCardDelegate:YES sender:cardView];
+                         [self cardViewSwipedDelegate:YES sender:cardView];
                      }
      ];
     
@@ -120,7 +120,7 @@
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
                          [self startTimer];
-                         [self displayNextCardDelegate:NO sender:cardView];
+                         [self cardViewSwipedDelegate:NO sender:cardView];
                          [cardView resetViewPositionAndTransformations];
                      }
      ];
@@ -146,7 +146,7 @@
 
 
 #pragma mark DraggableView Delegate Method
-- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
 
     //知ってたらremove, 知らなかったらsendSubviewToBack

@@ -47,7 +47,7 @@
 }
 
 #pragma mark CardView delegate
-- (void)displayNextCardDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
+- (void)cardViewSwipedDelegate:(BOOL)hasRememberd sender:(DraggableCardView *)sender{
     NSLog(@"displayNextCardDelegate tag = %d",(int)sender.tag);
     
     //知ってたらremove, 知らなかったらsendSubviewToBack
@@ -104,7 +104,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self displayNextCardDelegate:YES sender:cardView];
+                         [self cardViewSwipedDelegate:YES sender:cardView];
                          [self enableButtons];
                      }
      ];
@@ -121,7 +121,7 @@
                          cardView.transform = CGAffineTransformMakeRotation(0);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
-                         [self displayNextCardDelegate:NO sender:cardView];
+                         [self cardViewSwipedDelegate:NO sender:cardView];
                          [self enableButtons];
                      }
      ];
