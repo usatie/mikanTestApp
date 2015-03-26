@@ -32,14 +32,13 @@
     self.learnView = [[LearnView alloc] initWithFrame:self.view.frame];
     self.learnView.delegate = self;
     self.learnView.wordsDic = [self getWordsDic];
-    DLog(@"%@",self.learnView.wordsDic);
-    _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
-    DLog(@"number = %d",_numberOfWords);
-    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
     [self.view addSubview:self.learnView];
+
+    _numberOfWords = (int)[self.learnView.wordsDic[@"wordId"] count];
+    [self.learnView generateCardView:0 cardCount:MIN(5, _numberOfWords)];
 }
 
-#pragma mark delegate
+#pragma mark delegate method (Abstract)
 - (void)cancelButtonPushedDelegate{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -52,37 +51,13 @@
         [self didAllSubviewsRemoved];
     } else {
         //set top card
-        self.learnView.topCardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
+        NSArray *cardViews = self.learnView.cardBaseView.subviews;
+        self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
         
         //play "next words"
-        [self willPlayNextWord];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
     }
-}
-
-- (void)didAllSubviewsRemoved {
-    [self playSound:@"sound_finish"];
-    
-    if (self.shouldLearnAgain) {
-        //さらにカードを生成する場合はこちら
-        learnedWordsCount += 5;
-        if (self.numberOfWords-learnedWordsCount <= 5) {
-            //残りカード枚数が5枚以下のときは次の学習で終わり
-            self.shouldLearnAgain = NO;
-        }
-        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(self.numberOfWords, learnedWordsCount+5)];
-        [self willPlayNextWord];
-    } else {
-        //Learn終了時はこちら
-        [self finishLearn];
-    }
-}
-
-- (void)willPlayNextWord {
-    DLog(@"next card");
-    //sound "next"
-    [self playSound:self.learnView.topCardView.englishLabel.text];
-    //start timer
-    [self startTimer];
 }
 
 #pragma mark override methods (required)
@@ -108,6 +83,23 @@
 }
 - (void)timerAction {
     DLog(@"if you want to add timer, please override this method");
+}
+
+#pragma mark custom method
+- (void)didAllSubviewsRemoved {
+    [self playSound:@"sound_finish"];
+    
+    if (self.shouldLearnAgain) {//残りが5枚以下の時は次が最後
+        learnedWordsCount += 5;
+        if (self.numberOfWords-learnedWordsCount <= 5) {
+            self.shouldLearnAgain = NO;
+        }
+        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords)];
+        [self playSound:self.learnView.topCardView.englishLabel.text];
+        [self startTimer];
+    } else {//Learn終了時
+        [self finishLearn];
+    }
 }
 
 #pragma mark sound (will be Deprecated)

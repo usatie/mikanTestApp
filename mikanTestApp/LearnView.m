@@ -61,21 +61,6 @@
     if ([_delegate respondsToSelector:@selector(cardViewSwiped)]) {
         [_delegate cardViewSwiped];
     }
-//    //cardsBaseViewのsubviewsが０だったらfinish
-//    if (self.cardBaseView.subviews.count == 0) {
-//        //play "finish!"
-//        if ([_delegate respondsToSelector:@selector(didAllSubviewsRemoved)]) {
-//            [_delegate didAllSubviewsRemoved];
-//        }
-//    } else {
-//        //set top card
-//        _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
-//        
-//        //play "next words"
-//        if ([_delegate respondsToSelector:@selector(willPlayNextWord)]) {
-//            [_delegate willPlayNextWord];
-//        }
-//    }
 }
 
 

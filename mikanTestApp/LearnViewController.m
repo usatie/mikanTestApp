@@ -11,7 +11,6 @@
 #import "TestViewController.h"
 
 @interface LearnViewController (){
-//    BOOL shouldLearnAgain;
     BOOL isTimerValid;
     NSTimer *timer;
 }
@@ -24,7 +23,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initLearnView];
-    [self willPlayNextWord];
+    [self playSound:self.learnView.topCardView.englishLabel.text];
     [self startTimer];
     if (self.numberOfWords > 5) {
         self.shouldLearnAgain = YES;
