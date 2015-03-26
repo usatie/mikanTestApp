@@ -60,6 +60,7 @@
 {
     [self stopTimer];
     DLog(@"swipeDuration = %@, leftCount = %@",self.swipeDurationArray, self.leftCountArray);
+    [DBHandler insertLearnResultWithArray:self.learnView.wordsDic[@"wordId"] durationArray:self.swipeDurationArray leftCountArray:self.leftCountArray learnType:LEARN_TYPE_READ relearnFlag:NO];
     [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 

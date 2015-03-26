@@ -14,8 +14,11 @@
 + (void)initDatabase;
 
 
-+ (FMDatabase*) getDBWithName:(NSString*)dbName;
 
+
+
+
+#pragma mark INSERT and UPDATE methods
 
 + (void) insertTestResult:(NSNumber*)wordId
                    result:(BOOL)result
@@ -29,11 +32,22 @@
        answeringTimeArray:(NSArray *)answeringTimeArray
                  testType:(int)testType
               relearnFlag:(BOOL)relearnFlag;
++ (void) insertLearnResultWithArray:(NSArray *)wordIdArray
+                      durationArray:(NSArray *)durationArray
+                     leftCountArray:(NSArray *)leftCountArray
+                          learnType:(int)learnType
+                        relearnFlag:(BOOL)relearnFlag;
 
-+(NSDictionary *)getHasRememberedDic:(NSString *)category;
-+(NSDictionary *)getHasRememberedDicWithWordIdArray:(NSArray *)wordIdArray;
 
-+(void)setHasRememberedWithArray:(NSArray *)wordsIdArray
+
+
+#pragma mark GET methods
+
++ (FMDatabase*) getDBWithName:(NSString*)dbName;
++ (NSDictionary *)getHasRememberedDic:(NSString *)category;
++ (NSDictionary *)getHasRememberedDicWithWordIdArray:(NSArray *)wordIdArray;
+
++ (void)setHasRememberedWithArray:(NSArray *)wordsIdArray
               hasRememberedArray:(NSArray *)hasRememberedArray;
 
 //+ (NSDictionary *) getUnrememberedRelearnWords:(NSString*)category
