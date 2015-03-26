@@ -65,6 +65,11 @@
     [self answerButtonPushedDelegate:NO choice:5];
 }
 
+- (void)cancelButtonPushedBeforeAnswering
+{
+    [self.cancelAlertView show];
+}
+
 #pragma mark Segue
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     //TestResultViewController にtestWordsDicを引き渡し

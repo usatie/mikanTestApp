@@ -134,7 +134,7 @@
     [self stopTimer];
     
     if (_resultsArray.count == 0) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self cancelButtonPushedBeforeAnswering];
     } else {
         //show AlertView
         [_cancelAlertView show];
@@ -172,7 +172,7 @@
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
-#pragma mark Timer Override(optional)
+#pragma mark Override method (optional)
 - (void)startTimer {
     DLog(@"if you want to add timer, please override this method");
 }
@@ -183,6 +183,11 @@
     DLog(@"if you want to add timer, please override this method");
 }
 
+- (void)cancelButtonPushedBeforeAnswering
+{
+    DLog(@"if you don't want to dismissViewController, please override this method");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 #pragma mark sound (Deprecate)
 -(void)playSound:(NSString *)fileName
 {

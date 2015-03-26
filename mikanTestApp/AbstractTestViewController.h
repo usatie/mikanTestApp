@@ -29,6 +29,7 @@
 - (void)cancelButtonPushed;
 - (void)showAndPlayNextWord;
 - (void)answerButtonPushedDelegate:(BOOL)result choice:(int)choice;
+- (void)cancelButtonPushedBeforeAnswering;
 //Temporary properties
 @property AVAudioPlayer *audio;
 
