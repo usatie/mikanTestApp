@@ -21,6 +21,7 @@
 
 
 - (void)initLearnView;
+- (void)willPlayNextWord;
 #pragma mark override methods (required)
 - (NSDictionary *)getWordsDic;
 - (void)finishLearn;

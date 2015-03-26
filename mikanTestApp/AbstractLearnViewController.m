@@ -44,6 +44,21 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)cardViewSwiped
+{
+    //cardsBaseViewのsubviewsが０だったらfinish
+    if (self.learnView.cardBaseView.subviews.count == 0) {
+        //play "finish!"
+        [self didAllSubviewsRemoved];
+    } else {
+        //set top card
+        self.learnView.topCardView = (DraggableCardView *)[self.learnView.cardBaseView.subviews objectAtIndex:self.learnView.cardBaseView.subviews.count-1];
+        
+        //play "next words"
+        [self willPlayNextWord];
+    }
+}
+
 - (void)didAllSubviewsRemoved {
     [self playSound:@"sound_finish"];
     

@@ -41,6 +41,7 @@
 
 @required
 - (void)cancelButtonPushedDelegate;
-- (void)didAllSubviewsRemoved;
-- (void)willPlayNextWord;
+- (void)cardViewSwiped;
+//- (void)didAllSubviewsRemoved;
+//- (void)willPlayNextWord;
 @end
