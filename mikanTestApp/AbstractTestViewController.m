@@ -10,10 +10,11 @@
 #import "answerButton.h"
 
 @interface AbstractTestViewController (){
-    int testIndex;
+//    int testIndex;
     BOOL shouldPlaySound;
     
     NSDate *date;
+    UIAlertView *cancelAlertView;
 }
 
 @end
@@ -79,11 +80,11 @@
 - (void)showAndPlayNextWord
 {
     //次の単語を表示
-    [self.testView showWordWithIndex:testIndex];
+    [self.testView showWordWithIndex:_testIndex];
     //次の単語を発音
-    [self playSound:_testWordsDic[@"english"][testIndex]];
+    [self playSound:_testWordsDic[@"english"][_testIndex]];
     //indexを次に進める
-    testIndex++;
+    _testIndex++;
     //ボタンをenable
     [self.testView enableAllButtons];
     //dateをリセット
@@ -108,17 +109,46 @@
         [self playSound:@"sound_incorrect"];
     }
     
-    if (testIndex < [_testWordsDic[@"wordId"] count]){
+    if (_testIndex < [_testWordsDic[@"wordId"] count]){
         [self performSelector:@selector(showAndPlayNextWord) withObject:nil afterDelay:0.3];
         return;
     }
     DLog(@"finish!");
+    //timer, AVAudioPlayerをストップ
+    [self.audio stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    
+    //子クラスで定義されるfinishTest
     [self finishTest];
 }
 
 - (void)cancelButtonPushedDelegate{
-    [self cancelButtonPushed];
+    //timer, AVAudioPlayerをストップ
+    [self.audio stop];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
+    [self stopTimer];
+    
+    //AlertView
+    cancelAlertView = [[UIAlertView alloc] initWithTitle:@"再開" message:@"学習をつづけますか？" delegate:self cancelButtonTitle:@"中断してここまでの結果を見る" otherButtonTitles:@"はい", nil];
+    [cancelAlertView show];
 }
+
+#pragma mark AlertView
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (alertView == cancelAlertView) {
+        switch (buttonIndex) {
+            case 0:
+                [self cancelButtonPushed];
+                break;
+            default:
+                _testIndex--;
+                [self showAndPlayNextWord];
+                break;
+        }
+    }
+}
+
 
 #pragma mark Override method
 - (void)finishTest

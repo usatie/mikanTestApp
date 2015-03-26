@@ -12,6 +12,8 @@
 @interface RelearnTestViewController () {
     NSTimer *timer;
     BOOL isTimerValid;
+    
+//    UIAlertView *cancelAlertView;
 }
 
 @end
@@ -29,20 +31,15 @@
 
 #pragma mark Test Override Methods 
 - (void)finishTest {
-    [self.audio stop];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [self stopTimer];
     [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
-    
-    [self performSegueWithIdentifier:@"testToResult" sender:self];
+    [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 
 - (void)cancelButtonPushed {
     DLog(@"test was cancelled");
-    [self.audio stop];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [self stopTimer];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+    [DBHandler insertTestResult:[self.testWordsDic[@"wordId"] objectsAtIndexes:indexSet] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
+    [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 
 
@@ -51,7 +48,8 @@
     //TestResultViewController にtestWordsDicを引き渡し
     if ([segue.identifier isEqualToString:@"segueToResult"]) {
         RelearnTestResultViewController *vc = segue.destinationViewController;
-        vc.testedWordsDic = self.testWordsDic;
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
+        vc.testedWordsDic = [self getSmallDictionary:self.testWordsDic indexSet:indexSet];
     }
 }
 
@@ -80,7 +78,6 @@
     [self answerButtonPushedDelegate:NO choice:5];
 }
 
-
 #pragma mark Temporary methods
 - (NSDictionary *)getTestWords
 {
@@ -91,5 +88,16 @@
     } else{
         return [DBHandler getRelearnWords:category limit:10 remembered:YES hasTested:YES];
     }
+}
+
+- (NSDictionary *)getSmallDictionary:(NSDictionary *)dic indexSet:(NSIndexSet *)indexSet
+{
+    NSMutableDictionary *smallDic = [[NSMutableDictionary alloc] init];
+    
+    for (id key in dic) {
+        [smallDic setObject:[[dic objectForKey:key] objectsAtIndexes:indexSet] forKey:key];
+    }
+    
+    return smallDic;
 }
 @end

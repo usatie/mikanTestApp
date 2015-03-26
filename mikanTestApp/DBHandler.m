@@ -80,6 +80,8 @@
        answeringTimeArray:(NSArray *)answeringTimeArray
                  testType:(int)testType
               relearnFlag:(BOOL)relearnFlag{
+    
+    DLog(@"insertTestResult %@",wordIdArray);
     NSString *sql=@"insert into log_test_result (test_type, word_id, test_result,created_at,user_choice,answer_duration,relearn_flag) values (?,?,?,?,?,?,?);";
     NSString *sql2 = @"update word_record set has_tested = 1, latest_test_result = ?, latest_answer_duration = ?, test_count = test_count + 1, correct_count = correct_count + ?, updated_at = ? where id = ?;";
     NSDate *now = [NSDate date];

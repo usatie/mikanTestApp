@@ -30,9 +30,6 @@
 
 #pragma mark Test Override methods
 - (void)finishTest {
-    [self.audio stop];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [self stopTimer];
     [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
     
     [self performSegueWithIdentifier:@"testToResult" sender:self];
@@ -40,9 +37,6 @@
 
 - (void)cancelButtonPushed {
     DLog(@"test was cancelled");
-    [self.audio stop];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-    [self stopTimer];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

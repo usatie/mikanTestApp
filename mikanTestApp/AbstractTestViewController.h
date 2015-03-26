@@ -21,6 +21,7 @@
 @property NSMutableArray *answerDurationArray;
 
 @property BOOL relearnFlag;
+@property int testIndex;
 
 - (NSDictionary *)getTestWords;
 - (void)finishTest;

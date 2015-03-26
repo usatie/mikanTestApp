@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "AbstractTestViewController.h"
 
-@interface RelearnTestViewController :AbstractTestViewController
+@interface RelearnTestViewController :AbstractTestViewController<UIAlertViewDelegate>
 
 @end
