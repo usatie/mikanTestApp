@@ -40,6 +40,11 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (void)cancelButtonPushedBeforeAnswering
+{
+    [self.cancelAlertView show];
+}
+
 #pragma mark Timer (override)
 - (void)startTimer
 {
@@ -63,11 +68,6 @@
 {
     DLog(@"timerAction");
     [self answerButtonPushedDelegate:NO choice:5];
-}
-
-- (void)cancelButtonPushedBeforeAnswering
-{
-    [self.cancelAlertView show];
 }
 
 #pragma mark Segue
