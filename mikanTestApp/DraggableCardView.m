@@ -24,8 +24,6 @@
         self = [[nib instantiateWithOwner:nil options:nil] objectAtIndex:0];
         self.frame = frame;
         
-        
-        [self loadImageAndStyle];
         [self initLabel];
     }
     return self;
@@ -36,6 +34,7 @@
     _englishLabel.font = [UIFont fontWithName:@"Times New Roman" size:44];
     _japaneseLabel.font = [UIFont fontWithName:@"Helvetica" size:24];
     _numberLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
+    
     _panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dragged:)];
     [self addGestureRecognizer:self.panGestureRecognizer];
     self.panGestureRecognizer.delegate = self;
@@ -45,11 +44,6 @@
     _overlayView.alpha = 0;
     [self addSubview:_overlayView];
     _originalPoint = self.center;
-}
-
-- (void)loadImageAndStyle
-{
-    self.layer.shadowOffset = CGSizeMake(1, 1);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

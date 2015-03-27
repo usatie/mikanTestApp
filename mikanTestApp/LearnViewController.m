@@ -93,6 +93,7 @@
 - (void)timerAction
 {
     progress ++;
+    if (progress > JAPANESE_LABEL_SHOW__LIMIT) self.learnView.topCardView.japaneseLabel.hidden = NO;
     if (progress > PROGRESS_LIMIT) {
         [self stopTimer];
         [self.learnView sendCardViewToBack:self.learnView.topCardView];

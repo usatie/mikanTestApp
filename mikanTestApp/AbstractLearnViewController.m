@@ -69,6 +69,7 @@
         [cardView removeFromSuperview];
     } else {
         cardView.leftCount++;
+        cardView.japaneseLabel.hidden = YES;
         [self.learnView.cardBaseView sendSubviewToBack:cardView];
         [cardView resetViewPositionAndTransformations];
     }

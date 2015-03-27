@@ -11,6 +11,7 @@
 @interface AppConsts : NSObject
 extern NSString * const DB_NAME;
 extern int const PROGRESS_LIMIT;
+extern int const JAPANESE_LABEL_SHOW__LIMIT;
 extern int const WORD_ID_LIMIT;
 
 extern int const LEARN_TYPE_READ;

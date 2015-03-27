@@ -37,7 +37,6 @@
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
             japaneseHiddenFlug:YES];
         cardView.sectionLabel.text = @"検証テスト";
-        cardView.japaneseLabel.hidden = NO;
         [self.cardBaseView addSubview:cardView];
         [self.cardBaseView sendSubviewToBack:cardView];
         
@@ -70,7 +69,7 @@
     [UIView animateWithDuration:0.2
                      animations:^{
                          cardView.center = CGPointMake(cardView.originalPoint.x + 250 , cardView.originalPoint.y + 100);
-                         cardView.transform = CGAffineTransformMakeRotation(0);}
+                         cardView.transform = CGAffineTransformMakeRotation(M_2_PI);}
                      completion:^(BOOL finished){
                          cardView.panGestureRecognizer.enabled = YES;
                          if ([_delegate respondsToSelector:@selector(cardViewSwipedDelegate:cardView:)]) {
