@@ -34,14 +34,14 @@
 }
 
 - (void)finishTest {
-    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
+    [DBHandler insertTestResultWithArray:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
     [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 
 - (void)cancelButtonPushed {
     DLog(@"test was cancelled");
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
-    [DBHandler insertTestResult:[self.testWordsDic[@"wordId"] objectsAtIndexes:indexSet] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
+    [DBHandler insertTestResultWithArray:[self.testWordsDic[@"wordId"] objectsAtIndexes:indexSet] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:1];
     [self performSegueWithIdentifier:@"segueToResult" sender:self];
 }
 

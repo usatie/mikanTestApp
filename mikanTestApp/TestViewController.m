@@ -32,7 +32,7 @@
 
 #pragma mark Test Override methods
 - (void)finishTest {
-    [DBHandler insertTestResult:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
+    [DBHandler insertTestResultWithArray:self.testWordsDic[@"wordId"] resultArray:self.resultsArray userChoiceArray:self.userChoicesArray answeringTimeArray:self.answerDurationArray testType:0 relearnFlag:0];
     
     [self performSegueWithIdentifier:@"testToResult" sender:self];
 }

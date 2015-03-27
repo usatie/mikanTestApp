@@ -26,7 +26,7 @@
             answeringTime:(float)answeringTime
                  testType:(int)testType
               relearnFlag:(BOOL)relearnFlag;
-+ (void) insertTestResult:(NSArray*)wordIdArray
++ (void) insertTestResultWithArray:(NSArray*)wordIdArray
               resultArray:(NSArray *)resultsArray
           userChoiceArray:(NSArray *)userChoicesArray
        answeringTimeArray:(NSArray *)answeringTimeArray
