@@ -62,41 +62,56 @@
 {
     [self stopTimer];
     cardView.swipeDuration += -[_date timeIntervalSinceNow];
+
     //知ってたらremove, 知らなかったらsendSubviewToBack
+    NSMutableArray *cardViews = [NSMutableArray arrayWithArray:self.learnView.cardBaseView.subviews];
     if (hasRememberd) {
         _leftCountArray[cardView.tag-1] = [NSNumber numberWithInt:cardView.leftCount];
         _swipeDurationArray[cardView.tag-1] = [NSNumber numberWithFloat:cardView.swipeDuration];
-        [cardView removeFromSuperview];
+        [cardView removeCardViewAndTransformations];
+        
+        //実際にremoveFromSuperViewされるのは0.2秒後なのでここでArrayから削除
+        [cardViews removeObjectAtIndex:cardViews.count-1];
+        
+        //cardViewが0枚で、shouldLearnAgainだったらもう一度Learn
+        if (cardViews.count==0 && self.shouldLearnAgain) {
+            [_util playSound:@"sound_finish" playSoundFlag:YES];
+            learnedWordsCount += 5;
+            int remainingWordsCount = self.numberOfWords-learnedWordsCount;
+            self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
+            [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords) delegate:self];
+            [self performSelector:@selector(playFirstWord) withObject:nil afterDelay:0.8];
+            return;
+        }
+        
+        //cardViewが0枚で、shouldLearnAgainだったらfinish
+        else if (cardViews.count == 0 && !self.shouldLearnAgain) {
+            [_util playSound:@"sound_finish" playSoundFlag:YES];
+            [NSObject cancelPreviousPerformRequestsWithTarget:self];
+            [self finishLearn];
+            return;
+        }
     } else {
         cardView.leftCount++;
         cardView.japaneseLabel.hidden = YES;
         [self.learnView.cardBaseView sendSubviewToBack:cardView];
         [cardView resetViewPositionAndTransformations];
+        cardViews = [NSMutableArray arrayWithArray:self.learnView.cardBaseView.subviews];
     }
     
-    //cardViewが0枚で、shouldLearnAgainだったらもう一度Learn
+    //次の単語を発音
+    self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
+    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+    [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
+}
+
+#pragma mark play first word method(after generating next cards)
+- (void)playFirstWord
+{
     NSArray *cardViews = self.learnView.cardBaseView.subviews;
-    if (cardViews.count==0 && self.shouldLearnAgain) {
-        [_util playSound:@"sound_finish" playSoundFlag:YES];
-        learnedWordsCount += 5;
-        int remainingWordsCount = self.numberOfWords-learnedWordsCount;
-        self.shouldLearnAgain = remainingWordsCount>5 ? YES:NO;
-        [self.learnView generateCardView:learnedWordsCount cardCount:MIN(learnedWordsCount+5, self.numberOfWords) delegate:self];
-        [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
-        [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
-    }
-    //cardViewが0枚で、shouldLearnAgainだったらfinish
-    else if (cardViews.count==0 && !self.shouldLearnAgain) {
-        [_util playSound:@"sound_finish" playSoundFlag:YES];
-        [NSObject cancelPreviousPerformRequestsWithTarget:self];
-        [self finishLearn];
-    }
-    //cardViewが残ってたら次の単語を発音
-    else {
-        self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
-        [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
-        [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
-    }
+    self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
+    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+    [self startTimer];
 }
 
 #pragma mark override methods (required)
@@ -124,4 +139,6 @@
 - (void)timerAction {
     DLog(@"if you want to add timer, please override this method");
 }
+
+
 @end

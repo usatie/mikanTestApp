@@ -43,6 +43,8 @@
         //set top card
         _topCardView = (DraggableCardView *)[self.cardBaseView.subviews objectAtIndex:self.cardBaseView.subviews.count-1];
     }
+    UserUtil *util = [[UserUtil alloc] init];
+    [util setExclusiveTouchForView:self];
 }
 
 #pragma mark Button Actions

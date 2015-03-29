@@ -144,9 +144,10 @@
 - (void)removeCardViewAndTransformations
 {
     [UIView animateWithDuration:0.2 animations:^{
-        self.center = self.originalPoint;
-        self.transform = CGAffineTransformMakeRotation(0);
-        self.overlayView.alpha = 0;
+        CGPoint center = self.center;
+        self.center = CGPointMake(center.x+100, center.y);
+    } completion:^(BOOL success){
+        [self removeFromSuperview];
     }];
 }
 
