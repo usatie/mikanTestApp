@@ -141,6 +141,15 @@
     }];
 }
 
+- (void)removeCardViewAndTransformations
+{
+    [UIView animateWithDuration:0.2 animations:^{
+        self.center = self.originalPoint;
+        self.transform = CGAffineTransformMakeRotation(0);
+        self.overlayView.alpha = 0;
+    }];
+}
+
 - (void)dealloc
 {
     [self removeGestureRecognizer:self.panGestureRecognizer];

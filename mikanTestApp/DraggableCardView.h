@@ -31,6 +31,7 @@
               number:(NSString*)number
   japaneseHiddenFlug:(BOOL)japaneseHiddenFlug;
 - (void)resetViewPositionAndTransformations;
+- (void)removeCardViewAndTransformations;
 @end
 
 @protocol DraggableCardViewDelegate <NSObject>
