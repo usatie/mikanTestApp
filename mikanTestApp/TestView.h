@@ -23,6 +23,7 @@
 
 - (IBAction)answerButtonPushed:(id)sender;
 - (IBAction)cancelButton:(id)sender;
+- (IBAction)unsureButtonPushed:(id)sender;
 
 @property int answerButtonTag;
 @property NSDictionary *testWordsDic; //wordIndex, english,

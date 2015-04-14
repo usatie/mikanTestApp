@@ -20,6 +20,7 @@
 @property NSMutableArray *resultsArray;
 @property NSMutableArray *userChoicesArray;
 @property NSMutableArray *answerDurationArray;
+@property NSMutableArray *isUnsureArray;
 
 @property UserUtil *util;
 

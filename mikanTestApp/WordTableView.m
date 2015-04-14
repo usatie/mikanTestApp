@@ -52,6 +52,7 @@
     int answerIndex = [wordsDic[@"answerIndex"][indexPath.row] intValue];
     int testResultIndex = [wordsDic[@"testResult"][indexPath.row] intValue];
     BOOL didSwipeLeft = [[wordsDic[@"leftCount"] safeObjectAtIndex:indexPath.row] intValue]>0 ? YES:NO;
+    BOOL isUnsure = [[wordsDic[@"isUnsure"] safeObjectAtIndex:indexPath.row] boolValue];
 
     static NSString *CellIdentifier = @"Cell";
     CustomTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -62,7 +63,7 @@
     cell.evaluationImageView.image = [UIImage imageNamed:resultImageNameArray[testResultIndex]];
     cell.evaluationImageView.contentMode = UIViewContentModeScaleAspectFit;
     
-    if(testResultIndex < 1 || didSwipeLeft) {
+    if(testResultIndex < 1 || didSwipeLeft || isUnsure) {
         cell.archiveImageView.image = [UIImage imageNamed:@"checkOff.png"];
         cell.hasChecked = NO;
     } else {

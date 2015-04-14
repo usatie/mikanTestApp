@@ -61,6 +61,9 @@
 - (IBAction)unknownButtonPushed:(id)sender {
     [self sendCardViewToBack:_topCardView];
 }
+- (IBAction)buttonTouched:(id)sender {
+    _topCardView.japaneseLabel.hidden = NO;
+}
 
 
 #pragma mark Card Animation

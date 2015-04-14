@@ -268,17 +268,23 @@
 //    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 order by random() limit ?";
     sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index <= ? order by random() limit ?";
     FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithBool:hasTested],[NSNumber numberWithBool:remembered],[NSNumber numberWithInt:WORD_ID_LIMIT],[NSNumber numberWithInt:limit]];
+    sql = @"select japanese_label from word where part_id = ? and id != ? and japanese_label != ? order by random() limit 3";
     while ([wordResult next]) {
-        NSArray *arr = @[[wordResult stringForColumn:@"choice1"],[wordResult stringForColumn:@"choice2"],[wordResult stringForColumn:@"choice3"],[wordResult stringForColumn:@"choice4"]];
-        
+        int partId = [wordResult intForColumn:@"part_id"];
         [wordIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"word_index"]]];//0
         [englishLabelArray addObject:[wordResult stringForColumn:@"english_label"]];//1
         [japaneseLabelArray addObject:[wordResult stringForColumn:@"japanese_label"]];//2
-//        [choice1Array addObject:[wordResult stringForColumn:@"choice1"]];//3
-//        [choice2Array addObject:[wordResult stringForColumn:@"choice2"]];//4
-//        [choice3Array addObject:[wordResult stringForColumn:@"choice3"]];//5
-//        [choice4Array addObject:[wordResult stringForColumn:@"choice4"]];//6
-        [choicesArray addObject:arr];
+
+        //random choice make
+        FMResultSet *choiceResult = [db executeQuery:sql,[NSNumber numberWithInt:partId],[NSNumber numberWithInt:[wordResult intForColumn:@"id"]],[wordResult stringForColumn:@"japanese_label"]];
+        NSMutableArray *array = [[NSMutableArray alloc] init];
+        [array addObject:[wordResult stringForColumn:@"japanese_label"]];
+        while ([choiceResult next]) {
+            [array addObject:[choiceResult stringForColumnIndex:0]];
+        }
+        [choicesArray addObject:array];
+        //till this line
+        
         [answerIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"answer_index"]]];//7
         [rankIdArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"rank_id"]]];//8
         [wordIdArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"id"]]];//9
@@ -287,10 +293,7 @@
     [relearnWordsDic setObject:wordIndexArray forKey:@"wordIndex"];
     [relearnWordsDic setObject:englishLabelArray forKey:@"english"];
     [relearnWordsDic setObject:japaneseLabelArray forKey:@"japanese"];
-//    [relearnWordsDic setObject:choice1Array forKey:@"choice1"];
-//    [relearnWordsDic setObject:choice2Array forKey:@"choice2"];
-//    [relearnWordsDic setObject:choice3Array forKey:@"choice3"];
-//    [relearnWordsDic setObject:choice4Array forKey:@"choice4"];
+
     [relearnWordsDic setObject:choicesArray forKey:@"choicesArray"];
     [relearnWordsDic setObject:answerIndexArray forKey:@"answerIndex"];
     [relearnWordsDic setObject:rankIdArray forKey:@"rankId"];

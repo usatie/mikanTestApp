@@ -28,6 +28,7 @@
     _resultsArray = [[NSMutableArray alloc] init];
     _userChoicesArray = [[NSMutableArray alloc] init];
     _answerDurationArray = [[NSMutableArray alloc] init];
+    _isUnsureArray = [[NSMutableArray alloc] init];
     
     _testWordsDic = [self getTestWords];
     
@@ -97,9 +98,11 @@
     //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
     //DBHandlerに入れるためのもの
+    BOOL isUnsure = choice==6 ? YES:NO;
     [_userChoicesArray addObject:[NSNumber numberWithInt:choice]];
     [_resultsArray addObject:[NSNumber numberWithBool:result]];
     [_answerDurationArray addObject:[NSNumber numberWithDouble:-[date timeIntervalSinceNow]]];
+    [_isUnsureArray addObject:[NSNumber numberWithBool:isUnsure]];
     
     if (result) {
         [_util playSound:@"sound_correct" playSoundFlag:YES];

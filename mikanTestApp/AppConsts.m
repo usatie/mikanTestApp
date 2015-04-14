@@ -9,10 +9,10 @@
 #import "AppConsts.h"
 
 @implementation AppConsts
-NSString * const DB_NAME = @"mikan_exam.db";
+NSString * const DB_NAME = @"mikan_chinese.db";
 int const PROGRESS_LIMIT = 3000;
 int const JAPANESE_LABEL_SHOW__LIMIT = 1500;
-int const WORD_ID_LIMIT = 250;
+int const WORD_ID_LIMIT = 500;
 
 int const LEARN_TYPE_READ = 1;
 int const LEARN_TYPE_LISTEN = 2;

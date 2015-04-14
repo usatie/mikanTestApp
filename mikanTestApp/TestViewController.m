@@ -85,7 +85,9 @@
     //TestResultViewController にtestWordsDicを引き渡し
     if ([segue.identifier isEqualToString:@"testToResult"]) {
         TestResultViewController *vc = segue.destinationViewController;
-        vc.testedWordsDic = self.testWordsDic;
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithDictionary:self.testWordsDic];
+        [dic setObject:self.isUnsureArray forKey:@"isUnsure"];
+        vc.testedWordsDic = dic;
     }
 }
 

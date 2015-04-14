@@ -36,11 +36,11 @@ typedef void(^completion)(BOOL);
     
     //init scroll view
     scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    scrollView.contentSize = CGSizeMake(320, 55*[wordsDic[@"wordId"] count]);
+    scrollView.contentSize = CGSizeMake(self.view.frame.size.width, 55*[wordsDic[@"wordId"] count]);
     [self.view addSubview:scrollView];
     
     //init table view
-    tableView = [[WordTableView alloc] initWithFrame:CGRectMake(0, 0, 320,55*[wordsDic[@"wordId"] count]) wordsDic:wordsDic];
+    tableView = [[WordTableView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,55*[wordsDic[@"wordId"] count]) wordsDic:wordsDic];
     [scrollView addSubview:tableView];
 }
 

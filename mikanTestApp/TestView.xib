@@ -92,6 +92,15 @@
                         <constraint firstAttribute="height" constant="2" id="h0P-hk-lTB"/>
                     </constraints>
                 </progressView>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvl-9O-CyJ">
+                    <rect key="frame" x="137" y="194" width="47" height="30"/>
+                    <state key="normal" title="unsure">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="unsureButtonPushed:" destination="iN0-l3-epB" eventType="touchUpInside" id="oSy-WN-OJt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.99896246190000004" green="0.95258563760000003" blue="0.86407023670000005" alpha="1" colorSpace="calibratedRGB"/>
             <accessibility key="accessibilityConfiguration">

@@ -93,4 +93,16 @@
         [_delegate cancelButtonPushedDelegate];
     }
 }
+
+- (IBAction)unsureButtonPushed:(id)sender {
+    DLog(@"unsureButtonPushed");
+    
+    answerButton *answerBtn = (answerButton *)[self viewWithTag:_answerButtonTag];
+    answerBtn.backgroundColor = [UIColor greenColor];
+    
+    //ボタンが押されたときのdelegateメソッドを呼び出し
+    if ([_delegate respondsToSelector:@selector(answerButtonPushedDelegate:choice:)]) {
+        [_delegate answerButtonPushedDelegate:YES choice:6];
+    }
+}
 @end
