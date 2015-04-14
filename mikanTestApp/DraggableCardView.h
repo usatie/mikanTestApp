@@ -20,6 +20,7 @@
 @property (nonatomic) IBOutlet UILabel *numberLabel;
 @property (nonatomic) IBOutlet UILabel *japaneseLabel;
 @property (nonatomic) IBOutlet UILabel *englishLabel;
+@property NSString *word;
 @property (strong, nonatomic) IBOutlet UILabel *sectionLabel;
 
 @property int leftCount;

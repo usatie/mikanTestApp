@@ -252,6 +252,7 @@
     NSMutableArray *wordIndexArray = [[NSMutableArray alloc] init];
     NSMutableArray *englishLabelArray = [[NSMutableArray alloc] init];
     NSMutableArray *japaneseLabelArray = [[NSMutableArray alloc] init];
+    NSMutableArray *pinyinLabelArray = [[NSMutableArray alloc] init];
     NSMutableArray *choicesArray = [[NSMutableArray alloc] init];
 //    NSMutableArray *choice1Array = [[NSMutableArray alloc] init];
 //    NSMutableArray *choice2Array = [[NSMutableArray alloc] init];
@@ -274,6 +275,8 @@
         [wordIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"word_index"]]];//0
         [englishLabelArray addObject:[wordResult stringForColumn:@"english_label"]];//1
         [japaneseLabelArray addObject:[wordResult stringForColumn:@"japanese_label"]];//2
+        [pinyinLabelArray addObject:[wordResult stringForColumn:@"pinyin_label"]];
+
 
         //random choice make
         FMResultSet *choiceResult = [db executeQuery:sql,[NSNumber numberWithInt:partId],[NSNumber numberWithInt:[wordResult intForColumn:@"id"]],[wordResult stringForColumn:@"japanese_label"]];
@@ -293,6 +296,7 @@
     [relearnWordsDic setObject:wordIndexArray forKey:@"wordIndex"];
     [relearnWordsDic setObject:englishLabelArray forKey:@"english"];
     [relearnWordsDic setObject:japaneseLabelArray forKey:@"japanese"];
+    [relearnWordsDic setObject:pinyinLabelArray forKey:@"pinyin"];
 
     [relearnWordsDic setObject:choicesArray forKey:@"choicesArray"];
     [relearnWordsDic setObject:answerIndexArray forKey:@"answerIndex"];

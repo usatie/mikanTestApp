@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserUtil.h"
 
 @interface WordTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
+@property UserUtil *util;
 - (id)initWithFrame:(CGRect)frame wordsDic:(NSDictionary *)wordsDictionary;
 @end

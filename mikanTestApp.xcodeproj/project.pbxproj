@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2412DC351AAD92E900AC4D30 /* mikan.csv in Resources */ = {isa = PBXBuildFile; fileRef = 2412DC341AAD92E900AC4D30 /* mikan.csv */; };
-		244115551ADCF8CD002949C3 /* mikan_chinese.db in Resources */ = {isa = PBXBuildFile; fileRef = 244115541ADCF8CD002949C3 /* mikan_chinese.db */; };
 		24411B4C1ADCFFE7002949C3 /* 上班.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2441194D1ADCFFE6002949C3 /* 上班.mp3 */; };
 		24411B4D1ADCFFE7002949C3 /* 上课.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2441194E1ADCFFE6002949C3 /* 上课.mp3 */; };
 		24411B4E1ADCFFE7002949C3 /* 下班.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2441194F1ADCFFE6002949C3 /* 下班.mp3 */; };
@@ -509,6 +508,7 @@
 		24411D3D1ADCFFE7002949C3 /* 非常.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24411B491ADCFFE7002949C3 /* 非常.mp3 */; };
 		24411D3E1ADCFFE7002949C3 /* 顺便.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24411B4A1ADCFFE7002949C3 /* 顺便.mp3 */; };
 		24411D3F1ADCFFE7002949C3 /* 马上.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 24411B4B1ADCFFE7002949C3 /* 马上.mp3 */; };
+		24411D431ADD320F002949C3 /* mikan_chinese.db in Resources */ = {isa = PBXBuildFile; fileRef = 24411D421ADD320F002949C3 /* mikan_chinese.db */; };
 		2462CD081AAAAC4200AF25A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD071AAAAC4200AF25A2 /* main.m */; };
 		2462CD0B1AAAAC4200AF25A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0A1AAAAC4200AF25A2 /* AppDelegate.m */; };
 		2462CD0E1AAAAC4200AF25A2 /* LearnMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2462CD0D1AAAAC4200AF25A2 /* LearnMenuViewController.m */; };
@@ -1566,7 +1566,6 @@
 /* Begin PBXFileReference section */
 		0E89B5863D4DDFC59AFE9F98 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2412DC341AAD92E900AC4D30 /* mikan.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mikan.csv; sourceTree = "<group>"; };
-		244115541ADCF8CD002949C3 /* mikan_chinese.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_chinese.db; sourceTree = "<group>"; };
 		2441194D1ADCFFE6002949C3 /* 上班.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "上班.mp3"; sourceTree = "<group>"; };
 		2441194E1ADCFFE6002949C3 /* 上课.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "上课.mp3"; sourceTree = "<group>"; };
 		2441194F1ADCFFE6002949C3 /* 下班.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "下班.mp3"; sourceTree = "<group>"; };
@@ -2067,6 +2066,7 @@
 		24411B491ADCFFE7002949C3 /* 非常.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "非常.mp3"; sourceTree = "<group>"; };
 		24411B4A1ADCFFE7002949C3 /* 顺便.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "顺便.mp3"; sourceTree = "<group>"; };
 		24411B4B1ADCFFE7002949C3 /* 马上.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "马上.mp3"; sourceTree = "<group>"; };
+		24411D421ADD320F002949C3 /* mikan_chinese.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = mikan_chinese.db; sourceTree = "<group>"; };
 		2462CD021AAAAC4200AF25A2 /* mikanTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mikanTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2462CD061AAAAC4200AF25A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2462CD071AAAAC4200AF25A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -3837,7 +3837,7 @@
 				2466F2161AAAEC15001E8522 /* sample_test.csv */,
 				2412DC341AAD92E900AC4D30 /* mikan.csv */,
 				24711A291ABFEE4B00F39BE3 /* mikan_exam.db */,
-				244115541ADCF8CD002949C3 /* mikan_chinese.db */,
+				24411D421ADD320F002949C3 /* mikan_chinese.db */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -5707,6 +5707,7 @@
 				24C50AEA1AC6E4F6007356CC /* manner.mp3 in Resources */,
 				24C50B331AC6E4F6007356CC /* outright.mp3 in Resources */,
 				24C50A361AC6E4F6007356CC /* forbearance.mp3 in Resources */,
+				24411D431ADD320F002949C3 /* mikan_chinese.db in Resources */,
 				24C50C961AC6E4F6007356CC /* virtue.mp3 in Resources */,
 				24C50B491AC6E4F6007356CC /* perception.mp3 in Resources */,
 				24C509D41AC6E4F6007356CC /* doom.mp3 in Resources */,
@@ -6600,7 +6601,6 @@
 				247119E91ABBF3FA00F39BE3 /* LearnView.xib in Resources */,
 				24C50C6B1AC6E4F6007356CC /* trio.mp3 in Resources */,
 				24411D021ADCFFE7002949C3 /* 坐.mp3 in Resources */,
-				244115551ADCF8CD002949C3 /* mikan_chinese.db in Resources */,
 				24C50AD51AC6E4F6007356CC /* likelihood.mp3 in Resources */,
 				24C50B741AC6E4F6007356CC /* processor.mp3 in Resources */,
 				24C50CA21AC6E4F6007356CC /* withhold.mp3 in Resources */,

@@ -101,7 +101,8 @@
     
     //次の単語を発音
     self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
-    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+//    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+    [_util playSound:self.learnView.topCardView.word playSoundFlag:YES];
     [self performSelector:@selector(startTimer) withObject:nil afterDelay:0.5];
 }
 
@@ -110,7 +111,9 @@
 {
     NSArray *cardViews = self.learnView.cardBaseView.subviews;
     self.learnView.topCardView = (DraggableCardView *)[cardViews objectAtIndex:cardViews.count-1];
-    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+    //    [_util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
+    DLog(@"%@",self.learnView.topCardView.word);
+    [_util playSound:self.learnView.topCardView.word playSoundFlag:YES];
     [self startTimer];
 }
 

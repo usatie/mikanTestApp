@@ -78,4 +78,9 @@
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _util = [[UserUtil alloc] init];
+    [_util playSound:wordsDic[@"english"][indexPath.row] playSoundFlag:YES];
+}
 @end

@@ -63,7 +63,7 @@
     }
     
     //Englishを表示
-    self.englishLabel.text = _testWordsDic[@"english"][index];
+    self.englishLabel.text = _testWordsDic[@"pinyin"][index];//_testWordsDic[@"english"][index];
     
     //numberLabelを表示
     self.numberLabel.text = [NSString stringWithFormat:@"%d / %d",index+1,(int)[_testWordsDic[@"english"] count]];
