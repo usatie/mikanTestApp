@@ -35,6 +35,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] forKey:@"category"];
+    [ud setInteger:[_labelModeSegmentedControl selectedSegmentIndex] forKey:@"labelMode"];
     if (sender == _learnNewWordsButton) {
         [ud setBool:NO forKey:@"learnMode"];
     } else if (sender == _learnButton){
