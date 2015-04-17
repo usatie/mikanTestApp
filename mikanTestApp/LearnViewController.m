@@ -20,10 +20,8 @@
     // Do any additional setup after loading the view.
     [self initLearnView];
     [self initArrays];
-//    [self.util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
     [self.util playSound:self.learnView.topCardView.word playSoundFlag:YES];
 
-//    [self startTimer];
     if (self.numberOfWords > 5) {
         self.shouldLearnAgain = YES;
     }
