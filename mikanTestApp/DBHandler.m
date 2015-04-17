@@ -267,9 +267,10 @@
     NSString* sql;
     [db open];
 //    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = 1 and r.has_remembered = 0 order by random() limit ?";
-    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index <= ? order by random() limit ?";
-    FMResultSet *wordResult = [db executeQuery:sql,[categoryIdDic objectForKey:category],[NSNumber numberWithBool:hasTested],[NSNumber numberWithBool:remembered],[NSNumber numberWithInt:WORD_ID_LIMIT],[NSNumber numberWithInt:limit]];
-    sql = @"select japanese_label from word where part_id = ? and id != ? and japanese_label != ? order by random() limit 3";
+//    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.category_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index <= ? order by random() limit ?";
+    NSInteger partId = [[NSUserDefaults standardUserDefaults] integerForKey:@"part"];
+    sql = @"select w.*, r.updated_at from word as w left join word_record as r where w.id = r.word_id and w.part_id = ? and r.has_tested = ? and r.has_remembered = ? and w.word_index <= ? order by random() limit ?";    FMResultSet *wordResult = [db executeQuery:sql,[NSNumber numberWithInteger:partId],[NSNumber numberWithBool:hasTested],[NSNumber numberWithBool:remembered],[NSNumber numberWithInt:WORD_ID_LIMIT],[NSNumber numberWithInt:limit]];
+    sql = @"select japanese_label,english_label from word where part_id = ? and id != ? and japanese_label != ? and english_label != ? order by random() limit 3";
     while ([wordResult next]) {
         int partId = [wordResult intForColumn:@"part_id"];
         [wordIndexArray addObject:[NSNumber numberWithInt:[wordResult intForColumn:@"word_index"]]];//0
@@ -279,11 +280,20 @@
 
 
         //random choice make
-        FMResultSet *choiceResult = [db executeQuery:sql,[NSNumber numberWithInt:partId],[NSNumber numberWithInt:[wordResult intForColumn:@"id"]],[wordResult stringForColumn:@"japanese_label"]];
+        FMResultSet *choiceResult = [db executeQuery:sql,[NSNumber numberWithInt:partId],[NSNumber numberWithInt:[wordResult intForColumn:@"id"]],[wordResult stringForColumn:@"japanese_label"],[wordResult stringForColumn:@"english_label"]];
         NSMutableArray *array = [[NSMutableArray alloc] init];
-        [array addObject:[wordResult stringForColumn:@"japanese_label"]];
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"labelMode"] == 0) {
+            [array addObject:[wordResult stringForColumn:@"japanese_label"]];
+        } else {
+            [array addObject:[wordResult stringForColumn:@"english_label"]];
+        }
+
         while ([choiceResult next]) {
-            [array addObject:[choiceResult stringForColumnIndex:0]];
+            if ([[NSUserDefaults standardUserDefaults] integerForKey:@"labelMode"] == 0) {
+                [array addObject:[choiceResult stringForColumnIndex:0]];
+            } else {
+                [array addObject:[choiceResult stringForColumnIndex:1]];
+            }
         }
         [choicesArray addObject:array];
         //till this line

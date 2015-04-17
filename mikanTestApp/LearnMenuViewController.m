@@ -36,6 +36,7 @@
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] forKey:@"category"];
     [ud setInteger:[_labelModeSegmentedControl selectedSegmentIndex] forKey:@"labelMode"];
+    [ud setInteger:[_partSegmentedControl selectedSegmentIndex]+1 forKey:@"part"];
     if (sender == _learnNewWordsButton) {
         [ud setBool:NO forKey:@"learnMode"];
     } else if (sender == _learnButton){
@@ -46,6 +47,38 @@
         [ud setBool:NO forKey:@"totalRelearnMode"];
     }
     [ud synchronize];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    BOOL ifRelearn = NO;
+    [ud setObject:[_sectionSegmentedControl titleForSegmentAtIndex:_sectionSegmentedControl.selectedSegmentIndex] forKey:@"category"];
+    [ud setInteger:[_labelModeSegmentedControl selectedSegmentIndex] forKey:@"labelMode"];
+    [ud setInteger:[_partSegmentedControl selectedSegmentIndex]+1 forKey:@"part"];
+    if (sender == _learnNewWordsButton) {
+        [ud setBool:NO forKey:@"learnMode"];
+    } else if (sender == _learnButton){
+        [ud setBool:YES forKey:@"learnMode"];
+    } else if (sender == _totalRelearnButton){
+        [ud setBool:YES forKey:@"totalRelearnMode"];
+        ifRelearn = YES;
+    } else if (sender == _relearnButton) {
+        [ud setBool:NO forKey:@"totalRelearnMode"];
+        ifRelearn = YES;
+    }
+    [ud synchronize];
+
+    NSString *category = [ud objectForKey:@"category"];
+    BOOL learnMode = [ud boolForKey:@"learnMode"];
+    
+    if ([[[DBHandler getRelearnWords:category limit:10 remembered:ifRelearn hasTested:learnMode] objectForKey:@"wordId"] count] == 0) {
+        DLog(@"cannot perform segue");
+        return NO;
+    } else {
+        DLog(@"can perform segue");
+        return YES;
+    }
 }
 
 - (void)refreshButtonTitles{

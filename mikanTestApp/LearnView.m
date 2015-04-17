@@ -32,8 +32,17 @@
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = learnVC;
-        [cardView setParameter:self.wordsDic[@"pinyin"][i]//self.wordsDic[@"english"][i]
-                      japanese:self.wordsDic[@"japanese"][i]
+        NSString *englishLabelText;
+        NSString *japaneseLabelText;
+        if ([[NSUserDefaults standardUserDefaults] integerForKey:@"labelMode"] == 0) {
+            englishLabelText = self.wordsDic[@"english"][i];
+            japaneseLabelText = self.wordsDic[@"japanese"][i];
+        } else {
+            englishLabelText = self.wordsDic[@"pinyin"][i];
+            japaneseLabelText = self.wordsDic[@"english"][i];
+        }
+        [cardView setParameter:englishLabelText
+                      japanese:japaneseLabelText
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
             japaneseHiddenFlug:YES];
         cardView.sectionLabel.text = @"検証テスト";

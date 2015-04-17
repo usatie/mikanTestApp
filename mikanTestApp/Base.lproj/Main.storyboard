@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cgK-Uh-DYy">
-                                <rect key="frame" x="239" y="6" width="123" height="29"/>
+                                <rect key="frame" x="239" y="30" width="123" height="29"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="123" id="ZvJ-sZ-AiY"/>
                                     <constraint firstAttribute="height" constant="28" id="wXd-RX-cc6"/>
@@ -98,6 +98,25 @@
                                 <segments>
                                     <segment title="漢字"/>
                                     <segment title="Pinyin"/>
+                                </segments>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="f99-l7-RAw">
+                                <rect key="frame" x="140" y="115" width="320" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="9ns-Ak-02g"/>
+                                    <constraint firstAttribute="width" constant="320" id="AbU-HK-4Ht"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
+                                    <segment title="6"/>
+                                    <segment title="7"/>
+                                    <segment title="8"/>
+                                    <segment title="9"/>
+                                    <segment title="10"/>
                                 </segments>
                             </segmentedControl>
                         </subviews>
@@ -115,12 +134,14 @@
                             <constraint firstItem="FFt-DH-w3u" firstAttribute="height" secondItem="Mq2-V6-aeN" secondAttribute="height" id="MLY-Mu-mFJ"/>
                             <constraint firstAttribute="centerX" secondItem="aNo-pA-Uec" secondAttribute="centerX" id="S06-NU-XTG"/>
                             <constraint firstAttribute="centerX" secondItem="cgK-Uh-DYy" secondAttribute="centerX" id="Uvp-CW-Pse"/>
+                            <constraint firstItem="f99-l7-RAw" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="8" id="Z3o-NK-Yh9"/>
+                            <constraint firstAttribute="centerX" secondItem="f99-l7-RAw" secondAttribute="centerX" id="a6d-HY-Ngo"/>
                             <constraint firstAttribute="centerX" secondItem="JHU-4s-bmk" secondAttribute="centerX" id="bso-3j-j2p"/>
                             <constraint firstItem="FFt-DH-w3u" firstAttribute="width" secondItem="Mq2-V6-aeN" secondAttribute="width" id="csd-G2-Tpn"/>
                             <constraint firstItem="Mq2-V6-aeN" firstAttribute="top" secondItem="FFt-DH-w3u" secondAttribute="bottom" constant="30" id="e5z-6i-ZaA"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="60" id="n7m-UU-N8F"/>
-                            <constraint firstItem="cgK-Uh-DYy" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="6" id="oRH-we-Avp"/>
+                            <constraint firstItem="cgK-Uh-DYy" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="30" id="oRH-we-Avp"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="20" id="pWC-Yz-IQa"/>
                             <constraint firstAttribute="centerX" secondItem="Mq2-V6-aeN" secondAttribute="centerX" id="trT-CX-0AE"/>
                             <constraint firstItem="aNo-pA-Uec" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="29" id="w0c-Dl-ovW"/>
@@ -140,6 +161,7 @@
                         <outlet property="labelModeSegmentedControl" destination="cgK-Uh-DYy" id="1Ua-Aa-c2d"/>
                         <outlet property="learnButton" destination="aNo-pA-Uec" id="Ln9-1R-I4o"/>
                         <outlet property="learnNewWordsButton" destination="04k-qN-c6h" id="ieG-3x-EEZ"/>
+                        <outlet property="partSegmentedControl" destination="f99-l7-RAw" id="mVD-Aw-rO0"/>
                         <outlet property="relearnButton" destination="Mq2-V6-aeN" id="2Ah-bR-ROg"/>
                         <outlet property="sectionSegmentedControl" destination="JHU-4s-bmk" id="mcU-nc-Tzl"/>
                         <outlet property="totalRelearnButton" destination="FFt-DH-w3u" id="nE2-Fx-vSO"/>

@@ -5066,6 +5066,7 @@
 				TargetAttributes = {
 					2462CD011AAAAC4200AF25A2 = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 27ZF65ZF69;
 					};
 					2462CD1D1AAAAC4200AF25A2 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -6811,11 +6812,13 @@
 			baseConfigurationReference = A79AD71459D8F52B5177064A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "mikanTestApp/mikanTestApp-PrefixHeader.pch";
 				INFOPLIST_FILE = mikanTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8afe173f-b066-40d9-ae57-f98cf16d70d0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -6824,11 +6827,13 @@
 			baseConfigurationReference = 66DE6E9C6D08D3969CE42EA0 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "mikanTestApp/mikanTestApp-PrefixHeader.pch";
 				INFOPLIST_FILE = mikanTestApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8afe173f-b066-40d9-ae57-f98cf16d70d0";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

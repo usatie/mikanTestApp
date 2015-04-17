@@ -63,7 +63,14 @@
     }
     
     //Englishを表示
-    self.englishLabel.text = _testWordsDic[@"pinyin"][index];//_testWordsDic[@"english"][index];
+    NSString *labelText;
+    if ([[NSUserDefaults standardUserDefaults] integerForKey:@"labelMode"] == 0) {
+        labelText = _testWordsDic[@"english"][index];
+    } else {
+        labelText = _testWordsDic[@"pinyin"][index];
+    }
+
+    self.englishLabel.text = labelText;//_testWordsDic[@"pinyin"][index];//_testWordsDic[@"english"][index];
     
     //numberLabelを表示
     self.numberLabel.text = [NSString stringWithFormat:@"%d / %d",index+1,(int)[_testWordsDic[@"english"] count]];

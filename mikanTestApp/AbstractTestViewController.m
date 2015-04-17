@@ -97,6 +97,7 @@
     [self stopTimer];
     //次の単語が表示されるまではボタンをdisable
     [self.testView disableAllButtons];
+
     //DBHandlerに入れるためのもの
     BOOL isUnsure = choice==6 ? YES:NO;
     [_userChoicesArray addObject:[NSNumber numberWithInt:choice]];
@@ -108,6 +109,8 @@
         [_util playSound:@"sound_correct" playSoundFlag:YES];
     } else {
         [_util playSound:@"sound_incorrect" playSoundFlag:YES];
+        answerButton *answerBtn = (answerButton *)[self.testView viewWithTag:self.testView.answerButtonTag];
+        answerBtn.backgroundColor = [UIColor orangeColor];
     }
     
     if (_testIndex < [_testWordsDic[@"wordId"] count]){
