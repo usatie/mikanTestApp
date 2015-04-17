@@ -74,14 +74,6 @@
     //正解不正解の判断
     BOOL result = btn.tag==_answerButtonTag ? 1:0;
     
-    //正解不正解に応じてボタンの色を変える
-    if (result) {
-        btn.backgroundColor = [UIColor greenColor];
-    } else {
-        answerButton *answerBtn = (answerButton *)[self viewWithTag:_answerButtonTag];
-        answerBtn.backgroundColor = [UIColor orangeColor];
-    }
-    
     //ボタンが押されたときのdelegateメソッドを呼び出し
     if ([_delegate respondsToSelector:@selector(answerButtonPushedDelegate:choice:)]) {
         [_delegate answerButtonPushedDelegate:result choice:btn.choiceNumTag];

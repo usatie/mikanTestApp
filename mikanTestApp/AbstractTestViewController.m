@@ -104,9 +104,12 @@
     [_answerDurationArray addObject:[NSNumber numberWithDouble:-[date timeIntervalSinceNow]]];
     [_isUnsureArray addObject:[NSNumber numberWithBool:isUnsure]];
     
+    answerButton *btn = (answerButton *)[self.testView viewWithTag:self.testView.answerButtonTag];
     if (result) {
+        btn.backgroundColor = [UIColor greenColor];
         [_util playSound:@"sound_correct" playSoundFlag:YES];
     } else {
+        btn.backgroundColor = [UIColor orangeColor];
         [_util playSound:@"sound_incorrect" playSoundFlag:YES];
     }
     
