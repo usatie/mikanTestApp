@@ -11,6 +11,10 @@
 
 @interface AbstractTestViewController (){
     NSDate *date;
+    
+    NSTimer *timer;
+    BOOL isTimerValid;
+    int progress;
 }
 
 @end
@@ -171,15 +175,36 @@
                 format:@"You must override %@ in a subclass", NSStringFromSelector(_cmd)];
 }
 
-#pragma mark Override method (optional)
-- (void)startTimer {
-    DLog(@"if you want to add timer, please override this method");
+#pragma mark Timer
+- (void)startTimer
+{
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    progress = 0;
+    self.testView.progressBar.progress = 1.0;
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+    
+    isTimerValid = YES;
+    
 }
-- (void)stopTimer {
-    DLog(@"if you want to add timer, please override this method");
+
+- (void)stopTimer
+{
+    if (isTimerValid) {
+        [timer invalidate];
+    }
+    isTimerValid = NO;
 }
-- (void)timerAction {
-    DLog(@"if you want to add timer, please override this method");
+
+- (void)timerAction
+{
+    progress ++;
+    if (progress > PROGRESS_LIMIT) {
+        [self answerButtonPushedDelegate:NO choice:5];
+    } else {
+        [self.testView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
+    }
 }
 
 - (void)cancelButtonPushedBeforeAnswering

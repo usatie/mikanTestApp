@@ -9,11 +9,7 @@
 #import "RelearnTestViewController.h"
 #import "RelearnTestResultViewController.h"
 
-@interface RelearnTestViewController () {
-    NSTimer *timer;
-    BOOL isTimerValid;
-    int progress;
-}
+@interface RelearnTestViewController () 
 
 @end
 
@@ -53,38 +49,6 @@
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [self.resultsArray count])];
         RelearnTestResultViewController *vc = segue.destinationViewController;
         vc.testedWordsDic = [self getSmallDictionary:self.testWordsDic indexSet:indexSet];
-    }
-}
-
-#pragma mark Timer
-- (void)startTimer
-{
-    if (isTimerValid) {
-        [timer invalidate];
-    }
-    progress = 0;
-    self.testView.progressBar.progress = 1.0;
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
-    
-    isTimerValid = YES;
-    
-}
-
-- (void)stopTimer
-{
-    if (isTimerValid) {
-        [timer invalidate];
-    }
-    isTimerValid = NO;
-}
-
-- (void)timerAction
-{
-    progress ++;
-    if (progress > PROGRESS_LIMIT) {
-        [self answerButtonPushedDelegate:NO choice:5];
-    } else {
-        [self.testView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
     }
 }
 
