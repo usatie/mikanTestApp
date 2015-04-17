@@ -32,7 +32,7 @@
         cardView.panGestureRecognizer.enabled = YES;
         cardView.tag = i+1;
         cardView.delegate = learnVC;
-        [cardView setParameter:self.wordsDic[@"pinyin"][i]//self.wordsDic[@"english"][i]
+        [cardView setParameter:self.wordsDic[@"english"][i]
                       japanese:self.wordsDic[@"japanese"][i]
                         number:[NSString stringWithFormat:@"%@",self.wordsDic[@"wordId"][i]]
             japaneseHiddenFlug:YES];

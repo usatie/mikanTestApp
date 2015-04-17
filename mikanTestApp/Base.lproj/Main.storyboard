@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Test-->
@@ -89,17 +88,6 @@
                                     <segue destination="eLo-lV-dvZ" kind="presentation" id="Kzj-qe-zLT"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="cgK-Uh-DYy">
-                                <rect key="frame" x="239" y="6" width="123" height="29"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="123" id="ZvJ-sZ-AiY"/>
-                                    <constraint firstAttribute="height" constant="28" id="wXd-RX-cc6"/>
-                                </constraints>
-                                <segments>
-                                    <segment title="漢字"/>
-                                    <segment title="Pinyin"/>
-                                </segments>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -114,13 +102,11 @@
                             <constraint firstItem="04k-qN-c6h" firstAttribute="height" secondItem="Mq2-V6-aeN" secondAttribute="height" id="L2M-Cs-npw"/>
                             <constraint firstItem="FFt-DH-w3u" firstAttribute="height" secondItem="Mq2-V6-aeN" secondAttribute="height" id="MLY-Mu-mFJ"/>
                             <constraint firstAttribute="centerX" secondItem="aNo-pA-Uec" secondAttribute="centerX" id="S06-NU-XTG"/>
-                            <constraint firstAttribute="centerX" secondItem="cgK-Uh-DYy" secondAttribute="centerX" id="Uvp-CW-Pse"/>
                             <constraint firstAttribute="centerX" secondItem="JHU-4s-bmk" secondAttribute="centerX" id="bso-3j-j2p"/>
                             <constraint firstItem="FFt-DH-w3u" firstAttribute="width" secondItem="Mq2-V6-aeN" secondAttribute="width" id="csd-G2-Tpn"/>
                             <constraint firstItem="Mq2-V6-aeN" firstAttribute="top" secondItem="FFt-DH-w3u" secondAttribute="bottom" constant="30" id="e5z-6i-ZaA"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="JHU-4s-bmk" secondAttribute="bottom" constant="240" id="e7z-B6-1Ce"/>
                             <constraint firstItem="JHU-4s-bmk" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="60" id="n7m-UU-N8F"/>
-                            <constraint firstItem="cgK-Uh-DYy" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="topMargin" constant="6" id="oRH-we-Avp"/>
                             <constraint firstItem="04k-qN-c6h" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="20" id="pWC-Yz-IQa"/>
                             <constraint firstAttribute="centerX" secondItem="Mq2-V6-aeN" secondAttribute="centerX" id="trT-CX-0AE"/>
                             <constraint firstItem="aNo-pA-Uec" firstAttribute="top" secondItem="Mq2-V6-aeN" secondAttribute="bottom" constant="29" id="w0c-Dl-ovW"/>
@@ -137,7 +123,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Test" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="labelModeSegmentedControl" destination="cgK-Uh-DYy" id="1Ua-Aa-c2d"/>
                         <outlet property="learnButton" destination="aNo-pA-Uec" id="Ln9-1R-I4o"/>
                         <outlet property="learnNewWordsButton" destination="04k-qN-c6h" id="ieG-3x-EEZ"/>
                         <outlet property="relearnButton" destination="Mq2-V6-aeN" id="2Ah-bR-ROg"/>
