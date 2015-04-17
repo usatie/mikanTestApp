@@ -70,38 +70,4 @@
     [DBHandler insertLearnResultWithArray:self.learnView.wordsDic[@"wordId"] durationArray:self.swipeDurationArray leftCountArray:self.leftCountArray learnType:LEARN_TYPE_READ relearnFlag:NO];
     [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
-
-//#pragma mark Timer
-//- (void)startTimer
-//{
-//    if (isTimerValid) {
-//        [timer invalidate];
-//    }
-//    progress = 0;
-//    self.learnView.progressBar.progress = 1.0;
-//    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
-//    isTimerValid = YES;
-//    self.date = [NSDate date];    
-//}
-//
-//- (void)stopTimer
-//{
-//    if (isTimerValid) {
-//        [timer invalidate];
-//    }
-//    isTimerValid = NO;
-//}
-//
-//- (void)timerAction
-//{
-//    progress ++;
-//    if (progress > JAPANESE_LABEL_SHOW__LIMIT) self.learnView.topCardView.japaneseLabel.hidden = NO;
-//    if (progress > PROGRESS_LIMIT) {
-//        [self stopTimer];
-//        [self.learnView sendCardViewToBack:self.learnView.topCardView];
-//    } else {
-//        [self.learnView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
-//    }
-//
-//}
 @end
