@@ -11,9 +11,9 @@
 #import "TestViewController.h"
 
 @interface LearnViewController (){
-    BOOL isTimerValid;
-    NSTimer *timer;
-    int progress;
+//    BOOL isTimerValid;
+//    NSTimer *timer;
+//    int progress;
 }
 
 @end
@@ -28,7 +28,7 @@
 //    [self.util playSound:self.learnView.topCardView.englishLabel.text playSoundFlag:YES];
     [self.util playSound:self.learnView.topCardView.word playSoundFlag:YES];
 
-    [self startTimer];
+//    [self startTimer];
     if (self.numberOfWords > 5) {
         self.shouldLearnAgain = YES;
     }
@@ -71,37 +71,37 @@
     [self performSegueWithIdentifier:@"learnToTest" sender:self];
 }
 
-#pragma mark Timer
-- (void)startTimer
-{
-    if (isTimerValid) {
-        [timer invalidate];
-    }
-    progress = 0;
-    self.learnView.progressBar.progress = 1.0;
-    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
-    isTimerValid = YES;
-    self.date = [NSDate date];    
-}
-
-- (void)stopTimer
-{
-    if (isTimerValid) {
-        [timer invalidate];
-    }
-    isTimerValid = NO;
-}
-
-- (void)timerAction
-{
-    progress ++;
-    if (progress > JAPANESE_LABEL_SHOW__LIMIT) self.learnView.topCardView.japaneseLabel.hidden = NO;
-    if (progress > PROGRESS_LIMIT) {
-        [self stopTimer];
-        [self.learnView sendCardViewToBack:self.learnView.topCardView];
-    } else {
-        [self.learnView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
-    }
-
-}
+//#pragma mark Timer
+//- (void)startTimer
+//{
+//    if (isTimerValid) {
+//        [timer invalidate];
+//    }
+//    progress = 0;
+//    self.learnView.progressBar.progress = 1.0;
+//    timer = [NSTimer scheduledTimerWithTimeInterval:0.001 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];
+//    isTimerValid = YES;
+//    self.date = [NSDate date];    
+//}
+//
+//- (void)stopTimer
+//{
+//    if (isTimerValid) {
+//        [timer invalidate];
+//    }
+//    isTimerValid = NO;
+//}
+//
+//- (void)timerAction
+//{
+//    progress ++;
+//    if (progress > JAPANESE_LABEL_SHOW__LIMIT) self.learnView.topCardView.japaneseLabel.hidden = NO;
+//    if (progress > PROGRESS_LIMIT) {
+//        [self stopTimer];
+//        [self.learnView sendCardViewToBack:self.learnView.topCardView];
+//    } else {
+//        [self.learnView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
+//    }
+//
+//}
 @end
