@@ -10,12 +10,7 @@
 #import "DraggableCardView.h"
 #import "TestViewController.h"
 
-@interface LearnViewController (){
-//    BOOL isTimerValid;
-//    NSTimer *timer;
-//    int progress;
-}
-
+@interface LearnViewController ()
 @end
 
 @implementation LearnViewController
