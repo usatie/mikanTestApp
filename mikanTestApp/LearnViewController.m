@@ -102,6 +102,10 @@
     } else {
         [self.learnView.progressBar setProgress:1.0-(float)progress/PROGRESS_LIMIT];
     }
-
+}
+- (void)cardViewTouchedDelegate:(DraggableCardView *)cardView
+{
+    [self.util playSound:self.learnView.topCardView.word playSoundFlag:YES];
+    
 }
 @end
